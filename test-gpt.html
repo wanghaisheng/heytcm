@@ -13,12 +13,30 @@
             text-align: center;
         }
 
-        .question-container {
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .story {
+            font-size: 1.2em;
+            margin: 20px;
+        }
+
+        .question-container {
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            display: none;
         }
 
         .options {
@@ -44,11 +62,23 @@
             font-weight: bold;
             font-size: 1.2em;
             margin-top: 20px;
+            display: none;
         }
 
-        .story {
-            font-size: 1.2em;
-            margin: 20px;
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            border-radius: 10px;
         }
 
         .reward {
@@ -56,14 +86,35 @@
             color: #ff6347;
             font-weight: bold;
         }
+
+        .next-btn {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .next-btn:hover {
+            background-color: #007B9A;
+        }
     </style>
 </head>
 <body>
 
-    <h1>智慧养生冒险之旅</h1>
-    <div id="story"></div>
-    <div id="question-container" class="question-container"></div>
-    <div id="result" class="result"></div>
+    <div class="game-container">
+        <h1>智慧养生冒险之旅</h1>
+        <div id="story" class="story"></div>
+        <div id="question-container" class="question-container"></div>
+        <div id="result" class="result"></div>
+        <div id="progress-bar-container" class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <button id="next-btn" class="next-btn" onclick="nextLevel()">继续</button>
+    </div>
 
     <script>
         const levels = [
@@ -80,58 +131,22 @@
                 rewards: ["获得“科技健康”的钥匙", "获得“健康之道”的符咒", "获得“传统智慧”的符文"]
             },
             {
-                story: "你来到一个情绪调节大厅，看到各种中医情绪治疗的方法。你需要选择一个方法来平复自己最近的情绪波动。",
-                question: "你是否认为中医能有效改善情绪健康（如缓解压力、焦虑等）？",
-                options: ["完全认为，中医有助于调节情绪和压力", "有一定效果，但更依赖于个人情况", "不认为，中医无法有效调节情绪"],
-                rewards: ["获得“情绪治疗”的钥匙", "获得“情绪调节之道”的符咒", "获得“现代情绪管理”的徽章"]
+                story: "你来到了一个古老的山洞，洞中藏着神秘的水晶。你发现有三种不同颜色的水晶。",
+                question: "你选择哪种水晶？",
+                options: ["蓝色水晶", "红色水晶", "绿色水晶"],
+                rewards: ["获得“平静心灵”的力量", "获得“活力充沛”的能量", "获得“自然治愈”的祝福"]
             },
             {
-                story: "你来到了游戏的最终区域，面对着未来健康的蓝图。你需要决定你对未来健康管理的愿景。",
-                question: "你如何看待未来健康管理与科技结合的前景？",
-                options: ["极为期待，科技将彻底改变我们的健康管理方式", "中立，期待科技进步，但也有些担忧", "不太期待，我更相信传统的健康管理方式"],
-                rewards: ["获得“未来健康”的钥匙", "获得“平衡之道”的符咒", "获得“传统信念”的护符"]
+                story: "你穿越到一座古老的寺庙，遇到一位睿智的僧人。僧人告诉你：‘健康的秘诀不只是吃对食物，更是心境的平和。’",
+                question: "你是否认为心境的平和对健康有重要作用？",
+                options: ["完全同意，心境能影响身体健康", "不确定，心境和身体健康可能没有太大关系", "不同意，健康完全依赖于饮食和运动"],
+                rewards: ["获得“心境平和”的护符", "获得“深思熟虑”的经验", "获得“身体锻炼”的钥匙"]
             },
             {
-                story: "你站在一片郁郁葱葱的竹林前，看到一位老人正在采摘竹叶。他微笑着招手，邀请你一起走进这片自然的庇护所。",
-                question: "你是否愿意接受自然疗法，回归到古老的养生智慧？",
-                options: ["愿意，回归自然会帮助我获得平衡", "考虑过，但还是对现代医学更有信心", "不愿意，我更喜欢依赖现代科技和治疗方法"],
-                rewards: ["获得“竹叶疗法”的符咒", "获得“现代治疗”的护符", "获得“自然养生”的钥匙"]
-            },
-            {
-                story: "你进入了一座古老的中医馆，墙上挂满了各种草药和养生秘籍。你决定向馆中的医生请教。",
-                question: "你是否愿意学习和尝试传统的中医理论（如‘虚、毒、瘀、湿’等概念）来改善自己的健康？",
-                options: ["完全愿意，我相信这些古老的智慧能带来改善", "有些兴趣，但不确定是否能完全理解和实践", "不愿意，我认为这些概念太过复杂，不适合现代人"],
-                rewards: ["获得“中医智慧”的钥匙", "获得“现代医学”的符咒", "获得“传统治疗”的徽章"]
-            },
-            {
-                story: "你正在浏览健康管理的应用程序，看到各种关于脉搏、气血等健康数据的追踪功能。",
-                question: "你是否愿意使用智能设备（如智能手表、手环等）来追踪你的健康状况？",
-                options: ["愿意，智能设备可以让我实时掌握自己的健康数据", "有些兴趣，但不确定是否需要这样做", "不愿意，我更倾向于传统方式来管理健康"],
-                rewards: ["获得“智能健康”的护符", "获得“传统健康”的钥匙", "获得“健康科技”的符咒"]
-            },
-            {
-                story: "你到达了一个神秘的智慧岛，岛上有许多有关中医和养生的挑战等着你。",
-                question: "你是否愿意参与到中医智能化的研究和开发中？",
-                options: ["非常愿意，我希望能够参与这个有意义的项目", "有兴趣，但需要更多了解", "不感兴趣，我更喜欢使用现有的产品和服务"],
-                rewards: ["获得“开源贡献”的徽章", "获得“健康管理”的钥匙", "获得“传统智慧”的符咒"]
-            },
-            {
-                story: "你正在面对情绪岛的挑战，需要回答一些关于情绪健康的问题。",
-                question: "你是否愿意在日常生活中，定期记录和管理自己的情绪健康？",
-                options: ["愿意，这将帮助我更好地控制情绪和压力", "偶尔会做，但很难坚持", "不愿意，我觉得这是不必要的"],
-                rewards: ["获得“情绪记录”的钥匙", "获得“情绪管理”的符咒", "获得“自由情绪”的护符"]
-            },
-            {
-                story: "你站在一个拥有古老书籍的图书馆前，图书馆中收藏了许多关于中医和养生的经典著作。",
-                question: "你是否希望通过学习中医书籍来加深对中医养生理念的理解？",
-                options: ["愿意，深入了解中医将帮助我改善健康", "考虑过，但总是没有时间去学习", "不愿意，我更喜欢通过实践而非理论来了解中医"],
-                rewards: ["获得“中医经典”的钥匙", "获得“实践治疗”的符咒", "获得“理论智慧”的护符"]
-            },
-            {
-                story: "你来到了一个古老的药材研究所，看到不同的药材在这里被仔细研究和分析。",
-                question: "你是否愿意参与到药材的研究和开发中，贡献自己的数据和经验？",
-                options: ["愿意，贡献自己的数据能帮助改善人类健康", "不确定，需要更多了解如何使用我的数据", "不愿意，我更倾向于保护自己的隐私"],
-                rewards: ["获得“研究贡献”的徽章", "获得“数据保护”的符咒", "获得“现代科研”的钥匙"]
+                story: "你来到一个自然公园，看到三条小径通向不同的地方。",
+                question: "你选择哪条小径？",
+                options: ["通往安静湖泊的小径", "通往森林深处的小径", "通往山顶的小径"],
+                rewards: ["获得“湖泊平静”的力量", "获得“森林活力”的能量", "获得“山顶视野”的祝福"]
             }
         ];
 
@@ -146,16 +161,34 @@
                     ${levelData.options.map((option, index) => `<div class="option" onclick="selectOption(${index}, ${level})">${option}</div>`).join('')}
                 </div>
             `;
-            document.getElementById('result').innerHTML = '';
+            document.getElementById('question-container').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
         }
 
         function selectOption(optionIndex, level) {
             const levelData = levels[level];
+            document.getElementById('question-container').style.display = 'none';
             document.getElementById('result').innerHTML = `你获得了：${levelData.rewards[optionIndex]}`;
-            if (level < levels.length - 1) {
-                setTimeout(() => startLevel(level + 1), 1500);
+            document.getElementById('result').style.display = 'block';
+
+            updateProgressBar();
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const progress = ((currentLevel + 1) / levels.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function nextLevel() {
+            currentLevel++;
+            if (currentLevel < levels.length) {
+                startLevel(currentLevel);
             } else {
-                document.getElementById('result').innerHTML += "<br>游戏结束，感谢参与！";
+                document.getElementById('result').innerHTML = "游戏结束，感谢参与！";
+                document.getElementById('next-btn').style.display = 'none';
             }
         }
 
