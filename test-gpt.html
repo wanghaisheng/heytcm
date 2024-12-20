@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,193 +7,122 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .game-container {
+            background-color: #f4f4f9;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
+            height: 100vh;
+            margin: 0;
         }
-
-        .story {
-            font-size: 1.2em;
-            margin: 20px;
-        }
-
-        .question-container {
-            background-color: #fff;
-            padding: 20px;
+        .game-container {
+            text-align: center;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
             margin-bottom: 20px;
-            display: none;
         }
-
+        .question {
+            font-size: 18px;
+            margin: 20px 0;
+        }
         .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            list-style-type: none;
+            padding: 0;
         }
-
         .option {
-            background-color: #4caf50;
+            background-color: #4CAF50;
             color: white;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 10px;
+            margin: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
         .option:hover {
             background-color: #45a049;
         }
-
-        .result {
-            font-weight: bold;
-            font-size: 1.2em;
+        .rewards {
             margin-top: 20px;
-            display: none;
-        }
-
-        .progress-bar-container {
-            width: 100%;
-            height: 20px;
-            background-color: #ddd;
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background-color: #4caf50;
-            border-radius: 10px;
-        }
-
-        .reward {
-            font-size: 1.5em;
-            color: #ff6347;
-            font-weight: bold;
-        }
-
-        .next-btn {
-            background-color: #008CBA;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.2em;
-            display: none;
-            margin-top: 20px;
-        }
-
-        .next-btn:hover {
-            background-color: #007B9A;
+            font-size: 18px;
+            color: #4CAF50;
         }
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        <h1>智慧养生冒险之旅</h1>
-        <div id="story" class="story"></div>
-        <div id="question-container" class="question-container"></div>
-        <div id="result" class="result"></div>
-        <div id="progress-bar-container" class="progress-bar-container">
-            <div id="progress-bar" class="progress-bar"></div>
-        </div>
-        <button id="next-btn" class="next-btn" onclick="nextLevel()">继续</button>
-    </div>
+<div class="game-container" id="gameContainer">
+    <h1>智慧养生冒险之旅</h1>
+    <p>选择你的挑战，开启健康之旅！</p>
+    <div id="story"></div>
+    <div id="question" class="question"></div>
+    <ul id="options" class="options"></ul>
+    <div id="rewards" class="rewards"></div>
+</div>
 
-    <script>
-        const levels = [
-            {
-                story: "你走进一个古老的药材市场，看到琳琅满目的草药和药方。你需要选择一种草药来开始你的健康之旅。",
-                question: "你会选择哪种草药？",
-                options: ["人参", "枸杞", "黄芪"],
-                rewards: ["获得“人参精华”的钥匙", "获得“枸杞能量”的符咒", "获得“黄芪生命力”的护符"]
-            },
-            {
-                story: "你来到一座现代化的健康管理实验室，看到一个全自动的健康管理系统正在运行。",
-                question: "你是否愿意接受技术支持来管理和优化自己的健康状况？",
-                options: ["完全愿意，科技的辅助能提高我的健康水平", "有些犹豫，我觉得过度依赖技术可能会失去自主性", "不愿意，我更倾向于自然的健康管理方式"],
-                rewards: ["获得“科技健康”的钥匙", "获得“健康之道”的符咒", "获得“传统智慧”的符文"]
-            },
-            {
-                story: "你来到了一个古老的山洞，洞中藏着神秘的水晶。你发现有三种不同颜色的水晶。",
-                question: "你选择哪种水晶？",
-                options: ["蓝色水晶", "红色水晶", "绿色水晶"],
-                rewards: ["获得“平静心灵”的力量", "获得“活力充沛”的能量", "获得“自然治愈”的祝福"]
-            },
-            {
-                story: "你穿越到一座古老的寺庙，遇到一位睿智的僧人。僧人告诉你：‘健康的秘诀不只是吃对食物，更是心境的平和。’",
-                question: "你是否认为心境的平和对健康有重要作用？",
-                options: ["完全同意，心境能影响身体健康", "不确定，心境和身体健康可能没有太大关系", "不同意，健康完全依赖于饮食和运动"],
-                rewards: ["获得“心境平和”的护符", "获得“深思熟虑”的经验", "获得“身体锻炼”的钥匙"]
-            },
-            {
-                story: "你来到一个自然公园，看到三条小径通向不同的地方。",
-                question: "你选择哪条小径？",
-                options: ["通往安静湖泊的小径", "通往森林深处的小径", "通往山顶的小径"],
-                rewards: ["获得“湖泊平静”的力量", "获得“森林活力”的能量", "获得“山顶视野”的祝福"]
-            }
-        ];
-
+<script>
+// 用 fetch 加载游戏数据（假设JSON文件路径为 "gameData.json"）
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        const gameData = data;  // JSON 数据
         let currentLevel = 0;
+        let allRewards = [];  // 用于存储所有奖励
 
-        function startLevel(level) {
-            const levelData = levels[level];
-            document.getElementById('story').innerHTML = `<div class="story">${levelData.story}</div>`;
-            document.getElementById('question-container').innerHTML = `
-                <div class="question">${levelData.question}</div>
-                <div class="options">
-                    ${levelData.options.map((option, index) => `<div class="option" onclick="selectOption(${index}, ${level})">${option}</div>`).join('')}
-                </div>
-            `;
-            document.getElementById('question-container').style.display = 'block';
-            document.getElementById('result').style.display = 'none';
-            document.getElementById('next-btn').style.display = 'none';
+        // 更新游戏界面
+        function updateGame(levelIndex) {
+            const level = gameData.levels[levelIndex];
+            document.getElementById('story').innerHTML = level.story;
+            document.getElementById('question').innerHTML = level.question;
+
+            // 清空选项列表
+            const optionsList = document.getElementById('options');
+            optionsList.innerHTML = '';
+
+            // 创建选项按钮
+            level.options.forEach((option, index) => {
+                const optionButton = document.createElement('li');
+                optionButton.classList.add('option');
+                optionButton.textContent = option;
+                optionButton.onclick = function() {
+                    showReward(level.rewards[index]);
+                    currentLevel++;
+                    if (currentLevel < gameData.levels.length) {
+                        updateGame(currentLevel);
+                    } else {
+                        showAllRewards();  // 游戏结束后展示所有奖励
+                    }
+                };
+                optionsList.appendChild(optionButton);
+            });
         }
 
-        function selectOption(optionIndex, level) {
-            const levelData = levels[level];
-            document.getElementById('question-container').style.display = 'none';
-            document.getElementById('result').innerHTML = `你获得了：${levelData.rewards[optionIndex]}`;
-            document.getElementById('result').style.display = 'block';
-
-            updateProgressBar();
-            document.getElementById('next-btn').style.display = 'block';
+        // 显示奖励
+        function showReward(reward) {
+            document.getElementById('rewards').textContent = `你获得了奖励: ${reward}`;
+            allRewards.push(reward);  // 将奖励添加到奖励列表中
         }
 
-        function updateProgressBar() {
-            const progressBar = document.getElementById('progress-bar');
-            const progress = ((currentLevel + 1) / levels.length) * 100;
-            progressBar.style.width = `${progress}%`;
+        // 游戏结束后显示所有奖励
+        function showAllRewards() {
+            let rewardText = "恭喜你完成了所有关卡！你获得的所有奖励如下：\n";
+            allRewards.forEach((reward, index) => {
+                rewardText += `${index + 1}. ${reward}\n`;
+            });
+            alert(rewardText);
         }
 
-        function nextLevel() {
-            currentLevel++;
-            if (currentLevel < levels.length) {
-                startLevel(currentLevel);
-            } else {
-                document.getElementById('result').innerHTML = "游戏结束，感谢参与！";
-                document.getElementById('next-btn').style.display = 'none';
-            }
-        }
-
-        startLevel(currentLevel);
-    </script>
+        // 开始游戏
+        updateGame(currentLevel);
+    })
+    .catch(error => {
+        console.error("加载游戏数据失败:", error);
+    });
+</script>
 
 </body>
 </html>
