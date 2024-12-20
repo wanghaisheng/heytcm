@@ -6,12 +6,11 @@
     <title>中医智能化探险之旅</title>
     <style>
         :root {
-            --color-primary: #2C4F2D;
-            --color-secondary: #8B4513;
-            --color-accent: #4B88E5;
-            --color-background: #F5F5F5;
-            --color-text: #333333;
-            --transition-standard: all 0.3s ease;
+            --primary: #2C4F2D;
+            --secondary: #8B4513;
+            --accent: #4B88E5;
+            --background: #F5F5F5;
+            --text: #333;
         }
 
         * {
@@ -22,149 +21,108 @@
 
         body {
             font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--background);
+            color: var(--text);
             line-height: 1.6;
-            background: var(--color-background);
-            color: var(--color-text);
-            min-height: 100vh;
         }
 
-        .user-bar {
-            background: rgba(0, 0, 0, 0.8);
+        .user-info {
+            background: #333;
             color: white;
-            padding: 8px 16px;
+            padding: 10px 20px;
             text-align: right;
-            font-size: 0.9em;
         }
 
-        .game-container {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .story-card {
+        .game-card {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 10px;
+            padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            animation: fadeIn 0.5s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .question-container {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
+        .story {
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 1.1em;
         }
 
-        .choice-button {
+        .question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .choice {
             display: block;
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px;
             margin: 10px 0;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             background: #f0f0f0;
             cursor: pointer;
-            transition: var(--transition-standard);
             text-align: left;
-            font-size: 1em;
+            transition: all 0.3s;
         }
 
-        .choice-button:hover {
-            background: var(--color-accent);
+        .choice:hover {
+            background: var(--accent);
             color: white;
-            transform: translateX(10px);
+        }
+
+        .progress {
+            background: #ddd;
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
         }
 
         .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
+            background: var(--accent);
             height: 100%;
-            background: var(--color-accent);
-            transition: width 0.3s ease;
+            border-radius: 5px;
+            transition: width 0.3s;
         }
 
-        .result-card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        #result {
             display: none;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .result-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
         }
 
         .stage-title {
-            color: var(--color-primary);
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .story-text {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .reward-text {
-            color: var(--color-secondary);
-            font-style: italic;
-            margin-top: 15px;
-        }
-
-        /* Animation classes */
-        .fade-out {
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: var(--transition-standard);
-        }
-
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: var(--transition-standard);
+            color: var(--primary);
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="user-bar">
-        当前用户: wanghaisheng | UTC: 2024-12-20 21:37:58
+    <div class="user-info">
+        当前用户: wanghaisheng | UTC: 2024-12-20 21:48:58
     </div>
 
-    <div class="game-container">
-        <div class="story-card">
+    <div class="container">
+        <div id="game" class="game-card">
             <h1>中医智能化探险之旅</h1>
-            <p class="story-text">
-                在一个未来与古老结合的世界里，科技与中医相互交融，创造出了一个名为"智慧养生之门"的地方。
-                传说中，只有那些能够理解中医、掌握智能科技的人，才能解开这扇神秘的大门，探索未来的健康与治疗方法。
-                你作为一名探索者，将踏上这条充满挑战和谜题的道路，寻找解锁"智慧养生之门"的方法。
-            </p>
-            <button onclick="startGame()" class="choice-button">开始探险</button>
+            <div class="progress">
+                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <div id="content"></div>
         </div>
 
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-        </div>
-
-        <div id="questionContainer" class="question-container" style="display: none;">
-            <!-- Questions will be dynamically inserted here -->
-        </div>
-
-        <div id="resultCard" class="result-card">
-            <!-- Results will be shown here -->
+        <div id="result" class="game-card">
+            <h2>探险结果</h2>
+            <div id="resultContent"></div>
         </div>
     </div>
 
@@ -175,81 +133,92 @@
                 story: "你进入一座古老的书房，看到一本名为《中医的未来》的书。书中提到："如何将传统中医与现代科技相结合。"在书旁，一道传送门等待着你的选择。",
                 question: "你如何看待中医的现代化与智能化发展？",
                 choices: [
-                    {text: "非常支持，我认为中医需要借助现代科技来创新", reward: "获得"现代智慧草药"的启示"},
-                    {text: "愿意尝试，但并不确定中医的未来发展", reward: "获得"探索草药"的线索"},
-                    {text: "不支持，我认为中医应该保持传统", reward: "获得"传统秘方"的钥匙"}
+                    { text: "非常支持，我认为中医需要借助现代科技来创新", reward: "获得"现代智慧草药"的启示" },
+                    { text: "愿意尝试，但并不确定中医的未来发展", reward: "获得"探索草药"的线索" },
+                    { text: "不支持，我认为中医应该保持传统", reward: "获得"传统秘方"的钥匙" }
                 ]
             },
-            // Add all other questions here following the same structure
+            {
+                stage: "第二关：中医与西医的对话",
+                story: "你走进一座宽敞的大厅，看到两位学者激烈讨论，一个是中医大师，另一个是西医专家。他们请你加入讨论，解答他们之间的争论。",
+                question: "你是否认为中医和西医可以互补，帮助治疗疾病？",
+                choices: [
+                    { text: "是的，二者可以互相补充", reward: "获得"和谐之道"的智慧" },
+                    { text: "不确定，二者有时会冲突", reward: "获得"怀疑之门"的钥匙" },
+                    { text: "不认为，西医才是唯一有效的治疗方法", reward: "获得"单一治疗法"的经验" }
+                ]
+            },
+            {
+                stage: "第三关：健康数据的秘密",
+                story: "你进入了一座充满智能设备的实验室，可以实时监测身体健康。你面前的设备可以通过数据帮助你了解身体状况。",
+                question: "你是否愿意使用智能设备（如智能戒指、手表等）来跟踪你的健康数据？",
+                choices: [
+                    { text: "非常愿意，我认为它有助于更好地管理健康", reward: "获得"健康之眼"的钥匙" },
+                    { text: "愿意，但需要更多了解", reward: "获得"数据探索者"的身份" },
+                    { text: "不愿意，我更倾向于传统健康管理方式", reward: "获得"传统之道"的符文" }
+                ]
+            },
+            // ... Continue with all 15 questions following the same format
         ];
 
         let currentQuestion = 0;
-        let userAnswers = [];
+        let answers = [];
 
-        function startGame() {
-            document.querySelector('.story-card').style.display = 'none';
-            document.getElementById('questionContainer').style.display = 'block';
-            showQuestion(currentQuestion);
-        }
-
-        function showQuestion(index) {
-            const question = questions[index];
-            const container = document.getElementById('questionContainer');
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            const content = document.getElementById('content');
             
-            container.innerHTML = `
-                <h2 class="stage-title">${question.stage}</h2>
-                <p class="story-text">${question.story}</p>
-                <p class="story-text">${question.question}</p>
-                ${question.choices.map((choice, i) => `
-                    <button onclick="selectAnswer(${i})" class="choice-button">
-                        ${choice.text}
-                    </button>
-                `).join('')}
-            `;
-
-            updateProgress();
-        }
-
-        function selectAnswer(choiceIndex) {
-            const question = questions[currentQuestion];
-            userAnswers.push({
-                question: currentQuestion,
-                choice: choiceIndex,
-                reward: question.choices[choiceIndex].reward
-            });
-
-            if (currentQuestion < questions.length - 1) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                showResults();
-            }
-        }
-
-        function updateProgress() {
-            const progress = ((currentQuestion + 1) / questions.length) * 100;
-            document.querySelector('.progress-fill').style.width = `${progress}%`;
-        }
-
-        function showResults() {
-            const container = document.getElementById('questionContainer');
-            container.style.display = 'none';
-
-            const resultCard = document.getElementById('resultCard');
-            resultCard.style.display = 'block';
-            
-            let resultsHTML = `
-                <h2 class="stage-title">探险完成！</h2>
-                <p class="story-text">恭喜你完成了所有关卡！以下是你的探险收获：</p>
-                <div class="rewards-list">
-                    ${userAnswers.map((answer, index) => `
-                        <p class="reward-text">第${index + 1}关：${answer.reward}</p>
+            content.innerHTML = `
+                <h2 class="stage-title">${q.stage}</h2>
+                <p class="story">${q.story}</p>
+                <p class="question">${q.question}</p>
+                <div class="choices">
+                    ${q.choices.map((choice, index) => `
+                        <button class="choice" onclick="answer(${index})">
+                            ${choice.text}
+                        </button>
                     `).join('')}
                 </div>
             `;
 
-            resultCard.innerHTML = resultsHTML;
+            document.getElementById('progressBar').style.width = 
+                `${((currentQuestion + 1) / questions.length) * 100}%`;
         }
+
+        function answer(choiceIndex) {
+            answers.push({
+                question: currentQuestion,
+                choice: choiceIndex,
+                reward: questions[currentQuestion].choices[choiceIndex].reward
+            });
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('game').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            
+            const resultContent = document.getElementById('resultContent');
+            resultContent.innerHTML = `
+                <h3>你的探险历程：</h3>
+                ${answers.map((answer, index) => `
+                    <div class="result-item">
+                        <p><strong>${questions[index].stage}</strong></p>
+                        <p>你的选择：${questions[index].choices[answer.choice].text}</p>
+                        <p>获得奖励：${answer.reward}</p>
+                    </div>
+                `).join('')}
+            `;
+        }
+
+        // Start the game
+        showQuestion();
     </script>
 </body>
 </html>
