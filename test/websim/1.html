@@ -1,0 +1,596 @@
+
+<html><head><base href="/test/websim/"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>&#x667a;&#x6167;&#x517b;&#x751f;&#x4e4b;&#x95e8;&#xff1a;&#x4e2d;&#x533b;&#x667a;&#x80fd;&#x5316;&#x63a2;&#x9669;</title><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #162447);
+    color: #fff;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 80px auto 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.story-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    position: relative;
+    perspective: 1000px;
+}
+
+.story-section.flip-out {
+    transform: rotateY(90deg) translateX(100%);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.story-section.slide-in {
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%) rotateY(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) rotateY(0);
+        opacity: 1;
+    }
+}
+
+.story-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.question {
+    margin: 1.5rem 0;
+}
+
+.options {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+}
+
+.option-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.option-btn:hover::after {
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+}
+
+.result {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 8px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.progress-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00ff87, #60efff);
+    transition: width 0.3s ease;
+}
+
+.current-level {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.inventory {
+    position: fixed;
+    left: 20px;
+    top: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 200px;
+}
+
+.inventory h3 {
+    margin-bottom: 0.5rem;
+}
+
+.inventory-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.inventory-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.game-over {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-top: 2rem;
+    display: none;
+}
+
+.game-over h2 {
+    color: #00ff87;
+    margin-bottom: 1rem;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.game-title {
+    font-size: 2.5rem;
+    color: #00ff87;
+    text-shadow: 0 0 10px rgba(0,255,135,0.5);
+    margin-bottom: 1rem;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: #00ff87;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.achievement {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 255, 135, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    display: none;
+    animation: achievementPop 0.5s ease-out;
+    z-index: 100;
+}
+
+@keyframes achievementPop {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+</style></head><body>
+
+<div class="progress-container">
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+    <div class="current-level" id="currentLevel">&#x7b2c; 1 &#x5173; / 15 &#x5173;</div>
+</div>
+
+<div class="inventory">
+    <h3>&#x6536;&#x96c6;&#x7269;&#x54c1;</h3>
+    <div class="inventory-items" id="inventoryItems"></div>
+</div>
+
+<div class="game-header">
+    <h1 class="game-title">&#x667a;&#x6167;&#x517b;&#x751f;&#x4e4b;&#x95e8;&#xff1a;&#x4e2d;&#x533b;&#x667a;&#x80fd;&#x5316;&#x63a2;&#x9669;</h1>
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-value" id="questsCompleted">0</div>
+            <div class="stat-label">&#x5df2;&#x5b8c;&#x6210;&#x5173;&#x5361;</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="itemsCollected">0</div>
+            <div class="stat-label">&#x6536;&#x96c6;&#x7269;&#x54c1;</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="score">0</div>
+            <div class="stat-label">&#x603b;&#x5206;</div>
+        </div>
+    </div>
+</div>
+
+<div id="achievement" class="achievement">
+    <h3>&#x6210;&#x5c31;&#x89e3;&#x9501;&#xff01;</h3>
+    <p id="achievementText"></p>
+</div>
+
+<div class="game-container" id="gameContainer">
+    <div class="game-over" id="gameOver">
+        <h2>&#x606d;&#x559c;&#x4f60;&#x5b8c;&#x6210;&#x4e86;&#x6240;&#x6709;&#x5173;&#x5361;&#xff01;</h2>
+        <p>&#x4f60;&#x5df2;&#x7ecf;&#x6210;&#x529f;&#x89e3;&#x9501;&#x4e86;&quot;&#x667a;&#x6167;&#x517b;&#x751f;&#x4e4b;&#x95e8;&quot;&#xff0c;&#x83b7;&#x5f97;&#x4e86;&#x5b9d;&#x8d35;&#x7684;&#x77e5;&#x8bc6;&#x548c;&#x7ecf;&#x9a8c;&#x3002;</p>
+        <p>&#x7ee7;&#x7eed;&#x63a2;&#x7d22;&#x672a;&#x6765;&#x5065;&#x5eb7;&#x7ba1;&#x7406;&#x7684;&#x65e0;&#x9650;&#x53ef;&#x80fd;&#x5427;&#xff01;</p>
+    </div>
+</div>
+
+<script>const gameData = {
+  currentLevel: 0,
+  inventory: [],
+  totalLevels: 15,
+  score: 0,
+  achievements: []
+};
+const questions = [{
+  story: "你进入一座古老的书房，看到一本名为《中医的未来》的书。书中提到传统中医与现代科技的结合之道。在书旁，一道传送门等待着你的选择。",
+  question: "你如何看待中医的现代化与智能化发展？",
+  options: [{
+    text: "非常支持，我认为中医需要借助现代科技来创新",
+    reward: "现代智慧草药"
+  }, {
+    text: "愿意尝试，但并不确定中医的未来发展",
+    reward: "探索草药"
+  }, {
+    text: "不支持，我认为中医应该保持传统",
+    reward: "传统秘方"
+  }]
+}, {
+  story: "你走进一座宽敞的大厅，看到两位学者激烈讨论，一个是中医大师，另一个是西医专家。他们请你加入讨论，解答他们之间的争论。",
+  question: "你是否认为中医和西医可以互补，帮助治疗疾病？",
+  options: [{
+    text: "是的，二者可以互相补充",
+    reward: "和谐之道"
+  }, {
+    text: "不确定，二者有时会冲突",
+    reward: "怀疑之门"
+  }, {
+    text: "不认为，西医才是唯一有效的治疗方法",
+    reward: "单一治疗法"
+  }]
+}, {
+  story: "你进入了一座充满智能设备的实验室，可以实时监测身体健康。你面前的设备可以通过数据帮助你了解身体状况。",
+  question: "你是否愿意使用智能设备来跟踪你的健康数据？",
+  options: [{
+    text: "非常愿意，我认为它有助于更好地管理健康",
+    reward: "健康之眼"
+  }, {
+    text: "愿意，但需要更多了解",
+    reward: "数据探索者"
+  }, {
+    text: "不愿意，我更倾向于传统健康管理方式",
+    reward: "传统之道"
+  }]
+}, {
+  story: "你来到一座展览馆，展示了各种中医养生产品。这些产品基于多种传统理论。",
+  question: "你是否了解过或正在使用基于传统中医理论的养生产品吗？",
+  options: [{
+    text: "是的，已经在使用并看到一定效果",
+    reward: "调和药剂"
+  }, {
+    text: "有了解过，但还没有使用",
+    reward: "学习之路"
+  }, {
+    text: "不太了解，也没有兴趣使用",
+    reward: "传统智慧"
+  }]
+}, {
+  story: "你进入了一座数据中心，看到告示板上写着：开放数据助力中医智能化研究。",
+  question: "你是否支持通过开放数据和共享的方式来促进中医智能化研究？",
+  options: [{
+    text: "完全支持，我认为这对社会和科研有益",
+    reward: "数据共享"
+  }, {
+    text: "中立，取决于如何使用我的数据",
+    reward: "谨慎之道"
+  }, {
+    text: "不支持，我不愿意分享个人健康数据",
+    reward: "保守者"
+  }]
+}, {
+  story: "你来到了一个现代化的健康追踪室，房间里摆满了各种设备和工具。",
+  question: "你是否愿意通过定期追踪和管理健康指标来实现个性化的养生建议和目标？",
+  options: [{
+    text: "完全愿意，我认为定期追踪有助于持续改进健康",
+    reward: "健康之道"
+  }, {
+    text: "愿意，但不确定是否能坚持",
+    reward: "探索之钥"
+  }, {
+    text: "不愿意，我认为偶尔了解健康状况即可",
+    reward: "自由之符"
+  }]
+}, {
+  story: "你进入了一座展览会，展出许多智能手环、手表等可穿戴设备。",
+  question: "你对可穿戴设备在健康管理中的作用有何看法？",
+  options: [{
+    text: "我认为它们非常有效，可以帮助我实时了解健康状况",
+    reward: "实时健康"
+  }, {
+    text: "我觉得它们有一定作用，但不确定是否足够重要",
+    reward: "智能探索者"
+  }, {
+    text: "不认为，他们有用，习惯通过传统方式管理健康",
+    reward: "传统护符"
+  }]
+}, {
+  story: "你进入一座高科技的数据分析中心，看到一个大屏幕显示着各种健康数据。",
+  question: "你是否支持利用大数据和人工智能来优化中医的诊断和治疗方案？",
+  options: [{
+    text: "完全支持，我认为大数据可以帮助改善中医治疗效果",
+    reward: "大数据分析"
+  }, {
+    text: "支持，但需要小心使用",
+    reward: "传统与现代融合"
+  }, {
+    text: "不支持，我认为中医应坚持传统诊疗方法",
+    reward: "传统之道"
+  }]
+}, {
+  story: "你走进一个充满草药和传统中医药方的馆内。",
+  question: "你是否倾向于选择自然草药疗法来处理日常健康问题？",
+  options: [{
+    text: "完全倾向，草药疗法自然、安全",
+    reward: "草药之道"
+  }, {
+    text: "不确定，偶尔使用草药治疗",
+    reward: "草药探索者"
+  }, {
+    text: "不倾向，我更喜欢现代医学治疗方法",
+    reward: "现代医学"
+  }]
+}, {
+  story: "你进入了一间现代化的中医诊所，发现它使用了智能设备来推荐中医治疗方案。",
+  question: "你是否愿意接受根据个人健康数据量身定制的中医治疗方案？",
+  options: [{
+    text: "愿意，认为这可以提高治疗的有效性",
+    reward: "个性化治疗"
+  }, {
+    text: "愿意尝试，但仍然对其效果保持怀疑",
+    reward: "尝试之道"
+  }, {
+    text: "不愿意，我更喜欢常规治疗方法",
+    reward: "传统疗法"
+  }]
+}, {
+  story: "你走进一个充满未来感的健康管理实验室。",
+  question: "你是否愿意接受技术支持来管理和优化自己的健康状况？",
+  options: [{
+    text: "完全愿意，科技的辅助能提高我的健康水平",
+    reward: "科技健康"
+  }, {
+    text: "有些犹豫，我觉得过度依赖技术可能会失去自主性",
+    reward: "健康之道"
+  }, {
+    text: "不愿意，我更倾向于自然的健康管理方式",
+    reward: "传统智慧"
+  }]
+}, {
+  story: "你来到一座情绪调节大厅，看到各种中医情绪治疗的方法。",
+  question: "你是否认为中医能有效改善情绪健康？",
+  options: [{
+    text: "完全认为，中医有助于调节情绪和压力",
+    reward: "情绪治疗"
+  }, {
+    text: "有一定效果，但更依赖于个人情况",
+    reward: "情绪调节之道"
+  }, {
+    text: "不认为，中医无法有效调节情绪",
+    reward: "现代情绪管理"
+  }]
+}, {
+  story: "你在一个现代化的自我疗法站点看到许多治疗工具和建议。",
+  question: "你是否倾向于自我治疗来提高身体健康？",
+  options: [{
+    text: "是的，自我治疗有助于我的身心健康",
+    reward: "自我疗法"
+  }, {
+    text: "有些尝试过，但效果不一",
+    reward: "探索之道"
+  }, {
+    text: "不倾向，我更喜欢寻求专业医疗帮助",
+    reward: "专业医疗"
+  }]
+}, {
+  story: "你来到了游戏的最终区域，面对着未来健康的蓝图。",
+  question: "你如何看待未来健康管理与科技结合的前景？",
+  options: [{
+    text: "极为期待，科技将彻底改变我们的健康管理方式",
+    reward: "未来健康"
+  }, {
+    text: "中立，期待科技进步，但也有些担忧",
+    reward: "平衡之道"
+  }, {
+    text: "不太期待，我更相信传统的健康管理方式",
+    reward: "传统信念"
+  }]
+}, {
+  story: "你来到了游戏的终点，面对着一个古老的智慧宝盒。",
+  question: "你认为未来科技与传统中医能否成功融合，创造出更好的健康管理方法？",
+  options: [{
+    text: "认为可以，未来科技和中医会找到完美的结合点",
+    reward: "智慧融合"
+  }, {
+    text: "认为有一定挑战，但也有可能融合成功",
+    reward: "融合探索者"
+  }, {
+    text: "不认为，科技和中医无法完全融合",
+    reward: "传统之道"
+  }]
+}];
+function showLevel(levelIndex) {
+  const gameContainer = document.getElementById('gameContainer');
+  gameContainer.innerHTML = '';
+  if (levelIndex < questions.length) {
+    createLevel(questions[levelIndex]);
+  } else {
+    document.getElementById('gameOver').style.display = 'block';
+    showAchievement('游戏通关！恭喜完成所有关卡！');
+  }
+}
+function updateProgress() {
+  const progress = gameData.currentLevel / gameData.totalLevels * 100;
+  document.getElementById('progressBar').style.width = `${progress}%`;
+  document.getElementById('currentLevel').textContent = `第 ${gameData.currentLevel + 1} 关 / ${gameData.totalLevels} 关`;
+}
+function addToInventory(item) {
+  gameData.inventory.push(item);
+  const inventoryElement = document.getElementById('inventoryItems');
+  const itemElement = document.createElement('div');
+  itemElement.className = 'inventory-item';
+  itemElement.textContent = item;
+  inventoryElement.appendChild(itemElement);
+  if (gameData.inventory.length === 5) {
+    showAchievement('收集者：获得5件物品！');
+  } else if (gameData.inventory.length === 10) {
+    showAchievement('探索大师：获得10件物品！');
+  }
+  updateStats();
+}
+function createLevel(levelData) {
+  const container = document.createElement('div');
+  container.className = 'story-section slide-in';
+  const storyElement = document.createElement('p');
+  storyElement.textContent = levelData.story;
+  container.appendChild(storyElement);
+  const questionElement = document.createElement('div');
+  questionElement.className = 'question';
+  questionElement.textContent = levelData.question;
+  container.appendChild(questionElement);
+  const optionsContainer = document.createElement('div');
+  optionsContainer.className = 'options';
+  levelData.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.className = 'option-btn';
+    button.textContent = option.text;
+    button.addEventListener('click', () => {
+      optionsContainer.querySelectorAll('button').forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+      });
+      const resultElement = document.createElement('div');
+      resultElement.className = 'result';
+      resultElement.textContent = `获得：${option.reward}`;
+      container.appendChild(resultElement);
+      resultElement.style.display = 'block';
+      addToInventory(option.reward);
+      gameData.score += 100;
+      updateProgress();
+      updateStats();
+      container.classList.add('flip-out');
+      setTimeout(() => {
+        gameData.currentLevel++;
+        if (gameData.currentLevel < questions.length) {
+          container.remove();
+          createLevel(questions[gameData.currentLevel]);
+        } else {
+          document.getElementById('gameOver').style.display = 'block';
+          showAchievement('游戏通关！恭喜完成所有关卡！');
+        }
+      }, 800);
+    });
+    optionsContainer.appendChild(button);
+  });
+  container.appendChild(optionsContainer);
+  const gameContainer = document.getElementById('gameContainer');
+  gameContainer.innerHTML = '';
+  gameContainer.appendChild(container);
+}
+function showAchievement(text) {
+  const achievement = document.getElementById('achievement');
+  document.getElementById('achievementText').textContent = text;
+  achievement.style.display = 'block';
+  setTimeout(() => {
+    achievement.style.display = 'none';
+  }, 3000);
+}
+function updateStats() {
+  document.getElementById('questsCompleted').textContent = gameData.currentLevel;
+  document.getElementById('itemsCollected').textContent = gameData.inventory.length;
+  document.getElementById('score').textContent = gameData.score;
+}
+showLevel(0);
+updateStats();</script></body></html>
