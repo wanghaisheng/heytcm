@@ -1,0 +1,611 @@
+
+<html>
+<head>
+<base href="/">
+<title>&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50; - &#x4e2d;&#x533b;&#x590d;&#x5174;</title>
+<meta charset="UTF-8">
+<style>
+:root {
+  --primary: #27615b;
+  --secondary: #849b5c;
+  --accent: #d4896a;
+  --bg: #faf6f2;
+  --text: #2c3e50;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.games-hero {
+  min-height: 60vh;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.games-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+.game-preview {
+  height: 200px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-preview svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-content {
+  padding: 1.5rem;
+}
+
+.game-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.game-tag {
+  background: var(--bg);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.game-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.featured-games {
+  background: var(--bg);
+  padding: 4rem 2rem;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-game {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.game-canvas {
+  width: 100%;
+  height: 300px;
+  background: var(--bg);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-demo {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.demo-card {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.demo-canvas {
+  width: 100%;
+  height: 200px;
+  background: white;
+  border-radius: 8px;
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding-left: 70px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.side-menu {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.menu-toggle {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 2001;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.side-menu-links {
+  padding: 60px 20px 20px;
+}
+
+.side-menu-links a {
+  display: block;
+  padding: 15px 0;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: color 0.3s ease;
+}
+
+.side-menu-links a:hover {
+  color: var(--primary);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.cta-button.secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+footer {
+  background: var(--primary);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<div class="side-menu">
+  <div class="side-menu-links">
+    <a href="/">&#x9996;&#x9875;</a>
+    <a href="/about">&#x5173;&#x4e8e;&#x6211;&#x4eec;</a>
+    <a href="/games">&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50;</a>
+    <a href="/tools">&#x5de5;&#x5177;&#x4e0e;&#x5e94;&#x7528;</a>
+    <a href="/simulators">&#x4e2d;&#x533b;&#x6a21;&#x62df;</a>
+    <a href="/community">&#x793e;&#x533a;</a>
+    <a href="/news">&#x65b0;&#x95fb;&#x4e0e;&#x6d3b;&#x52a8;</a>
+    <a href="/join">&#x52a0;&#x5165;&#x6211;&#x4eec;</a>
+    <a href="/opensource">&#x5f00;&#x6e90;&#x9879;&#x76ee;</a>
+    <a href="/help">&#x5e2e;&#x52a9;&#x4e2d;&#x5fc3;</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-links">
+    <a href="https://tcm.community/about">&#x5173;&#x4e8e;&#x6211;&#x4eec;</a>
+    <a href="https://tcm.community/games">&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50;</a>
+    <a href="https://tcm.community/tools">&#x5de5;&#x5177;&#x4e0e;&#x5e94;&#x7528;</a>
+    <a href="https://tcm.community/community">&#x793e;&#x533a;</a>
+    <a href="https://tcm.community/opensource">&#x5f00;&#x6e90;&#x9879;&#x76ee;</a>
+  </div>
+</nav>
+
+<section class="games-hero">
+  <div>
+    <h1>&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50;</h1>
+    <p>&#x4f53;&#x9a8c;&#x4e2d;&#x533b;&#x667a;&#x6167;&#xff0c;&#x5bd3;&#x6559;&#x4e8e;&#x4e50;</p>
+  </div>
+</section>
+
+<section class="featured-games">
+  <h2 style="text-align: center; margin-bottom: 3rem;">&#x7cbe;&#x9009;&#x6e38;&#x620f;</h2>
+  <div class="featured-grid">
+    <div class="featured-game">
+      <div>
+        <h3>&#x4e94;&#x884c;&#x76f8;&#x751f;&#x76f8;&#x514b;</h3>
+        <p>&#x63a2;&#x7d22;&#x4e94;&#x884c;&#x4e4b;&#x95f4;&#x7684;&#x5173;&#x7cfb;&#xff0c;&#x638c;&#x63e1;&#x4e2d;&#x533b;&#x57fa;&#x7840;&#x7406;&#x8bba;</p>
+        <div class="game-tags">
+          <span class="game-tag">&#x76ca;&#x667a;</span>
+          <span class="game-tag">&#x6559;&#x80b2;</span>
+        </div>
+        <div class="game-stats">
+          <span>&#x1f465; 2000+ &#x73a9;&#x5bb6;</span>
+          <span>&#x2b50; 4.8 &#x5206;</span>
+        </div>
+        <a href="https://tcm.community/games/wuxing" class="cta-button" style="margin-top: 1rem;">&#x5f00;&#x59cb;&#x6e38;&#x620f;</a>
+      </div>
+      <div class="game-canvas" id="wuxing-preview"></div>
+    </div>
+  </div>
+</section>
+
+<section class="games-grid">
+  <div class="game-card">
+    <div class="game-preview">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary)" stroke-width="2">
+          <animate attributeName="r" values="40;45;40" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M30,50 L70,50 M50,30 L50,70" stroke="var(--primary)" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="game-content">
+      <h3>&#x7ecf;&#x7edc;&#x63a2;&#x7d22;</h3>
+      <p>&#x901a;&#x8fc7;&#x4ea4;&#x4e92;&#x5f0f;&#x52a8;&#x753b;&#x4e86;&#x89e3;&#x4eba;&#x4f53;&#x7ecf;&#x7edc;&#x7cfb;&#x7edf;</p>
+      <div class="game-tags">
+        <span class="game-tag">&#x6559;&#x80b2;</span>
+        <span class="game-tag">&#x63a2;&#x7d22;</span>
+      </div>
+      <a href="https://tcm.community/games/meridians" class="cta-button">&#x5f00;&#x59cb;&#x63a2;&#x7d22;</a>
+    </div>
+  </div>
+  
+  <div class="game-card">
+    <div class="game-preview">
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:var(--primary);stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:var(--secondary);stop-opacity:1"/>
+          </linearGradient>
+        </defs>
+        <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="url(#grad)" stroke-width="2">
+          <animate attributeName="d" values="M20,50 Q50,20 80,50 Q50,80 20,50;
+                   M20,50 Q50,80 80,50 Q50,20 20,50;
+                   M20,50 Q50,20 80,50 Q50,80 20,50" dur="4s" repeatCount="indefinite"/>
+        </path>
+      </svg>
+    </div>
+    <div class="game-content">
+      <h3>&#x9634;&#x9633;&#x5e73;&#x8861;</h3>
+      <p>&#x4f53;&#x9a8c;&#x9634;&#x9633;&#x8c03;&#x548c;&#x7684;&#x667a;&#x6167;&#xff0c;&#x627e;&#x5230;&#x751f;&#x547d;&#x7684;&#x5e73;&#x8861;&#x70b9;</p>
+      <div class="game-tags">
+        <span class="game-tag">&#x76ca;&#x667a;</span>
+        <span class="game-tag">&#x4f11;&#x95f2;</span>
+      </div>
+      <a href="https://tcm.community/games/yinyang" class="cta-button">&#x5f00;&#x59cb;&#x6e38;&#x620f;</a>
+    </div>
+  </div>
+  
+  <div class="game-card">
+    <div class="game-preview">
+      <svg viewBox="0 0 100 100">
+        <g transform="translate(50,50)">
+          <circle r="5" fill="var(--accent)">
+            <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="20" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.5"/>
+          <circle r="35" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.3"/>
+          <circle r="3" fill="var(--secondary)" transform="translate(20,0)">
+            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+      </svg>
+    </div>
+    <div class="game-content">
+      <h3>&#x6c14;&#x8840;&#x5faa;&#x73af;</h3>
+      <p>&#x6a21;&#x62df;&#x4eba;&#x4f53;&#x6c14;&#x8840;&#x8fd0;&#x884c;&#xff0c;&#x4f53;&#x9a8c;&#x751f;&#x547d;&#x6d3b;&#x529b;</p>
+      <div class="game-tags">
+        <span class="game-tag">&#x6a21;&#x62df;</span>
+        <span class="game-tag">&#x6559;&#x80b2;</span>
+      </div>
+      <a href="https://tcm.community/games/qixue" class="cta-button">&#x5f00;&#x59cb;&#x4f53;&#x9a8c;</a>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-demo">
+  <h2 style="text-align: center; margin-bottom: 3rem;">&#x4e92;&#x52a8;&#x6f14;&#x793a;</h2>
+  <div class="demo-container">
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>&#x4e94;&#x884c;&#x6f14;&#x793a;</h3>
+        <div class="demo-canvas" id="wuxing-demo"></div>
+        <p>&#x63a2;&#x7d22;&#x4e94;&#x884c;&#x76f8;&#x751f;&#x76f8;&#x514b;&#x7684;&#x5173;&#x7cfb;</p>
+      </div>
+      
+      <div class="demo-card">
+        <h3>&#x7ecf;&#x7edc;&#x6f14;&#x793a;</h3>
+        <div class="demo-canvas" id="meridian-demo"></div>
+        <p>&#x4e86;&#x89e3;&#x4eba;&#x4f53;&#x7ecf;&#x7edc;&#x8d70;&#x5411;</p>
+      </div>
+      
+      <div class="demo-card">
+        <h3>&#x6c14;&#x8840;&#x6f14;&#x793a;</h3>
+        <div class="demo-canvas" id="qixue-demo"></div>
+        <p>&#x89c2;&#x5bdf;&#x6c14;&#x8840;&#x8fd0;&#x884c;&#x89c4;&#x5f8b;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-column">
+      <h3>&#x5173;&#x4e8e;&#x6211;&#x4eec;</h3>
+      <ul>
+        <li><a href="https://tcm.community/about">&#x6211;&#x4eec;&#x7684;&#x6545;&#x4e8b;</a></li>
+        <li><a href="https://tcm.community/team">&#x56e2;&#x961f;&#x4ecb;&#x7ecd;</a></li>
+        <li><a href="https://tcm.community/contact">&#x8054;&#x7cfb;&#x6211;&#x4eec;</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>&#x8d44;&#x6e90;</h3>
+      <ul>
+        <li><a href="https://tcm.community/docs">&#x5f00;&#x53d1;&#x6587;&#x6863;</a></li>
+        <li><a href="https://tcm.community/api">API</a></li>
+        <li><a href="https://tcm.community/downloads">&#x4e0b;&#x8f7d;&#x4e2d;&#x5fc3;</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>&#x793e;&#x533a;</h3>
+      <ul>
+        <li><a href="https://tcm.community/forum">&#x8bba;&#x575b;</a></li>
+        <li><a href="https://tcm.community/events">&#x6d3b;&#x52a8;</a></li>
+        <li><a href="https://tcm.community/contribute">&#x5982;&#x4f55;&#x8d21;&#x732e;</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+function initGamePreviews() {
+  const wuxingPreview = document.getElementById('wuxing-preview');
+  if (wuxingPreview) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('viewBox', '0 0 200 200');
+    
+    const elements = [
+      {name: '木', color: '#4CAF50', x: 100, y: 50},
+      {name: '火', color: '#FF5722', x: 150, y: 100},
+      {name: '土', color: '#795548', x: 100, y: 150},
+      {name: '金', color: '#FFC107', x: 50, y: 100},
+      {name: '水', color: '#2196F3', x: 100, y: 100}
+    ];
+    
+    elements.forEach(el => {
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute('cx', el.x);
+      circle.setAttribute('cy', el.y);
+      circle.setAttribute('r', '20');
+      circle.setAttribute('fill', el.color);
+      
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.setAttribute('x', el.x);
+      text.setAttribute('y', el.y);
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('dominant-baseline', 'middle');
+      text.setAttribute('fill', 'white');
+      text.textContent = el.name;
+      
+      svg.appendChild(circle);
+      svg.appendChild(text);
+    });
+    
+    wuxingPreview.appendChild(svg);
+  }
+}
+
+function initDemos() {
+  // Wuxing demo
+  const wuxingDemo = document.getElementById('wuxing-demo');
+  if (wuxingDemo) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.innerHTML = `
+      <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary)" stroke-width="2">
+        <animate attributeName="r" values="40;45;40" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <path d="M30,50 L70,50 M50,30 L50,70" stroke="var(--primary)" stroke-width="2"/>
+    `;
+    wuxingDemo.appendChild(svg);
+  }
+  
+  // Meridian demo
+  const meridianDemo = document.getElementById('meridian-demo');
+  if (meridianDemo) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.innerHTML = `
+      <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="var(--accent)" stroke-width="2">
+        <animate attributeName="d" 
+          values="M20,50 Q50,20 80,50 Q50,80 20,50;
+                 M20,50 Q50,80 80,50 Q50,20 20,50;
+                 M20,50 Q50,20 80,50 Q50,80 20,50"
+          dur="4s" repeatCount="indefinite"/>
+      </path>
+    `;
+    meridianDemo.appendChild(svg);
+  }
+  
+  // Qixue demo
+  const qixueDemo = document.getElementById('qixue-demo');
+  if (qixueDemo) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.innerHTML = `
+      <g transform="translate(50,50)">
+        <circle r="5" fill="var(--accent)">
+          <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="20" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.5"/>
+        <circle r="35" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.3"/>
+      </g>
+    `;
+    qixueDemo.appendChild(svg);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initGamePreviews();
+  initDemos();
+});
+</script>
+
+</body>
+</html>
