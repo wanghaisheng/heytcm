@@ -1,0 +1,984 @@
+
+<title>&#x5411;&#x6211;&#x54a8;&#x8be2;&#x4e2d;&#x533b; - TCM.Community</title>
+<meta charset="UTF-8">
+<style>
+/* Copy all existing CSS from index.html and add: */
+
+:root {
+  --primary: #27615b;
+  --secondary: #849b5c;
+  --accent: #d4896a;
+  --bg: #faf6f2;
+  --text: #2c3e50;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.wuxing-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding-left: 70px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.qi-flow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.community-updates {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.update-card {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.update-card h4 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.update-card small {
+  color: #666;
+}
+
+.stats-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  padding: 2rem;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.testimonials {
+  padding: 4rem 2rem;
+  background: var(--bg);
+}
+
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.testimonial-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+footer {
+  background: var(--primary);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.mission-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, var(--bg), white);
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-card {
+  position: relative;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.mission-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.resource-section {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resource-card {
+  position: relative;
+  padding: 2rem;
+  background: var(--bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.resource-card:hover::before {
+  transform: scaleX(1);
+}
+
+.knowledge-hub {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--bg), white);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hub-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.hub-card:hover {
+  transform: translateY(-5px);
+}
+
+.interactive-learning {
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.learning-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.learning-demo {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-element {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.floating-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(40px);
+}
+
+.collaborations {
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, var(--bg), white);
+}
+
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.collab-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.events-calendar {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+#events-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.event-type {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  background: var(--secondary);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.research-innovation {
+  padding: 4rem 2rem;
+  background: var(--bg);
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.research-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.research-progress {
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin: 1rem 0;
+}
+
+.progress-bar > div {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.clinical-practice {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.practice-card {
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.side-menu {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: left 0.3s ease;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.menu-toggle {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 2001;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.side-menu-links {
+  padding: 60px 20px 20px;
+}
+
+.side-menu-links a {
+  display: block;
+  padding: 15px 0;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: color 0.3s ease;
+}
+
+.side-menu-links a:hover {
+  color: var(--primary);
+}
+
+.product-categories {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--bg), white);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-icon {
+  width: 80px;
+  height: 80px;
+  margin: 1rem 0;
+}
+
+.category-card ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.category-card ul li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.category-card ul li:before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+}
+
+.partner-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.partner-category {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.partner-category.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chat-container {
+  max-width: 1000px;
+  margin: 100px auto 0;
+  padding: 2rem;
+}
+
+.chat-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.chat-header h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-header p {
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+.chat-interface {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.message-container {
+  min-height: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.user-message {
+  background: var(--secondary);
+  color: white;
+  margin-left: auto;
+}
+
+.ai-message {
+  background: white;
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+
+.chat-input {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.send-button {
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-button:hover {
+  background: var(--secondary);
+}
+
+.suggested-topics {
+  margin-top: 3rem;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.topic-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.ai-typing {
+  padding: 1rem;
+  color: var(--primary);
+  font-style: italic;
+}
+
+.floating-info {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.research-status {
+  padding: 1rem;
+  background: rgba(39, 97, 91, 0.1);
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--primary);
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.progress-bar {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.progress-bar .progress {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.research-results {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.research-results h4 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.research-results .citation {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<div class="side-menu">
+  <div class="side-menu-links">
+    <a href="/">&#x9996;&#x9875;</a>
+    <a href="/ask">&#x5411;&#x6211;&#x54a8;&#x8be2;&#x4e2d;&#x533b;</a>
+    <a href="/about">&#x5173;&#x4e8e;&#x6211;&#x4eec;</a>
+    <a href="/games">&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50;</a>
+    <a href="/tools">&#x5de5;&#x5177;&#x4e0e;&#x5e94;&#x7528;</a>
+    <a href="/simulators">&#x4e2d;&#x533b;&#x6a21;&#x62df;</a>
+    <a href="/community">&#x793e;&#x533a;</a>
+    <a href="/news">&#x65b0;&#x95fb;&#x4e0e;&#x6d3b;&#x52a8;</a>
+    <a href="/join">&#x52a0;&#x5165;&#x6211;&#x4eec;</a>
+    <a href="/opensource">&#x5f00;&#x6e90;&#x9879;&#x76ee;</a>
+    <a href="/help">&#x5e2e;&#x52a9;&#x4e2d;&#x5fc3;</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-links">
+    <a href="https://tcm.community/about">&#x5173;&#x4e8e;&#x6211;&#x4eec;</a>
+    <a href="https://tcm.community/ask">&#x5411;&#x6211;&#x54a8;&#x8be2;&#x4e2d;&#x533b;</a>
+    <a href="https://tcm.community/games">&#x6e38;&#x620f;&#x4e0e;&#x5a31;&#x4e50;</a>
+    <a href="https://tcm.community/tools">&#x5de5;&#x5177;&#x4e0e;&#x5e94;&#x7528;</a>
+    <a href="https://tcm.community/community">&#x793e;&#x533a;</a>
+    <a href="https://tcm.community/opensource">&#x5f00;&#x6e90;&#x9879;&#x76ee;</a>
+  </div>
+</nav>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <h1>&#x5411;&#x6211;&#x54a8;&#x8be2;&#x4e2d;&#x533b;</h1>
+    <p>&#x667a;&#x80fd;&#x52a9;&#x624b;&#x5e2e;&#x60a8;&#x4e86;&#x89e3;&#x4e2d;&#x533b;&#x77e5;&#x8bc6;&#xff0c;&#x83b7;&#x5f97;&#x517b;&#x751f;&#x5efa;&#x8bae;</p>
+  </div>
+
+  <div class="chat-interface">
+    <div class="message-container" id="messageContainer">
+      <div class="message ai-message">
+        &#x60a8;&#x597d;&#xff01;&#x6211;&#x662f;&#x60a8;&#x7684;&#x4e2d;&#x533b;&#x667a;&#x80fd;&#x52a9;&#x624b;&#x3002;&#x6211;&#x53ef;&#x4ee5;&#x4e3a;&#x60a8;&#x89e3;&#x7b54;&#x4e2d;&#x533b;&#x76f8;&#x5173;&#x7684;&#x95ee;&#x9898;&#xff0c;&#x63d0;&#x4f9b;&#x517b;&#x751f;&#x5efa;&#x8bae;&#x3002;&#x8bf7;&#x95ee;&#x6709;&#x4ec0;&#x4e48;&#x53ef;&#x4ee5;&#x5e2e;&#x60a8;&#xff1f;
+      </div>
+    </div>
+    
+    <div class="chat-input">
+      <textarea id="userInput" placeholder="&#x8bf7;&#x8f93;&#x5165;&#x60a8;&#x7684;&#x95ee;&#x9898;..."></textarea>
+      <button class="send-button" id="sendButton">&#x53d1;&#x9001;</button>
+    </div>
+  </div>
+
+  <div class="suggested-topics">
+    <h3>&#x63a8;&#x8350;&#x8bdd;&#x9898;</h3>
+    <div class="topics-grid" id="topicsGrid">
+      <!-- Topics will be dynamically inserted -->
+    </div>
+  </div>
+</div>
+
+<div class="floating-info" id="floatingInfo" style="display: none;">
+  &#x6b63;&#x5728;&#x601d;&#x8003;&#x56de;&#x7b54;...
+</div>
+
+<script>async function initChat() {
+  const messageContainer = document.getElementById('messageContainer');
+  const userInput = document.getElementById('userInput');
+  const sendButton = document.getElementById('sendButton');
+  const floatingInfo = document.getElementById('floatingInfo');
+  async function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message) return;
+    const userDiv = document.createElement('div');
+    userDiv.className = 'message user-message';
+    userDiv.textContent = message;
+    messageContainer.appendChild(userDiv);
+    userInput.value = '';
+    const researchStatus = document.createElement('div');
+    researchStatus.className = 'research-status';
+    researchStatus.style.display = 'block';
+    researchStatus.innerHTML = `
+      <div class="spinner"></div>
+      <p>正在查找相关研究论文...</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%"></div>
+      </div>
+    `;
+    messageContainer.appendChild(researchStatus);
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += 5;
+      if (progress > 90) clearInterval(progressInterval);
+      researchStatus.querySelector('.progress').style.width = `${progress}%`;
+    }, 500);
+    try {
+      const researchData = await searchResearchPapers(message);
+      const resultsDiv = document.createElement('div');
+      resultsDiv.className = 'message ai-message';
+      let resultsHtml = `<h4>研究发现摘要：</h4><p>${researchData.summary}</p><hr>`;
+      researchData.papers.forEach(paper => {
+        resultsHtml += `
+          <div class="research-results">
+            <h4>${paper.title}</h4>
+            <p>${paper.summary}</p>
+            <div class="citation">${paper.authors} (${paper.year}). ${paper.journal}</div>
+          </div>
+        `;
+      });
+      resultsDiv.innerHTML = resultsHtml;
+      messageContainer.appendChild(resultsDiv);
+    } catch (error) {
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'message ai-message';
+      errorDiv.textContent = '抱歉，查找研究论文时出现错误。请稍后再试。';
+      messageContainer.appendChild(errorDiv);
+    } finally {
+      clearInterval(progressInterval);
+      researchStatus.style.display = 'none';
+      messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
+  }
+  sendButton.addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+}
+async function searchResearchPapers(query) {
+  try {
+    const response = await fetch('/api/ai_completion', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: `Search for relevant Traditional Chinese Medicine research papers and summarize findings for the query. Provide citations.
+        
+        <typescript-interface>
+        interface ResearchResponse {
+          summary: string;
+          papers: Array<{
+            title: string;
+            authors: string;
+            journal: string;
+            year: number;
+            summary: string;
+          }>;
+        }
+        </typescript-interface>
+        
+        <example>
+        {
+          "summary": "Recent research indicates strong evidence for acupuncture's effectiveness in pain management...",
+          "papers": [{
+            "title": "Systematic Review of Acupuncture for Chronic Pain",
+            "authors": "Zhang et al.",
+            "journal": "Journal of Traditional Chinese Medicine",
+            "year": 2021,
+            "summary": "Meta-analysis of 42 studies showed significant pain reduction..."
+          }]
+        }
+        </example>`,
+        data: query
+      })
+    });
+    return await response.json();
+  } catch (error) {
+    console.error('Error searching papers:', error);
+    throw error;
+  }
+}
+function updateSuggestedTopics(topics) {
+  const topicsGrid = document.getElementById('topicsGrid');
+  topicsGrid.innerHTML = '';
+  topics.forEach(topic => {
+    const topicCard = document.createElement('div');
+    topicCard.className = 'topic-card';
+    topicCard.textContent = topic;
+    topicCard.addEventListener('click', () => {
+      document.getElementById('userInput').value = topic;
+    });
+    topicsGrid.appendChild(topicCard);
+  });
+}
+const initialTopics = ['针灸治疗慢性疼痛的最新研究', '中药在癌症辅助治疗中的应用研究', '艾灸对免疫系统的影响', '中医药治疗失眠的临床研究', '针刺对抑郁症的治疗效果', '中医养生方法的现代科学依据'];
+document.addEventListener('DOMContentLoaded', () => {
+  initChat();
+  updateSuggestedTopics(initialTopics);
+});</script>
+
+</body>
+</html>
