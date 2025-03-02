@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中医复兴 - 贡献榜</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contribution-page {
+            background-color: #f9f9f9;
+            padding: 4rem 0;
+        }
+
+        .leaderboard-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .leaderboard-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .leaderboard-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .leaderboard-tab i {
+            color: var(--primary);
+        }
+
+        .leaderboard-tab.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .leaderboard-tab.active i {
+            color: white;
+        }
+
+        .leaderboard-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .leaderboard-content.active {
+            display: block;
+        }
+
+        .contribution-list {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-card);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contribution-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-light);
+            transition: background-color 0.3s;
+        }
+
+        .contribution-item:hover {
+            background-color: rgba(140, 82, 255, 0.05);
+        }
+
+        .contribution-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin-right: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .wall-of-faces {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wall-face {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s;
+        }
+
+        .wall-face:hover {
+            transform: translateY(-10px);
+        }
+
+        .wall-face-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contribution-map {
+            height: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-card);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            gap: 2rem;
+        }
+
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .map-legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7">
+                        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite" />
+                    </path>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>中医复兴</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#about">关于我们</a></li>
+                    <li><a href="index.html#tools">产品</a></li>
+                    <li><a href="index.html#community">社区</a></li>
+                    <li><a href="index.html#help">支持</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contribution-page">
+        <section class="leaderboard-section">
+            <div class="section-header">
+                <h2>贡献榜</h2>
+                <p>感谢所有为中医智能化发展做出贡献的朋友们</p>
+            </div>
+
+            <div class="leaderboard-tabs">
+                <button class="leaderboard-tab active" data-tab="data-contribution">
+                    <i class="fas fa-database"></i>数据贡献榜
+                </button>
+                <button class="leaderboard-tab" data-tab="tech-contribution">
+                    <i class="fas fa-code"></i>技术贡献榜
+                </button>
+                <button class="leaderboard-tab" data-tab="community-contribution">
+                    <i class="fas fa-users"></i>社区贡献榜
+                </button>
+                <button class="leaderboard-tab" data-tab="financial-contribution">
+                    <i class="fas fa-hand-holding-usd"></i>资金贡献榜
+                </button>
+            </div>
+
+            <div id="data-contribution" class="leaderboard-content active contribution-list">
+                <h3>数据贡献榜</h3>
+                <!-- Dynamic Data Contribution List -->
+            </div>
+
+            <div id="tech-contribution" class="leaderboard-content contribution-list">
+                <h3>技术贡献榜</h3>
+                <!-- Dynamic Tech Contribution List -->
+            </div>
+
+            <div id="community-contribution" class="leaderboard-content contribution-list">
+                <h3>社区贡献榜</h3>
+                <!-- Dynamic Community Contribution List -->
+            </div>
+
+            <div id="financial-contribution" class="leaderboard-content contribution-list">
+                <h3>资金贡献榜</h3>
+                <!-- Dynamic Financial Contribution List -->
+            </div>
+
+            <section id="wall-of-faces" class="wall-of-faces">
+                <div class="section-header">
+                    <h2>荣誉墙</h2>
+                    <p>致敬为中医智能化发展做出突出贡献的朋友们</p>
+                </div>
+                <!-- Dynamic Wall of Faces -->
+            </section>
+
+            <section id="contribution-map" class="contribution-map">
+                <div class="section-header">
+                    <h2>贡献地图</h2>
+                    <p>全国各地区参与中医智能化的热力图</p>
+                </div>
+                <div id="china-map"></div>
+                <div class="map-legend">
+                    <div class="map-legend-item">
+                        <div class="map-legend-color" style="background: linear-gradient(to right, #e0f3f8, #4682B4)"></div>
+                        <span>参与度</span>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7"/>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>中医复兴</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="index.html#about">我们的故事</a></li>
+                        <li><a href="index.html#about">团队介绍</a></li>
+                        <li><a href="index.html#values">价值观与愿景</a></li>
+                        <li><a href="index.html#join">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>共创圈</h4>
+                    <ul>
+                        <li><a href="smart-collab.html#join-us">参与方式</a></li>
+                        <li><a href="smart-collab.html#support-us">支持我们</a></li>
+                        <li><a href="smart-collab.html#roadmap">项目规划</a></li>
+                        <li><a href="smart-ring.html">脉康宝智能戒指</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>社区与支持</h4>
+                    <ul>
+                        <li><a href="index.html#community">社区活动</a></li>
+                        <li><a href="index.html#support">支持形式</a></li>
+                        <li><a href="index.html#help">联系我们</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>更多资源</h4>
+                    <ul>
+                        <li><a href="index.html#games">游戏与娱乐</a></li>
+                        <li><a href="index.html#tools">工具与应用</a></li>
+                        <li><a href="index.html#simulators">模拟与开放数据</a></li>
+                        <li><a href="index.html#opensource">开源项目</a></li>
+                        <li><a href="index.html#news">新闻与活动</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 中医复兴开放生态社区 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.leaderboard-tab');
+            const contents = document.querySelectorAll('.leaderboard-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // China Map Visualization
+            const mapChart = echarts.init(document.getElementById('china-map'));
+            
+            // Mock data for provinces
+            const provinceData = [
+                {name: '北京', value: 150},
+                {name: '上海', value: 200},
+                {name: '广东', value: 350},
+                {name: '浙江', value: 250},
+                {name: '四川', value: 100},
+                // Add more provinces
+            ];
+
+            const option = {
+                title: {
+                    text: '中医智能化贡献热力图',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{b}: {c}人'
+                },
+                visualMap: {
+                    min: 0,
+                    max: 400,
+                    left: 'left',
+                    top: 'bottom',
+                    text: ['高', '低'],
+                    inRange: {
+                        color: ['#e0f3f8', '#4682B4', '#8C52FF']
+                    },
+                    calculable: true
+                },
+                series: [{
+                    name: '贡献热力',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        normal: {
+                            show: true
+                        },
+                        emphasis: {
+                            show: true
+                        }
+                    },
+                    data: provinceData
+                }]
+            };
+
+            mapChart.setOption(option);
+
+            // Populate Contribution Lists
+            const contributionTypes = [
+                'data-contribution', 
+                'tech-contribution', 
+                'community-contribution',
+                'financial-contribution'
+            ];
+
+            function generateContributionList(type) {
+                const list = document.getElementById(type);
+                const mockData = [
+                    {name: '张三', contribution: 1024, avatar: '', type: 'gold'},
+                    {name: '李四', contribution: 768, avatar: '', type: 'silver'},
+                    {name: '王五', contribution: 512, avatar: '', type: 'bronze'}
+                ];
+
+                mockData.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.classList.add('contribution-item');
+                    itemEl.innerHTML = `
+                        <div class="contribution-avatar" style="background-image: url('${item.avatar || 'default-avatar.png'}')"></div>
+                        <div class="contribution-details">
+                            <h4>${item.name} ${index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : ''}</h4>
+                            <p>贡献值：${item.contribution}</p>
+                        </div>
+                    `;
+                    list.appendChild(itemEl);
+                });
+            }
+
+            contributionTypes.forEach(generateContributionList);
+
+            // Wall of Faces
+            function generateWallOfFaces() {
+                const wallOfFaces = document.getElementById('wall-of-faces');
+                const mockFaces = [
+                    {name: '张明', avatar: '', description: '数据科学家'},
+                    {name: '李雅', avatar: '', description: '中医研究者'},
+                    {name: '王强', avatar: '', description: '技术开发者'}
+                ];
+
+                mockFaces.forEach(face => {
+                    const faceEl = document.createElement('div');
+                    faceEl.classList.add('wall-face');
+                    faceEl.innerHTML = `
+                        <div class="wall-face-avatar" style="background-image: url('${face.avatar || 'default-avatar.png'}')"></div>
+                        <h4>${face.name}</h4>
+                        <p>${face.description}</p>
+                    `;
+                    wallOfFaces.appendChild(faceEl);
+                });
+            }
+
+            generateWallOfFaces();
+        });
+    </script>
+</body>
+</html>
