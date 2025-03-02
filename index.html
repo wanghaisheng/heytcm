@@ -12,6 +12,63 @@
             --trad-green: #556B2F;
             --bg-dark: #333;
         }
+        
+        .tools-filter {
+            margin-bottom: 2rem;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            text-align: center;
+        }
+
+        .filter-group h4 {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            background-color: white;
+            color: var(--text-secondary);
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tool-card {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .tool-card.hidden {
+            opacity: 0.3;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -295,9 +352,32 @@
                 <h2>工具与应用</h2>
                 <p>科技赋能健康，智能管理身心</p>
             </div>
+            <div class="tools-filter">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <h4>工具类型</h4>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="physical">实体设备</button>
+                            <button class="filter-btn" data-filter="virtual">虚拟工具</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>应用主题</h4>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="emotion">情绪管理</button>
+                            <button class="filter-btn" data-filter="qiblood">气血调理</button>
+                            <button class="filter-btn" data-filter="health">健康追踪</button>
+                            <button class="filter-btn" data-filter="learning">知识学习</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tools-content">
                 <div class="tools-showcase">
-                    <div class="tool-card">
+                    <div class="tool-card" data-type="physical" data-theme="qiblood">
                         <div class="tool-icon">
                             <i class="fas fa-ring"></i>
                         </div>
@@ -313,22 +393,7 @@
                             <a href="#" class="btn small-btn primary-btn ring-cta-btn">预售特惠</a>
                         </div>
                     </div>
-                    <div class="tool-card">
-                        <div class="tool-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>气血管理助手</h3>
-                            <p>基于中医理论的健康追踪应用，实时监测和分析您的气血状态，提供个性化调理建议。</p>
-                            <ul class="tool-features">
-                                <li>症状追踪与分析</li>
-                                <li>个性化调理方案</li>
-                                <li>健康数据可视化</li>
-                            </ul>
-                            <a href="#" class="btn small-btn">了解更多</a>
-                        </div>
-                    </div>
-                    <div class="tool-card">
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
                         <div class="tool-icon">
                             <i class="fas fa-brain"></i>
                         </div>
@@ -343,7 +408,22 @@
                             <a href="#" class="btn small-btn">了解更多</a>
                         </div>
                     </div>
-                    <div class="tool-card">
+                    <div class="tool-card" data-type="virtual" data-theme="health">
+                        <div class="tool-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>气血管理助手</h3>
+                            <p>基于中医理论的健康追踪应用，实时监测和分析您的气血状态，提供个性化调理建议。</p>
+                            <ul class="tool-features">
+                                <li>症状追踪与分析</li>
+                                <li>个性化调理方案</li>
+                                <li>健康数据可视化</li>
+                            </ul>
+                            <a href="#" class="btn small-btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="physical" data-theme="qiblood">
                         <div class="tool-icon">
                             <i class="fas fa-users-cog"></i>
                         </div>
@@ -358,6 +438,216 @@
                             <a href="smart-collab.html" class="btn small-btn">了解详情</a>
                         </div>
                     </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="fas fa-fire-alt"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>辟谷风险评估</h3>
+                            <p>帮助辟谷爱好者实时评估修行过程中的健康风险，提供科学、精准的预警建议。</p>
+                            <ul class="tool-features">
+                                <li>实时风险评估</li>
+                                <li>身体指标监测</li>
+                                <li>紧急预警机制</li>
+                            </ul>
+                            <a href="https://pigurisk.heytcm.com/" target="_blank" class="btn small-btn">风险评估</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="learning">
+                        <div class="tool-icon">
+                            <i class="fas fa-id-badge"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>中医传承身份测试</h3>
+                            <p>通过专业测试，发现你与中医文化的独特缘分，获得专属中医传承者身份ID。</p>
+                            <ul class="tool-features">
+                                <li>专业身份评测</li>
+                                <li>中医文化匹配</li>
+                                <li>社群入门凭证</li>
+                            </ul>
+                            <a href="https://idtest.heytcm.com/" target="_blank" class="btn small-btn">测试身份</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="health">
+                        <div class="tool-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>中医养生签到挑战</h3>
+                            <p>参与7天辟谷、中医养生等各类健康挑战，与社区成员一起成长，获得荣誉排名。</p>
+                            <ul class="tool-features">
+                                <li>多样化挑战</li>
+                                <li>社区排行榜</li>
+                                <li>成长追踪</li>
+                            </ul>
+                            <a href="https://qiandao.heytcm.com/" target="_blank" class="btn small-btn">开始挑战</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="fas fa-dragon"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>五行宠物</h3>
+                            <p>根据五行人格测试，为您匹配独特的神兽宠物，探索内在性格特征。</p>
+                            <ul class="tool-features">
+                                <li>五行性格测试</li>
+                                <li>个性化神兽匹配</li>
+                                <li>性格洞察与成长</li>
+                            </ul>
+                            <a href="https://wuxingpet.heytcm.com/" target="_blank" class="btn small-btn">开始测试</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="far fa-smile-beam"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>情绪脸谱</h3>
+                            <p>从经典表情到流行表情包，通过面部表情语言表达自我，记录情绪变化。</p>
+                            <ul class="tool-features">
+                                <li>多样化表情库</li>
+                                <li>情绪追踪</li>
+                                <li>创意表达方式</li>
+                            </ul>
+                            <a href="https://moodfaces.heytcm.com/" target="_blank" class="btn small-btn">开始探索</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="fas fa-island"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>情绪岛</h3>
+                            <p>一个互动游戏，帮助您探索和平衡情绪，在五个情绪岛屿中展开心灵历险。</p>
+                            <ul class="tool-features">
+                                <li>情绪天气选择</li>
+                                <li>互动情绪挑战</li>
+                                <li>情绪成长工具</li>
+                            </ul>
+                            <a href="https://mood-island.heytcm.com/" target="_blank" class="btn small-btn">开始冒险</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>情绪天气</h3>
+                            <p>用天气隐喻追踪情绪变化，AI分析将您的情绪转化为天气模式。</p>
+                            <ul class="tool-features">
+                                <li>天气情绪隐喻</li>
+                                <li>AI情绪分析</li>
+                                <li>情绪追踪与洞察</li>
+                            </ul>
+                            <a href="https://moodweather.heytcm.com/" target="_blank" class="btn small-btn">开始追踪</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="emotion">
+                        <div class="tool-icon">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>心力气球</h3>
+                            <p>通过互动游戏探索心力管理，提升内在力量，走向心灵平衡之旅。</p>
+                            <ul class="tool-features">
+                                <li>心力动态追踪</li>
+                                <li>情绪管理游戏</li>
+                                <li>心理损耗评估</li>
+                            </ul>
+                            <a href="https://innerstrengthliftballoon.heytcm.com/" target="_blank" class="btn small-btn">开始探索</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="learning">
+                        <div class="tool-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>元素塔防</h3>
+                            <p>中医五行元素塔防游戏，通过战略布局探索属性平衡与互补。</p>
+                            <ul class="tool-features">
+                                <li>五行属性塔</li>
+                                <li>战略布局挑战</li>
+                                <li>每日塔防任务</li>
+                            </ul>
+                            <a href="#" class="btn small-btn">即将上线</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="learning">
+                        <div class="tool-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>五行卡牌</h3>
+                            <p>以中医五行为主题的卡牌闯关游戏，评估身体状态并收集稀有卡牌。</p>
+                            <ul class="tool-features">
+                                <li>气血评估系统</li>
+                                <li>卡牌收集</li>
+                                <li>中医知识学习</li>
+                            </ul>
+                            <a href="#" class="btn small-btn">即将上线</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="health">
+                        <div class="tool-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>症状管理工具</h3>
+                            <p>手动记录症状变化，量化你的五行元素，全面追踪身体健康状态。</p>
+                            <ul class="tool-features">
+                                <li>症状追踪记录</li>
+                                <li>五行元素分析</li>
+                                <li>健康趋势可视化</li>
+                            </ul>
+                            <a href="https://qitracker.heytcm.com" target="_blank" class="btn small-btn">开始追踪</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="health">
+                        <div class="tool-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>气血宠物</h3>
+                            <p>通过每日记录五脏健康状态，养成良好生活习惯，赚取积分养成你的小熊猫。</p>
+                            <ul class="tool-features">
+                                <li>五脏健康追踪</li>
+                                <li>积分养成系统</li>
+                                <li>习惯培养游戏化</li>
+                            </ul>
+                            <a href="https://qipet.heytcm.com/v3/" target="_blank" class="btn small-btn">开始养成</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="virtual" data-theme="learning">
+                        <div class="tool-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>伤寒学习</h3>
+                            <p>通过听说读写互动方式，深入学习经典中医著作《伤寒论》，掌握中医辨证论治精髓。</p>
+                            <ul class="tool-features">
+                                <li>多模式学习</li>
+                                <li>互动课程</li>
+                                <li>中医经典解读</li>
+                            </ul>
+                            <a href="https://learnshanghan.heytcm.com" target="_blank" class="btn small-btn">开始学习</a>
+                        </div>
+                    </div>
+                    <div class="tool-card" data-type="physical" data-theme="health">
+                        <div class="tool-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>和谐睡眠戒指</h3>
+                            <p>基于中医理论和现代睡眠医学，用智能戒指全面分析和改善您的睡眠质量。</p>
+                            <ul class="tool-features">
+                                <li>中医睡眠理论分析</li>
+                                <li>实时睡眠质量监测</li>
+                                <li>个性化改善建议</li>
+                            </ul>
+                            <a href="https://harmonyring.heytcm.com/" target="_blank" class="btn small-btn">了解详情</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="tools-showcase-mobile">
                     <div class="mobile-app-visual">
@@ -365,10 +655,10 @@
                             <rect width="300" height="400" rx="20" fill="#f8f8f8"/>
                             <rect x="30" y="60" width="240" height="120" rx="10" fill="#e0e0e0"/>
                             <circle cx="150" cy="120" r="40" fill="#4682B4" opacity="0.7">
-                                <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="r" values="40;45;40" dur="2s" begin="0s" repeatCount="indefinite"/>
                             </circle>
-                            <path d="M110,120 Q150,80 190,120 Q150,160 110,120" fill="#8B5A2B" opacity="0.6">
-                                <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" />
+                            <path d="M150,50 Q130,80 150,110 Q170,80 150,50" fill="#8B5A2B" opacity="0.6">
+                                <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="0s" repeatCount="indefinite"/>
                             </path>
                             <rect x="30" y="200" width="240" height="40" rx="5" fill="#e0e0e0"/>
                             <rect x="30" y="260" width="110" height="80" rx="5" fill="#e0e0e0"/>
@@ -514,8 +804,68 @@
                             <h4>研究资料库</h4>
                             <p>中医现代研究成果与文献集合</p>
                         </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fas fa-wave-square"></i></div>
+                            <h4>脉搏波采集标准</h4>
+                            <p>全面的PPG数据采集技术规范与指标指南</p>
+                            <a href="#ppg-standards" class="btn small-btn">查看详细标准</a>
+                        </div>
                     </div>
                     <a href="#opensource" class="btn secondary-btn">访问数据平台</a>
+                </div>
+                <div id="ppg-standards" class="ppg-standards-section" style="background-color: #f9f9f9; padding: 4rem 0;">
+                    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                        <div class="section-header">
+                            <h2>PPG数据采集标准</h2>
+                            <p>确保高质量、可重现的脉搏波数据集的技术指南</p>
+                        </div>
+                        
+                        <div class="standards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-signal"></i>
+                                </div>
+                                <h3>采样率要求</h3>
+                                <ul style="color: var(--text-secondary);">
+                                    <li>标准应用：100 Hz - 250 Hz</li>
+                                    <li>高分辨率研究：500 Hz - 1000 Hz</li>
+                                    <li>信噪比目标：≥ 40 dB</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <h3>数据通道要求</h3>
+                                <ul style="color: var(--text-secondary);">
+                                    <li>记录至少3个光谱通道</li>
+                                    <li>包括红色、绿色和红外光</li>
+                                    <li>数据分辨率：12-16位</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h3>时间戳精度</h3>
+                                <ul style="color: var(--text-secondary);">
+                                    <li>时间戳误差：≤ ±1 ms</li>
+                                    <li>时间戳分辨率：1 ms</li>
+                                    <li>多传感器时钟同步误差：< 1 ms/小时</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="standards-details" style="margin-top: 3rem; background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                            <h3 style="margin-bottom: 1.5rem; color: var(--primary);">完整技术规范</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                                我们提供详细的PPG数据采集技术规范，涵盖传感器设置、环境因素、研究背景等多个维度。完整标准旨在确保数据的高质量、可重现性和广泛适用性。
+                            </p>
+                            <a href="#" class="btn primary-btn">下载完整标准文档</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1052,7 +1402,7 @@
                     <div class="contact-info">
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f88b8d8888978a8cb88c9b958a9d8e918e9994d6978a9f">[email&#160;protected]</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e5a4d435c4b5847584f4200415c49">[email&#160;protected]</a></p>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-weixin"></i></div>
@@ -1126,6 +1476,15 @@
                     </ul>
                 </div>
                 <div class="footer-section">
+                    <h4>工具与应用</h4>
+                    <ul>
+                        <li><a href="#tools">全部工具</a></li>
+                        <li><a href="https://pigurisk.heytcm.com/" target="_blank">辟谷风险评估</a></li>
+                        <li><a href="https://idtest.heytcm.com/" target="_blank">中医传承身份测试</a></li>
+                        <li><a href="https://qiandao.heytcm.com/" target="_blank">养生签到挑战</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
                     <h4>探索体验</h4>
                     <ul>
                         <li><a href="#games">游戏与娱乐</a></li>
@@ -1133,6 +1492,14 @@
                         <li><a href="#simulators">模拟与开放数据</a></li>
                         <li><a href="#help">常见问题</a></li>
                         <li><a href="#help">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>贡献与荣誉</h4>
+                    <ul>
+                        <li><a href="contribution-leaderboard.html">贡献榜</a></li>
+                        <li><a href="contribution-leaderboard.html#wall-of-faces">荣誉墙</a></li>
+                        <li><a href="contribution-leaderboard.html#contribution-map">贡献地图</a></li>
                     </ul>
                 </div>
             </div>
@@ -1167,5 +1534,33 @@
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const typeFilter = this.closest('.filter-group').querySelector('.filter-btn.active');
+                    typeFilter.classList.remove('active');
+                    this.classList.add('active');
+
+                    const filterType = typeFilter.dataset.filter;
+                    const filterTheme = this.dataset.filter;
+
+                    toolCards.forEach(card => {
+                        const matchType = filterType === 'all' || card.dataset.type === filterType;
+                        const matchTheme = filterTheme === 'all' || card.dataset.theme === filterTheme;
+
+                        if (matchType && matchTheme) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
