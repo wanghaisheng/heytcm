@@ -1,1861 +1,1171 @@
-
-<html><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>智能中医-实现中医复兴 - 打造开放生态社区</title>
-<meta name="description" content="中医复兴社区 - 传承千年智慧，开创健康未来。探索中医游戏化学习、智能工具与开放生态。">
-<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
-<link rel="canonical" href="https://heytcm.com">
-
-<meta property="og:locale" content="zh_CN">
-<meta property="og:type" content="website">
-<meta property="og:title" content="中医复兴 - 开放生态社区">
-<meta property="og:description" content="中医复兴社区 - 传承千年智慧，开创健康未来。探索中医游戏化学习、智能工具与开放生态。">
-<meta property="og:url" content="https://heytcm.com">
-<meta property="og:site_name" content="中医复兴">
-<meta property="og:image" content="https://heytcm.com/images/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="中医复兴社区">
-<meta property="og:image:type" content="image/png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="中医复兴 - 开放生态社区">
-<meta name="twitter:description" content="中医复兴社区 - 传承千年智慧，开创健康未来。探索中医游戏化学习、智能工具与开放生态。">
-<meta name="twitter:image" content="https://heytcm.com/images/og-image.png">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "中医复兴",
-  "url": "https://heytcm.com",
-  "logo": "https://heytcm.com/images/logo.png",
-  "description": "中医复兴社区致力于传承和创新中医智慧，通过游戏化学习、智能工具和开放生态，推动中医文化的现代化发展。",
-  "sameAs": [
-    "https://weibo.com/tcmcommunity",
-    "https://twitter.com/tcmcommunity" 
-  ]
-}
-</script>
-
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link rel="alternate" type="application/rss+xml" title="中医复兴 » Feed" href="https://heytcm.com/feed/">
-<link rel="alternate" type="application/rss+xml" title="中医复兴 » 评论" href="https://heytcm.com/comments/feed/">
-
-<style>
-:root {
-  --primary: #27615b;
-  --secondary: #849b5c;
-  --accent: #d4896a;
-  --bg: #faf6f2;
-  --text: #2c3e50;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-.hero {
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-content {
-  text-align: center;
-  z-index: 2;
-  padding: 2rem;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.wuxing-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.1;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255,255,255,0.95);
-  padding: 1rem;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  padding-left: 70px;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: var(--text);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.nav-links a:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.qi-flow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 4rem 2rem;
-}
-
-.feature-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--primary);
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-}
-
-.community-updates {
-  padding: 4rem 2rem;
-  background: white;
-}
-
-.update-card {
-  background: var(--bg);
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.update-card h4 {
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.update-card small {
-  color: #666;
-}
-
-.stats-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  text-align: center;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.stat-card {
-  padding: 2rem;
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.testimonials {
-  padding: 4rem 2rem;
-  background: var(--bg);
-}
-
-.testimonial-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  margin: 1rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.testimonial-card img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-footer {
-  background: var(--primary);
-  color: white;
-  padding: 4rem 2rem;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer-column h3 {
-  margin-bottom: 1rem;
-}
-
-.footer-column ul {
-  list-style: none;
-}
-
-.footer-column ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-column ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-.mission-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, var(--bg), white);
-}
-
-.mission-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.mission-card {
-  position: relative;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.mission-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.mission-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1rem;
-}
-
-.resource-section {
-  padding: 4rem 2rem;
-  background: white;
-}
-
-.resource-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.resource-card {
-  position: relative;
-  padding: 2rem;
-  background: var(--bg);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.resource-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.resource-card:hover::before {
-  transform: scaleX(1);
-}
-
-.knowledge-hub {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--bg), white);
-}
-
-.hub-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hub-card {
-  position: relative;
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.hub-card:hover {
-  transform: translateY(-5px);
-}
-
-.interactive-learning {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  color: white;
-}
-
-.learning-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.learning-demo {
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 2rem;
-  margin-top: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.floating-element {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.1;
-}
-
-.floating-circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: var(--accent);
-  filter: blur(40px);
-}
-
-.collaborations {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, var(--bg), white);
-}
-
-.collab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.collab-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.events-calendar {
-  padding: 4rem 2rem;
-  background: white;
-}
-
-#events-grid {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.event-card {
-  background: var(--bg);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.event-type {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  border-radius: 20px;
-  background: var(--secondary);
-  color: white;
-  font-size: 0.9rem;
-}
-
-.research-innovation {
-  padding: 4rem 2rem;
-  background: var(--bg);
-}
-
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.research-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.research-progress {
-  margin-top: 1rem;
-}
-
-.progress-bar {
-  height: 4px;
-  background: #eee;
-  border-radius: 2px;
-  margin: 1rem 0;
-}
-
-.progress-bar > div {
-  height: 100%;
-  background: var(--primary);
-  border-radius: 2px;
-}
-
-.clinical-practice {
-  padding: 4rem 2rem;
-  background: white;
-}
-
-.practice-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.practice-card {
-  background: var(--bg);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.side-menu {
-  position: fixed;
-  left: -300px;
-  top: 0;
-  width: 300px;
-  height: 100vh;
-  background: white;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  transition: left 0.3s ease;
-  z-index: 2000;
-  overflow-y: auto;
-}
-
-.side-menu.open {
-  left: 0;
-}
-
-.menu-toggle {
-  position: fixed;
-  left: 20px;
-  top: 20px;
-  z-index: 2001;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: var(--primary);
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-.side-menu-links {
-  padding: 60px 20px 20px;
-}
-
-.side-menu-links a {
-  display: block;
-  padding: 15px 0;
-  color: var(--text);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  transition: color 0.3s ease;
-}
-
-.side-menu-links a:hover {
-  color: var(--primary);
-}
-
-.product-categories {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--bg), white);
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.category-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-}
-
-.category-icon {
-  width: 80px;
-  height: 80px;
-  margin: 1rem 0;
-}
-
-.category-card ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.category-card ul li {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.category-card ul li:before {
-  content: "•";
-  color: var(--primary);
-  position: absolute;
-  left: 0;
-}
-
-.partner-card {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.partner-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-
-.partner-category {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-}
-
-.partner-category.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.learning-demo {
-  margin: 2rem 0;
-  padding: 1rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.learning-demo h3 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.learning-demo > div {
-  margin-bottom: 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.learning-demo > div:hover {
-  transform: scale(1.02);
-}
-</style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXX');
-</script>
-<link rel="icon" href="https://heytcm.com/favicon.ico" sizes="32x32">
-<link rel="icon" href="https://heytcm.com/favicon-192.png" sizes="192x192">
-<link rel="apple-touch-icon" href="https://heytcm.com/apple-touch-icon.png">
-<meta name="msapplication-TileImage" content="https://heytcm.com/mstile-144x144.png">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中医复兴 - 开放生态社区</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --trad-brown: #8B5A2B;
+            --trad-blue: #4682B4;
+            --trad-green: #556B2F;
+            --bg-dark: #333;
+        }
+    </style>
 </head>
 <body>
-
-<button class="menu-toggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-
-<div class="side-menu">
-  <div class="side-menu-links">
-    <a href="/">首页</a>
-    <a href="/about">关于我们</a>
-    <a href="/games">游戏与娱乐</a>
-    <a href="/tools">工具与应用</a>
-    <a href="/simulators">中医模拟</a>
-    <a href="/community">社区</a>
-    <a href="/news">新闻与活动</a>
-    <a href="/join">加入我们</a>
-    <a href="/opensource">开源项目</a>
-    <a href="/help">帮助中心</a>
-  </div>
-</div>
-
-<nav>
-  <div class="nav-links">
-    <a href="https://tcm.community/ask">向我咨询中医</a>    
-    <a href="https://heytcm.com/about">关于我们</a>
-    <a href="https://heytcm.com/games">游戏与娱乐</a>
-    <a href="https://heytcm.com/tools">工具与应用</a>
-    <a href="https://heytcm.com/community">社区</a>
-    <a href="https://heytcm.com/opensource">开源项目</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <svg class="wuxing-bg" viewBox="0 0 500 500">
-    <path d="M250,50 L450,250 L350,450 L150,450 L50,250 Z" 
-          fill="none" 
-          stroke="var(--primary)" 
-          stroke-width="2">
-      <animate attributeName="stroke-dasharray" 
-               from="0,1000" 
-               to="1000,1000" 
-               dur="3s" 
-               repeatCount="indefinite"/>
-    </path>
-  </svg>
-  
-  <svg class="qi-flow" viewBox="0 0 1000 1000">
-    <defs>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    
-    <path d="M0,500 Q250,400 500,500 T1000,500" 
-          fill="none" 
-          stroke="var(--accent)" 
-          stroke-width="3"
-          filter="url(#glow)">
-      <animate attributeName="d" 
-               dur="5s"
-               repeatCount="indefinite"
-               values="M0,500 Q250,400 500,500 T1000,500;
-                      M0,500 Q250,600 500,500 T1000,500;
-                      M0,500 Q250,400 500,500 T1000,500"/>
-    </path>
-  </svg>
-
-  <div class="hero-content">
-    <h1>中医复兴</h1>
-    <p>传承千年智慧 · 开创健康未来</p>
-    <a href="https://heytcm.com/join" class="cta-button">加入我们</a>
-  </div>
-</section>
-
-<section class="features">
-  <div class="feature-card">
-    <h3>游戏化学习</h3>
-    <p>通过互动游戏体验中医智慧，寓教于乐。探索养生之道，掌握平衡之术。</p>
-  </div>
-  
-  <div class="feature-card">
-    <h3>开源生态</h3>
-    <p>共建开放的中医数字化平台，促进技术创新。汇聚全球智慧，推动中医现代化。</p>
-  </div>
-  
-  <div class="feature-card">
-    <h3>社区共创</h3>
-    <p>连接传统与现代，共同探索健康新范式。分享经验，互助成长。</p>
-  </div>
-</section>
-
-<section class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number">10,000+</div>
-      <div>活跃用户</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">50+</div>
-      <div>开源项目</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">100+</div>
-      <div>社区活动</div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials">
-  <h2>用户心声</h2>
-  <div class="testimonial-card">
-    <p>"通过游戏化学习中医知识，让我对养生产生了浓厚的兴趣。"</p>
-    <small>- 张医生，中医师</small>
-  </div>
-</section>
-
-<section class="mission-section">
-  <h2 style="text-align: center; margin-bottom: 3rem;">我们的使命</h2>
-  <div class="mission-grid">
-    <div class="mission-card">
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="var(--primary)" stroke-width="2">
-          <animate attributeName="stroke-dasharray" from="0 283" to="283 283" dur="2s" fill="freeze" />
-        </circle>
-        <path d="M30,50 L45,65 L70,35" stroke="var(--primary)" stroke-width="3" fill="none">
-          <animate attributeName="stroke-dasharray" from="0 100" to="100 100" dur="1s" fill="freeze" begin="1.5s" />
-        </path>
-      </svg>
-      <h3>传承创新</h3>
-      <p>将传统中医智慧与现代科技完美融合，创造创新的健康解决方案。</p>
-    </div>
-    
-    <div class="mission-card">
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <g fill="none" stroke="var(--secondary)">
-          <path d="M20,50 C20,70 80,30 80,50 C80,70 20,30 20,50">
-            <animate attributeName="d" 
-                     values="M20,50 C20,70 80,30 80,50 C80,70 20,30 20,50;
-                            M20,50 C20,30 80,70 80,50 C80,30 20,70 20,50;
-                            M20,50 C20,70 80,30 80,50 C80,70 20,30 20,50"
-                     dur="4s" repeatCount="indefinite"/>
-          </path>
-        </g>
-      </svg>
-      <h3>开放共享</h3>
-      <p>建立开放的生态系统，促进知识共享和技术创新。</p>
-    </div>
-    
-    <div class="mission-card">
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <g transform="translate(50,50)">
-          <circle r="5" fill="var(--accent)">
-            <animate attributeName="r" values="5;10;5" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <g id="orbits">
-            <circle r="20" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.5"/>
-            <circle r="35" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.3"/>
-          </g>
-          <g>
-            <circle r="3" fill="var(--secondary)" transform="translate(20,0)">
-              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
-            </circle>
-            <circle r="3" fill="var(--primary)" transform="translate(35,0)">
-              <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="5s" repeatCount="indefinite"/>
-            </circle>
-          </g>
-        </g>
-      </svg>
-      <h3>生态共建</h3>
-      <p>连接各方力量，共同打造健康产业新生态。</p>
-    </div>
-  </div>
-</section>
-
-<section class="resource-section">
-  <h2 style="text-align: center; margin-bottom: 3rem;">开放资源</h2>
-  <div class="resource-grid">
-    <div class="resource-card">
-      <h3>开发文档</h3>
-      <p>详细的API文档和开发指南，助力开发者快速上手。</p>
-      <a href="https://heytcm.com/docs" class="cta-button">查看文档</a>
-    </div>
-    
-    <div class="resource-card">
-      <h3>数据集</h3>
-      <p>开放的中医知识图谱和临床数据集，支持研究创新。</p>
-      <a href="https://heytcm.com/datasets" class="cta-button">浏览数据</a>
-    </div>
-    
-    <div class="resource-card">
-      <h3>开源代码</h3>
-      <p>核心算法和工具的源代码，欢迎贡献和改进。</p>
-      <a href="https://heytcm.com/code" class="cta-button">获取代码</a>
-    </div>
-  </div>
-</section>
-
-<section class="product-categories">
-  <h2 style="text-align: center; margin-bottom: 3rem;">产品与服务</h2>
-  <div class="categories-grid">
-    <div class="category-card">
-      <h3>游戏与二次开发</h3>
-      <svg class="category-icon" viewBox="0 0 100 100">
-        <!-- Game controller icon -->
-        <rect x="20" y="30" width="60" height="40" rx="20" fill="none" stroke="var(--primary)" stroke-width="2"/>
-        <circle cx="40" cy="50" r="8" fill="var(--primary)"/>
-        <circle cx="60" cy="50" r="8" fill="var(--primary)"/>
-      </svg>
-      <p>融合中医文化的益智游戏，提供个性化游戏体验</p>
-      <ul>
-        <li>五行益智游戏</li>
-        <li>健康养成类游戏</li>
-        <li>二次开发工具包</li>
-      </ul>
-    </div>
-    
-    <div class="category-card">
-      <h3>健康工具应用</h3>
-      <svg class="category-icon" viewBox="0 0 100 100">
-        <!-- Health app icon -->
-        <path d="M30,50 h40 M50,30 v40" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="50" cy="50" r="35" fill="none" stroke="var(--primary)" stroke-width="2"/>
-      </svg>
-      <p>结合传统中医理论和现代科技的健康管理工具</p>
-      <ul>
-        <li>健康数据记录</li>
-        <li>个性化饮食建议</li>
-        <li>情绪管理工具</li>
-      </ul>
-    </div>
-
-    <div class="category-card">
-      <h3>气血模拟器</h3>
-      <svg class="category-icon" viewBox="0 0 100 100">
-        <!-- Qi simulation icon -->
-        <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="var(--primary)" stroke-width="2">
-          <animate attributeName="d" 
-                   values="M20,50 Q50,20 80,50 Q50,80 20,50;
-                          M20,50 Q50,80 80,50 Q50,20 20,50;
-                          M20,50 Q50,20 80,50 Q50,80 20,50"
-                   dur="4s" repeatCount="indefinite"/>
-        </path>
-      </svg>
-      <p>体验中医传统概念的互动式模拟器</p>
-      <ul>
-        <li>气血流动模拟</li>
-        <li>经络系统展示</li>
-        <li>五行相生相克</li>
-      </ul>
-    </div>
-
-    <div class="category-card">
-      <h3>智能管理设备</h3>
-      <svg class="category-icon" viewBox="0 0 100 100">
-        <!-- Smart device icon -->
-        <rect x="30" y="20" width="40" height="60" rx="5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-        <circle cx="50" cy="65" r="8" fill="none" stroke="var(--primary)" stroke-width="2"/>
-      </svg>
-      <p>采集身体指标的智能穿戴设备</p>
-      <ul>
-        <li>智能戒指</li>
-        <li>健康手表</li>
-        <li>数据分析平台</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="knowledge-hub">
-  <h2 style="text-align: center; margin-bottom: 3rem;">知识中心</h2>
-  <div class="hub-grid">
-    <div class="hub-card">
-      <h3>基础理论</h3>
-      <p>探索阴阳五行、气血精理论等中医基础知识，建立系统认知。</p>
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="var(--primary)" stroke-width="2">
-          <animate attributeName="stroke-dasharray" from="0 251" to="251 251" dur="2s" fill="freeze" />
-        </circle>
-        <text x="50" y="55" text-anchor="middle" fill="var(--primary)" font-size="12">五行</text>
-      </svg>
-    </div>
-    
-    <div class="hub-card">
-      <h3>临床应用</h3>
-      <p>了解中医诊断方法、治疗原则，掌握实用养生技巧。</p>
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="var(--secondary)" stroke-width="2">
-          <animate attributeName="d" 
-                   values="M20,50 Q50,20 80,50 Q50,80 20,50;
-                          M20,50 Q50,80 80,50 Q50,20 20,50;
-                          M20,50 Q50,20 80,50 Q50,80 20,50"
-                   dur="4s" repeatCount="indefinite"/>
-        </path>
-      </svg>
-    </div>
-    
-    <div class="hub-card">
-      <h3>研究创新</h3>
-      <p>发现传统理论与现代科技的结合点，推动中医创新发展。</p>
-      <svg class="mission-icon" viewBox="0 0 100 100">
-        <g transform="translate(50,50)">
-          <circle r="25" fill="none" stroke="var(--accent)" stroke-width="2">
-            <animate attributeName="r" values="25;30;25" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <circle r="5" fill="var(--primary)"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="research-innovation" style="padding: 4rem 2rem; background: var(--bg);">
-  <h2 style="text-align: center; margin-bottom: 3rem;">研究与创新</h2>
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <div class="research-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>人工智能应用</h3>
-        <p>探索AI在中医诊断、处方分析等领域的应用</p>
-        <div class="research-progress">
-          <div class="progress-bar" style="height: 4px; background: #eee; border-radius: 2px; margin: 1rem 0;">
-            <div style="width: 75%; height: 100%; background: var(--primary); border-radius: 2px;">
-              <animate attributeName="width" from="0%" to="75%" dur="1.5s" fill="freeze"/>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7">
+                        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite" />
+                    </path>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>中医复兴</span>
             </div>
-          </div>
-          <small>研究进度: 75%</small>
-        </div>
-      </div>
-
-      <div class="research-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>智能设备研发</h3>
-        <p>开发基于传统中医理论的现代化健康监测设备</p>
-        <div class="research-progress">
-          <div class="progress-bar" style="height: 4px; background: #eee; border-radius: 2px; margin: 1rem 0;">
-            <div style="width: 60%; height: 100%; background: var(--secondary); border-radius: 2px;">
-              <animate attributeName="width" from="0%" to="60%" dur="1.5s" fill="freeze"/>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-          </div>
-          <small>研究进度: 60%</small>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#values">价值观与愿景</a></li>
+                    <li><a href="#games">游戏与娱乐</a></li>
+                    <li><a href="#tools">工具与应用</a></li>
+                    <li><a href="#simulators">模拟与开放数据</a></li>
+                    <li><a href="#community">社区</a></li>
+                    <li><a href="#news">新闻与活动</a></li>
+                    <li><a href="#join">加入我们</a></li>
+                    <li><a href="#support">支持我们</a></li>
+                    <li><a href="#opensource">开源项目</a></li>
+                    <li><a href="#help">帮助中心</a></li>
+                    <li><a href="smart-collab.html">智能中医共创圈</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
+    </header>
 
-      <div class="research-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>数据标准化</h3>
-        <p>建立中医临床数据标准，推动行业规范化发展</p>
-        <div class="research-progress">
-          <div class="progress-bar" style="height: 4px; background: #eee; border-radius: 2px; margin: 1rem 0;">
-            <div style="width: 40%; height: 100%; background: var(--accent); border-radius: 2px;">
-              <animate attributeName="width" from="0%" to="40%" dur="1.5s" fill="freeze"/>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>传承千年智慧，融合现代科技</h1>
+                <p>中医复兴，开放生态，共同构建健康未来</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn primary-btn">了解更多</a>
+                    <a href="#join" class="btn secondary-btn">立即加入</a>
+                </div>
             </div>
-          </div>
-          <small>研究进度: 40%</small>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="hero-visual">
+                <div class="qi-flow-animation"></div>
+            </div>
+        </section>
 
-<section class="clinical-practice" style="padding: 4rem 2rem; background: white;">
-  <h2 style="text-align: center; margin-bottom: 3rem;">临床实践</h2>
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <div class="practice-card" style="background: var(--bg); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>远程诊疗</h3>
-        <p>借助现代通讯技术，实现中医远程问诊和治疗指导</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 在线问诊平台</li>
-          <li>• 远程会诊系统</li>
-          <li>• 随访管理</li>
-        </ul>
-      </div>
+        <!-- Feature Cards -->
+        <section class="features">
+            <div class="section-header">
+                <h2>探索中医复兴生态</h2>
+                <p>通过多元化的产品和服务，体验传统中医的现代演绎</p>
+            </div>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>游戏与益智</h3>
+                    <p>通过互动游戏，寓教于乐中学习中医知识</p>
+                    <a href="#games" class="card-link">探索游戏 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>健康工具</h3>
+                    <p>个性化健康管理应用，助您平衡身心</p>
+                    <a href="#tools" class="card-link">体验工具 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>气血模拟</h3>
+                    <p>可视化体验中医理论，感知气血运行</p>
+                    <a href="#simulators" class="card-link">开始体验 <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>开放社区</h3>
+                    <p>连接全球中医爱好者，共享智慧与经验</p>
+                    <a href="#community" class="card-link">加入社区 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
 
-      <div class="practice-card" style="background: var(--bg); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>智能辅助诊断</h3>
-        <p>运用AI技术辅助中医临床诊断决策</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 症状分析</li>
-          <li>• 处方推荐</li>
-          <li>• 预后评估</li>
-        </ul>
-      </div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="section-header">
+                <h2>关于我们</h2>
+                <p>传承与创新，构建开放共享的中医生态系统</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>我们的故事</h3>
+                    <p>中医复兴社区起源于一群热爱传统文化与现代科技的创新者。我们致力于将千年中医智慧与现代科技完美融合，创造能够真正改善人们生活的产品与服务。</p>
+                    
+                    <h3>我们的愿景</h3>
+                    <p>我们希望通过开放生态的理念，让传统中医知识走向世界，使更多人能够从中受益。同时，通过技术创新和数据共享，推动中医理论的现代化研究与应用。</p>
+                    
+                    <div class="values">
+                        <div class="value-item">
+                            <div class="value-icon"><i class="fas fa-leaf"></i></div>
+                            <h4>传承</h4>
+                            <p>尊重传统，保护中医文化遗产</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                            <h4>创新</h4>
+                            <p>融合现代科技，创新中医应用方式</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                            <h4>共享</h4>
+                            <p>开放数据与技术，共建健康生态</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="team-showcase">
+                        <div class="team-member-avatar"></div>
+                        <div class="team-member-avatar"></div>
+                        <div class="team-member-avatar"></div>
+                        <div class="team-collage"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="practice-card" style="background: var(--bg); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>临床研究</h3>
-        <p>开展中医临床疗效评价研究</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 疗效评价</li>
-          <li>• 临床试验</li>
-          <li>• 数据分析</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Values Section -->
+        <section id="values" class="values-section">
+            <div class="section-header">
+                <h2>价值观与愿景</h2>
+                <p>我们的核心理念与发展方向</p>
+            </div>
+            <div class="values-content">
+                <div class="vision-mission">
+                    <h3 class="gradient-text">我们的愿景</h3>
+                    <p>通过科技与中医的结合，构建一个开放、智能、互助的全球社区，利用游戏化的创新方式，让中医传统智慧焕发新生，帮助每个人实现健康、平衡、快乐的生活，同时养成良好的习惯，促进自我成长。</p>
+                    
+                    <h3 class="gradient-text">我们的使命</h3>
+                    <p>利用现代科技手段，如穿戴设备和智能手机，收集脉搏、PPG等健康数据，为个人提供个性化的健康管理，为中医研究提供坚实的数据基础，推动中医智能化的发展。</p>
+                </div>
+                
+                <div class="core-beliefs">
+                    <h3 class="gradient-text">核心信念</h3>
+                    <div class="beliefs-grid">
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-microscope"></i></div>
+                            <h4>科学是无止境的</h4>
+                            <p>科学探索永无止境，我们不断追求更深层次的理解和创新，推动技术与知识的发展。</p>
+                        </div>
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-yin-yang"></i></div>
+                            <h4>中国传统医学是整体论</h4>
+                            <p>中医文化根植于整体论的哲学理念，通过阴阳平衡、五行相生相克的原理，解释人体健康的复杂性。</p>
+                        </div>
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-ring"></i></div>
+                            <h4>穿戴技术提供数据采集</h4>
+                            <p>穿戴设备为我们提供了连续、实时的健康数据采集途径，这使得精准的个性化健康管理成为可能。</p>
+                        </div>
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-brain"></i></div>
+                            <h4>AI技术为中医辩证提供机会</h4>
+                            <p>通过AI算法，我们能够将看似抽象的中医概念转化为可量化、可验证的数据，帮助用户和专业人士做出精准决策。</p>
+                        </div>
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-fingerprint"></i></div>
+                            <h4>每个人都是独一无二的</h4>
+                            <p>我们相信每个人都是独特的，他们的健康管理需求也应当因人而异，追求个性化的健康解决方案。</p>
+                        </div>
+                        <div class="belief-item">
+                            <div class="belief-icon"><i class="fas fa-hands-helping"></i></div>
+                            <h4>互帮互助</h4>
+                            <p>我们倡导互帮互助的精神，鼓励每一位成员、用户与合作伙伴共同成长，共同推动中医智能化发展。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-values">
+                    <h3 class="gradient-text">社区价值观</h3>
+                    <div class="values-list">
+                        <div class="value-tag">探索与创新</div>
+                        <div class="value-tag">整体与互补</div>
+                        <div class="value-tag">个性化与尊重差异</div>
+                        <div class="value-tag">共创与共享</div>
+                        <div class="value-tag">技术驱动与数据支持</div>
+                        <div class="value-tag">健康与幸福</div>
+                        <div class="value-tag">隐私保护与安全保障</div>
+                        <div class="value-tag">社会责任与文化传承</div>
+                    </div>
+                    <a href="vision-values.html" class="btn secondary-btn">了解更多</a>
+                </div>
+            </div>
+        </section>
 
-<section class="interactive-learning">
-  <div class="learning-content">
-    <h2>三大核心研究方向</h2>
-    <p style="margin: 1rem 0 2rem">用科学和技术揭开传统医学的面纱</p>
-    
-    <div class="learning-demo">
-      <h3>阴阳平衡的量化</h3>
-      <div id="yinyang-demo" style="height: 300px; position: relative;"></div>
-      
-      <h3>气与血的量化</h3>
-      <div id="qixue-demo" style="height: 300px; position: relative;"></div>
-      
-      <h3>五行的量化</h3>
-      <div id="wuxing-demo" style="height: 300px; position: relative;"></div>
-    </div>
-  </div>
-  
-  <!-- Add decorative floating elements -->
-  <div class="floating-element floating-circle" style="top: 10%; left: 5%"></div>
-  <div class="floating-element floating-circle" style="bottom: 10%; right: 5%"></div>
-</section>
+        <!-- Games Section -->
+        <section id="games" class="games">
+            <div class="section-header">
+                <h2>游戏与娱乐</h2>
+                <p>寓教于乐，在游戏中体验中医智慧</p>
+            </div>
+            <div class="games-content">
+                <div class="game-concept">
+                    <h3>游戏理念</h3>
+                    <p>我们的游戏不仅是娱乐，更是承载中医知识的载体。通过游戏化的方式，让用户在互动体验中自然习得中医理念，培养健康的生活习惯。</p>
+                </div>
+                <div class="games-showcase">
+                    <div class="game-card">
+                        <div class="game-image">
+                            <svg width="100%" height="160" viewBox="0 0 300 160">
+                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
+                                <circle cx="150" cy="80" r="40" fill="#8B5A2B" opacity="0.7"/>
+                                <path d="M130,60 Q150,40 170,60 T190,80 T170,100 T130,100 T110,80 T130,60" fill="#4682B4" opacity="0.8"/>
+                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">五行平衡</text>
+                            </svg>
+                        </div>
+                        <div class="game-info">
+                            <h4>五行平衡</h4>
+                            <p>通过益智解谜游戏，了解金木水火土五行相生相克的奥秘，培养平衡思维。</p>
+                            <a href="#" class="btn small-btn">试玩体验</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">
+                            <svg width="100%" height="160" viewBox="0 0 300 160">
+                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
+                                <circle cx="120" cy="80" r="30" fill="#556B2F" opacity="0.8"/>
+                                <circle cx="180" cy="80" r="30" fill="#4682B4" opacity="0.8"/>
+                                <path d="M150,50 Q130,80 150,110 Q170,80 150,50" fill="#8B5A2B" opacity="0.7"/>
+                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">阴阳调和</text>
+                            </svg>
+                        </div>
+                        <div class="game-info">
+                            <h4>阴阳调和</h4>
+                            <p>在策略游戏中掌握阴阳平衡的奥妙，体验传统中医的核心理念。</p>
+                            <a href="#" class="btn small-btn">试玩体验</a>
+                        </div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image">
+                            <svg width="100%" height="160" viewBox="0 0 300 160">
+                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
+                                <path d="M100,80 Q150,50 200,80 Q220,100 200,120 Q150,150 100,120 Q80,100 100,80" fill="#8B5A2B" opacity="0.5"/>
+                                <path d="M120,80 Q150,60 180,80 Q190,90 180,100 Q150,120 120,100 Q110,90 120,80" fill="#4682B4" opacity="0.7" stroke="#556B2F" stroke-width="2">
+                                    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite" />
+                                </path>
+                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">气血流转</text>
+                            </svg>
+                        </div>
+                        <div class="game-info">
+                            <h4>气血流转</h4>
+                            <p>模拟经络运行与气血循环，在休闲游戏中体验中医养生的精髓。</p>
+                            <a href="#" class="btn small-btn">试玩体验</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-development">
+                    <h3>二次开发资源</h3>
+                    <p>我们提供开放的游戏开发套件，鼓励开发者基于中医概念创造更多创新游戏，共同丰富中医游戏生态。</p>
+                    <a href="#opensource" class="btn secondary-btn">获取开发资源</a>
+                </div>
+            </div>
+        </section>
 
-<section class="partners-section" style="padding: 4rem 2rem; background: var(--bg);">
-  <h2 style="text-align: center; margin-bottom: 3rem;">合作伙伴</h2>
-  
-  <div class="partner-categories" style="max-width: 1200px; margin: 0 auto;">
-    <!-- Academic Partners -->
-    <div class="partner-category">
-      <h3 style="color: var(--primary); margin-bottom: 2rem;">学术机构</h3>
-      <div class="partner-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <rect x="20" y="30" width="60" height="40" rx="5" fill="none" stroke="var(--primary)" stroke-width="2"/>
-            <text x="50" y="55" text-anchor="middle" fill="var(--primary)" font-size="12">中医药大学</text>
-          </svg>
-          <h4>中国中医科学院</h4>
-          <p style="color: #666; font-size: 0.9rem;">国家级中医药研究机构</p>
-        </div>
+        <!-- Tools Section -->
+        <section id="tools" class="tools">
+            <div class="section-header">
+                <h2>工具与应用</h2>
+                <p>科技赋能健康，智能管理身心</p>
+            </div>
+            <div class="tools-content">
+                <div class="tools-showcase">
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>脉康宝智能戒指</h3>
+                            <p>全球首款中医智能健康管理戒指，量化虚瘀毒湿，追踪五脏能量变化，提供个性化养生方案。</p>
+                            <ul class="tool-features">
+                                <li>五脏能量监测与分析</li>
+                                <li>虚瘀毒湿指数量化</li>
+                                <li>个性化养生方案推荐</li>
+                            </ul>
+                            <a href="smart-ring.html" class="btn small-btn">了解详情</a>
+                            <a href="#" class="btn small-btn primary-btn ring-cta-btn">预售特惠</a>
+                        </div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>气血管理助手</h3>
+                            <p>基于中医理论的健康追踪应用，实时监测和分析您的气血状态，提供个性化调理建议。</p>
+                            <ul class="tool-features">
+                                <li>症状追踪与分析</li>
+                                <li>个性化调理方案</li>
+                                <li>健康数据可视化</li>
+                            </ul>
+                            <a href="#" class="btn small-btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>情绪平衡器</h3>
+                            <p>结合中医五行情志理论，帮助用户识别、理解并调节情绪，提升心理健康水平。</p>
+                            <ul class="tool-features">
+                                <li>情绪识别与分析</li>
+                                <li>冥想与呼吸引导</li>
+                                <li>个性化情绪调节方案</li>
+                            </ul>
+                            <a href="#" class="btn small-btn">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div class="tool-info">
+                            <h3>智能中医共创圈</h3>
+                            <p>中医爱好者、医疗专业人士与技术专家的共创平台，推动中医智能化发展。</p>
+                            <ul class="tool-features">
+                                <li>五行、症状、疗效、湿气、排毒管理工具</li>
+                                <li>智能终端设备数据收集与分析</li>
+                                <li>开放数据建设与研究合作</li>
+                            </ul>
+                            <a href="smart-collab.html" class="btn small-btn">了解详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tools-showcase-mobile">
+                    <div class="mobile-app-visual">
+                        <svg width="100%" height="400" viewBox="0 0 300 400">
+                            <rect width="300" height="400" rx="20" fill="#f8f8f8"/>
+                            <rect x="30" y="60" width="240" height="120" rx="10" fill="#e0e0e0"/>
+                            <circle cx="150" cy="120" r="40" fill="#4682B4" opacity="0.7">
+                                <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <path d="M110,120 Q150,80 190,120 Q150,160 110,120" fill="#8B5A2B" opacity="0.6">
+                                <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite" />
+                            </path>
+                            <rect x="30" y="200" width="240" height="40" rx="5" fill="#e0e0e0"/>
+                            <rect x="30" y="260" width="110" height="80" rx="5" fill="#e0e0e0"/>
+                            <rect x="160" y="260" width="110" height="80" rx="5" fill="#e0e0e0"/>
+                        </svg>
+                    </div>
+                    <div class="tech-explanation">
+                        <h3>背后的技术</h3>
+                        <p>我们的工具应用结合现代数据分析和传统中医理论，通过AI算法实现个性化健康管理，帮助用户更好地掌握自己的健康状况。</p>
+                        <a href="#" class="btn secondary-btn">技术白皮书</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulators Section -->
+        <section id="simulators" class="simulators">
+            <div class="section-header">
+                <h2>中医模拟与开放数据</h2>
+                <p>可视化体验中医理论，探索数据驱动的健康新世界</p>
+            </div>
+            <div class="simulators-content">
+                <div class="simulator-showcase">
+                    <div class="interactive-simulator">
+                        <h3>互动学习体验</h3>
+                        <div class="simulator-tabs">
+                            <div class="tab-header">
+                                <button class="tab-btn active" data-tab="yinyang">阴阳演示</button>
+                                <button class="tab-btn" data-tab="qixue">气血演示</button>
+                                <button class="tab-btn" data-tab="wuxing">五行演示</button>
+                            </div>
+                            <div class="tab-content">
+                                <div id="yinyang" class="tab-panel active">
+                                    <div class="simulator-visual">
+                                        <svg width="100%" height="250" viewBox="0 0 300 250">
+                                            <circle cx="150" cy="125" r="100" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                                            <path d="M150,25 A100,100 0 0,1 150,225 A50,50 0 0,1 150,125 A50,50 0 0,0 150,25" fill="var(--bg-dark)"/>
+                                            <path d="M150,25 A100,100 0 0,0 150,225 A50,50 0 0,0 150,125 A50,50 0 0,1 150,25" fill="#f5f5f5"/>
+                                            <circle cx="150" cy="75" r="10" fill="#f5f5f5"/>
+                                            <circle cx="150" cy="175" r="10" fill="var(--bg-dark)"/>
+                                        </svg>
+                                    </div>
+                                    <div class="simulator-explanation">
+                                        <h4>阴阳平衡之道</h4>
+                                        <p>阴阳是中医理论的核心概念，表示自然界中对立统一的两个方面。本演示展示阴阳如何相互转化并保持平衡。</p>
+                                        <a href="#" class="btn small-btn">深入学习</a>
+                                    </div>
+                                </div>
+                                <div id="qixue" class="tab-panel">
+                                    <div class="simulator-visual">
+                                        <svg width="100%" height="250" viewBox="0 0 300 250">
+                                            <path d="M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125" fill="none" stroke="#4682B4" stroke-width="3" stroke-dasharray="5,5">
+                                                <animate attributeName="d" values="M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125;M50,125 C50,175 250,200 250,125 C250,75 50,50 50,125;M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125" dur="5s" repeatCount="indefinite"/>
+                                            </animate>
+                                        </svg>
+                                        <svg width="100%" height="250" viewBox="0 0 300 250" style="position:absolute; top:0; left:0;">
+                                            <path d="M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125" fill="none" stroke="#8B5A2B" stroke-width="4">
+                                                <animate attributeName="d" values="M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125;M70,125 C70,165 230,190 230,125 C230,85 70,60 70,125;M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125" dur="7s" repeatCount="indefinite"/>
+                                            </animate>
+                                        </svg>
+                                    </div>
+                                    <div class="simulator-explanation">
+                                        <h4>气血运行奥秘</h4>
+                                        <p>气血是构成人体和维持生命活动的基本物质。本演示展示气血在经络中的运行规律及其对健康的影响。</p>
+                                        <a href="#" class="btn small-btn">深入学习</a>
+                                    </div>
+                                </div>
+                                <div id="wuxing" class="tab-panel">
+                                    <div class="simulator-visual">
+                                        <svg width="100%" height="250" viewBox="0 0 300 250">
+                                            <polygon points="150,50 250,125 200,200 100,200 50,125" fill="none" stroke="#333" stroke-width="2"/>
+                                            <circle cx="150" cy="50" r="20" fill="#556B2F" class="wuxing-element" data-element="木">
+                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="0s" repeatCount="indefinite"/>
+                                            </circle>
+                                            <circle cx="250" cy="125" r="20" fill="#FF4500" class="wuxing-element" data-element="火">
+                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+                                            </circle>
+                                            <circle cx="200" cy="200" r="20" fill="#DAA520" class="wuxing-element" data-element="土">
+                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+                                            </circle>
+                                            <circle cx="100" cy="200" r="20" fill="#B87333" class="wuxing-element" data-element="金">
+                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+                                            </circle>
+                                            <circle cx="50" cy="125" r="20" fill="#4682B4" class="wuxing-element" data-element="水">
+                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+                                            </circle>
+                                            <text x="150" y="50" text-anchor="middle" dy=".3em" fill="white" font-size="12">木</text>
+                                            <text x="250" cy="125" text-anchor="middle" dy=".3em" fill="white" font-size="12">火</text>
+                                            <text x="200" cy="200" text-anchor="middle" dy=".3em" fill="white" font-size="12">土</text>
+                                            <text x="100" cy="200" text-anchor="middle" dy=".3em" fill="white" font-size="12">金</text>
+                                            <text x="50" cy="125" text-anchor="middle" dy=".3em" fill="white" font-size="12">水</text>
+                                            <!-- 相生关系 -->
+                                            <path d="M165,60 L235,110" fill="none" stroke="#green" stroke-width="2" marker-end="url(#arrow)">
+                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="0s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M230,145 L190,185" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
+                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="1s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M175,200 L125,200" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
+                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="2s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M85,185 L65,145" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
+                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="3s" repeatCount="indefinite"/>
+                                            </path>
+                                            <path d="M70,110 L135,60" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
+                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="4s" repeatCount="indefinite"/>
+                                            </path>
+                                            <defs>
+                                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                                                    markerWidth="6" markerHeight="6"
+                                                    orient="auto-start-reverse">
+                                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="green"/>
+                                                </marker>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div class="simulator-explanation">
+                                        <h4>五行相生相克</h4>
+                                        <p>五行学说是中医理论的重要组成部分，描述木、火、土、金、水五种元素之间的相互关系。本演示展示五行相生相克的规律及其应用。</p>
+                                        <a href="#" class="btn small-btn">深入学习</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="open-data-platform">
+                    <h3>开放数据平台</h3>
+                    <p>我们提供丰富的中医健康数据集与API，支持研究者和开发者创新应用中医知识，共同推动中医现代化发展。</p>
+                    <div class="data-resources">
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fas fa-database"></i></div>
+                            <h4>脉搏波开放数据集</h4>
+                            <p>收集整理的脉搏波数据及相关健康信息</p>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fas fa-code"></i></div>
+                            <h4>病症方单病开放数据库</h4>
+                            <p>中医症状、辨证、方剂的结构化数据库</p>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-icon"><i class="fas fa-book"></i></div>
+                            <h4>研究资料库</h4>
+                            <p>中医现代研究成果与文献集合</p>
+                        </div>
+                    </div>
+                    <a href="#opensource" class="btn secondary-btn">访问数据平台</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="community">
+            <div class="section-header">
+                <h2>中医爱好者社区</h2>
+                <p>连接全球中医爱好者，共享智慧，共同成长</p>
+            </div>
+            <div class="community-content">
+                <div class="community-features">
+                    <div class="community-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>学习与交流</h3>
+                            <p>定期举办线上讲座、研讨会，邀请中医专家分享知识，解答疑问，促进交流与学习。</p>
+                        </div>
+                    </div>
+                    <div class="community-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>互助与分享</h3>
+                            <p>社区成员分享个人体验、健康管理方法，互相支持，共同提高健康水平。</p>
+                        </div>
+                    </div>
+                    <div class="community-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>贡献与激励</h3>
+                            <p>鼓励社区成员参与内容创作、数据贡献，优秀贡献者将获得社区荣誉与奖励。</p>
+                        </div>
+                    </div>
+                    <div class="community-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>共创共建</h3>
+                            <p>参与智能中医共创圈，通过数据共享、工具开发和研究合作，共同推动中医智能化发展。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="community-showcase">
+                    <div class="community-activities">
+                        <h3>社区活动</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-date">6月15日</div>
+                                <div class="activity-info">
+                                    <h4>线上讲座：中医与现代生活</h4>
+                                    <p>探讨如何将中医理念融入日常，提升生活品质。</p>
+                                    <a href="#" class="activity-link">报名参加</a>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-date">6月22日</div>
+                                <div class="activity-info">
+                                    <h4>工作坊：气血调理实践</h4>
+                                    <p>实用的气血调理方法，适合初学者的健康管理入门。</p>
+                                    <a href="#" class="activity-link">报名参加</a>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-date">7月1日</div>
+                                <div class="activity-info">
+                                    <h4>社区挑战：21天养生习惯培养</h4>
+                                    <p>与社区成员一起，培养健康的生活习惯，共同成长。</p>
+                                    <a href="#" class="activity-link">参与挑战</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-join">
+                        <h3>加入我们</h3>
+                        <p>成为中医复兴社区的一员，与志同道合的朋友一起探索中医之美，共同推动中医的传承与发展。</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        </div>
+                        <a href="#join" class="btn primary-btn">立即加入</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="news">
+            <div class="section-header">
+                <h2>新闻与活动</h2>
+                <p>了解中医复兴社区的最新动态</p>
+            </div>
+            <div class="news-content">
+                <div class="news-grid">
+                    <div class="news-item featured">
+                        <div class="news-image">
+                            <svg width="100%" height="200" viewBox="0 0 400 200">
+                                <rect width="400" height="200" fill="#e0e0e0"/>
+                                <circle cx="200" cy="100" r="50" fill="#8B5A2B" opacity="0.7"/>
+                                <path d="M150,100 Q200,50 250,100 T350,100" fill="none" stroke="#4682B4" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="news-info">
+                            <span class="news-date">2023年6月10日</span>
+                            <h3>中医复兴官网全新上线</h3>
+                            <p>中医复兴社区正式推出全新官方网站，旨在打造中医爱好者的线上家园，提供丰富的学习资源与互动平台。</p>
+                            <a href="#" class="news-link">阅读更多</a>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-info">
+                            <span class="news-date">2023年6月5日</span>
+                            <h3>气血管理APP最新版本发布</h3>
+                            <p>全新升级的气血管理应用现已推出，增加个性化健康报告和智能分析功能。</p>
+                            <a href="#" class="news-link">阅读更多</a>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-info">
+                            <span class="news-date">2023年5月28日</span>
+                            <h3>首届中医创新大赛圆满结束</h3>
+                            <p>来自全球的团队展示了结合中医理念的创新项目，推动中医与现代科技的深度融合。</p>
+                            <a href="#" class="news-link">阅读更多</a>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-info">
+                            <span class="news-date">2023年5月15日</span>
+                            <h3>开放数据平台正式启动</h3>
+                            <p>中医复兴社区开放数据平台正式上线，为研究者和开发者提供丰富的中医数据资源。</p>
+                            <a href="#" class="news-link">阅读更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-calendar">
+                    <h3>即将举行的活动</h3>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <span>2023年6月</span>
+                        </div>
+                        <div class="calendar-body">
+                            <div class="calendar-week">
+                                <div class="day-header">日</div>
+                                <div class="day-header">一</div>
+                                <div class="day-header">二</div>
+                                <div class="day-header">三</div>
+                                <div class="day-header">四</div>
+                                <div class="day-header">五</div>
+                                <div class="day-header">六</div>
+                            </div>
+                            <div class="calendar-days">
+                                <!-- 日历日期会由JavaScript动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn secondary-btn">查看完整日历</a>
+                </div>
+            </div>
+        </section>
         
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <circle cx="50" cy="50" r="30" fill="none" stroke="var(--secondary)" stroke-width="2"/>
-            <text x="50" y="55" text-anchor="middle" fill="var(--secondary)" font-size="12">医学院</text>
-          </svg>
-          <h4>北京中医药大学</h4>
-          <p style="color: #666; font-size: 0.9rem;">中医药高等教育机构</p>
+        <!-- Join Section -->
+        <section id="join" class="join">
+            <div class="section-header">
+                <h2>加入我们</h2>
+                <p>多种方式参与，共同推动中医复兴</p>
+            </div>
+            <div class="join-content">
+                <div class="join-options">
+                    <div class="join-option">
+                        <div class="option-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3>成为会员</h3>
+                        <p>注册成为社区会员，获取专属资源与服务，参与社区活动与讨论。</p>
+                        <a href="#" class="btn small-btn">注册账号</a>
+                    </div>
+                    <div class="join-option">
+                        <div class="option-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3>技术贡献</h3>
+                        <p>开发者可参与开源项目，贡献代码或创新思路，推动技术进步。</p>
+                        <a href="#opensource" class="btn small-btn">查看项目</a>
+                    </div>
+                    <div class="join-option">
+                        <div class="option-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>内容创作</h3>
+                        <p>撰写文章、制作视频，分享中医知识与个人经验，丰富社区内容。</p>
+                        <a href="#" class="btn small-btn">投稿指南</a>
+                    </div>
+                    <div class="join-option">
+                        <div class="option-icon">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <h3>支持项目</h3>
+                        <p>通过捐赠或购买产品，支持社区持续发展与创新项目实施。</p>
+                        <a href="#" class="btn small-btn">支持方式</a>
+                    </div>
+                </div>
+                <div class="volunteer-recruitment">
+                    <h3>志愿者招募</h3>
+                    <p>我们正在寻找热爱中医文化、愿意为中医复兴贡献力量的志愿者。无论您是技术专家、内容创作者还是中医爱好者，都能在这里找到发挥才能的舞台。</p>
+                    <div class="positions">
+                        <div class="position-item">
+                            <h4>技术开发</h4>
+                            <p>参与开源项目开发，构建中医数字化工具与平台。</p>
+                        </div>
+                        <div class="position-item">
+                            <h4>内容创作</h4>
+                            <p>撰写中医知识文章，制作教学视频，传播中医文化。</p>
+                        </div>
+                        <div class="position-item">
+                            <h4>社区运营</h4>
+                            <p>组织社区活动，促进成员交流，维护社区氛围。</p>
+                        </div>
+                        <div class="position-item">
+                            <h4>专业顾问</h4>
+                            <p>提供中医专业指导，确保内容与产品的专业性与准确性。</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn primary-btn">申请成为志愿者</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="support">
+            <div class="section-header">
+                <h2>支持我们</h2>
+                <p>多种方式参与，共同助力中医智能化发展</p>
+            </div>
+            <div class="support-content">
+                <div class="support-intro">
+                    <p>我们提供多种参与方式，无论您是技术专家、中医爱好者还是关心健康的普通人，都能找到适合您的支持方式。您的每一份支持都将助力中医智能化的未来发展。</p>
+                </div>
+                
+                <div class="support-grid">
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>社交媒体宣传</h3>
+                        <p>转发我们的故事、文章和视频，在社交媒体和直播平台支持点赞，帮助扩大项目影响力。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>社交媒体互动积分</li>
+                                <li>虚拟徽章</li>
+                                <li>参与专属活动的机会</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>使用我们的游戏</h3>
+                        <p>下载并使用我们的中医益智游戏，点击游戏中的广告，寓教于乐中支持项目发展。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>游戏内积分与奖励</li>
+                                <li>虚拟物品与道具</li>
+                                <li>游戏排行榜特殊称号</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>使用健康工具APP</h3>
+                        <p>下载使用我们的健康管理工具和中医概念应用，体验个性化健康管理，提供宝贵反馈。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>APP内积分与成就系统</li>
+                                <li>个性化健康报告</li>
+                                <li>高级功能免费试用</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3>购买智能穿戴设备</h3>
+                        <p>购买我们的脉康宝智能戒指、手表等穿戴设备，体验中医智能化带来的健康管理革新。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>设备专属会员特权</li>
+                                <li>优先体验新功能</li>
+                                <li>专属健康咨询服务</li>
+                            </ul>
+                        </div>
+                        <a href="smart-ring.html" class="btn small-btn">了解脉康宝</a>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>资金赞助</h3>
+                        <p>通过资金支持，帮助项目更好地推进研究、技术开发和社区建设，加速中医智能化发展。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>赞助者特别称号</li>
+                                <li>专属感谢与定制礼品</li>
+                                <li>优先体验新产品机会</li>
+                            </ul>
+                        </div>
+                        <a href="smart-collab.html#join-us" class="btn primary-btn">立即赞助</a>
+                    </div>
+                    
+                    <div class="support-card">
+                        <div class="support-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>贡献健康数据</h3>
+                        <p>签署数据贡献协议，安全地分享您的健康数据用于AI训练，助力中医智能化研究的进步。</p>
+                        <div class="support-benefits">
+                            <h4>获得回报：</h4>
+                            <ul>
+                                <li>数据贡献荣誉徽章</li>
+                                <li>专病研究报告免费获取</li>
+                                <li>会员服务折扣与延期</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-more">
+                    <h3>更多参与方式</h3>
+                    <div class="support-more-grid">
+                        <div class="support-more-item">
+                            <h4><i class="fas fa-users"></i> 参与社区维护</h4>
+                            <p>参与社区讨论、分享中医健康管理经验、协助其他用户解决问题，成为社区的活跃贡献者。</p>
+                        </div>
+                        <div class="support-more-item">
+                            <h4><i class="fas fa-code"></i> 参与技术研发</h4>
+                            <p>开发者和技术爱好者参与项目的技术研发、算法优化或工具开发，共同推动中医智能化工具的创新。</p>
+                        </div>
+                        <div class="support-more-item">
+                            <h4><i class="fas fa-flask"></i> 参与研究项目</h4>
+                            <p>参与中医健康相关的开放数据集构建与研究项目，探索中医与现代健康管理之间的科学联系。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-cta">
+                    <h3>寻找适合您的参与方式</h3>
+                    <p>无论您选择何种方式支持我们，都将成为中医智能化发展的重要力量。我们欢迎各种创新性的合作方式，共同推动中医文化的传承与创新。</p>
+                    <a href="smart-collab.html" class="btn primary-btn">了解更多参与方式</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Source Section -->
+        <section id="opensource" class="opensource">
+            <div class="section-header">
+                <h2>开源项目</h2>
+                <p>共建开放生态，推动中医数字化创新</p>
+            </div>
+            <div class="opensource-content">
+                <div class="projects-showcase">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>气血模拟引擎</h3>
+                            <p>基于流体力学的气血运行模拟库，可视化展示中医理论中的气血流动规律。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">WebGL</span>
+                                <span class="tech-tag">Physics</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
+                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>中医知识图谱</h3>
+                            <p>构建中医理论与实践的结构化知识库，支持智能查询与推理分析。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Neo4j</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
+                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>健康数据分析SDK</h3>
+                            <p>用于分析和解读健康数据的开发工具包，支持中医理论视角的健康状态评估。</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Swift</span>
+                                <span class="tech-tag">Kotlin</span>
+                                <span class="tech-tag">ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
+                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contribution-guide">
+                    <h3>如何参与贡献</h3>
+                    <p>我们欢迎各种形式的贡献，无论是代码提交、文档完善、问题报告还是创意建议，都能帮助我们构建更好的中医开放生态。</p>
+                    <div class="contribution-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>选择项目</h4>
+                                <p>浏览我们的项目列表，选择您感兴趣或擅长的领域。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>了解规范</h4>
+                                <p>阅读项目文档和贡献指南，熟悉项目结构和开发流程。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>提交贡献</h4>
+                                <p>fork项目仓库，提交您的代码或文档改进，创建pull request。</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>加入讨论</h4>
+                                <p>参与项目讨论，分享您的想法，与其他贡献者交流协作。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn primary-btn">贡献者指南</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Center Section -->
+        <section id="help" class="help">
+            <div class="section-header">
+                <h2>帮助中心</h2>
+                <p>常见问题解答与支持服务</p>
+            </div>
+            <div class="help-content">
+                <div class="faq-section">
+                    <h3>常见问题</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>什么是中医复兴社区？</h4>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>中医复兴社区是一个致力于将传统中医与现代科技相结合的开放生态平台，我们提供游戏、工具应用、模拟器等多种产品与服务，旨在传播中医文化，促进中医现代化发展。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>如何开始使用气血管理APP？</h4>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>您可以从应用商店下载气血管理APP，注册账号后，按照引导完成个人信息设置，系统会基于您的信息提供个性化的健康管理建议。详细使用指南可在APP内的"帮助"部分查看。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>中医模拟器适合什么人群使用？</h4>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>中医模拟器适合各类对中医感兴趣的人群，包括中医爱好者、学生、教育工作者以及希望了解中医基础理论的普通大众。模拟器设计直观易懂，无需专业背景也能轻松使用。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>如何参与开源项目开发？</h4>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>您可以访问我们的GitHub组织页面，浏览感兴趣的项目，阅读贡献指南，然后通过提交issues或pull requests参与开发。我们也欢迎您加入开发者社区，与其他开发者交流讨论。</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h4>社区活动如何参与？</h4>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>您可以在官网的"社区"和"新闻与活动"部分查看最新活动信息，点击相应活动的报名链接进行参与。注册成为会员后，还可以收到活动邀请和提醒。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="support-contact">
+                    <h3>联系我们</h3>
+                    <p>如果您有任何问题、建议或合作意向，欢迎通过以下方式联系我们，我们将尽快回复。</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f88b8d8888978a8cb88c9b958a9d8e918e9994d6978a9f">[email&#160;protected]</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-weixin"></i></div>
+                            <p>微信公众号：中医复兴</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-comments"></i></div>
+                            <p>社区论坛：forum.tcmrevival.org</p>
+                        </div>
+                    </div>
+                    <div class="feedback-form">
+                        <h4>反馈与建议</h4>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">姓名</label>
+                                <input type="text" id="name" name="name" placeholder="您的姓名">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">邮箱</label>
+                                <input type="email" id="email" name="email" placeholder="您的邮箱地址">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">留言</label>
+                                <textarea id="message" name="message" placeholder="请输入您的反馈或建议"></textarea>
+                            </div>
+                            <button type="submit" class="btn primary-btn">提交反馈</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7"/>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>中医复兴</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#about">我们的故事</a></li>
+                        <li><a href="#about">团队介绍</a></li>
+                        <li><a href="#values">价值观与愿景</a></li>
+                        <li><a href="#join">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>产品与服务</h4>
+                    <ul>
+                        <li><a href="smart-ring.html">脉康宝智能戒指</a></li>
+                        <li><a href="smart-ring.html#preorder">预购特惠</a></li>
+                        <li><a href="smart-collab.html">智能中医共创圈</a></li>
+                        <li><a href="smart-collab.html#join-us">共创圈参与方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>社区参与</h4>
+                    <ul>
+                        <li><a href="#community">学习交流</a></li>
+                        <li><a href="#news">新闻活动</a></li>
+                        <li><a href="#support">支持我们</a></li>
+                        <li><a href="#opensource">开源项目</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>探索体验</h4>
+                    <ul>
+                        <li><a href="#games">游戏与娱乐</a></li>
+                        <li><a href="#tools">工具与应用</a></li>
+                        <li><a href="#simulators">模拟与开放数据</a></li>
+                        <li><a href="#help">常见问题</a></li>
+                        <li><a href="#help">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Tech Partners -->
-    <div class="partner-category" style="margin-top: 3rem;">
-      <h3 style="color: var(--primary); margin-bottom: 2rem;">科技企业</h3>
-      <div class="partner-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <path d="M30,50 Q50,30 70,50" fill="none" stroke="var(--accent)" stroke-width="2">
-              <animate attributeName="d" 
-                values="M30,50 Q50,30 70,50; M30,50 Q50,70 70,50; M30,50 Q50,30 70,50"
-                dur="3s" repeatCount="indefinite"/>
-            </path>
-            <text x="50" y="70" text-anchor="middle" fill="var(--accent)" font-size="12">智能科技</text>
-          </svg>
-          <h4>智慧健康科技</h4>
-          <p style="color: #666; font-size: 0.9rem;">AI健康管理解决方案提供商</p>
+        <div class="footer-bottom">
+            <p>&copy; 2023 中医复兴开放生态社区 版权所有</p>
         </div>
-        
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <rect x="35" y="35" width="30" height="30" fill="none" stroke="var(--primary)" stroke-width="2">
-              <animate attributeName="transform" attributeType="XML"
-                type="rotate"
-                from="0 50 50"
-                to="360 50 50"
-                dur="5s"
-                repeatCount="indefinite"/>
-            </rect>
-            <text x="50" y="70" text-anchor="middle" fill="var(--primary)" font-size="12">数据科技</text>
-          </svg>
-          <h4>数据智能公司</h4>
-          <p style="color: #666; font-size: 0.9rem;">大数据分析与应用服务商</p>
+    </footer>
+
+    <div id="ringPreorderModal" class="preorder-modal">
+        <div class="preorder-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="preorder-header">
+                <h2>脉康宝预售即将开启</h2>
+                <p>全球首款中医智能健康管理戒指</p>
+            </div>
+            <div class="preorder-form">
+                <p>留下您的邮箱，获取预售特惠通知</p>
+                <div class="preorder-input-group">
+                    <input type="email" placeholder="您的邮箱地址" required>
+                    <button type="submit" class="primary-btn">获取预售通知</button>
+                </div>
+                <p class="preorder-small">预计发货时间：2023年12月</p>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- Research Partners -->
-    <div class="partner-category" style="margin-top: 3rem;">
-      <h3 style="color: var(--primary); margin-bottom: 2rem;">研究机构</h3>
-      <div class="partner-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <path d="M20,70 L50,30 L80,70" fill="none" stroke="var(--secondary)" stroke-width="2"/>
-            <text x="50" y="85" text-anchor="middle" fill="var(--secondary)" font-size="12">研究院</text>
-          </svg>
-          <h4>中医药研究院</h4>
-          <p style="color: #666; font-size: 0.9rem;">专注中医药现代化研究</p>
-        </div>
-        
-        <div class="partner-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center;">
-          <svg viewBox="0 0 100 100" width="80" height="80" style="margin-bottom: 1rem;">
-            <circle cx="50" cy="50" r="25" fill="none" stroke="var(--accent)" stroke-width="2">
-              <animate attributeName="r" values="25;30;25" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <text x="50" y="85" text-anchor="middle" fill="var(--accent)" font-size="12">创新中心</text>
-          </svg>
-          <h4>健康创新中心</h4>
-          <p style="color: #666; font-size: 0.9rem;">数字健康创新研究</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="collaborations" style="padding: 4rem 2rem; background: linear-gradient(45deg, var(--bg), white);">
-  <h2 style="text-align: center; margin-bottom: 3rem;">研究合作</h2>
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <div class="collab-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>高校合作</h3>
-        <p>与各大医科大学合作开展中医现代化研究，推进理论创新与实践应用。</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 中医理论研究</li>
-          <li>• 临床实践验证</li>
-          <li>• 人才培养项目</li>
-        </ul>
-      </div>
-      
-      <div class="collab-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>企业合作</h3>
-        <p>与科技企业合作开发创新产品，推动中医数字化转型。</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 智能硬件研发</li>
-          <li>• 数字平台建设</li>
-          <li>• 商业模式创新</li>
-        </ul>
-      </div>
-      
-      <div class="collab-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <h3>国际合作</h3>
-        <p>开展国际交流与合作，促进中医文化全球传播。</p>
-        <ul style="list-style: none; margin-top: 1rem;">
-          <li>• 学术交流</li>
-          <li>• 联合研究</li>
-          <li>• 文化推广</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="events-calendar" style="padding: 4rem 2rem; background: white;">
-  <h2 style="text-align: center; margin-bottom: 3rem;">近期活动</h2>
-  <div id="events-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-  </div>
-</section>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-column">
-      <h3>关于我们</h3>
-      <ul>
-        <li><a href="https://heytcm.com/about">我们的故事</a></li>
-        <li><a href="https://heytcm.com/team">团队介绍</a></li>
-        <li><a href="https://heytcm.com/contact">联系我们</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>资源</h3>
-      <ul>
-        <li><a href="https://heytcm.com/docs">开发文档</a></li>
-        <li><a href="https://heytcm.com/api">API</a></li>
-        <li><a href="https://heytcm.com/downloads">下载中心</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>社区</h3>
-      <ul>
-        <li><a href="https://heytcm.com/forum">论坛</a></li>
-        <li><a href="https://heytcm.com/events">活动</a></li>
-        <li><a href="https://heytcm.com/contribute">如何贡献</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
-
-<script>
-// 动态生成气流动画
-function createQiFlow() {
-  const qiFlow = document.querySelector('.qi-flow');
-  const numParticles = 20;
-  
-  for(let i = 0; i < numParticles; i++) {
-    const particle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    particle.setAttribute("r", "3");
-    particle.setAttribute("fill", "var(--accent)");
-    particle.setAttribute("filter", "url(#glow)");
-    
-    const animateX = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-    animateX.setAttribute("attributeName", "cx");
-    animateX.setAttribute("from", "0");
-    animateX.setAttribute("to", "1000");
-    animateX.setAttribute("dur", "5s");
-    animateX.setAttribute("repeatCount", "indefinite");
-    animateX.setAttribute("begin", `${i * 0.2}s`);
-    
-    const animateY = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-    animateY.setAttribute("attributeName", "cy");
-    animateY.setAttribute("values", "500;400;500;600;500");
-    animateY.setAttribute("dur", "5s");
-    animateY.setAttribute("repeatCount", "indefinite");
-    animateY.setAttribute("begin", `${i * 0.2}s`);
-    
-    particle.appendChild(animateX);
-    particle.appendChild(animateY);
-    qiFlow.appendChild(particle);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', createQiFlow);
-
-// 页面滚动效果
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 50) {
-    nav.style.background = 'rgba(255,255,255,0.95)';
-  } else {
-    nav.style.background = 'rgba(255,255,255,0.8)';
-  }
-});
-
-// 异步加载社区动态
-async function loadCommunityUpdates() {
-  try {
-    const response = await fetch('/api/ai_completion', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        prompt: `生成3条最新的社区动态更新。
-        
-        <typescript-interface>
-        interface Update {
-          title: string;
-          description: string;
-          date: string;
-        }
-        interface Response {
-          updates: Update[];
-        }
-        </typescript-interface>
-        
-        <example>
-        {
-          "updates": [
-            {
-              "title": "新游戏发布：《气血养成记》",
-              "description": "通过游戏化方式学习中医养生知识",
-              "date": "2024-03-15"
-            }
-          ]
-        }
-        </example>`,
-        data: "中医复兴社区"
-      })
-    });
-    
-    const data = await response.json();
-    updateCommunitySection(data.updates);
-  } catch (error) {
-    console.error('Error loading updates:', error);
-  }
-}
-
-function updateCommunitySection(updates) {
-  const section = document.createElement('section');
-  section.className = 'community-updates';
-  section.innerHTML = `
-    <h2>社区动态</h2>
-    ${updates.map(update => `
-      <div class="update-card">
-        <h4>${update.title}</h4>
-        <p>${update.description}</p>
-        <small>${update.date}</small>
-      </div>
-    `).join('')}
-  `;
-  
-  document.querySelector('.features').after(section);
-}
-
-loadCommunityUpdates();
-
-// 数字增长动画
-function animateNumbers() {
-  const stats = document.querySelectorAll('.stat-number');
-  stats.forEach(stat => {
-    const target = parseInt(stat.innerText);
-    let current = 0;
-    const increment = target / 100;
-    const duration = 2000; // 2 seconds
-    const interval = duration / 100;
-    
-    const counter = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        stat.innerText = target.toString() + '+';
-        clearInterval(counter);
-      } else {
-        stat.innerText = Math.floor(current).toString() + '+';
-      }
-    }, interval);
-  });
-}
-
-// Intersection Observer for stats animation
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateNumbers();
-      observer.unobserve(entry.target);
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const statsSection = document.querySelector('.stats-section');
-  if (statsSection) {
-    observer.observe(statsSection);
-  }
-  
-  const partnerSection = document.querySelector('.partners-section');
-  if (partnerSection) {
-    observer.observe(partnerSection);
-    animatePartnerLogos();
-  }
-  
-  loadUpcomingEvents();
-  
-  const cards = document.querySelectorAll('.collab-card');
-  const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.style.opacity = '1';
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-  
-  cards.forEach(card => {
-    card.style.transform = 'translateY(20px)';
-    card.style.opacity = '0';
-    card.style.transition = 'all 0.5s ease';
-    observer2.observe(card);
-  });
-});
-
-function animatePartnerLogos() {
-  const logos = document.querySelectorAll('.partner-logo');
-  logos.forEach((logo, index) => {
-    logo.style.opacity = '0';
-    logo.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-      logo.style.transition = 'all 0.5s ease';
-      logo.style.opacity = '1';
-      logo.style.transform = 'translateY(0)';
-    }, index * 200);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Keep existing initialization code
-  
-  initCategoryCards();
-});
-
-function initCategoryCards() {
-  const cards = document.querySelectorAll('.category-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.style.opacity = '1';
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  cards.forEach(card => {
-    card.style.transform = 'translateY(20px)';
-    card.style.opacity = '0';
-    card.style.transition = 'all 0.5s ease';
-    observer.observe(card);
-  });
-}
-
-function initPartnerCategories() {
-  const categories = document.querySelectorAll('.partner-category');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  categories.forEach(category => {
-    observer.observe(category);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initPartnerCategories();
-});
-
-function initResearchCards() {
-  const cards = document.querySelectorAll('.research-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.style.opacity = '1';
-        // Animate progress bars
-        const progressBar = entry.target.querySelector('.progress-bar > div');
-        if (progressBar) {
-          progressBar.style.width = progressBar.getAttribute('style').match(/width:\s*(\d+)%/)[1] + '%';
-        }
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  cards.forEach(card => {
-    card.style.transform = 'translateY(20px)';
-    card.style.opacity = '0';
-    card.style.transition = 'all 0.5s ease';
-    observer.observe(card);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initResearchCards();
-  
-  // Add hover effects for practice cards
-  const practiceCards = document.querySelectorAll('.practice-card');
-  practiceCards.forEach(card => {
-    card.addEventListener('mouseover', () => {
-      card.style.transform = 'translateY(-5px)';
-      card.style.transition = 'all 0.3s ease';
-    });
-    
-    card.addEventListener('mouseout', () => {
-      card.style.transform = 'translateY(0)';
-    });
-  });
-});
-
-function createYinYangDemo() {
-  const demo = document.getElementById('yinyang-demo');
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 400 400");
-  svg.style.width = "100%";
-  svg.style.height = "100%";
-  
-  // Create yin-yang symbol
-  const yinyang = document.createElementNS("http://www.w3.org/2000/svg", "g");
-  yinyang.innerHTML = `
-    <circle cx="200" cy="200" r="100" fill="white" stroke="black" stroke-width="2"/>
-    <path d="M200,100 a100,100 0 0,1 0,200 a50,50 0 0,1 0,-100 a50,50 0 0,0 0,-100" fill="black"/>
-    <circle cx="200" cy="150" r="10" fill="black"/>
-    <circle cx="200" cy="250" r="10" fill="white"/>
-  `;
-  
-  // Add rotation animation
-  yinyang.style.transformOrigin = "200px 200px";
-  yinyang.style.animation = "rotate 10s linear infinite";
-  
-  svg.appendChild(yinyang);
-  demo.appendChild(svg);
-  
-  // Add interaction
-  svg.addEventListener('click', () => {
-    yinyang.style.animationPlayState = yinyang.style.animationPlayState === 'paused' ? 'running' : 'paused';
-  });
-}
-
-function createQiXueDemo() {
-  const demo = document.getElementById('qixue-demo');
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 400 400");
-  svg.style.width = "100%";
-  svg.style.height = "100%";
-  
-  // Create qi and blood flow paths
-  const qiPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  qiPath.setAttribute("d", "M50,200 C100,100 300,300 350,200");
-  qiPath.setAttribute("fill", "none");
-  qiPath.setAttribute("stroke", "red");
-  qiPath.setAttribute("stroke-width", "3");
-  qiPath.setAttribute("stroke-dasharray", "10,5");
-  
-  const bloodPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  bloodPath.setAttribute("d", "M50,220 C100,320 300,120 350,220");
-  bloodPath.setAttribute("fill", "none");
-  bloodPath.setAttribute("stroke", "darkred");
-  bloodPath.setAttribute("stroke-width", "4");
-  
-  // Add flow animation
-  const qiAnimation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-  qiAnimation.setAttribute("attributeName", "stroke-dashoffset");
-  qiAnimation.setAttribute("from", "0");
-  qiAnimation.setAttribute("to", "100");
-  qiAnimation.setAttribute("dur", "3s");
-  qiAnimation.setAttribute("repeatCount", "indefinite");
-  
-  qiPath.appendChild(qiAnimation);
-  svg.appendChild(qiPath);
-  svg.appendChild(bloodPath);
-  demo.appendChild(svg);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  createYinYangDemo();
-  createQiXueDemo();
-  createWuxingDemo(); // Keep existing wuxing demo
-});
-
-function createWuxingDemo() {
-  const demo = document.getElementById('wuxing-demo');
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 400 400");
-  svg.style.width = "100%";
-  svg.style.height = "100%";
-  
-  const elements = [
-    {name: "木", color: "#4CAF50", x: 200, y: 50},
-    {name: "火", color: "#F44336", x: 350, y: 150},
-    {name: "土", color: "#795548", x: 200, y: 200},
-    {name: "金", color: "#FFD700", x: 50, y: 150},
-    {name: "水", color: "#2196F3", x: 200, y: 350}
-  ];
-  
-  // Add connection lines with animations
-  elements.forEach((el, i) => {
-    const next = elements[(i + 1) % elements.length];
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", el.x);
-    line.setAttribute("y1", el.y);
-    line.setAttribute("x2", next.x);
-    line.setAttribute("y2", next.y);
-    line.setAttribute("stroke", "rgba(0,0,0,0.2)");
-    line.setAttribute("stroke-width", "2");
-    line.setAttribute("stroke-dasharray", "5,5");
-    
-    const animation = document.createElementNS("http://www.w3.org/2000/svg", "animate");
-    animation.setAttribute("attributeName", "stroke-dashoffset");
-    animation.setAttribute("from", "0");
-    animation.setAttribute("to", "100");
-    animation.setAttribute("dur", "2s");
-    animation.setAttribute("repeatCount", "indefinite");
-    
-    line.appendChild(animation);
-    svg.appendChild(line);
-  });
-  
-  // Add element circles with enhanced interactions
-  elements.forEach(el => {
-    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", el.x);
-    circle.setAttribute("cy", el.y);
-    circle.setAttribute("r", "30");
-    circle.setAttribute("fill", el.color);
-    
-    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    text.setAttribute("x", el.x);
-    text.setAttribute("y", el.y + 8);
-    text.setAttribute("text-anchor", "middle");
-    text.setAttribute("fill", "white");
-    text.setAttribute("font-size", "24");
-    text.textContent = el.name;
-    
-    g.appendChild(circle);
-    g.appendChild(text);
-    
-    // Add hover and click interactions
-    g.addEventListener('mouseover', () => {
-      circle.setAttribute("r", "35");
-      circle.style.transition = "all 0.3s ease";
-      circle.style.filter = "brightness(1.2)";
-    });
-    
-    g.addEventListener('mouseout', () => {
-      circle.setAttribute("r", "30");
-      circle.style.filter = "none";
-    });
-    
-    g.addEventListener('click', () => {
-      highlightRelationships(el.name, elements, svg);
-    });
-    
-    svg.appendChild(g);
-  });
-  
-  demo.appendChild(svg);
-}
-
-function highlightRelationships(element, elements, svg) {
-  // Reset all elements
-  svg.querySelectorAll('circle').forEach(circle => {
-    circle.style.filter = "none";
-    circle.style.transform = "scale(1)";
-  });
-  
-  // Highlight selected element and its relationships
-  const relationships = {
-    "木": {generates: "火", controls: "土"},
-    "火": {generates: "土", controls: "金"},
-    "土": {generates: "金", controls: "水"},
-    "金": {generates: "水", controls: "木"},
-    "水": {generates: "木", controls: "火"}
-  };
-  
-  const selected = relationships[element];
-  if (selected) {
-    svg.querySelectorAll('circle').forEach(circle => {
-      const text = circle.nextSibling.textContent;
-      if (text === element) {
-        circle.style.transform = "scale(1.2)";
-        circle.style.filter = "brightness(1.2)";
-      } else if (text === selected.generates) {
-        circle.style.filter = "brightness(1.1) sepia(0.3)";
-      } else if (text === selected.controls) {
-        circle.style.filter = "brightness(0.9) hue-rotate(15deg)";
-      }
-    });
-  }
-}
-
-function initSideMenu() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const sideMenu = document.querySelector('.side-menu');
-  const body = document.body;
-
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('open');
-    sideMenu.classList.toggle('open');
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!sideMenu.contains(e.target) && 
-        !menuToggle.contains(e.target) && 
-        sideMenu.classList.contains('open')) {
-      sideMenu.classList.remove('open');
-      menuToggle.classList.remove('open');
-    }
-  });
-
-  // Close menu when pressing escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sideMenu.classList.contains('open')) {
-      sideMenu.classList.remove('open');
-      menuToggle.classList.remove('open');
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initSideMenu();
-});
-
-async function loadUpcomingEvents() {
-  try {
-    const response = await fetch('/api/ai_completion', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        prompt: `生成3个即将举行的社区活动。
-
-        <typescript-interface>
-        interface Event {
-          title: string;
-          date: string;
-          location: string;
-          description: string;
-          type: "online" | "offline";
-        }
-        interface Response {
-          events: Event[];
-        }
-        </typescript-interface>
-
-        <example>
-        {
-          "events": [
-            {
-              "title": "中医数字化创新论坛",
-              "date": "2024-04-01",
-              "location": "线上直播",
-              "description": "探讨中医与现代技术的融合发展",
-              "type": "online"
-            }
-          ]
-        }
-        </example>`,
-        data: "upcoming community events"
-      })
-    });
-
-    const data = await response.json();
-    updateEventsCalendar(data.events);
-  } catch (error) {
-    console.error('Error loading events:', error);
-  }
-}
-
-function updateEventsCalendar(events) {
-  const eventsGrid = document.getElementById('events-grid');
-  events.forEach(event => {
-    const eventCard = document.createElement('div');
-    eventCard.className = 'event-card';
-    eventCard.style.cssText = `
-      background: var(--bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    `;
-    
-    eventCard.innerHTML = `
-      <h3 style="color: var(--primary); margin-bottom: 1rem;">${event.title}</h3>
-      <p style="margin-bottom: 0.5rem;">${event.date}</p>
-      <p style="margin-bottom: 0.5rem;">${event.location}</p>
-      <p style="margin-bottom: 1rem;">${event.description}</p>
-      <span class="event-type" style="
-        display: inline-block;
-        padding: 0.25rem 1rem;
-        border-radius: 20px;
-        background: ${event.type === 'online' ? 'var(--secondary)' : 'var(--accent)'};
-        color: white;
-        font-size: 0.9rem;
-      ">${event.type === 'online' ? '线上活动' : '线下活动'}</span>
-    `;
-    
-    eventCard.addEventListener('mouseover', () => {
-      eventCard.style.transform = 'translateY(-5px)';
-    });
-    
-    eventCard.addEventListener('mouseout', () => {
-      eventCard.style.transform = 'translateY(0)';
-    });
-    
-    eventsGrid.appendChild(eventCard);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadUpcomingEvents();
-});
-</script>
-</body></html>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+</body>
+</html>
