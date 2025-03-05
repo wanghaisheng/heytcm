@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中医复兴 - 贡献榜</title>
+    <title>heyTCM - 贡献榜</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -94,6 +94,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .wall-face {
@@ -127,6 +128,7 @@
             box-shadow: var(--shadow-card);
             padding: 2rem;
             position: relative;
+            margin-top: 3rem;
         }
 
         .map-legend {
@@ -148,6 +150,122 @@
             border-radius: 50%;
         }
 
+        .contribution-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .time-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-filter-btn {
+            padding: 0.5rem 1rem;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .time-filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .contribution-details {
+            flex: 1;
+        }
+
+        .contribution-details h4 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .badge-gold {
+            background-color: #FFD700;
+            color: white;
+        }
+
+        .badge-silver {
+            background-color: #C0C0C0;
+            color: white;
+        }
+
+        .badge-bronze {
+            background-color: #CD7F32;
+            color: white;
+        }
+
+        .contribution-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .score-bar {
+            flex: 1;
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 4px;
+        }
+
+        .contribution-tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background-color: rgba(140, 82, 255, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -166,7 +284,7 @@
                     <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
                     <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
                 </svg>
-                <span>中医复兴</span>
+                <span>heyTCM</span>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -190,6 +308,32 @@
                 <p>感谢所有为中医智能化发展做出贡献的朋友们</p>
             </div>
 
+            <div class="contribution-stats">
+                <div class="stat-card">
+                    <div class="stat-number">1,248</div>
+                    <div class="stat-label">活跃贡献者</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">125,683</div>
+                    <div class="stat-label">数据贡献量</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">34</div>
+                    <div class="stat-label">技术创新项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">¥268,935</div>
+                    <div class="stat-label">社区资金支持</div>
+                </div>
+            </div>
+
+            <div class="time-filter">
+                <button class="time-filter-btn active">全部时间</button>
+                <button class="time-filter-btn">本月</button>
+                <button class="time-filter-btn">本周</button>
+                <button class="time-filter-btn">今日</button>
+            </div>
+
             <div class="leaderboard-tabs">
                 <button class="leaderboard-tab active" data-tab="data-contribution">
                     <i class="fas fa-database"></i>数据贡献榜
@@ -207,42 +351,52 @@
 
             <div id="data-contribution" class="leaderboard-content active contribution-list">
                 <h3>数据贡献榜</h3>
-                <!-- Dynamic Data Contribution List -->
+                <p>这些用户通过分享健康数据，帮助我们不断完善中医智能化算法，推动研究进展</p>
+                <!-- Dynamic Data Contribution List will be populated by JS -->
             </div>
 
             <div id="tech-contribution" class="leaderboard-content contribution-list">
                 <h3>技术贡献榜</h3>
-                <!-- Dynamic Tech Contribution List -->
+                <p>这些开发者通过代码贡献、算法优化和技术创新，为中医智能化项目提供了强大的技术支持</p>
+                <!-- Dynamic Tech Contribution List will be populated by JS -->
             </div>
 
             <div id="community-contribution" class="leaderboard-content contribution-list">
                 <h3>社区贡献榜</h3>
-                <!-- Dynamic Community Contribution List -->
+                <p>这些社区活跃成员通过内容创作、知识分享和社区管理，帮助构建了活跃、温暖的中医爱好者社区</p>
+                <!-- Dynamic Community Contribution List will be populated by JS -->
             </div>
 
             <div id="financial-contribution" class="leaderboard-content contribution-list">
                 <h3>资金贡献榜</h3>
-                <!-- Dynamic Financial Contribution List -->
+                <p>这些支持者通过资金捐助，帮助我们持续推进中医智能化研究和社区建设</p>
+                <!-- Dynamic Financial Contribution List will be populated by JS -->
             </div>
 
+            <div class="section-header">
+                <h2>荣誉墙</h2>
+                <p>致敬为中医智能化发展做出突出贡献的朋友们</p>
+            </div>
+            
             <section id="wall-of-faces" class="wall-of-faces">
-                <div class="section-header">
-                    <h2>荣誉墙</h2>
-                    <p>致敬为中医智能化发展做出突出贡献的朋友们</p>
-                </div>
-                <!-- Dynamic Wall of Faces -->
+                <!-- Dynamic Wall of Faces will be populated by JS -->
             </section>
 
+            <div class="section-header">
+                <h2>贡献地图</h2>
+                <p>全国各地区参与中医智能化的热力图</p>
+            </div>
+
             <section id="contribution-map" class="contribution-map">
-                <div class="section-header">
-                    <h2>贡献地图</h2>
-                    <p>全国各地区参与中医智能化的热力图</p>
-                </div>
                 <div id="china-map"></div>
                 <div class="map-legend">
                     <div class="map-legend-item">
                         <div class="map-legend-color" style="background: linear-gradient(to right, #e0f3f8, #4682B4)"></div>
                         <span>参与度</span>
+                    </div>
+                    <div class="map-legend-item">
+                        <div class="map-legend-color" style="background: linear-gradient(to right, #f8e0e0, #ff4500)"></div>
+                        <span>增长速度</span>
                     </div>
                 </div>
             </section>
@@ -258,13 +412,13 @@
                     <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
                     <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
                 </svg>
-                <span>中医复兴</span>
+                <span>heyTCM</span>
             </div>
             <div class="footer-links">
                 <div class="footer-section">
                     <h4>关于我们</h4>
                     <ul>
-                        <li><a href="index.html#about">我们的故事</a></li>
+                        <li><a href="index.html">我们的故事</a></li>
                         <li><a href="index.html#about">团队介绍</a></li>
                         <li><a href="index.html#values">价值观与愿景</a></li>
                         <li><a href="index.html#join">加入我们</a></li>
@@ -302,16 +456,18 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 中医复兴开放生态社区 版权所有</p>
+            <p>&copy; 2023 heyTCM开放生态社区 版权所有</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.leaderboard-tab');
             const contents = document.querySelectorAll('.leaderboard-content');
+            const timeFilters = document.querySelectorAll('.time-filter-btn');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -324,112 +480,408 @@
                 });
             });
 
-            // China Map Visualization
-            const mapChart = echarts.init(document.getElementById('china-map'));
-            
-            // Mock data for provinces
-            const provinceData = [
-                {name: '北京', value: 150},
-                {name: '上海', value: 200},
-                {name: '广东', value: 350},
-                {name: '浙江', value: 250},
-                {name: '四川', value: 100},
-                // Add more provinces
+            timeFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    timeFilters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    refreshLeaderboards(this.textContent.trim());
+                });
+            });
+
+            // JSON data for leaderboards
+            const leaderboardData = {
+                "全部时间": {
+                    "data-contribution": [
+                        {
+                            name: '张三', 
+                            contribution: 1024, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'gold',
+                            tags: ['持续贡献', '数据质量高'],
+                            description: '提供了1000+高质量脉搏波数据'
+                        },
+                        {
+                            name: '李四', 
+                            contribution: 768, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'silver',
+                            tags: ['持续贡献'],
+                            description: '提供了700+高质量脉搏波数据'
+                        },
+                        {
+                            name: '王五', 
+                            contribution: 512, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'bronze',
+                            tags: ['新星贡献者'],
+                            description: '提供了500+高质量脉搏波数据'
+                        },
+                        {
+                            name: '赵六', 
+                            contribution: 256, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['持续增长'],
+                            description: '提供了250+高质量脉搏波数据'
+                        },
+                        {
+                            name: '钱七', 
+                            contribution: 128, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['稳定贡献'],
+                            description: '提供了120+高质量脉搏波数据'
+                        }
+                    ],
+                    "tech-contribution": [
+                        {
+                            name: '张三', 
+                            contribution: 1024, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'gold',
+                            tags: ['持续贡献', '核心开发'],
+                            description: '优化了脉搏波分析算法'
+                        },
+                        {
+                            name: '李四', 
+                            contribution: 768, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'silver',
+                            tags: ['持续贡献'],
+                            description: '贡献了五行分析模块'
+                        },
+                        {
+                            name: '王五', 
+                            contribution: 512, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'bronze',
+                            tags: ['新星贡献者'],
+                            description: '修复了10+关键Bug'
+                        },
+                        {
+                            name: '赵六', 
+                            contribution: 256, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['持续增长'],
+                            description: '完善了文档系统'
+                        },
+                        {
+                            name: '钱七', 
+                            contribution: 128, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['稳定贡献'],
+                            description: '开发了UI组件'
+                        }
+                    ],
+                    "community-contribution": [
+                        {
+                            name: '张三', 
+                            contribution: 1024, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'gold',
+                            tags: ['持续贡献', '内容创作'],
+                            description: '创建了20+优质教程'
+                        },
+                        {
+                            name: '李四', 
+                            contribution: 768, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'silver',
+                            tags: ['持续贡献'],
+                            description: '回答了100+用户问题'
+                        },
+                        {
+                            name: '王五', 
+                            contribution: 512, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'bronze',
+                            tags: ['新星贡献者'],
+                            description: '组织了5场线下活动'
+                        },
+                        {
+                            name: '赵六', 
+                            contribution: 256, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['持续增长'],
+                            description: '创建了5+优质教程'
+                        },
+                        {
+                            name: '钱七', 
+                            contribution: 128, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['稳定贡献'],
+                            description: '分享了10+经验帖'
+                        }
+                    ],
+                    "financial-contribution": [
+                        {
+                            name: '张三', 
+                            contribution: 1024, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'gold',
+                            tags: ['持续贡献', '重要赞助'],
+                            description: '累计捐赠超过1万元'
+                        },
+                        {
+                            name: '李四', 
+                            contribution: 768, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'silver',
+                            tags: ['持续贡献'],
+                            description: '累计捐赠超过5000元'
+                        },
+                        {
+                            name: '王五', 
+                            contribution: 512, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'bronze',
+                            tags: ['新星贡献者'],
+                            description: '累计捐赠超过3000元'
+                        },
+                        {
+                            name: '赵六', 
+                            contribution: 256, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['持续增长'],
+                            description: '累计捐赠超过1000元'
+                        },
+                        {
+                            name: '钱七', 
+                            contribution: 128, 
+                            avatar: 'https://via.placeholder.com/150', 
+                            type: 'normal',
+                            tags: ['稳定贡献'],
+                            description: '累计捐赠超过500元'
+                        }
+                    ]
+                },
+                "本月": {
+                    "data-contribution": [],
+                    "tech-contribution": [],
+                    "community-contribution": [],
+                    "financial-contribution": []
+                },
+                "本周": {
+                    "data-contribution": [],
+                    "tech-contribution": [],
+                    "community-contribution": [],
+                    "financial-contribution": []
+                },
+                "今日": {
+                    "data-contribution": [],
+                    "tech-contribution": [],
+                    "community-contribution": [],
+                    "financial-contribution": []
+                }
+            };
+
+            // Generate data for other time periods
+            ['本月', '本周', '今日'].forEach(period => {
+                Object.keys(leaderboardData['全部时间']).forEach(category => {
+                    leaderboardData[period][category] = leaderboardData['全部时间'][category].map(item => {
+                        const factor = period === '本月' ? 0.4 : period === '本周' ? 0.1 : 0.01;
+                        return {
+                            ...item,
+                            contribution: Math.floor(item.contribution * factor)
+                        };
+                    });
+                });
+            });
+
+            // JSON data for wall of faces
+            const wallOfFacesData = [
+                {name: '张明', avatar: 'https://via.placeholder.com/150', description: '数据科学家', contribution: '贡献了核心算法'},
+                {name: '李雅', avatar: 'https://via.placeholder.com/150', description: '中医研究者', contribution: '提供了专业知识支持'},
+                {name: '王强', avatar: 'https://via.placeholder.com/150', description: '技术开发者', contribution: '开发了多个关键模块'},
+                {name: '赵芳', avatar: 'https://via.placeholder.com/150', description: '社区管理员', contribution: '组织了20+社区活动'},
+                {name: '钱宇', avatar: 'https://via.placeholder.com/150', description: '内容创作者', contribution: '创作了30+优质教程'},
+                {name: '孙亮', avatar: 'https://via.placeholder.com/150', description: '资深中医师', contribution: '验证了多个研究成果'},
+                {name: '周婷', avatar: 'https://via.placeholder.com/150', description: '产品经理', contribution: '设计了用户体验流程'},
+                {name: '吴杰', avatar: 'https://via.placeholder.com/150', description: '前端工程师', contribution: '优化了界面交互体验'}
             ];
 
-            const option = {
-                title: {
-                    text: '中医智能化贡献热力图',
-                    left: 'center'
-                },
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{b}: {c}人'
-                },
-                visualMap: {
-                    min: 0,
-                    max: 400,
-                    left: 'left',
-                    top: 'bottom',
-                    text: ['高', '低'],
-                    inRange: {
-                        color: ['#e0f3f8', '#4682B4', '#8C52FF']
+            // JSON data for contribution map
+            const provinceData = [
+                {name: '北京', value: 150, growth: 15},
+                {name: '上海', value: 200, growth: 22},
+                {name: '广东', value: 350, growth: 30},
+                {name: '浙江', value: 250, growth: 18},
+                {name: '四川', value: 100, growth: 12},
+                {name: '江苏', value: 180, growth: 20},
+                {name: '山东', value: 160, growth: 15},
+                {name: '湖北', value: 120, growth: 10},
+                {name: '福建', value: 90, growth: 8},
+                {name: '河南', value: 110, growth: 11},
+                {name: '湖南', value: 95, growth: 9},
+                {name: '安徽', value: 85, growth: 8},
+                {name: '陕西', value: 75, growth: 7},
+                {name: '重庆', value: 95, growth: 9},
+                {name: '辽宁', value: 70, growth: 7},
+                {name: '吉林', value: 40, growth: 4},
+                {name: '云南', value: 60, growth: 6},
+                {name: '贵州', value: 50, growth: 5},
+                {name: '广西', value: 80, growth: 8},
+                {name: '河北', value: 90, growth: 9},
+                {name: '山西', value: 45, growth: 4},
+                {name: '江西', value: 65, growth: 6},
+                {name: '海南', value: 30, growth: 3},
+                {name: '黑龙江', value: 35, growth: 3},
+                {name: '内蒙古', value: 25, growth: 2},
+                {name: '新疆', value: 20, growth: 2},
+                {name: '宁夏', value: 15, growth: 1},
+                {name: '甘肃', value: 25, growth: 2},
+                {name: '青海', value: 10, growth: 1},
+                {name: '西藏', value: 5, growth: 0.5},
+                {name: '台湾', value: 40, growth: 4},
+                {name: '香港', value: 60, growth: 6},
+                {name: '澳门', value: 20, growth: 2}
+            ];
+
+            // 加载中国地图数据
+            $.getJSON('https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json', function(geoJson) {
+                echarts.registerMap('china', geoJson);
+                
+                // China Map Visualization
+                const mapChart = echarts.init(document.getElementById('china-map'));
+                
+                const option = {
+                    title: {
+                        text: '中医智能化贡献热力图',
+                        left: 'center'
                     },
-                    calculable: true
-                },
-                series: [{
-                    name: '贡献热力',
-                    type: 'map',
-                    mapType: 'china',
-                    roam: false,
-                    label: {
-                        normal: {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: function(params) {
+                            return params.name + '<br/>参与人数: ' + params.value + '人<br/>月增长率: ' + params.data.growth + '%';
+                        }
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: 400,
+                        left: 'left',
+                        top: 'bottom',
+                        text: ['高', '低'],
+                        inRange: {
+                            color: ['#e0f3f8', '#4682B4', '#8C52FF']
+                        },
+                        calculable: true
+                    },
+                    series: [{
+                        name: '贡献热力',
+                        type: 'map',
+                        map: 'china',
+                        roam: true,
+                        label: {
                             show: true
                         },
                         emphasis: {
-                            show: true
-                        }
-                    },
-                    data: provinceData
-                }]
-            };
+                            label: {
+                                show: true
+                            }
+                        },
+                        data: provinceData
+                    }]
+                };
 
-            mapChart.setOption(option);
-
+                mapChart.setOption(option);
+                
+                // Resize chart when window size changes
+                window.addEventListener('resize', function() {
+                    mapChart.resize();
+                });
+            });
+            
             // Populate Contribution Lists
-            const contributionTypes = [
-                'data-contribution', 
-                'tech-contribution', 
-                'community-contribution',
-                'financial-contribution'
-            ];
+            refreshLeaderboards('全部时间');
 
-            function generateContributionList(type) {
-                const list = document.getElementById(type);
-                const mockData = [
-                    {name: '张三', contribution: 1024, avatar: '', type: 'gold'},
-                    {name: '李四', contribution: 768, avatar: '', type: 'silver'},
-                    {name: '王五', contribution: 512, avatar: '', type: 'bronze'}
+            // Generate Wall of Faces
+            generateWallOfFaces();
+
+            function refreshLeaderboards(timeFilter) {
+                const contributionTypes = [
+                    {id: 'data-contribution', title: '数据贡献'},
+                    {id: 'tech-contribution', title: '技术贡献'},
+                    {id: 'community-contribution', title: '社区贡献'},
+                    {id: 'financial-contribution', title: '资金贡献'}
                 ];
 
-                mockData.forEach((item, index) => {
+                contributionTypes.forEach(type => {
+                    generateContributionList(type.id, type.title, timeFilter);
+                });
+            }
+
+            function generateContributionList(type, title, timeFilter) {
+                const list = document.getElementById(type);
+                // Clear previous content except for the title and description
+                const titleElement = list.querySelector('h3');
+                const descElement = list.querySelector('p');
+                list.innerHTML = '';
+                list.appendChild(titleElement);
+                list.appendChild(descElement);
+
+                const data = leaderboardData[timeFilter][type];
+
+                // Find the maximum contribution for the progress bar
+                const maxContribution = Math.max(...data.map(item => item.contribution));
+
+                data.forEach((item, index) => {
                     const itemEl = document.createElement('div');
                     itemEl.classList.add('contribution-item');
+                    
+                    // Calculate progress bar width percentage
+                    const progressPercentage = (item.contribution / maxContribution) * 100;
+                    
+                    // Generate badge based on ranking
+                    let badge = '';
+                    if (index === 0) {
+                        badge = '<span class="badge badge-gold">1</span>';
+                    } else if (index === 1) {
+                        badge = '<span class="badge badge-silver">2</span>';
+                    } else if (index === 2) {
+                        badge = '<span class="badge badge-bronze">3</span>';
+                    }
+
+                    // Generate tags HTML
+                    const tagsHTML = item.tags.map(tag => `<span class="contribution-tag">${tag}</span>`).join('');
+                    
                     itemEl.innerHTML = `
-                        <div class="contribution-avatar" style="background-image: url('${item.avatar || 'default-avatar.png'}')"></div>
+                        <div class="contribution-avatar" style="background-image: url('${item.avatar || 'https://via.placeholder.com/150'}')"></div>
                         <div class="contribution-details">
-                            <h4>${item.name} ${index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : ''}</h4>
-                            <p>贡献值：${item.contribution}</p>
+                            <h4>${item.name}${badge}</h4>
+                            <div class="contribution-score">
+                                <span>${item.contribution} ${title}值</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: ${progressPercentage}%"></div>
+                                </div>
+                            </div>
+                            <p>${item.description}</p>
+                            <div>${tagsHTML}</div>
                         </div>
                     `;
                     list.appendChild(itemEl);
                 });
             }
 
-            contributionTypes.forEach(generateContributionList);
-
-            // Wall of Faces
             function generateWallOfFaces() {
                 const wallOfFaces = document.getElementById('wall-of-faces');
-                const mockFaces = [
-                    {name: '张明', avatar: '', description: '数据科学家'},
-                    {name: '李雅', avatar: '', description: '中医研究者'},
-                    {name: '王强', avatar: '', description: '技术开发者'}
-                ];
-
-                mockFaces.forEach(face => {
+                
+                wallOfFacesData.forEach(face => {
                     const faceEl = document.createElement('div');
                     faceEl.classList.add('wall-face');
                     faceEl.innerHTML = `
-                        <div class="wall-face-avatar" style="background-image: url('${face.avatar || 'default-avatar.png'}')"></div>
+                        <div class="wall-face-avatar" style="background-image: url('${face.avatar}')"></div>
                         <h4>${face.name}</h4>
                         <p>${face.description}</p>
+                        <p style="color: var(--primary); font-weight: 500;">${face.contribution}</p>
                     `;
                     wallOfFaces.appendChild(faceEl);
                 });
             }
-
-            generateWallOfFaces();
         });
     </script>
 </body>
