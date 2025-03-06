@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源下载中心 - heyTCM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .resources-page {
+            background-color: #f9f9f9;
+            padding: 4rem 0;
+        }
+        
+        .resources-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .resource-header {
+            padding: 1.5rem;
+            background: var(--accent-gradient);
+            color: white;
+        }
+        
+        .resource-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-tag {
+            background-color: rgba(140, 82, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .resource-type-section {
+            margin-bottom: 4rem;
+        }
+        
+        .resource-type-header {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-type-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+        
+        .resource-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-light);
+            background-color: white;
+            color: var(--text-secondary);
+            border-radius: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7">
+                        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite" />
+                    </path>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>heyTCM</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#values">价值观与愿景</a></li>
+                    <li><a href="index.html#games">游戏与娱乐</a></li>
+                    <li><a href="index.html#tools">工具与应用</a></li>
+                    <li><a href="index.html#simulators">开放数据</a></li>
+                    <li><a href="index.html#community">社区</a></li>
+                    <li><a href="index.html#join">加入我们</a></li>
+                    <li><a href="index.html#support">支持我们</a></li>
+                    <li><a href="index.html#opensource">开源项目</a></li>
+                    <li><a href="resources.html" class="active">资源下载</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="resources-page">
+        <div class="resources-container">
+            <div class="section-header">
+                <h2>资源下载中心</h2>
+                <p>免费获取精选的中医健康资源、技术白皮书与自救指南</p>
+            </div>
+            
+            <div class="resource-filters">
+                <div class="filter-group">
+                    <h4>资源类型</h4>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">全部</button>
+                        <button class="filter-btn" data-filter="whitepaper">白皮书</button>
+                        <button class="filter-btn" data-filter="guide">自救指南</button>
+                        <button class="filter-btn" data-filter="tech">技术资料</button>
+                        <button class="filter-btn" data-filter="medicine">中医药方</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>健康主题</h4>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">全部</button>
+                        <button class="filter-btn" data-filter="sleep">睡眠</button>
+                        <button class="filter-btn" data-filter="digestion">消化</button>
+                        <button class="filter-btn" data-filter="skin">皮肤</button>
+                        <button class="filter-btn" data-filter="women">女性健康</button>
+                        <button class="filter-btn" data-filter="stress">压力管理</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-type-section">
+                <div class="resource-type-header">
+                    <div class="resource-type-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>智能设备技术资料</h3>
+                </div>
+                
+                <div class="resource-cards">
+                    <div class="resource-card" data-type="tech">
+                        <div class="resource-header">
+                            <h3>智能戒指品牌对比与选购指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>全面覆盖市场上主流的20+智能戒指品牌，详细对比各品牌的功能、价格、精准度与用户体验。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 25页</span>
+                                <span>更新于：2023-11-15</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">智能戒指</span>
+                                <span class="resource-tag">对比评测</span>
+                                <span class="resource-tag">选购指南</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="tech">
+                        <div class="resource-header">
+                            <h3>智能戒指专利大全</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>收集整理了全球范围内智能戒指相关的300+关键专利文件，涵盖传感器技术、电池优化、数据分析算法等。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 120页</span>
+                                <span>更新于：2023-10-20</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">智能戒指</span>
+                                <span class="resource-tag">专利文献</span>
+                                <span class="resource-tag">技术参考</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="tech">
+                        <div class="resource-header">
+                            <h3>智能穿戴设备行业研究报告</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>深入分析智能穿戴设备市场的发展现状、技术趋势、主要参与者，以及未来五年的预测与机遇。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 88页</span>
+                                <span>更新于：2023-12-05</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">市场研究</span>
+                                <span class="resource-tag">智能穿戴</span>
+                                <span class="resource-tag">行业趋势</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-type-section">
+                <div class="resource-type-header">
+                    <div class="resource-type-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>专业白皮书</h3>
+                </div>
+                
+                <div class="resource-cards">
+                    <div class="resource-card" data-type="whitepaper" data-theme="sleep">
+                        <div class="resource-header">
+                            <h3>睡眠全周期中医调理白皮书</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>从中医五脏调养角度全面解析睡眠周期，包含详细的睡眠障碍辨证分型与个性化调理方案。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 100页</span>
+                                <span>更新于：2023-09-15</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">睡眠调理</span>
+                                <span class="resource-tag">中医理论</span>
+                                <span class="resource-tag">专业白皮书</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="whitepaper" data-theme="stress">
+                        <div class="resource-header">
+                            <h3>情绪与五脏相关性研究白皮书</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>从中医理论与现代心理学角度剖析情绪与五脏的关系，提供基于个人体质的情绪调节方法。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 76页</span>
+                                <span>更新于：2023-08-20</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">情绪管理</span>
+                                <span class="resource-tag">五脏理论</span>
+                                <span class="resource-tag">中西结合</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="whitepaper">
+                        <div class="resource-header">
+                            <h3>中医与量化自我白皮书</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>探讨如何将传统中医概念与现代数据收集方法结合，通过个人数据量化中医理论指标。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 85页</span>
+                                <span>更新于：2023-11-10</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">量化自我</span>
+                                <span class="resource-tag">中医现代化</span>
+                                <span class="resource-tag">数据分析</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-type-section">
+                <div class="resource-type-header">
+                    <div class="resource-type-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h3>中医自救指南</h3>
+                </div>
+                
+                <div class="resource-cards">
+                    <div class="resource-card" data-type="guide" data-theme="digestion">
+                        <div class="resource-header">
+                            <h3>便秘自救指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>从中医角度辨别便秘类型，提供针对性的穴位按摩、食疗方案和生活习惯调整建议。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 35页</span>
+                                <span>更新于：2023-07-05</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">便秘调理</span>
+                                <span class="resource-tag">穴位按摩</span>
+                                <span class="resource-tag">食疗方案</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="guide" data-theme="skin">
+                        <div class="resource-header">
+                            <h3>脱发与痤疮自救指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>解析脱发与痤疮的中医病因与调理思路，分享实用的中医外用方与日常预防措施。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 42页</span>
+                                <span>更新于：2023-08-15</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">脱发调理</span>
+                                <span class="resource-tag">痤疮治疗</span>
+                                <span class="resource-tag">皮肤健康</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="guide" data-theme="women">
+                        <div class="resource-header">
+                            <h3>痛经自救指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>详细讲解痛经的中医辨证分型，提供针对不同类型的艾灸方法、药膳食疗与生活调理建议。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 38页</span>
+                                <span>更新于：2023-09-28</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">痛经缓解</span>
+                                <span class="resource-tag">女性健康</span>
+                                <span class="resource-tag">艾灸指导</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="guide" data-theme="stress">
+                        <div class="resource-header">
+                            <h3>失眠与焦虑自救指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>从情志与脏腑角度分析失眠与焦虑的形成机制，提供简易实用的中医调理方法，恢复心神平衡。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 45页</span>
+                                <span>更新于：2023-10-12</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">失眠缓解</span>
+                                <span class="resource-tag">焦虑管理</span>
+                                <span class="resource-tag">心神调理</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-type-section">
+                <div class="resource-type-header">
+                    <div class="resource-type-icon">
+                        <i class="fas fa-mortar-pestle"></i>
+                    </div>
+                    <h3>经典方剂与养生大全</h3>
+                </div>
+                
+                <div class="resource-cards">
+                    <div class="resource-card" data-type="medicine">
+                        <div class="resource-header">
+                            <h3>经典方剂详解 - 四物汤与八珍汤</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>深入分析四物汤、八珍汤等补血类经典方剂的组成原理、使用范围、配伍禁忌与现代临床应用。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 56页</span>
+                                <span>更新于：2023-11-05</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">四物汤</span>
+                                <span class="resource-tag">八珍汤</span>
+                                <span class="resource-tag">经典方剂</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="medicine">
+                        <div class="resource-header">
+                            <h3>经典外用方 - 八珍膏精解</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>全面讲解八珍膏的历史渊源、处方组成、制备方法与临床应用，附现代研究佐证与使用注意事项。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 48页</span>
+                                <span>更新于：2023-09-20</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">八珍膏</span>
+                                <span class="resource-tag">外用方剂</span>
+                                <span class="resource-tag">文献研究</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="medicine">
+                        <div class="resource-header">
+                            <h3>四季养生方案大全</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>依据二十四节气的季节变化，提供全年的饮食调养、起居作息、情志调节与保健穴位推荐。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 72页</span>
+                                <span>更新于：2023-12-01</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">四季养生</span>
+                                <span class="resource-tag">节气调养</span>
+                                <span class="resource-tag">日常保健</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-type="medicine">
+                        <div class="resource-header">
+                            <h3>常用中药食材使用指南</h3>
+                        </div>
+                        <div class="resource-content">
+                            <div class="resource-description">
+                                <p>汇总100种常用中药食材的功效、用法、搭配建议与食用禁忌，帮助您在日常生活中安全使用中药食材。</p>
+                            </div>
+                            <div class="resource-meta">
+                                <span>PDF格式 · 120页</span>
+                                <span>更新于：2023-10-25</span>
+                            </div>
+                            <div class="resource-tags">
+                                <span class="resource-tag">中药食材</span>
+                                <span class="resource-tag">家庭食疗</span>
+                                <span class="resource-tag">药膳指南</span>
+                            </div>
+                            <a href="#" class="btn primary-btn">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
+                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7"/>
+                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
+                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
+                </svg>
+                <span>heyTCM</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="index.html#about">我们的故事</a></li>
+                        <li><a href="index.html#about">团队介绍</a></li>
+                        <li><a href="index.html#values">价值观与愿景</a></li>
+                        <li><a href="index.html#join">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>产品与服务</h4>
+                    <ul>
+                        <li><a href="smart-ring.html">C1智能戒指</a></li>
+                        <li><a href="smart-ring.html#preorder">预购特惠</a></li>
+                        <li><a href="smart-collab.html">智能中医共创圈</a></li>
+                        <li><a href="smart-collab.html#join-us">共创圈参与方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>社区参与</h4>
+                    <ul>
+                        <li><a href="#community">学习交流</a></li>
+                        <li><a href="#news">新闻活动</a></li>
+                        <li><a href="#support">支持我们</a></li>
+                        <li><a href="#opensource">开源项目</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>资源下载</h4>
+                    <ul>
+                        <li><a href="resources.html">资源中心</a></li>
+                        <li><a href="resources.html">技术资料</a></li>
+                        <li><a href="resources.html">自救指南</a></li>
+                        <li><a href="resources.html">经典方剂</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 heyTCM开放生态社区 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
