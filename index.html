@@ -1,1566 +1,1683 @@
-<html lang="zh-CN">
-<head>
+
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>heyTCM - 开放生态社区</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>HeyTCM - 科技焕新中医，共创健康未来</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#5D5CDE',
+                            dark: '#4B4ACB',
+                            light: '#7F7EE5',
+                        },
+                        tcm: {
+                            red: '#E63946',
+                            green: '#2A9D8F',
+                            wood: '#8AB17D',
+                            metal: '#E9C46A',
+                            water: '#457B9D',
+                            earth: '#A97C50',
+                            fire: '#F4A261',
+                        },
+                        dark: {
+                            bg: '#181818',
+                            card: '#242424',
+                            text: '#E5E5E5',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CiAgPHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICA8Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxLjUiIGZpbGw9IiM1ZDVjZGUiIGZpbGwtb3BhY2l0eT0iMC4xIiAvPgogIDwvcGF0dGVybj4KPC9kZWZzPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiIC8+Cjwvc3ZnPg==')",
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --trad-brown: #8B5A2B;
-            --trad-blue: #4682B4;
-            --trad-green: #556B2F;
-            --bg-dark: #333;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
         }
         
-        .tools-filter {
-            margin-bottom: 2rem;
-            background-color: #f9f9f9;
-            padding: 1.5rem;
-            border-radius: 10px;
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        .filter-group {
-            text-align: center;
+        
+        .gradient-text {
+            background: linear-gradient(120deg, #5D5CDE, #8AB17D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-
-        .filter-group h4 {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
         }
-
-        .filter-options {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #5D5CDE;
         }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-light);
-            background-color: white;
-            color: var(--text-secondary);
-            border-radius: 20px;
-            transition: all 0.3s;
-            cursor: pointer;
+        
+        .timeline-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background-color: #5D5CDE;
         }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        
+        .ink-flow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.6;
         }
-
-        .tool-card {
-            transition: opacity 0.3s, transform 0.3s;
+        
+        .dark .card-hover {
+            background: #242424;
+            transition: all 0.3s ease;
         }
-
-        .tool-card.hidden {
-            opacity: 0.3;
-            transform: scale(0.95);
-            pointer-events: none;
+        
+        .card-hover {
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(93, 92, 222, 0.1), 0 10px 10px -5px rgba(93, 92, 222, 0.04);
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .yin-yang {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, white 50%, black 50%);
+            position: relative;
+        }
+        
+        .yin-yang:before, .yin-yang:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+        
+        .yin-yang:before {
+            top: 0;
+            left: 12.5px;
+            background: black;
+            border: 6.25px solid white;
+        }
+        
+        .yin-yang:after {
+            bottom: 0;
+            left: 12.5px;
+            background: white;
+            border: 6.25px solid black;
+        }
+        
+        .dark .yin-yang {
+            background: linear-gradient(90deg, #E5E5E5 50%, #181818 50%);
+        }
+        
+        .dark .yin-yang:before {
+            background: #181818;
+            border: 6.25px solid #E5E5E5;
+        }
+        
+        .dark .yin-yang:after {
+            background: #E5E5E5;
+            border: 6.25px solid #181818;
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <svg width="60" height="60" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
-                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7">
-                        <animate attributeName="opacity" values="0.5;0.7;0.5" dur="3s" repeatCount="indefinite" />
-                    </path>
-                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
-                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
-                </svg>
-                <span>heyTCM</span>
-            </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#" class="active">首页</a></li>
-<!--                     <li><a href="#about">关于我们</a></li> -->
-                    <li><a href="#values">价值观与愿景</a></li>
-                    <li><a href="#games">游戏与娱乐</a></li>
-                    <li><a href="#tools">工具与应用</a></li>
-                    <li><a href="#simulators">开放数据</a></li>
-                    <li><a href="#community">社区</a></li>
-<!--                     <li><a href="#news">新闻与活动</a></li> -->
-                    <li><a href="#join">加入我们</a></li>
-                    <li><a href="#support">支持我们</a></li>
-                    <li><a href="#opensource">开源项目</a></li>
-                    <li><a href="#help">帮助中心</a></li>
-<!--                     <li><a href="smart-collab.html">智能中医共创圈</a></li>
-                </ul> -->
+
+<body class="font-sans bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text">
+    <!-- Dark mode detector -->
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white dark:bg-dark-bg shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center">
+                <div class="yin-yang mr-2 transform scale-75"></div>
+                <span class="text-xl font-bold text-primary dark:text-primary-light">HeyTCM</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">首页</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">关于我们</a>
+                <a href="#products" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">产品与服务</a>
+                <a href="#ecosystem" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">开放生态</a>
+                <a href="#resources" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">资源中心</a>
+                <a href="#support" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">支持我们</a>
+                <a href="#help" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">帮助中心</a>
             </nav>
+            
+            <!-- Mobile Navigation Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition">登录/注册</a>
+                <a href="#support" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-sm font-medium transition">加入社区</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark-bg border-t border-gray-200 dark:border-gray-700">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">首页</a>
+                <a href="#about" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">关于我们</a>
+                <a href="#products" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">产品与服务</a>
+                <a href="#ecosystem" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">开放生态</a>
+                <a href="#resources" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">资源中心</a>
+                <a href="#support" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">支持我们</a>
+                <a href="#help" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light">帮助中心</a>
+                <div class="pt-4 flex items-center space-x-4">
+                    <a href="#" class="flex-1 py-2 bg-gray-100 dark:bg-gray-800 rounded-md text-center text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition">登录/注册</a>
+                    <a href="#support" class="flex-1 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-center text-sm font-medium transition">加入社区</a>
+                </div>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>传承千年智慧，融合现代科技</h1>
-                <p>heyTCM，开放生态，共同构建健康未来</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn primary-btn">了解更多</a>
-                    <a href="#join" class="btn secondary-btn">立即加入</a>
-                </div>
+        <section id="home" class="pt-28 md:pt-32 pb-16 relative overflow-hidden bg-white dark:bg-dark-bg">
+            <div class="ink-flow">
+                <canvas id="inkCanvas" width="1000" height="1000"></canvas>
             </div>
-            <div class="hero-visual">
-                <div class="qi-flow-animation"></div>
-            </div>
-        </section>
-
-        <!-- Feature Cards -->
-        <section class="features">
-            <div class="section-header">
-                <h2>探索heyTCM生态</h2>
-                <p>通过多元化的产品和服务，体验传统中医的现代演绎</p>
-            </div>
-            <div class="feature-cards">
-                <div class="feature-card">
-                    <div class="card-icon">
-                        <i class="fas fa-gamepad"></i>
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center section-fade">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-6 font-serif">为往圣继绝学，用科技焕新中医</h1>
+                    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+                        HeyTCM 智能中医共创圈：用 AI 与开放数据，解读身体信号，量化气血阴阳，开启您的个性化健康复兴之旅。
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#products" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-md font-medium transition">
+                            探索智能戒指
+                        </a>
+                        <a href="#ecosystem" class="px-6 py-3 bg-white dark:bg-dark-card hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light rounded-md font-medium transition">
+                            加入共创社区
+                        </a>
+                        <a href="#about" class="px-6 py-3 bg-white dark:bg-dark-card hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-md font-medium transition">
+                            了解我们的故事
+                        </a>
                     </div>
-                    <h3>游戏与益智</h3>
-                    <p>通过互动游戏，寓教于乐中学习中医知识</p>
-                    <a href="#games" class="card-link">探索游戏 <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>健康工具</h3>
-                    <p>个性化健康管理应用，助您平衡身心</p>
-                    <a href="#tools" class="card-link">体验工具 <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>气血模拟</h3>
-                    <p>可视化体验中医理论，感知气血运行</p>
-                    <a href="#simulators" class="card-link">开始体验 <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>开放社区</h3>
-                    <p>连接全球中医爱好者，共享智慧与经验</p>
-                    <a href="#community" class="card-link">加入社区 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="section-header">
-                <h2>关于我们</h2>
-                <p>传承与创新，构建开放共享的中医生态系统</p>
+        <!-- Founder's Message -->
+        <section class="py-16 bg-gray-50 dark:bg-dark-card section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0 bg-gradient-to-br from-tcm-water to-tcm-green">
+                        <!-- Founder's avatar placeholder -->
+                        <div class="w-full h-full flex items-center justify-center text-white text-4xl font-bold">
+                            生
+                        </div>
+                    </div>
+                    <div>
+                        <blockquote class="text-lg italic text-gray-700 dark:text-gray-300">
+                            "我是生海王。历经 30 年身心磨砺与 15 年医疗科技探索，我深信中医智慧值得被看见、被量化。HeyTCM，是我为自己、也为每一个渴望身心自在的你，点燃的一束光。"
+                        </blockquote>
+                        <div class="mt-4">
+                            <a href="#about" class="text-primary dark:text-primary-light hover:underline flex items-center">
+                                阅读我的完整故事
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>我们的故事</h3>
-                    <p>heyTCM社区起源于一群热爱传统文化与现代科技的创新者。我们致力于将千年中医智慧与现代科技完美融合，创造能够真正改善人们生活的产品与服务。</p>
+        </section>
+
+        <!-- Pain Points -->
+        <section class="py-16 bg-white dark:bg-dark-bg section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 font-serif">感觉身体"不对劲"，却说不清、查不出？</h2>
                     
-                    <h3>我们的愿景</h3>
-                    <p>我们希望通过开放生态的理念，让传统中医知识走向世界，使更多人能够从中受益。同时，通过技术创新和数据共享，推动中医理论的现代化研究与应用。</p>
-                    
-                    <div class="values">
-                        <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-leaf"></i></div>
-                            <h4>传承</h4>
-                            <p>尊重传统，保护中医文化遗产</p>
-                        </div>
-                        <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                            <h4>创新</h4>
-                            <p>融合现代科技，创新中医应用方式</p>
-                        </div>
-                        <div class="value-item">
-                            <div class="value-icon"><i class="fas fa-handshake"></i></div>
-                            <h4>共享</h4>
-                            <p>开放数据与技术，共建健康生态</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="team-showcase">
-                        <div class="team-member-avatar"></div>
-                        <div class="team-member-avatar"></div>
-                        <div class="team-member-avatar"></div>
-                        <div class="team-collage"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Values Section -->
-        <section id="values" class="values-section">
-            <div class="section-header">
-                <h2>价值观与愿景</h2>
-                <p>我们的核心理念与发展方向</p>
-            </div>
-            <div class="values-content">
-                <div class="vision-mission">
-                    <h3 class="gradient-text">我们的愿景</h3>
-                    <p>通过科技与中医的结合，构建一个开放、智能、互助的全球社区，利用游戏化的创新方式，让中医传统智慧焕发新生，帮助每个人实现健康、平衡、快乐的生活，同时养成良好的习惯，促进自我成长。</p>
-                    
-                    <h3 class="gradient-text">我们的使命</h3>
-                    <p>利用现代科技手段，如穿戴设备和智能手机，收集脉搏、PPG等健康数据，为个人提供个性化的健康管理，为中医研究提供坚实的数据基础，推动中医智能化的发展。</p>
-                </div>
-                
-                <div class="core-beliefs">
-                    <h3 class="gradient-text">核心信念</h3>
-                    <div class="beliefs-grid">
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-microscope"></i></div>
-                            <h4>科学是无止境的</h4>
-                            <p>科学探索永无止境，我们不断追求更深层次的理解和创新，推动技术与知识的发展。</p>
-                        </div>
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-yin-yang"></i></div>
-                            <h4>中国传统医学是整体论</h4>
-                            <p>中医文化根植于整体论的哲学理念，通过阴阳平衡、五行相生相克的原理，解释人体健康的复杂性。</p>
-                        </div>
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-ring"></i></div>
-                            <h4>穿戴技术提供数据采集</h4>
-                            <p>穿戴设备为我们提供了连续、实时的健康数据采集途径，这使得精准的个性化健康管理成为可能。</p>
-                        </div>
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-brain"></i></div>
-                            <h4>AI技术为中医辩证提供机会</h4>
-                            <p>通过AI算法，我们能够将看似抽象的中医概念转化为可量化、可验证的数据，帮助用户和专业人士做出精准决策。</p>
-                        </div>
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-fingerprint"></i></div>
-                            <h4>每个人都是独一无二的</h4>
-                            <p>我们相信每个人都是独特的，他们的健康管理需求也应当因人而异，追求个性化的健康解决方案。</p>
-                        </div>
-                        <div class="belief-item">
-                            <div class="belief-icon"><i class="fas fa-hands-helping"></i></div>
-                            <h4>互帮互助</h4>
-                            <p>我们倡导互帮互助的精神，鼓励每一位成员、用户与合作伙伴共同成长，共同推动中医智能化发展。</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="community-values">
-                    <h3 class="gradient-text">社区价值观</h3>
-                    <div class="values-list">
-                        <div class="value-tag">探索与创新</div>
-                        <div class="value-tag">整体与互补</div>
-                        <div class="value-tag">个性化与尊重差异</div>
-                        <div class="value-tag">共创与共享</div>
-                        <div class="value-tag">技术驱动与数据支持</div>
-                        <div class="value-tag">健康与幸福</div>
-                        <div class="value-tag">隐私保护与安全保障</div>
-                        <div class="value-tag">社会责任与文化传承</div>
-                    </div>
-                    <a href="vision-values.html" class="btn secondary-btn">了解更多</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Games Section -->
-        <section id="games" class="games">
-            <div class="section-header">
-                <h2>游戏与娱乐</h2>
-                <p>寓教于乐，在游戏中体验中医智慧</p>
-            </div>
-            <div class="games-content">
-                <div class="game-concept">
-                    <h3>游戏理念</h3>
-                    <p>我们的游戏不仅是娱乐，更是承载中医知识的载体。通过游戏化的方式，让用户在互动体验中自然习得中医理念，培养健康的生活习惯。</p>
-                </div>
-                <div class="games-showcase">
-                    <div class="game-card">
-                        <div class="game-image">
-                            <svg width="100%" height="160" viewBox="0 0 300 160">
-                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
-                                <circle cx="150" cy="80" r="40" fill="#8B5A2B" opacity="0.7"/>
-                                <path d="M130,60 Q150,40 170,60 T190,80 T170,100 T130,100 T110,80 T130,60" fill="#4682B4" opacity="0.8"/>
-                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">经典游戏</text>
-                            </svg>
-                        </div>
-                        <div class="game-info">
-                            <h4>使用ai复刻经典游戏</h4>
-                            <p>经典永不过时。</p>
-                            <a href="#" class="btn small-btn">试玩体验</a>
-                        </div>
-                    </div>
-                    <div class="game-card">
-                        <div class="game-image">
-                            <svg width="100%" height="160" viewBox="0 0 300 160">
-                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
-                                <circle cx="120" cy="80" r="30" fill="#556B2F" opacity="0.8"/>
-                                <circle cx="180" cy="80" r="30" fill="#4682B4" opacity="0.8"/>
-                                <path d="M150,50 Q130,80 150,110 Q170,80 150,50" fill="#8B5A2B" opacity="0.7"/>
-                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">中医特色自研游戏</text>
-                            </svg>
-                        </div>
-                        <div class="game-info">
-                            <h4>自研游戏</h4>
-                            <p>经典玩法+中医阴阳五行概念，在游戏中掌握阴阳平衡的奥妙，体验传统中医的核心理念。</p>
-                            <a href="#" class="btn small-btn">试玩体验</a>
-                        </div>
-                    </div>
-                    <div class="game-card">
-                        <div class="game-image">
-                            <svg width="100%" height="160" viewBox="0 0 300 160">
-                                <rect width="300" height="160" rx="10" fill="#f0f0f0"/>
-                                <path d="M100,80 Q150,50 200,80 Q220,100 200,120 Q150,150 100,120 Q80,100 100,80" fill="#8B5A2B" opacity="0.5"/>
-                                <path d="M120,80 Q150,60 180,80 Q190,90 180,100 Q150,120 120,100 Q110,90 120,80" fill="#4682B4" opacity="0.7" stroke="#556B2F" stroke-width="2">
-                                    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite" />
-                                </path>
-                                <text x="150" y="140" text-anchor="middle" fill="#333" font-size="14">气血流转</text>
-                            </svg>
-                        </div>
-                        <div class="game-info">
-                            <h4>开源游戏本地化</h4>
-                            <p>托管开源协议的游戏，为用户提供更好的游戏体验。</p>
-                            <a href="#" class="btn small-btn">试玩体验</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="game-development">
-                    <h3>二次开发资源</h3>
-                    <p>我们提供开放的游戏开发套件，鼓励开发者基于中医概念创造更多创新游戏，共同丰富中医游戏生态。</p>
-                    <a href="#opensource" class="btn secondary-btn">获取开发资源</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tools Section -->
-        <section id="tools" class="tools">
-            <div class="section-header">
-                <h2>工具与应用</h2>
-                <p>科技赋能健康，智能管理身心</p>
-            </div>
-            <div class="tools-filter">
-                <div class="filter-container">
-                    <div class="filter-group">
-                        <h4>工具类型</h4>
-                        <div class="filter-options">
-                            <button class="filter-btn active" data-filter="all">全部</button>
-                            <button class="filter-btn" data-filter="physical">实体设备</button>
-                            <button class="filter-btn" data-filter="virtual">虚拟工具</button>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>应用主题</h4>
-                        <div class="filter-options">
-                            <button class="filter-btn active" data-filter="all">全部</button>
-                            <button class="filter-btn" data-filter="emotion">情绪管理</button>
-                            <button class="filter-btn" data-filter="qiblood">气血调理</button>
-                            <button class="filter-btn" data-filter="health">健康追踪</button>
-                            <button class="filter-btn" data-filter="learning">知识学习</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tools-content">
-                <div class="tools-showcase">
-                    <div class="tool-card" data-type="physical" data-theme="qiblood">
-                        <div class="tool-icon">
-                            <i class="fas fa-ring"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>C1智能戒指</h3>
-                            <p>全球首款中医智能健康管理戒指，量化虚瘀毒湿，追踪五脏能量变化，提供个性化养生方案。</p>
-                            <ul class="tool-features">
-                                <li>五脏能量监测与分析</li>
-                                <li>虚瘀毒湿指数量化</li>
-                                <li>个性化养生方案推荐</li>
-                            </ul>
-                            <a href="smart-ring.html" class="btn small-btn">了解详情</a>
-                            <a href="#" class="btn small-btn primary-btn ring-cta-btn">预售特惠</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>情绪平衡器</h3>
-                            <p>结合中医五行情志理论，帮助用户识别、理解并调节情绪，提升心理健康水平。</p>
-                            <ul class="tool-features">
-                                <li>情绪识别与分析</li>
-                                <li>冥想与呼吸引导</li>
-                                <li>个性化情绪调节方案</li>
-                            </ul>
-                            <a href="#" class="btn small-btn">了解更多</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="health">
-                        <div class="tool-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>气血管理助手</h3>
-                            <p>基于中医理论的健康追踪应用，实时监测和分析您的气血状态，提供个性化调理建议。</p>
-                            <ul class="tool-features">
-                                <li>症状追踪与分析</li>
-                                <li>个性化调理方案</li>
-                                <li>健康数据可视化</li>
-                            </ul>
-                            <a href="#" class="btn small-btn">了解更多</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="physical" data-theme="qiblood">
-                        <div class="tool-icon">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>智能中医共创圈</h3>
-                            <p>中医爱好者、医疗专业人士与技术专家的共创平台，推动中医智能化发展。</p>
-                            <ul class="tool-features">
-                                <li>五行、症状、疗效、湿气、排毒管理工具</li>
-                                <li>智能终端设备数据收集与分析</li>
-                                <li>开放数据建设与研究合作</li>
-                            </ul>
-                            <a href="smart-collab.html" class="btn small-btn">了解详情</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-fire-alt"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>辟谷风险评估</h3>
-                            <p>帮助辟谷爱好者实时评估修行过程中的健康风险，提供科学、精准的预警建议。</p>
-                            <ul class="tool-features">
-                                <li>实时风险评估</li>
-                                <li>身体指标监测</li>
-                                <li>紧急预警机制</li>
-                            </ul>
-                            <a href="https://pigurisk.heytcm.com/" target="_blank" class="btn small-btn">风险评估</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="learning">
-                        <div class="tool-icon">
-                            <i class="fas fa-id-badge"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>中医传承身份测试</h3>
-                            <p>通过专业测试，发现你与中医文化的独特缘分，获得专属中医传承者身份ID。</p>
-                            <ul class="tool-features">
-                                <li>专业身份评测</li>
-                                <li>中医文化匹配</li>
-                                <li>社群入门凭证</li>
-                            </ul>
-                            <a href="https://idtest.heytcm.com/" target="_blank" class="btn small-btn">测试身份</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="health">
-                        <div class="tool-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>中医养生签到挑战</h3>
-                            <p>参与7天辟谷、倪海夏学习、JT叔叔学习、中医养生等各类健康挑战，与社区成员一起成长，获得荣誉排名。</p>
-                            <ul class="tool-features">
-                                <li>多样化挑战</li>
-                                <li>社区排行榜</li>
-                                <li>成长追踪</li>
-                            </ul>
-                            <a href="https://qiandao.heytcm.com/" target="_blank" class="btn small-btn">开始挑战</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-dragon"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>五行宠物</h3>
-                            <p>根据五行人格测试，为您匹配独特的神兽宠物，探索内在性格特征。</p>
-                            <ul class="tool-features">
-                                <li>五行性格测试</li>
-                                <li>个性化神兽匹配</li>
-                                <li>性格洞察与成长</li>
-                            </ul>
-                            <a href="https://wuxingpet.heytcm.com/" target="_blank" class="btn small-btn">开始测试</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="far fa-smile-beam"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>情绪脸谱</h3>
-                            <p>从经典表情到流行表情包，通过面部表情语言表达自我，记录情绪变化。</p>
-                            <ul class="tool-features">
-                                <li>多样化表情库</li>
-                                <li>情绪追踪</li>
-                                <li>创意表达方式</li>
-                            </ul>
-                            <a href="https://moodfaces.heytcm.com/" target="_blank" class="btn small-btn">开始探索</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-island"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>情绪岛</h3>
-                            <p>一个互动游戏，帮助您探索和平衡情绪，在五个情绪岛屿中展开心灵历险。</p>
-                            <ul class="tool-features">
-                                <li>情绪天气选择</li>
-                                <li>互动情绪挑战</li>
-                                <li>情绪成长工具</li>
-                            </ul>
-                            <a href="https://mood-island.heytcm.com/" target="_blank" class="btn small-btn">开始冒险</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-cloud-sun"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>情绪天气</h3>
-                            <p>用天气隐喻追踪情绪变化，AI分析将您的情绪转化为天气模式。</p>
-                            <ul class="tool-features">
-                                <li>天气情绪隐喻</li>
-                                <li>AI情绪分析</li>
-                                <li>情绪追踪与洞察</li>
-                            </ul>
-                            <a href="https://moodweather.heytcm.com/" target="_blank" class="btn small-btn">开始追踪</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="emotion">
-                        <div class="tool-icon">
-                            <i class="fas fa-heart-pulse"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>心力气球</h3>
-                            <p>通过互动游戏探索心力管理，提升内在力量，走向心灵平衡之旅。</p>
-                            <ul class="tool-features">
-                                <li>心力动态追踪</li>
-                                <li>情绪管理游戏</li>
-                                <li>心理损耗评估</li>
-                            </ul>
-                            <a href="https://innerstrengthliftballoon.heytcm.com/" target="_blank" class="btn small-btn">开始探索</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="learning">
-                        <div class="tool-icon">
-                            <i class="fas fa-chess"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>元素塔防</h3>
-                            <p>中医五行元素塔防游戏，通过战略布局探索属性平衡与互补。</p>
-                            <ul class="tool-features">
-                                <li>五行属性塔</li>
-                                <li>战略布局挑战</li>
-                                <li>每日塔防任务</li>
-                            </ul>
-                            <a href="#" class="btn small-btn">即将上线</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="learning">
-                        <div class="tool-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>五行卡牌</h3>
-                            <p>以中医五行为主题的卡牌闯关游戏，评估身体状态并收集稀有卡牌。</p>
-                            <ul class="tool-features">
-                                <li>气血评估系统</li>
-                                <li>卡牌收集</li>
-                                <li>中医知识学习</li>
-                            </ul>
-                            <a href="#" class="btn small-btn">即将上线</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="health">
-                        <div class="tool-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>症状管理工具</h3>
-                            <p>手动记录症状变化，量化你的五行元素，全面追踪身体健康状态。</p>
-                            <ul class="tool-features">
-                                <li>症状追踪记录</li>
-                                <li>五行元素分析</li>
-                                <li>健康趋势可视化</li>
-                            </ul>
-                            <a href="https://qitracker.heytcm.com" target="_blank" class="btn small-btn">开始追踪</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="health">
-                        <div class="tool-icon">
-                            <i class="fas fa-paw"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>气血宠物</h3>
-                            <p>通过每日记录五脏健康状态，养成良好生活习惯，赚取积分养成你的小熊猫。</p>
-                            <ul class="tool-features">
-                                <li>五脏健康追踪</li>
-                                <li>积分养成系统</li>
-                                <li>习惯培养游戏化</li>
-                            </ul>
-                            <a href="https://qipet.heytcm.com/v3/" target="_blank" class="btn small-btn">开始养成</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="virtual" data-theme="learning">
-                        <div class="tool-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>伤寒学习工具</h3>
-                            <p>通过听说读写互动方式，深入学习经典中医著作《伤寒论》，掌握中医辨证论治精髓。</p>
-                            <ul class="tool-features">
-                                <li>多模式学习</li>
-                                <li>互动课程</li>
-                                <li>中医经典解读</li>
-                            </ul>
-                            <a href="https://learnshanghan.heytcm.com" target="_blank" class="btn small-btn">开始学习</a>
-                        </div>
-                    </div>
-                    <div class="tool-card" data-type="physical" data-theme="health">
-                        <div class="tool-icon">
-                            <i class="fas fa-ring"></i>
-                        </div>
-                        <div class="tool-info">
-                            <h3>S1睡眠戒指</h3>
-                            <p>基于中医理论和现代睡眠医学，用智能戒指全面分析和改善您的睡眠质量。</p>
-                            <ul class="tool-features">
-                                <li>中医睡眠理论分析</li>
-                                <li>实时睡眠质量监测</li>
-                                <li>个性化改善建议</li>
-                            </ul>
-                            <a href="https://harmonyring.heytcm.com/" target="_blank" class="btn small-btn">了解详情</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tools-showcase-mobile">
-                    <div class="mobile-app-visual">
-                        <svg width="100%" height="400" viewBox="0 0 300 400">
-                            <rect width="300" height="400" rx="20" fill="#f8f8f8"/>
-                            <rect x="30" y="60" width="240" height="120" rx="10" fill="#e0e0e0"/>
-                            <circle cx="150" cy="120" r="40" fill="#4682B4" opacity="0.7">
-                                <animate attributeName="r" values="40;45;40" dur="2s" begin="0s" repeatCount="indefinite"/>
-                            </circle>
-                            <path d="M150,50 Q130,80 150,110 Q170,80 150,50" fill="#8B5A2B" opacity="0.6">
-                                <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" begin="0s" repeatCount="indefinite"/>
-                            </path>
-                            <rect x="30" y="200" width="240" height="40" rx="5" fill="#e0e0e0"/>
-                            <rect x="30" y="260" width="110" height="80" rx="5" fill="#e0e0e0"/>
-                            <rect x="160" y="260" width="110" height="80" rx="5" fill="#e0e0e0"/>
-                        </svg>
-                    </div>
-                    <div class="tech-explanation">
-                        <h3>背后的技术</h3>
-                        <p>我们的工具应用结合现代数据分析和传统中医理论，通过AI算法实现个性化健康管理，帮助用户更好地掌握自己的健康状况。</p>
-                        <a href="#" class="btn secondary-btn">技术白皮书</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Simulators Section -->
-        <section id="simulators" class="simulators">
-            <div class="section-header">
-                <h2>中医模拟与开放数据</h2>
-                <p>可视化体验中医理论，探索数据驱动的健康新世界</p>
-            </div>
-            <div class="simulators-content">
-                <div class="simulator-showcase">
-                    <div class="interactive-simulator">
-                        <h3>互动学习体验</h3>
-                        <div class="simulator-tabs">
-                            <div class="tab-header">
-                                <button class="tab-btn active" data-tab="yinyang">阴阳演示</button>
-                                <button class="tab-btn" data-tab="qixue">气血演示</button>
-                                <button class="tab-btn" data-tab="wuxing">五行演示</button>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-tcm-green/10 flex items-center justify-center text-tcm-green flex-shrink-0">
+                                <i class="fas fa-battery-quarter text-xl"></i>
                             </div>
-                            <div class="tab-content">
-                                <div id="yinyang" class="tab-panel active">
-                                    <div class="simulator-visual">
-                                        <svg width="100%" height="250" viewBox="0 0 300 250">
-                                            <circle cx="150" cy="125" r="100" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
-                                            <path d="M150,25 A100,100 0 0,1 150,225 A50,50 0 0,1 150,125 A50,50 0 0,0 150,25" fill="var(--bg-dark)"/>
-                                            <path d="M150,25 A100,100 0 0,0 150,225 A50,50 0 0,0 150,125 A50,50 0 0,1 150,25" fill="#f5f5f5"/>
-                                            <circle cx="150" cy="75" r="10" fill="#f5f5f5"/>
-                                            <circle cx="150" cy="175" r="10" fill="var(--bg-dark)"/>
-                                        </svg>
-                                    </div>
-                                    <div class="simulator-explanation">
-                                        <h4>阴阳平衡之道</h4>
-                                        <p>阴阳是中医理论的核心概念，表示自然界中对立统一的两个方面。本演示展示阴阳如何相互转化并保持平衡。</p>
-                                        <a href="#" class="btn small-btn">深入学习</a>
-                                    </div>
-                                </div>
-                                <div id="qixue" class="tab-panel">
-                                    <div class="simulator-visual">
-                                        <svg width="100%" height="250" viewBox="0 0 300 250">
-                                            <path d="M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125" fill="none" stroke="#4682B4" stroke-width="3" stroke-dasharray="5,5">
-                                                <animate attributeName="d" values="M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125;M50,125 C50,175 250,200 250,125 C250,75 50,50 50,125;M50,125 C50,75 250,50 250,125 C250,175 50,200 50,125" dur="5s" repeatCount="indefinite"/>
-                                            </animate>
-                                        </svg>
-                                        <svg width="100%" height="250" viewBox="0 0 300 250" style="position:absolute; top:0; left:0;">
-                                            <path d="M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125" fill="none" stroke="#8B5A2B" stroke-width="4">
-                                                <animate attributeName="d" values="M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125;M70,125 C70,165 230,190 230,125 C230,85 70,60 70,125;M70,125 C70,85 230,60 230,125 C230,165 70,190 70,125" dur="7s" repeatCount="indefinite"/>
-                                            </animate>
-                                        </svg>
-                                    </div>
-                                    <div class="simulator-explanation">
-                                        <h4>气血运行奥秘</h4>
-                                        <p>气血是构成人体和维持生命活动的基本物质。本演示展示气血在经络中的运行规律及其对健康的影响。</p>
-                                        <a href="#" class="btn small-btn">深入学习</a>
-                                    </div>
-                                </div>
-                                <div id="wuxing" class="tab-panel">
-                                    <div class="simulator-visual">
-                                        <svg width="100%" height="250" viewBox="0 0 300 250">
-                                            <polygon points="150,50 250,125 200,200 100,200 50,125" fill="none" stroke="#333" stroke-width="2"/>
-                                            <circle cx="150" cy="50" r="20" fill="#556B2F" class="wuxing-element" data-element="木">
-                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="0s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <circle cx="250" cy="125" r="20" fill="#FF4500" class="wuxing-element" data-element="火">
-                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="0.6s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <circle cx="200" cy="200" r="20" fill="#DAA520" class="wuxing-element" data-element="土">
-                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="1.2s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <circle cx="100" cy="200" r="20" fill="#B87333" class="wuxing-element" data-element="金">
-                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="1.8s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <circle cx="50" cy="125" r="20" fill="#4682B4" class="wuxing-element" data-element="水">
-                                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="3s" begin="2.4s" repeatCount="indefinite"/>
-                                            </circle>
-                                            <text x="150" y="50" text-anchor="middle" dy=".3em" fill="white" font-size="12">木</text>
-                                            <text x="250" cy="125" text-anchor="middle" dy=".3em" fill="white" font-size="12">火</text>
-                                            <text x="200" cy="200" text-anchor="middle" dy=".3em" fill="white" font-size="12">土</text>
-                                            <text x="100" cy="200" text-anchor="middle" dy=".3em" fill="white" font-size="12">金</text>
-                                            <text x="50" cy="125" text-anchor="middle" dy=".3em" fill="white" font-size="12">水</text>
-                                            <!-- 相生关系 -->
-                                            <path d="M165,60 L235,110" fill="none" stroke="#green" stroke-width="2" marker-end="url(#arrow)">
-                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="0s" repeatCount="indefinite"/>
-                                            </path>
-                                            <path d="M230,145 L190,185" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
-                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="1s" repeatCount="indefinite"/>
-                                            </path>
-                                            <path d="M175,200 L125,200" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
-                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="2s" repeatCount="indefinite"/>
-                                            </path>
-                                            <path d="M85,185 L65,145" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
-                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="3s" repeatCount="indefinite"/>
-                                            </path>
-                                            <path d="M70,110 L135,60" fill="none" stroke="green" stroke-width="2" marker-end="url(#arrow)">
-                                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="4s" begin="4s" repeatCount="indefinite"/>
-                                            </path>
-                                            <defs>
-                                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
-                                                    markerWidth="6" markerHeight="6"
-                                                    orient="auto-start-reverse">
-                                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="green"/>
-                                                </marker>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    <div class="simulator-explanation">
-                                        <h4>五行相生相克</h4>
-                                        <p>五行学说是中医理论的重要组成部分，描述木、火、土、金、水五种元素之间的相互关系。本演示展示五行相生相克的规律及其应用。</p>
-                                        <a href="#" class="btn small-btn">深入学习</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="open-data-platform">
-                    <h3>开放数据平台</h3>
-                    <p>我们提供丰富的中医健康数据集与API，支持研究者和开发者创新应用中医知识，共同推动中医现代化发展。</p>
-                    <div class="data-resources">
-                        <div class="data-item">
-                            <div class="data-icon"><i class="fas fa-database"></i></div>
-                            <h4>脉搏波开放数据集</h4>
-                            <p>收集整理的脉搏波数据及相关健康信息</p>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-icon"><i class="fas fa-code"></i></div>
-                            <h4>病症方单病开放数据库</h4>
-                            <p>中医症状、辨证、方剂的结构化数据库</p>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-icon"><i class="fas fa-book"></i></div>
-                            <h4>研究资料库</h4>
-                            <p>中医现代研究成果与文献集合</p>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-icon"><i class="fas fa-wave-square"></i></div>
-                            <h4>脉搏波采集标准</h4>
-                            <p>全面的PPG数据采集技术规范与指标指南</p>
-                            <a href="#ppg-standards" class="btn small-btn">查看详细标准</a>
-                        </div>
-                    </div>
-                    <a href="#opensource" class="btn secondary-btn">访问数据平台</a>
-                </div>
-                <div id="ppg-standards" class="ppg-standards-section" style="background-color: #f9f9f9; padding: 4rem 0;">
-                    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-                        <div class="section-header">
-                            <h2>PPG数据采集标准</h2>
-                            <p>确保高质量、可重现的脉搏波数据集的技术指南</p>
-                        </div>
-                        
-                        <div class="standards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
-                                    <i class="fas fa-signal"></i>
-                                </div>
-                                <h3>采样率要求</h3>
-                                <ul style="color: var(--text-secondary);">
-                                    <li>标准应用：100 Hz - 250 Hz</li>
-                                    <li>高分辨率研究：500 Hz - 1000 Hz</li>
-                                    <li>信噪比目标：≥ 40 dB</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
-                                    <i class="fas fa-layer-group"></i>
-                                </div>
-                                <h3>数据通道要求</h3>
-                                <ul style="color: var(--text-secondary);">
-                                    <li>记录至少3个光谱通道</li>
-                                    <li>包括红色、绿色和红外光</li>
-                                    <li>数据分辨率：12-16位</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="standard-item" style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                                <div class="standard-icon" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <h3>时间戳精度</h3>
-                                <ul style="color: var(--text-secondary);">
-                                    <li>时间戳误差：≤ ±1 ms</li>
-                                    <li>时间戳分辨率：1 ms</li>
-                                    <li>多传感器时钟同步误差：< 1 ms/小时</li>
-                                </ul>
+                            <div>
+                                <h3 class="text-xl font-medium mb-2">莫名疲惫，精力不济？</h3>
+                                <p class="text-gray-600 dark:text-gray-400">即使充足睡眠，却总是感到疲惫不堪，难以集中精力？</p>
                             </div>
                         </div>
                         
-                        <div class="standards-details" style="margin-top: 3rem; background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                            <h3 style="margin-bottom: 1.5rem; color: var(--primary);">完整技术规范</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                我们提供详细的PPG数据采集技术规范，涵盖传感器设置、环境因素、研究背景等多个维度。完整标准旨在确保数据的高质量、可重现性和广泛适用性。
-                            </p>
-                            <a href="#" class="btn primary-btn">下载完整标准文档</a>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-tcm-water/10 flex items-center justify-center text-tcm-water flex-shrink-0">
+                                <i class="fas fa-moon text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium mb-2">辗转难眠，越睡越累？</h3>
+                                <p class="text-gray-600 dark:text-gray-400">我曾失眠20余年，深知难以入睡或浅眠带来的痛苦。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-tcm-earth/10 flex items-center justify-center text-tcm-earth flex-shrink-0">
+                                <i class="fas fa-stomach text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium mb-2">肠胃敏感，饮食处处小心？</h3>
+                                <p class="text-gray-600 dark:text-gray-400">饮食稍不注意就腹痛、腹泻、消化不良，影响生活质量？</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-tcm-red/10 flex items-center justify-center text-tcm-red flex-shrink-0">
+                                <i class="fas fa-allergies text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium mb-2">皮肤问题反复，痘痘、疹子不断？</h3>
+                                <p class="text-gray-600 dark:text-gray-400">我曾战痘十年、荨麻疹四年，深知皮肤问题带来的困扰。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-tcm-fire/10 flex items-center justify-center text-tcm-fire flex-shrink-0">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-medium mb-2">情绪波动，焦虑不安？</h3>
+                                <p class="text-gray-600 dark:text-gray-400">情绪起伏不定，轻微事件就引发强烈反应？</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 text-center">
+                        <p class="text-lg text-primary dark:text-primary-light font-medium">HeyTCM 正在用数据"翻译"身体的语言...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Value/Solutions -->
+        <section class="py-16 bg-gray-50 dark:bg-dark-card section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 font-serif">用数据看见"气血"，用智能管理健康</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                <i class="fas fa-ring text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">智能感知</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">戒指 24h 监测，量化气血、睡眠、五脏状态。精准捕捉身体微小变化，提供数据支持。</p>
+                            <a href="#products" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                了解智能硬件
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                <i class="fas fa-mobile-alt text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">个性管理</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">App 工具追踪症状、管理五行、评估疗效。基于个人数据，提供定制化健康建议。</p>
+                            <a href="#products" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                探索工具应用
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                <i class="fas fa-gamepad text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">趣味成长</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">在游戏中学习中医，养成健康习惯。寓教于乐，让健康管理变得简单有趣。</p>
+                            <a href="#products" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                体验中医游戏
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                <i class="fas fa-cloud text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">开放共创</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">共享数据，参与研究，共建中医未来。让每一份数据贡献，都成为中医现代化的助力。</p>
+                            <a href="#ecosystem" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                访问开放生态
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Community Section -->
-        <section id="community" class="community">
-            <div class="section-header">
-                <h2>中医爱好者社区</h2>
-                <p>连接全球中医爱好者，共享智慧，共同成长</p>
-            </div>
-            <div class="community-content">
-                <div class="community-features">
-                    <div class="community-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
+        <!-- Latest Updates -->
+        <section class="py-16 bg-white dark:bg-dark-bg section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 font-serif">社区脉动 &amp; 最新发布</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-3">2023年12月15日</div>
+                            <h3 class="text-lg font-bold mb-3">HeyTCM C1 智能戒指正式发布</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">全球首款专为中医健康管理设计的智能戒指，正式开启预售...</p>
+                            <a href="#" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                阅读全文
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
                         </div>
-                        <div class="feature-details">
-                            <h3>学习与交流</h3>
-                            <p>定期举办线上讲座、研讨会，邀请中医专家分享知识，解答疑问，促进交流与学习。</p>
+                        
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-3">2023年12月3日</div>
+                            <h3 class="text-lg font-bold mb-3">睡眠全周期中医调理白皮书发布</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">基于10,000+用户数据，首次系统性解析中医睡眠理论与现代睡眠科学的结合...</p>
+                            <a href="#" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                阅读全文
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <div class="community-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <div class="feature-details">
-                            <h3>互助与分享</h3>
-                            <p>社区成员分享个人体验、健康管理方法，互相支持，共同提高健康水平。</p>
-                        </div>
-                    </div>
-                    <div class="community-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="feature-details">
-                            <h3>贡献与激励</h3>
-                            <p>鼓励社区成员参与内容创作、数据贡献，优秀贡献者将获得社区荣誉与奖励。</p>
-                        </div>
-                    </div>
-                    <div class="community-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
-                        <div class="feature-details">
-                            <h3>共创共建</h3>
-                            <p>参与智能中医共创圈，通过数据共享、工具开发和研究合作，共同推动中医智能化发展。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="community-showcase">
-                    <div class="community-activities">
-                        <h3>社区活动</h3>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-date">6月15日</div>
-                                <div class="activity-info">
-                                    <h4>线上讲座：中医与现代生活</h4>
-                                    <p>探讨如何将中医理念融入日常，提升生活品质。</p>
-                                    <a href="#" class="activity-link">报名参加</a>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-date">6月22日</div>
-                                <div class="activity-info">
-                                    <h4>工作坊：气血调理实践</h4>
-                                    <p>实用的气血调理方法，适合初学者的健康管理入门。</p>
-                                    <a href="#" class="activity-link">报名参加</a>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-date">7月1日</div>
-                                <div class="activity-info">
-                                    <h4>社区挑战：21天养生习惯培养</h4>
-                                    <p>与社区成员一起，培养健康的生活习惯，共同成长。</p>
-                                    <a href="#" class="activity-link">参与挑战</a>
-                                </div>
-                            </div>
+                        
+                        <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-3">2023年11月20日</div>
+                            <h3 class="text-lg font-bold mb-3">伤寒共读团第三期成果分享</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">第三期共读《伤寒论》圆满结束，200+位参与者的思考与讨论精华...</p>
+                            <a href="#" class="text-primary dark:text-primary-light hover:underline inline-flex items-center">
+                                阅读全文
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
-                    <div class="community-join">
-                        <h3>加入我们</h3>
-                        <p>成为heyTCM社区的一员，与志同道合的朋友一起探索中医之美，共同推动中医的传承与发展。</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
-                            <a href="https://github.com/heytcm" class="social-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
-                        </div>
-                        <a href="#join" class="btn primary-btn">立即加入</a>
+                    
+                    <div class="mt-10 text-center">
+                        <a href="#" class="px-6 py-3 bg-white dark:bg-dark-card hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light rounded-md font-medium transition">
+                            查看更多动态
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- News Section -->
-        <section id="news" class="news">
-            <div class="section-header">
-                <h2>新闻与活动</h2>
-                <p>了解heyTCM社区的最新动态</p>
-            </div>
-            <div class="news-content">
-                <div class="news-grid">
-                    <div class="news-item featured">
-                        <div class="news-image">
-                            <svg width="100%" height="200" viewBox="0 0 400 200">
-                                <rect width="400" height="200" fill="#e0e0e0"/>
-                                <circle cx="200" cy="100" r="50" fill="#8B5A2B" opacity="0.7"/>
-                                <path d="M150,100 Q200,50 250,100 T350,100" fill="none" stroke="#4682B4" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="news-info">
-                            <span class="news-date">2024年12月10日</span>
-                            <h3>heyTCM官网全新上线</h3>
-                            <p>heyTCM社区正式推出全新官方网站，旨在打造中医爱好者的线上家园，提供丰富的学习资源与互动平台。</p>
-                            <a href="#" class="news-link">阅读更多</a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <div class="news-info">
-                            <span class="news-date">2025年6月5日</span>
-                            <h3>气血管理APP最新版本发布</h3>
-                            <p>全新升级的气血管理应用现已推出，增加个性化健康报告和智能分析功能。</p>
-                            <a href="#" class="news-link">阅读更多</a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <div class="news-info">
-                            <span class="news-date">2025年5月28日</span>
-                            <h3>首届中医创新大赛圆满结束</h3>
-                            <p>来自全球的团队展示了结合中医理念的创新项目，推动中医与现代科技的深度融合。</p>
-                            <a href="#" class="news-link">阅读更多</a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <div class="news-info">
-                            <span class="news-date">2025年12月15日</span>
-                            <h3>开放数据平台正式启动</h3>
-                            <p>heyTCM社区开放数据平台正式上线，为研究者和开发者提供丰富的中医数据资源。</p>
-                            <a href="#" class="news-link">阅读更多</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="events-calendar">
-                    <h3>即将举行的活动</h3>
-                    <div class="calendar-container">
-                        <div class="calendar-header">
-                            <span>2023年6月</span>
-                        </div>
-                        <div class="calendar-body">
-                            <div class="calendar-week">
-                                <div class="day-header">日</div>
-                                <div class="day-header">一</div>
-                                <div class="day-header">二</div>
-                                <div class="day-header">三</div>
-                                <div class="day-header">四</div>
-                                <div class="day-header">五</div>
-                                <div class="day-header">六</div>
-                            </div>
-                            <div class="calendar-days">
-                                <!-- 日历日期会由JavaScript动态生成 -->
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="btn secondary-btn">查看完整日历</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Join Section -->
-        <section id="join" class="join">
-            <div class="section-header">
-                <h2>加入我们</h2>
-                <p>多种方式参与，共同推动heyTCM</p>
-            </div>
-            <div class="join-content">
-                <div class="join-options">
-                    <div class="join-option">
-                        <div class="option-icon">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <h3>成为会员</h3>
-                        <p>注册成为社区会员，获取专属资源与服务，参与社区活动与讨论。</p>
-                        <a href="#" class="btn small-btn">注册账号</a>
-                    </div>
-                    <div class="join-option">
-                        <div class="option-icon">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <h3>技术贡献</h3>
-                        <p>开发者可参与开源项目，贡献代码或创新思路，推动技术进步。</p>
-                        <a href="#opensource" class="btn small-btn">查看项目</a>
-                    </div>
-                    <div class="join-option">
-                        <div class="option-icon">
-                            <i class="fas fa-edit"></i>
-                        </div>
-                        <h3>内容创作</h3>
-                        <p>撰写文章、制作视频，分享中医知识与个人经验，丰富社区内容。</p>
-                        <a href="#" class="btn small-btn">投稿指南</a>
-                    </div>
-                    <div class="join-option">
-                        <div class="option-icon">
-                            <i class="fas fa-donate"></i>
-                        </div>
-                        <h3>支持项目</h3>
-                        <p>通过捐赠或购买产品，支持社区持续发展与创新项目实施。</p>
-                        <a href="#" class="btn small-btn">支持方式</a>
-                    </div>
-                </div>
-                <div class="volunteer-recruitment">
-                    <h3>志愿者招募</h3>
-                    <p>我们正在寻找热爱中医文化、愿意为heyTCM贡献力量的志愿者。无论您是技术专家、内容创作者还是中医爱好者，都能在这里找到发挥才能的舞台。</p>
-                    <div class="positions">
-                        <div class="position-item">
-                            <h4>技术开发</h4>
-                            <p>参与开源项目开发，构建中医数字化工具与平台。</p>
-                        </div>
-                        <div class="position-item">
-                            <h4>内容创作</h4>
-                            <p>撰写中医知识文章，制作教学视频，传播中医文化。</p>
-                        </div>
-                        <div class="position-item">
-                            <h4>社区运营</h4>
-                            <p>组织社区活动，促进成员交流，维护社区氛围。</p>
-                        </div>
-                        <div class="position-item">
-                            <h4>专业顾问</h4>
-                            <p>提供中医专业指导，确保内容与产品的专业性与准确性。</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn primary-btn">申请成为志愿者</a>
+        <!-- Join Us CTA -->
+        <section class="py-16 bg-primary text-white section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 font-serif">加入 HeyTCM，共创智能中医新时代！</h2>
+                    <p class="text-lg mb-8 text-white/90">您的参与，无论是使用产品、分享数据还是提供支持，都是推动中医复兴的重要力量。</p>
+                    <a href="#support" class="px-8 py-4 bg-white text-primary hover:bg-gray-100 rounded-md font-bold transition inline-block">
+                        了解如何支持我们
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Support Section -->
-        <section id="support" class="support">
-            <div class="section-header">
-                <h2>支持我们</h2>
-                <p>多种方式参与，共同助力中医智能化发展</p>
-            </div>
-            <div class="support-content">
-                <div class="support-intro">
-                    <p>我们提供多种参与方式，无论您是技术专家、中医爱好者还是关心健康的普通人，都能找到适合您的支持方式。您的每一份支持都将助力中医智能化的未来发展。</p>
-                </div>
-                
-                <div class="support-grid">
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                        <h3>社交媒体宣传</h3>
-                        <p>转发我们的故事、文章和视频，在社交媒体和直播平台支持点赞，帮助扩大项目影响力。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>社交媒体互动积分</li>
-                                <li>虚拟徽章</li>
-                                <li>参与专属活动的机会</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>使用我们的游戏</h3>
-                        <p>下载并使用我们的中医益智游戏，点击游戏中的广告，寓教于乐中支持项目发展。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>游戏内积分与奖励</li>
-                                <li>虚拟物品与道具</li>
-                                <li>游戏排行榜特殊称号</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>使用健康工具APP</h3>
-                        <p>下载使用我们的健康管理工具和中医概念应用，体验个性化健康管理，提供宝贵反馈。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>APP内积分与成就系统</li>
-                                <li>个性化健康报告</li>
-                                <li>高级功能免费试用</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-ring"></i>
-                        </div>
-                        <h3>购买智能穿戴设备</h3>
-                        <p>购买我们的C1智能戒指、手表等穿戴设备，体验中医智能化带来的健康管理革新。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>设备专属会员特权</li>
-                                <li>优先体验新功能</li>
-                                <li>专属健康咨询服务</li>
-                            </ul>
-                        </div>
-                        <a href="smart-ring.html" class="btn small-btn">了解C1</a>
-                    </div>
-                    
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
-                        <h3>资金赞助</h3>
-                        <p>通过资金支持，帮助项目更好地推进研究、技术开发和社区建设，加速中医智能化发展。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>赞助者特别称号</li>
-                                <li>专属感谢与定制礼品</li>
-                                <li>优先体验新产品机会</li>
-                            </ul>
-                        </div>
-                        <a href="smart-collab.html#join-us" class="btn primary-btn">立即赞助</a>
-                    </div>
-                    
-                    <div class="support-card">
-                        <div class="support-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>贡献健康数据</h3>
-                        <p>签署数据贡献协议，安全地分享您的健康数据用于AI训练，助力中医智能化研究的进步。</p>
-                        <div class="support-benefits">
-                            <h4>获得回报：</h4>
-                            <ul>
-                                <li>数据贡献荣誉徽章</li>
-                                <li>专病研究报告免费获取</li>
-                                <li>会员服务折扣与延期</li>
-                            </ul>
-                        </div>
+        <!-- About Us -->
+        <section id="about" class="pt-24 pb-16 bg-white dark:bg-dark-bg section-fade">
+            <div class="container mx-auto px-4">
+                <div class="relative py-16 bg-gradient-to-br from-primary/5 to-tcm-wood/5 rounded-2xl mb-16 overflow-hidden">
+                    <div class="max-w-4xl mx-auto text-center px-4">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">我们的故事：为往圣继绝学</h2>
                     </div>
                 </div>
                 
-                <div class="support-more">
-                    <h3>更多参与方式</h3>
-                    <div class="support-more-grid">
-                        <div class="support-more-item">
-                            <h4><i class="fas fa-users"></i> 参与社区维护</h4>
-                            <p>参与社区讨论、分享中医健康管理经验、协助其他用户解决问题，成为社区的活跃贡献者。</p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">从大山之子到中医探索者：生海王与 HeyTCM 的缘起</h3>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-xl font-medium mb-4">身体的"警报"与无解的困惑</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">我出生在湘西南的小山村，从小身体就不太好。记得小时候，我尿床、手抖、肠胃敏感，但乡下没有条件看好医生，只能自己慢慢扛过去。</p>
+                                <p class="text-gray-700 dark:text-gray-300">上学后，我常常在想："我到底是怎么了？为什么我的身体总是给我发出这些我看不懂的信号？"这个问题一直困扰着我。</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-medium mb-4">医疗码农的求索之路</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">命运的转折来自我后来15年的医疗IT从业经历。作为一名医疗软件开发者，我接触到了大量医疗知识，却发现西医对许多慢性问题难以给出满意答案。</p>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">35岁那年，我突然对自己的人生有了更深的思考。那时，我已经与荨麻疹抗争四年，失眠也持续了二十余年。我开始深入研究中医，在古老经典中寻找答案。</p>
+                                <p class="text-gray-700 dark:text-gray-300">令我震惊的是，中医的很多概念虽然古老，但其整体观念和现代系统科学惊人地相似。通过学习和实践，我的健康问题慢慢得到了改善。</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-medium mb-4">发心：用科技点亮中医智慧</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">在自我康复的过程中，我逐渐清晰了自己的使命：为什么不用现代科技的方式，让中医的智慧被更多人看见？</p>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">中医面临着巨大的挑战：语言晦涩、缺乏量化标准、临床效果个体差异大...但我深信，AI与大数据时代为中医的发展带来了前所未有的机遇。</p>
+                                <p class="text-gray-700 dark:text-gray-300">这就是HeyTCM的起点——我希望用科技的力量，为这门古老的智慧续命，让它焕发新的生机，真正造福更多需要帮助的人。</p>
+                            </div>
                         </div>
-                        <div class="support-more-item">
-                            <h4><i class="fas fa-code"></i> 参与技术研发</h4>
-                            <p>开发者和技术爱好者参与项目的技术研发、算法优化或工具开发，共同推动中医智能化工具的创新。</p>
+                    </div>
+
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">我们的愿景与使命</h3>
+                        
+                        <div class="p-6 bg-gray-50 dark:bg-dark-card rounded-xl mb-8">
+                            <h4 class="text-xl font-medium mb-4">愿景</h4>
+                            <p class="text-gray-700 dark:text-gray-300">构建合作、开放、共赢的平台，打破迷思，让中医得到更好的传承与发展，让更多人通过中医智慧获得身心健康，实现人与自然、身与心的和谐统一。</p>
                         </div>
-                        <div class="support-more-item">
-                            <h4><i class="fas fa-flask"></i> 参与研究项目</h4>
-                            <p>参与中医健康相关的开放数据集构建与研究项目，探索中医与现代健康管理之间的科学联系。</p>
+                        
+                        <h4 class="text-xl font-medium mb-4">使命</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fas fa-microchip text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-medium mb-2">融合科技与中医智慧</h5>
+                                    <p class="text-gray-600 dark:text-gray-400">将现代科技与传统中医理论相结合，创新健康管理方式。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fas fa-chart-pie text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-medium mb-2">收集分析海量健康数据</h5>
+                                    <p class="text-gray-600 dark:text-gray-400">利用大数据技术验证与发展中医理论，提升诊疗效果。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fas fa-mobile-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-medium mb-2">提供个性化健康管理</h5>
+                                    <p class="text-gray-600 dark:text-gray-400">基于个体差异，定制化健康方案，提升预防与调理效果。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fas fa-brain text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-lg font-medium mb-2">推动中医智能化发展</h5>
+                                    <p class="text-gray-600 dark:text-gray-400">构建开放平台，汇聚各方力量，共同推动中医现代化。</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">我们信奉的原则</h3>
+                        
+                        <div class="bg-white dark:bg-dark-card shadow-sm rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <div class="border-b border-gray-200 dark:border-gray-700">
+                                <div class="flex" role="tablist">
+                                    <button id="tab-beliefs" class="px-6 py-4 font-medium flex-1 text-center border-b-2 border-primary text-primary" role="tab" aria-selected="true">六大信念</button>
+                                    <button id="tab-values" class="px-6 py-4 font-medium flex-1 text-center border-b-2 border-transparent text-gray-500 dark:text-gray-400" role="tab" aria-selected="false">社区价值观</button>
+                                </div>
+                            </div>
+                            
+                            <div id="panel-beliefs" class="p-6" role="tabpanel">
+                                <ul class="space-y-4">
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">科学无止境</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">中医与现代科学并不冲突，我们拥抱科学精神与方法，以开放心态推动中医知识的更新与发展。</p>
+                                    </li>
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">中西互补</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">中医与西医各有所长，我们主张整合两种医学体系的优势，实现优势互补，造福患者。</p>
+                                    </li>
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">穿戴技术</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">我们相信智能穿戴设备是诊断和监控健康状况的未来，能为中医体系提供客观、连续的数据支持。</p>
+                                    </li>
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">AI机遇</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">人工智能将重塑医疗健康领域，为中医知识的传承、应用与创新带来前所未有的可能性。</p>
+                                    </li>
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">个体独一</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">每个人的身体情况和健康需求都是独特的，我们致力于提供个性化的健康解决方案。</p>
+                                    </li>
+                                    <li class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">互帮互助</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">社区的力量是无穷的，我们鼓励知识分享和互助，共同成长，共创健康未来。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div id="panel-values" class="p-6 hidden" role="tabpanel">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">探索创新</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">鼓励好奇心与探索精神，不断突破传统认知边界。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">整体互补</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">融合东西方智慧，取长补短，和而不同。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">个性尊重</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">尊重个体差异，提供多元化健康路径选择。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">共创共享</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">开放资源，共享成果，让每个贡献都被看见。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">技术驱动</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">运用前沿科技，助力传统智慧的传承与创新。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">健康幸福</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">以提升用户身心健康和生活质量为最终目标。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">隐私安全</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">严格保护用户隐私，确保数据安全与合规使用。</p>
+                                    </div>
+                                    <div class="p-4 bg-gray-50 dark:bg-dark-bg rounded-lg">
+                                        <h5 class="font-medium mb-2">社会责任</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">担当社会责任，传播健康知识，促进大众福祉。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 font-serif">通往未来的路线图</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="timeline-item pl-8">
+                                <h4 class="text-xl font-medium mb-3">阶段一: 基础建设</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">研发智能硬件产品，打造核心监测技术；开发基础工具 App，解决用户即时需求；建立初步数据采集与管理系统，为下一阶段做准备。</p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">硬件研发</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">App开发</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">数据系统</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item pl-8">
+                                <h4 class="text-xl font-medium mb-3">阶段二: 智能核心</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">开发中医智能诊断算法，提高监测准确性；细化个性化推荐系统，实现精准健康管理；扩大开放数据集，支持更多研究与应用。</p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">AI算法</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">开放数据</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">精准推荐</span>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item pl-8">
+                                <h4 class="text-xl font-medium mb-3">阶段三: 生态共荣</h4>
+                                <p class="text-gray-700 dark:text-gray-300 mb-3">建立完善的开发者生态，支持第三方应用；拓展全球市场，推动中医国际化；深化社区建设，实现用户与平台的共同成长。</p>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">生态建设</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">全球化</span>
+                                    <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-primary/20 text-sm rounded-full">社区深化</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <p class="text-gray-700 dark:text-gray-300">我们正一步一个脚印，朝着中医智能化的未来迈进，期待您的同行。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products & Services -->
+        <section id="products" class="pt-24 pb-16 bg-gray-50 dark:bg-dark-card section-fade">
+            <div class="container mx-auto px-4">
+                <div class="relative py-16 bg-gradient-to-br from-primary/5 to-tcm-water/5 rounded-2xl mb-16 overflow-hidden">
+                    <div class="max-w-4xl mx-auto text-center px-4">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">智能健康产品 &amp; 服务</h2>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">感知身心，量化健康，开启您的个性化中医养生之旅。</p>
                     </div>
                 </div>
                 
-                <div class="support-cta">
-                    <h3>寻找适合您的参与方式</h3>
-                    <p>无论您选择何种方式支持我们，都将成为中医智能化发展的重要力量。我们欢迎各种创新性的合作方式，共同推动中医文化的传承与创新。</p>
-                    <a href="smart-collab.html" class="btn primary-btn">了解更多参与方式</a>
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-8 font-serif">HeyTCM 智能硬件：感知无形之气，量化身心之变</h3>
+                        
+                        <div class="bg-white dark:bg-dark-bg rounded-2xl overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700 mb-10">
+                            <div class="flex flex-col md:flex-row">
+                                <div class="md:w-1/2 bg-gray-100 dark:bg-gray-800 min-h-[300px] flex items-center justify-center">
+                                    <div class="relative w-40 h-40">
+                                        <div class="absolute inset-0 bg-primary/20 rounded-full animate-pulse-slow"></div>
+                                        <div class="absolute inset-4 bg-white dark:bg-dark-bg rounded-full flex items-center justify-center">
+                                            <div class="text-3xl font-bold text-primary">C1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2 p-6 md:p-8">
+                                    <h4 class="text-xl font-bold mb-2">HeyTCM 智能戒指 C1</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">气血周期全管理，"虚瘀毒，一戒了然"</p>
+                                    
+                                    <div class="mb-6">
+                                        <h5 class="font-medium mb-3">核心功能</h5>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">24h 气血趋势监测</span>
+                                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">五脏活力评估</span>
+                                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">经络通畅度分析</span>
+                                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">睡眠质量 &amp; 修复力</span>
+                                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">压力与恢复</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-6">
+                                        <h5 class="font-medium mb-3">适用人群</h5>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">关注气血平衡、希望量化中医状态、追求深度健康管理者。</p>
+                                    </div>
+                                    
+                                    <div class="flex flex-wrap gap-3">
+                                        <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-sm font-medium transition">了解 C1 详情</a>
+                                        <a href="#" class="px-4 py-2 bg-white dark:bg-dark-card hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light rounded-md text-sm font-medium transition">立即预订/购买</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                                <div class="h-32 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-tcm-water/20 flex items-center justify-center text-tcm-water">
+                                        <span class="text-xl font-bold">S1</span>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-bold mb-2">S1 睡眠戒指</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">专注睡眠周期分析与建议。解决入睡难、睡不深、多梦等问题。</p>
+                                    <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">查看详情</a>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                                <div class="h-32 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-tcm-earth/20 flex items-center justify-center text-tcm-earth">
+                                        <span class="text-xl font-bold">D1</span>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-bold mb-2">D1 辟谷戒指</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">监测辟谷风险与效果。为安全辟谷提供科学数据支持。</p>
+                                    <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">查看详情</a>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                                <div class="h-32 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-gray-300/50 dark:bg-gray-600/50 flex items-center justify-center text-gray-500 dark:text-gray-300">
+                                        <i class="fas fa-flask text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-bold mb-2">定制版 (概念展示)</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">湿气/补肾/护肝专用款。针对特定体质与健康需求。</p>
+                                    <span class="text-gray-500 dark:text-gray-400 text-sm">敬请期待</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-8 font-serif">数字化工具：记录、管理、洞察您的健康</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                    <i class="fas fa-mobile-alt text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">气血管理 App</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">连接智能戒指，可视化气血报告，提供个性化建议和调理方案。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">下载 App</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                    <i class="fas fa-tasks text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">症状管理工具 (Qi Tracker)</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">手动记录日常症状，追踪健康变化趋势，量化五行平衡状态。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">在线使用</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                    <i class="fas fa-clipboard-check text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">辟谷风险评估</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">科学评估个人体质与状态，为安全辟谷提供专业建议。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">立即评估</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8 font-serif">趣味中医：在游戏中探索健康奥秘</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                    <i class="fas fa-paw text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">气血宠物</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">养成游戏 - 通过养育虚拟熊猫，记录五脏状态，培养健康习惯。有趣互动，寓教于乐。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">开始游戏</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                                    <i class="fas fa-chess-rook text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold mb-2">五行塔防</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">策略游戏 - 通过有趣的塔防玩法，学习五行相生相克原理。深入了解中医基础理论，提升健康认知。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">挑战关卡</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Open Source Section -->
-        <section id="opensource" class="opensource">
-            <div class="section-header">
-                <h2>开源项目</h2>
-                <p>共建开放生态，推动中医数字化创新</p>
-            </div>
-            <div class="opensource-content">
-                <div class="projects-showcase">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-vial"></i>
-                        </div>
-                        <div class="project-info">
-                            <h3>气血模拟引擎</h3>
-                            <p>基于流体力学的气血运行模拟库，可视化展示中医理论中的气血流动规律。</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">WebGL</span>
-                                <span class="tech-tag">Physics</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
-                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="project-info">
-                            <h3>中医知识图谱</h3>
-                            <p>构建中医理论与实践的结构化知识库，支持智能查询与推理分析。</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Neo4j</span>
-                                <span class="tech-tag">NLP</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
-                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="project-info">
-                            <h3>健康数据分析SDK</h3>
-                            <p>用于分析和解读健康数据的开发工具包，支持中医理论视角的健康状态评估。</p>
-                            <div class="project-tech">
-                                <span class="tech-tag">Swift</span>
-                                <span class="tech-tag">Kotlin</span>
-                                <span class="tech-tag">ML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fab fa-github"></i> 源代码</a>
-                                <a href="#" class="project-link"><i class="fas fa-book"></i> 文档</a>
-                            </div>
-                        </div>
+        <!-- Open Ecosystem -->
+        <section id="ecosystem" class="pt-24 pb-16 bg-white dark:bg-dark-bg section-fade">
+            <div class="container mx-auto px-4">
+                <div class="relative py-16 bg-gradient-to-br from-primary/5 to-tcm-water/5 rounded-2xl mb-16 overflow-hidden">
+                    <div class="max-w-4xl mx-auto text-center px-4">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">开放共创：汇聚智慧，共建智能中医未来</h2>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">数据共享，技术开源，社区共建——HeyTCM 邀您一同探索中医智能化的无限可能。</p>
                     </div>
                 </div>
-                <div class="contribution-guide">
-                    <h3>如何参与贡献</h3>
-                    <p>我们欢迎各种形式的贡献，无论是代码提交、文档完善、问题报告还是创意建议，都能帮助我们构建更好的中医开放生态。</p>
-                    <div class="contribution-steps">
-                        <div class="step-item">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>选择项目</h4>
-                                <p>浏览我们的项目列表，选择您感兴趣或擅长的领域。</p>
+                
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">开放数据：驱动研究与创新</h3>
+                        
+                        <div class="p-6 bg-gray-50 dark:bg-dark-card rounded-xl mb-8">
+                            <h4 class="text-xl font-medium mb-4">平台目标</h4>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">HeyTCM 开放数据平台致力于建立全球最大、最完整的中医健康数据库，为研究者、开发者和医疗工作者提供宝贵的数据资源。我们坚信，开放数据是推动中医科学化、现代化的重要基础。</p>
+                            <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
+                                <div class="flex-1">
+                                    <h5 class="font-medium mb-2 text-gray-800 dark:text-gray-200">数据来源</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">智能设备采集、用户自愿贡献、临床合作机构</p>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-medium mb-2 text-gray-800 dark:text-gray-200">使用规范</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">非商业研究自由使用，商业应用需授权</p>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-medium mb-2 text-gray-800 dark:text-gray-200">隐私承诺</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">严格匿名化处理，确保个人隐私安全</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>了解规范</h4>
-                                <p>阅读项目文档和贡献指南，熟悉项目结构和开发流程。</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <h4 class="font-bold mb-3">脉搏波 (PPG) 数据集</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">海量、连续、多场景的脉搏波数据，含中医评估标注。助力脉象数字化研究与应用。</p>
+                                <div class="flex space-x-2">
+                                    <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">查看详情</a>
+                                    <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">数据采集标准</a>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <h4 class="font-bold mb-3">病症方单病数据库</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">结构化中医诊疗数据，包含症状、诊断、处方与疗效追踪。支持智能辨证与临床决策。</p>
+                                <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">查看详情</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <h4 class="font-bold mb-3">减肥数据库</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">多维度减肥过程数据，包含体质、方法、效果追踪。探索个体差异与最优路径。</p>
+                                <a href="#" class="text-primary dark:text-primary-light hover:underline text-sm">查看详情</a>
                             </div>
                         </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>提交贡献</h4>
-                                <p>fork项目仓库，提交您的代码或文档改进，创建pull request。</p>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h4>加入讨论</h4>
-                                <p>参与项目讨论，分享您的想法，与其他贡献者交流协作。</p>
-                            </div>
+                        
+                        <div class="bg-primary/10 p-6 rounded-xl text-center">
+                            <h4 class="font-bold mb-3">您的数据是宝贵的燃料！</h4>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">每一份数据贡献，都能让我们更好地理解人体健康规律，共同推动中医发展。</p>
+                            <a href="#" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-md font-medium transition inline-block">贡献我的健康数据 (安全匿名)</a>
                         </div>
                     </div>
-                    <a href="#" class="btn primary-btn">贡献者指南</a>
+                    
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-6 font-serif">开源项目：共享工具与算法</h3>
+                        
+                        <div class="p-6 bg-gray-50 dark:bg-dark-card rounded-xl mb-8">
+                            <p class="text-gray-700 dark:text-gray-300">我们秉持开放共享精神，将核心技术工具开源，鼓励更多开发者参与中医智能化的探索与创新。您的贡献将帮助我们共同构建更完善的中医智能生态。</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-bold">AI 智能辨证算法库</h4>
+                                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                        <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">基于机器学习的中医辨证算法框架，支持多种辨证体系。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">Python</span>
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">TensorFlow</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-bold">PPG 信号分析工具包</h4>
+                                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                        <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">脉搏波信号处理与特征提取工具，适用于中医脉象研究。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">Python</span>
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">Signal Processing</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-bold">中医知识图谱框架</h4>
+                                    <div class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                                        <i class="fab fa-github text-gray-700 dark:text-gray-300"></i>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">构建中医知识网络，支持智能问答与知识推理。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">Java</span>
+                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded">Knowledge Graph</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-4 justify-center">
+                            <a href="#" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-md font-medium transition">查看所有开源项目</a>
+                            <a href="#" class="px-6 py-3 bg-white dark:bg-dark-card hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light rounded-md font-medium transition">贡献代码指南</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 font-serif">社区力量：连接、学习、互助</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-tcm-earth/10 flex items-center justify-center text-tcm-earth mb-4">
+                                    <i class="fas fa-utensils text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-3">辟谷圈</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">安全辟谷指导、经验交流、互相督促、数据分享。专业辟谷爱好者的聚集地。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">加入辟谷圈</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-tcm-wood/10 flex items-center justify-center text-tcm-wood mb-4">
+                                    <i class="fas fa-book text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-3">伤寒共读团</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">共读经典医著，互相讨论，共同探索古代智慧。突破难点，智慧碰撞。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">加入共读团</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700">
+                                <div class="w-14 h-14 rounded-full bg-tcm-water/10 flex items-center justify-center text-tcm-water mb-4">
+                                    <i class="fas fa-comments text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-3">综合讨论区</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">自由交流，答疑解惑，分享经验，探讨中医话题。开放包容的中医爱好者社区。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">进入论坛</a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-dark-card p-6 rounded-xl mb-8 text-center">
+                            <h4 class="font-bold mb-4">感谢每一位贡献者！</h4>
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">无论是分享数据、参与讨论，还是提供代码，每一份贡献都让社区更加丰富。</p>
+                            <a href="#" class="text-primary dark:text-primary-light hover:underline inline-flex items-center justify-center">
+                                查看贡献英雄榜
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="#" class="text-primary dark:text-primary-light hover:underline inline-flex items-center justify-center">
+                                了解详细参与方式
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Help Center Section -->
-        <section id="help" class="help">
-            <div class="section-header">
-                <h2>帮助中心</h2>
-                <p>常见问题解答与支持服务</p>
-            </div>
-            <div class="help-content">
-                <div class="faq-section">
-                    <h3>常见问题</h3>
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h4>什么是heyTCM社区？</h4>
-                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+        <!-- Resources -->
+        <section id="resources" class="pt-24 pb-16 bg-gray-50 dark:bg-dark-card section-fade">
+            <div class="container mx-auto px-4">
+                <div class="relative py-16 bg-gradient-to-br from-primary/5 to-tcm-water/5 rounded-2xl mb-16 overflow-hidden">
+                    <div class="max-w-4xl mx-auto text-center px-4">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">健康智慧库</h2>
+                        <p class="text-lg text-gray-700 dark:text-gray-300">精选白皮书、指南与文献，助您深入了解中医与健康。</p>
+                    </div>
+                </div>
+                
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-8 flex justify-center">
+                        <div class="inline-flex rounded-md shadow-sm" role="group">
+                            <button type="button" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-l-lg focus:z-10 focus:ring-2 focus:ring-primary-dark dark:focus:ring-primary-light">
+                                全部
+                            </button>
+                            <button type="button" class="px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-white dark:bg-dark-bg border-t border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 focus:z-10 focus:ring-2 focus:ring-primary-dark dark:focus:ring-primary-light">
+                                白皮书
+                            </button>
+                            <button type="button" class="px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-white dark:bg-dark-bg border-t border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 focus:z-10 focus:ring-2 focus:ring-primary-dark dark:focus:ring-primary-light">
+                                健康指南
+                            </button>
+                            <button type="button" class="px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 bg-white dark:bg-dark-bg border-t border-b border-r border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 focus:z-10 focus:ring-2 focus:ring-primary-dark dark:focus:ring-primary-light rounded-r-lg">
+                                工具模板
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <div class="h-40 bg-gradient-to-br from-primary/20 to-tcm-water/20 flex items-center justify-center p-4">
+                                <div class="bg-white dark:bg-dark-bg rounded-lg p-2 shadow-sm">
+                                    <i class="far fa-file-pdf text-5xl text-primary"></i>
+                                </div>
                             </div>
-                            <div class="faq-answer">
-                                <p>heyTCM社区是一个致力于将传统中医与现代科技相结合的开放生态平台，我们提供游戏、工具应用、模拟器等多种产品与服务，旨在传播中医文化，促进中医现代化发展。</p>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold">睡眠全周期中医调理白皮书</h4>
+                                    <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">白皮书</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">深度解析中医睡眠观与调理法。基于万人数据，融合古今智慧，为您定制睡眠方案。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">
+                                    <i class="fas fa-download mr-1"></i> 下载 PDF
+                                </a>
                             </div>
                         </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h4>如何开始使用气血管理APP？</h4>
-                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        
+                        <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <div class="h-40 bg-gradient-to-br from-primary/20 to-tcm-green/20 flex items-center justify-center p-4">
+                                <div class="bg-white dark:bg-dark-bg rounded-lg p-2 shadow-sm">
+                                    <i class="far fa-file-pdf text-5xl text-primary"></i>
+                                </div>
                             </div>
-                            <div class="faq-answer">
-                                <p>您可以从应用商店下载气血管理APP，注册账号后，按照引导完成个人信息设置，系统会基于您的信息提供个性化的健康管理建议。详细使用指南可在APP内的"帮助"部分查看。</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h4>中医模拟器适合什么人群使用？</h4>
-                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>中医模拟器适合各类对中医感兴趣的人群，包括中医爱好者、学生、教育工作者以及希望了解中医基础理论的普通大众。模拟器设计直观易懂，无需专业背景也能轻松使用。</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h4>如何参与开源项目开发？</h4>
-                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>您可以访问我们的GitHub组织页面，浏览感兴趣的项目，阅读贡献指南，然后通过提交issues或pull requests参与开发。我们也欢迎您加入开发者社区，与其他开发者交流讨论。</p>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold">智能戒指技术与专利概览</h4>
+                                    <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">白皮书</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">了解前沿科技如何与传统中医结合。解析智能戒指背后的科学原理与技术创新。</p>
+                                <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">
+                                    <i class="fas fa-download mr-1"></i> 下载 PDF
+                                </a>
                             </div>
                         </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h4>社区活动如何参与？</h4>
-                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                        
+                        <div class="card-hover rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                            <div class="h-40 bg-gradient-to-br from-tcm-earth/20 to-tcm-fire/20 flex items-center justify-center p-4">
+                                <div class="bg-white dark:bg-dark-bg rounded-lg p-2 shadow-sm">
+                                    <div class="text-center">
+                                        <i class="far fa-file-alt text-4xl text-tcm-earth"></i>
+                                        <div class="text-xs mt-1 font-medium text-gray-500 dark:text-gray-400">即将发布</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="faq-answer">
-                                <p>您可以在官网的"社区"和"新闻与活动"部分查看最新活动信息，点击相应活动的报名链接进行参与。注册成为会员后，还可以收到活动邀请和提醒。</p>
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold">常见病中医自救指南系列</h4>
+                                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-xs px-2 py-1 rounded">即将推出</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">便秘、脱发、痛经等常见问题的中医解决方案。实用、安全的家庭自我调理指南。</p>
+                                <button disabled="" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-md text-xs font-medium cursor-not-allowed">
+                                    敬请期待
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="support-contact">
-                    <h3>联系我们</h3>
-                    <p>如果您有任何问题、建议或合作意向，欢迎通过以下方式联系我们，我们将尽快回复。</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d5b5e5e415c5a6e5a4d435c4b5847584f4200415c49">[email&#160;protected]</a></p>
+            </div>
+        </section>
+
+        <!-- Support Us -->
+        <section id="support" class="pt-24 pb-16 bg-white dark:bg-dark-bg section-fade">
+            <div class="container mx-auto px-4">
+                <div class="relative py-16 bg-gradient-to-br from-primary/5 to-tcm-water/5 rounded-2xl mb-16 overflow-hidden">
+                    <div class="max-w-4xl mx-auto text-center px-4">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">支持 HeyTCM，共筑中医智能化未来</h2>
+                    </div>
+                </div>
+                
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-16">
+                        <div class="p-6 bg-gray-50 dark:bg-dark-card rounded-xl mb-10 text-center">
+                            <p class="text-lg text-gray-700 dark:text-gray-300">"为往圣继绝学"的道路充满挑战，需要持续的数据积累与资金投入。这不是纯粹的慈善，而是需要您共同参与的价值探索。您的每一份支持，都是点亮中医未来的光芒。</p>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fab fa-weixin"></i></div>
-                            <p>微信公众号：heyTCM</p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-comments"></i></div>
-                            <p>社区论坛：forum.heytcm.com</p>
+                        
+                        <h3 class="text-2xl font-bold mb-8 font-serif text-center">成为核心共创者</h3>
+                        
+                        <div class="overflow-x-auto mb-10">
+                            <table class="min-w-full bg-white dark:bg-dark-card shadow-sm rounded-xl overflow-hidden">
+                                <thead>
+                                    <tr class="bg-gray-50 dark:bg-gray-800 text-left">
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">权益</th>
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">随喜版</th>
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">基础版<br><span class="text-primary">¥299</span></th>
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">情侣版<br><span class="text-primary">¥699</span></th>
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">家庭版<br><span class="text-primary">¥999</span></th>
+                                        <th class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">至尊版<br><span class="text-primary">¥2999</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">智能终端使用权</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">1台</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">2台</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">3台</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">5台</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">工具会员年限</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">1年</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">1年</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">2年</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">3年</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">灵石赠送</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">10枚</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">50枚</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">120枚</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">200枚</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">600枚</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">报告兑换权</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">1次</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">2次</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">3次</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">10次</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">数据共享徽章</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700">荣誉墙展示</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center">-</td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                        <td class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 text-center"><i class="fas fa-check text-green-500"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 px-6"></td>
+                                        <td class="py-4 px-6 text-center">
+                                            <a href="#" class="px-4 py-2 bg-white dark:bg-dark-bg hover:bg-gray-100 dark:hover:bg-gray-700 text-primary dark:text-primary-light border border-primary dark:border-primary-light rounded-md text-xs font-medium transition inline-block">随喜支持</a>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">选择此方案</a>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">选择此方案</a>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">选择此方案</a>
+                                        </td>
+                                        <td class="py-4 px-6 text-center">
+                                            <a href="#" class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md text-xs font-medium transition inline-block">选择此方案</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="feedback-form">
-                        <h4>反馈与建议</h4>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">姓名</label>
-                                <input type="text" id="name" name="name" placeholder="您的姓名">
+                    
+                    <div class="mb-16">
+                        <h3 class="text-2xl font-bold mb-8 font-serif text-center">贡献您的力量 (非资金形式)</h3>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-share-alt text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">传播分享</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">分享我们的理念与产品，帮助更多人了解</p>
                             </div>
-                            <div class="form-group">
-                                <label for="email">邮箱</label>
-                                <input type="email" id="email" name="email" placeholder="您的邮箱地址">
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-gamepad text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">使用游戏</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">体验游戏，点击广告，间接支持平台发展</p>
                             </div>
-                            <div class="form-group">
-                                <label for="message">留言</label>
-                                <textarea id="message" name="message" placeholder="请输入您的反馈或建议"></textarea>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-mobile-alt text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">使用工具App</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">使用并反馈我们的工具，帮助改进产品</p>
                             </div>
-                            <button type="submit" class="btn primary-btn">提交反馈</button>
-                        </form>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-database text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">贡献健康数据</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm">安全匿名地共享健康数据，促进研究</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8 font-serif text-center">寻找同路人</h3>
+                        
+                        <div class="bg-gray-50 dark:bg-dark-card p-8 rounded-xl text-center">
+                            <p class="text-gray-700 dark:text-gray-300 mb-6">我们需要技术、内容、运营、医学等各领域的人才加入，一起打造中医智能化的未来。如果您认同我们的愿景，欢迎加入我们的团队！</p>
+                            <a href="#" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-md font-medium transition inline-block">查看开放职位/申请加入</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Center -->
+        <section id="help" class="pt-24 pb-16 bg-gray-50 dark:bg-dark-card section-fade">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-8">
+                        <div class="relative">
+                            <input type="text" placeholder="您好，需要什么帮助？(搜索问题)" class="w-full py-4 px-6 pr-12 bg-white dark:bg-dark-bg border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary text-gray-800 dark:text-gray-200 text-base">
+                            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold mb-6">常见问题分类</h3>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-user-circle text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">账号与支付</h4>
+                            </div>
+                            
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-ring text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">智能戒指</h4>
+                            </div>
+                            
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-mobile-alt text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">工具App</h4>
+                            </div>
+                            
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-gamepad text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">游戏问题</h4>
+                            </div>
+                            
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-shield-alt text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">数据与隐私</h4>
+                            </div>
+                            
+                            <div class="card-hover p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                                <h4 class="text-sm font-medium">社区规则</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold mb-6">热门问题</h3>
+                        
+                        <div class="bg-white dark:bg-dark-bg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
+                            <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-medium">HeyTCM 智能戒指如何监测气血？</h4>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-medium">如何安全地进行辟谷？</h4>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-medium">我的健康数据如何保护隐私？</h4>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-medium">智能戒指防水吗？</h4>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-medium">如何加入伤寒共读团？</h4>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold mb-6">联系支持</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-headset text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">在线客服</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">工作时间: 9:00-18:00</p>
+                                <a href="#" class="text-primary dark:text-primary-light hover:underline">立即咨询</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">支持邮箱</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">回复时间: 24小时内</p>
+                                <a href="mailto:support@heytcm.com" class="text-primary dark:text-primary-light hover:underline">support@heytcm.com</a>
+                            </div>
+                            
+                            <div class="card-hover p-6 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+                                    <i class="fas fa-code text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold mb-2">开发者支持</h4>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">技术文档与API支持</p>
+                                <a href="#" class="text-primary dark:text-primary-light hover:underline">开发者中心</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-6">反馈建议</h3>
+                        
+                        <div class="bg-white dark:bg-dark-bg rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 p-6">
+                            <p class="text-gray-700 dark:text-gray-300 mb-4">您的反馈是我们进步的动力！如有建议、问题或想法，欢迎告诉我们。</p>
+                            <a href="#" class="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-md font-medium transition inline-block">提交反馈</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <svg width="40" height="40" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--trad-brown)" stroke-width="2"/>
-                    <path d="M50,5 C50,50 95,50 50,95 C50,50 5,50 50,5" fill="var(--trad-brown)" opacity="0.7"/>
-                    <circle cx="50" cy="25" r="8" fill="var(--trad-blue)"/>
-                    <circle cx="50" cy="75" r="8" fill="var(--trad-green)"/>
-                </svg>
-                <span>heyTCM</span>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-8 mb-10">
+                    <div class="md:w-1/3">
+                        <div class="flex items-center mb-4">
+                            <div class="yin-yang mr-2"></div>
+                            <span class="text-2xl font-bold">HeyTCM</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">科技焕新中医，共创健康未来</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-weixin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-weibo text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div>
+                                <h4 class="font-bold mb-4">关于</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="#about" class="text-gray-400 hover:text-white transition">我们的故事</a></li>
+                                    <li><a href="#about" class="text-gray-400 hover:text-white transition">愿景使命</a></li>
+                                    <li><a href="#support" class="text-gray-400 hover:text-white transition">加入我们</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-4">产品</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="#products" class="text-gray-400 hover:text-white transition">智能戒指</a></li>
+                                    <li><a href="#products" class="text-gray-400 hover:text-white transition">应用工具</a></li>
+                                    <li><a href="#products" class="text-gray-400 hover:text-white transition">趣味游戏</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-4">社区</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="#ecosystem" class="text-gray-400 hover:text-white transition">辟谷圈</a></li>
+                                    <li><a href="#ecosystem" class="text-gray-400 hover:text-white transition">共读团</a></li>
+                                    <li><a href="#ecosystem" class="text-gray-400 hover:text-white transition">讨论区</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-bold mb-4">支持</h4>
+                                <ul class="space-y-2">
+                                    <li><a href="#help" class="text-gray-400 hover:text-white transition">帮助中心</a></li>
+                                    <li><a href="#" class="text-gray-400 hover:text-white transition">隐私政策</a></li>
+                                    <li><a href="#" class="text-gray-400 hover:text-white transition">联系我们</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-6 text-center">
+                    <p class="text-gray-500">© 2023 HeyTCM. All Rights Reserved.</p>
+                </div>
             </div>
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>关于我们</h4>
-                    <ul>
-                        <li><a href="#about">我们的故事</a></li>
-                        <li><a href="#about">团队介绍</a></li>
-                        <li><a href="#values">价值观与愿景</a></li>
-                        <li><a href="#join">加入我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>产品与服务</h4>
-                    <ul>
-                        <li><a href="smart-ring.html">C1智能戒指</a></li>
-                        <li><a href="smart-ring.html#preorder">预购特惠</a></li>
-                        <li><a href="smart-collab.html">智能中医共创圈</a></li>
-                        <li><a href="smart-collab.html#join-us">共创圈参与方式</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>社区参与</h4>
-                    <ul>
-                        <li><a href="#community">学习交流</a></li>
-                        <li><a href="#news">新闻活动</a></li>
-                        <li><a href="#support">支持我们</a></li>
-                        <li><a href="#opensource">开源项目</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>工具与应用</h4>
-                    <ul>
-                        <li><a href="#tools">全部工具</a></li>
-                        <li><a href="https://pigurisk.heytcm.com/" target="_blank">辟谷风险评估</a></li>
-                        <li><a href="https://idtest.heytcm.com/" target="_blank">中医传承身份测试</a></li>
-                        <li><a href="https://qiandao.heytcm.com/" target="_blank">养生签到挑战</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>探索体验</h4>
-                    <ul>
-                        <li><a href="#games">游戏与娱乐</a></li>
-                        <li><a href="#tools">工具与应用</a></li>
-                        <li><a href="#simulators">模拟与开放数据</a></li>
-                        <li><a href="#help">常见问题</a></li>
-                        <li><a href="#help">联系我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>贡献与荣誉</h4>
-                    <ul>
-                        <li><a href="contribution-leaderboard.html">贡献榜</a></li>
-                        <li><a href="contribution-leaderboard.html#wall-of-faces">荣誉墙</a></li>
-                        <li><a href="contribution-leaderboard.html#contribution-map">贡献地图</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-social">
-                <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 heyTCM开放生态社区 版权所有</p>
         </div>
     </footer>
 
-    <div id="ringPreorderModal" class="preorder-modal">
-        <div class="preorder-modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="preorder-header">
-                <h2>C1预售即将开启</h2>
-                <p>全球首款中医智能健康管理戒指</p>
-            </div>
-            <div class="preorder-form">
-                <p>留下您的邮箱，获取预售特惠通知</p>
-                <div class="preorder-input-group">
-                    <input type="email" placeholder="您的邮箱地址" required>
-                    <button type="submit" class="primary-btn">获取预售通知</button>
-                </div>
-                <p class="preorder-small">预计发货时间：2023年12月</p>
-            </div>
-        </div>
-    </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const toolCards = document.querySelectorAll('.tool-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const typeFilter = this.closest('.filter-group').querySelector('.filter-btn.active');
-                    typeFilter.classList.remove('active');
-                    this.classList.add('active');
-
-                    const filterType = typeFilter.dataset.filter;
-                    const filterTheme = this.dataset.filter;
-
-                    toolCards.forEach(card => {
-                        const matchType = filterType === 'all' || card.dataset.type === filterType;
-                        const matchTheme = filterTheme === 'all' || card.dataset.theme === filterTheme;
-
-                        if (matchType && matchTheme) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Tabs functionality
+        const tabBeliefs = document.getElementById('tab-beliefs');
+        const tabValues = document.getElementById('tab-values');
+        const panelBeliefs = document.getElementById('panel-beliefs');
+        const panelValues = document.getElementById('panel-values');
+        
+        tabBeliefs.addEventListener('click', () => {
+            tabBeliefs.classList.add('border-primary', 'text-primary');
+            tabBeliefs.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            tabValues.classList.remove('border-primary', 'text-primary');
+            tabValues.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            
+            panelBeliefs.classList.remove('hidden');
+            panelValues.classList.add('hidden');
+        });
+        
+        tabValues.addEventListener('click', () => {
+            tabValues.classList.add('border-primary', 'text-primary');
+            tabValues.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            tabBeliefs.classList.remove('border-primary', 'text-primary');
+            tabBeliefs.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            
+            panelValues.classList.remove('hidden');
+            panelBeliefs.classList.add('hidden');
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section-fade').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Account for header height
+                        behavior: 'smooth'
                     });
-                });
+                }
             });
         });
+        
+        // Active navigation indicator
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary', 'dark:text-primary-light');
+                link.classList.add('text-gray-700', 'dark:text-gray-300');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-700', 'dark:text-gray-300');
+                    link.classList.add('text-primary', 'dark:text-primary-light');
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+        });
+        
+        // Ink flow animation
+        const canvas = document.getElementById('inkCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        const numParticles = 50;
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 5 + 1,
+                    speedX: Math.random() * 0.5 - 0.25,
+                    speedY: Math.random() * 0.5 - 0.25,
+                    opacity: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(93, 92, 222, ${particle.opacity})`;
+                ctx.fill();
+                
+                // Update position
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                // Create a flowing effect
+                particle.x += Math.sin(Date.now() * 0.001 + particle.y * 0.1) * 0.5;
+                
+                // Reset if out of bounds
+                if (particle.x < 0 || particle.x > canvas.width) {
+                    particle.x = Math.random() * canvas.width;
+                }
+                if (particle.y < 0 || particle.y > canvas.height) {
+                    particle.y = Math.random() * canvas.height;
+                }
+            });
+            
+            requestAnimationFrame(drawParticles);
+        }
+        
+        // Make canvas responsive
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            initParticles();
+        }
+        
+        // Initialize
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        drawParticles();
     </script>
-</body>
-</html>
+
+
+</body></html>
