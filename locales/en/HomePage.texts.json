@@ -1,0 +1,121 @@
+{
+  "HomePage.seo.title": "HeyTCM Intelligent TCM Platform",
+  "HomePage.seo.description": "HeyTCM is an innovative software platform focused on intelligent TCM, providing professional TCM knowledge, tools, and services.",
+  "HomePage.seo.keywords": "TCM, AI, intelligence, software, health",
+  "HomePage.seo.og.title": "HeyTCM Intelligent TCM Platform",
+  "HomePage.seo.og.description": "HeyTCM is an innovative software platform focused on intelligent TCM, providing professional TCM knowledge, tools, and services.",
+  "HomePage.seo.og.site_name": "HeyTCM",
+  "HomePage.seo.canonical": "https://heytcm.com/",
+  "HomePage.seo.alternate.x-default": "https://heytcm.com/",
+  "HomePage.seo.alternate.zh": "https://heytcm.com/zh",
+  "HomePage.seo.alternate.en": "https://heytcm.com/en",
+
+  "HomePage.head.title": "HeyTCM - Rejuvenate TCM with Technology",
+
+  "HomePage.hero.title": "Carry Forward the Classics, Rejuvenate TCM with Technology",
+  "HomePage.hero.desc": "HeyTCM Intelligent TCM Co-creation Circle: Use AI and open data to interpret body signals, quantify Qi & Blood, and start your personalized health renaissance journey.",
+  "HomePage.hero.buttons": [
+    { "text": "Explore Smart Ring", "link": "/products" },
+    { "text": "Join the Co-creation Community", "link": "/community" },
+    { "text": "Learn Our Story", "link": "/about" }
+  ],
+
+  "HomePage.painPointsTitle": "Feel Something's Off, But Can't Explain or Detect It?",
+  "HomePage.painPoints": [
+    { "icon": "Battery", "text": "Unexplained fatigue, low energy?" },
+    { "icon": "Moon", "text": "Tossing and turning, tired after sleep? (I suffered from insomnia for 20+ years)" },
+    { "icon": "Lungs", "text": "Sensitive digestion, cautious eating?" },
+    { "icon": "Allergen", "text": "Recurring skin issues, acne, rashes? (I battled acne for 10 years, urticaria for 4 years)" },
+    { "icon": "BrainCircuit", "text": "Mood swings, anxiety?" }
+  ],
+  "HomePage.painPointsBottom": "HeyTCM is translating the language of your body with data...",
+
+  "HomePage.solutions.title": "See 'Qi & Blood' with Data, Manage Health Intelligently",
+  "HomePage.solutions.desc": "The perfect combination of TCM wisdom and modern technology, providing you with professional and personalized health management solutions.",
+  "HomePage.solutions": [
+    {
+      "title": "Intelligent Sensing",
+      "desc": "24h monitoring with the ring, quantifying Qi & Blood, sleep, and organ status.",
+      "linkText": "Learn about Smart Hardware"
+    },
+    {
+      "title": "Personalized Management",
+      "desc": "App tools to track symptoms, manage Five Elements, and evaluate efficacy.",
+      "linkText": "Explore Tool Apps"
+    },
+    {
+      "title": "Fun Growth",
+      "desc": "Learn TCM through games and develop healthy habits.",
+      "linkText": "Experience TCM Games"
+    },
+    {
+      "title": "Open Co-creation",
+      "desc": "Share data, participate in research, and build the future of TCM together.",
+      "linkText": "Visit Open Ecosystem"
+    }
+  ],
+  "HomePage.news.title": "Community Pulse & Latest Releases",
+  "HomePage.news.desc": "Explore the latest trends, research results, and community activities in the HeyTCM ecosystem",
+  "HomePage.news": [
+    {
+      "type": "Event",
+      "title": "2025 HeyTCM Annual User Conference",
+      "desc": "On July 20, discuss future directions, share experiences and health stories."
+    },
+    {
+      "type": "Community",
+      "title": "Fasting Community Surpasses 10,000 Members",
+      "desc": "Thanks to every user's contribution, let's promote the scientific development of TCM together."
+    },
+    {
+      "type": "Research",
+      "title": "New Study: Qi & Blood Changes and Sleep Quality",
+      "desc": "Analysis of 100,000+ user data reveals a close relationship between Qi & Blood status and sleep cycles."
+    }
+  ],
+  "HomePage.news.detail": "View Details",
+
+  "HomePage.cta.title": "Join HeyTCM and Co-create the New Era of Intelligent TCM!",
+  "HomePage.cta.desc": "Your participation—using products, sharing data, or supporting us—is a key force in the revival of TCM.",
+  "HomePage.cta.button": "Learn How to Support Us",
+
+  "HomePage.founder.title": "I am Sheng Haiwang. After 30 years of physical and mental tempering and 15 years of medical technology exploration, I firmly believe TCM wisdom deserves to be seen and quantified. HeyTCM is a light I ignite for myself and for everyone who desires physical and mental ease.",
+  "HomePage.founder.link": "Read My Full Story",
+
+  "HomePage.ldjson.context": "https://schema.org",
+  "HomePage.ldjson.type": "WebPage",
+  "HomePage.ldjson.name": "HeyTCM Homepage",
+  "HomePage.ldjson.description": "HeyTCM, integrating TCM wisdom with modern technology, provides intelligent health management and data services.",
+  "HomePage.ldjson.url": "https://heytcm.com/",
+  "HomePage.ldjson.publisher.type": "Organization",
+  "HomePage.ldjson.publisher.name": "HeyTCM",
+  "HomePage.ldjson.publisher.url": "https://heytcm.com/",
+  "HomePage.ldjson.publisher.logo": "https://heytcm.com/logo.png",
+  "HomePage.ldjson.potentialAction.0.type": "SearchAction",
+  "HomePage.ldjson.potentialAction.0.target": "https://heytcm.com/search?q={search_term_string}",
+  "HomePage.ldjson.potentialAction.0.query-input": "required name=search_term_string",
+  "HomePage.ldjson.potentialAction.1.type": "SubscribeAction",
+  "HomePage.ldjson.potentialAction.1.target": "https://heytcm.com/newsletter",
+  "HomePage.ldjson.image": "https://heytcm.com/og-image.jpg",
+  "HomePage.ldjson.inLanguage.0": "zh-CN",
+  "HomePage.ldjson.inLanguage.1": "en",
+  "HomePage.ldjson.software.type": "SoftwareApplication",
+  "HomePage.ldjson.software.name": "HeyTCM Intelligent TCM Platform",
+  "HomePage.ldjson.software.operatingSystem": "Web, iOS, Android",
+  "HomePage.ldjson.software.applicationCategory": "HealthApplication",
+  "HomePage.ldjson.software.offers.type": "Offer",
+  "HomePage.ldjson.software.offers.price": "2999",
+  "HomePage.ldjson.software.offers.priceCurrency": "CNY",
+  "HomePage.ldjson.software.aggregateRating.type": "AggregateRating",
+  "HomePage.ldjson.software.aggregateRating.ratingValue": "4.9",
+  "HomePage.ldjson.software.aggregateRating.reviewCount": "1200",
+  "HomePage.ldjson.software.description": "Intelligent health management cloud platform integrating TCM theory and modern technology, supporting multi-terminal, data analysis, and personalized health services.",
+  "HomePage.ldjson.software.screenshot": "https://heytcm.com/screenshots/app-main.png",
+  "HomePage.ldjson.software.downloadUrl": "https://heytcm.com/download",
+  "HomePage.ldjson.software.supportUrl": "https://heytcm.com/support",
+  "HomePage.ldjson.software.featureList.0": "TCM constitution analysis & health advice",
+  "HomePage.ldjson.software.featureList.1": "Multi-terminal sync & data visualization",
+  "HomePage.ldjson.software.featureList.2": "Personalized health reports & trend analysis",
+  "HomePage.ldjson.software.featureList.3": "Open API & data export"
+}
+

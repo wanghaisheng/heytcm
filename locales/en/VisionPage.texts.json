@@ -1,0 +1,76 @@
+{
+  "VisionPage.seo.title": "Vision & Mission | HeyTCM",
+  "VisionPage.seo.description": "Build a collaborative, open, and win-win platform. Break the myths, help TCM thrive, and let more people achieve physical and mental harmony through TCM wisdom.",
+  "VisionPage.seo.keywords": "TCM, vision, mission, health, HeyTCM, intelligent TCM, digital health",
+  "VisionPage.seo.og.title": "Vision & Mission | HeyTCM",
+  "VisionPage.seo.og.description": "Build a collaborative, open, and win-win platform. Break the myths, help TCM thrive, and let more people achieve physical and mental harmony through TCM wisdom.",
+  "VisionPage.seo.og.site_name": "HeyTCM",
+  "VisionPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "VisionPage.seo.canonical": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.x-default": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.zh": "https://heytcm.com/zh/vision",
+  "VisionPage.seo.alternate.en": "https://heytcm.com/en/vision",
+
+  "VisionPage.head.title": "HeyTCM - Vision & Mission",
+  "VisionPage.banner.title": "Our Vision & Mission",
+  "VisionPage.banner.image": "vision-mission-banner",
+
+  "VisionPage.ldjson.context": "https://schema.org",
+  "VisionPage.ldjson.type": "WebPage",
+  "VisionPage.ldjson.mainEntity.type": "Organization",
+  "VisionPage.ldjson.mainEntity.name": "HeyTCM",
+  "VisionPage.ldjson.mainEntity.url": "https://heytcm.com/",
+  "VisionPage.ldjson.mainEntity.description": "Build a collaborative, open, and win-win platform. Break the myths, help TCM thrive, and let more people achieve physical and mental harmony through TCM wisdom.",
+
+  "VisionPage.title": "Our Vision & Mission",
+  "VisionPage.vision.title": "Vision",
+  "VisionPage.vision.desc": "Build a collaborative, open, and win-win platform. Break the myths, help TCM thrive, and let more people achieve physical and mental harmony through TCM wisdom.",
+  "VisionPage.mission.title": "Mission",
+  "VisionPage.mission.items": [
+    {
+      "icon": "Microchip",
+      "title": "Integrating Technology & TCM Wisdom",
+      "desc": "Combine modern technology with traditional TCM theory to innovate health management."
+    },
+    {
+      "icon": "ChartPie",
+      "title": "Collect & Analyze Massive Health Data",
+      "desc": "Use big data to validate and develop TCM theory and improve diagnosis and treatment."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Personalized Health Management",
+      "desc": "Provide customized health solutions based on individual differences to enhance prevention and conditioning."
+    },
+    {
+      "icon": "Brain",
+      "title": "Promote Intelligent TCM",
+      "desc": "Build an open platform and unite all forces to advance the modernization of TCM."
+    }
+  ],
+  "VisionPage.beliefs.title": "Our Principles",
+  "VisionPage.values.title": "Our Principles",
+  "VisionPage.principle.tabs": [
+    { "id": "beliefs", "label": "Six Beliefs" },
+    { "id": "values", "label": "Community Values" }
+  ],
+  "VisionPage.principle.beliefs": [
+    { "title": "Science is Endless", "desc": "TCM and modern science are not in conflict. We embrace the scientific spirit and methods, and promote the renewal and development of TCM knowledge with an open mind." },
+    { "title": "East-West Integration", "desc": "TCM and Western medicine each have their strengths. We advocate integrating both to benefit patients." },
+    { "title": "Wearable Technology", "desc": "We believe smart wearables are the future of health monitoring, providing objective, continuous data for TCM." },
+    { "title": "AI Opportunities", "desc": "AI will reshape healthcare and bring unprecedented possibilities for the inheritance, application, and innovation of TCM knowledge." },
+    { "title": "Individual Uniqueness", "desc": "Everyone's body and health needs are unique. We are committed to personalized health solutions." },
+    { "title": "Mutual Help", "desc": "The power of community is limitless. We encourage knowledge sharing and mutual assistance for a healthier future." }
+  ],
+  "VisionPage.principle.values": [
+    { "title": "Exploration & Innovation", "desc": "Encourage curiosity and exploration, constantly breaking the boundaries of traditional cognition." },
+    { "title": "Holistic Complementarity", "desc": "Integrate Eastern and Western wisdom, learn from each other, and celebrate diversity." },
+    { "title": "Respect for Individuality", "desc": "Respect individual differences and provide diversified health paths." },
+    { "title": "Co-creation & Sharing", "desc": "Open resources and share achievements so every contribution is seen." },
+    { "title": "Technology Driven", "desc": "Use cutting-edge technology to help inherit and innovate traditional wisdom." },
+    { "title": "Health & Happiness", "desc": "Aim to improve users' physical and mental health and quality of life." },
+    { "title": "Privacy & Security", "desc": "Strictly protect user privacy and ensure data security and compliance." },
+    { "title": "Social Responsibility", "desc": "Take social responsibility, spread health knowledge, and promote public welfare." }
+  ]
+}
+

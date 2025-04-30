@@ -1,0 +1,240 @@
+{
+  "ProductsPage.seo.title": "Products & Services | HeyTCM",
+  "ProductsPage.seo.description": "Innovative intelligent TCM software products empowering healthcare and health management.",
+  "ProductsPage.seo.keywords": "TCM, software, products, health management",
+  "ProductsPage.seo.og.title": "Products & Services | HeyTCM",
+  "ProductsPage.seo.og.description": "Innovative intelligent TCM software products empowering healthcare and health management.",
+  "ProductsPage.seo.og.site_name": "HeyTCM",
+  "ProductsPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "ProductsPage.seo.canonical": "https://heytcm.com/products",
+  "ProductsPage.seo.alternate.x-default": "https://heytcm.com/products",
+  "ProductsPage.seo.alternate.zh": "https://heytcm.com/zh/products",
+  "ProductsPage.seo.alternate.en": "https://heytcm.com/en/products",
+
+  "ProductsPage.head.title": "HeyTCM - Products & Services",
+  "ProductsPage.banner.title": "Smart Health Products & Services",
+  "ProductsPage.banner.imgAlt": "Main Products & Services Image",
+
+  "ProductsPage.ldjson.context": "https://schema.org",
+  "ProductsPage.ldjson.type": "WebPage",
+  "ProductsPage.ldjson.name": "Products & Services | HeyTCM",
+  "ProductsPage.ldjson.description": "HeyTCM products and services, covering smart rings, health management tools, and data services.",
+  "ProductsPage.ldjson.url": "https://heytcm.com/products",
+  "ProductsPage.ldjson.brand": {
+    "type": "Brand",
+    "name": "HeyTCM",
+    "logo": "https://heytcm.com/logo.png"
+  },
+  "ProductsPage.ldjson.manufacturer": {
+    "type": "Organization",
+    "name": "HeyTCM",
+    "url": "https://heytcm.com/",
+    "address": "66 Zhongguancun East Road, Haidian District, Beijing"
+  },
+  "ProductsPage.ldjson.offers": [
+    {
+      "type": "Offer",
+      "itemOffered": "HeyTCM Smart Ring C1",
+      "price": "2999",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "type": "Offer",
+      "itemOffered": "HeyTCM Data Service",
+      "price": "299",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "ProductsPage.ldjson.software": {
+    "type": "SoftwareApplication",
+    "name": "HeyTCM Intelligent TCM Platform",
+    "operatingSystem": "Web, iOS, Android",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "type": "Offer",
+      "price": "2999",
+      "priceCurrency": "CNY"
+    },
+    "aggregateRating": {
+      "type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1200"
+    },
+    "description": "Intelligent health management cloud platform integrating TCM theory and modern technology, supporting multi-terminal, data analysis, and personalized health services.",
+    "screenshot": "https://heytcm.com/screenshots/app-main.png",
+    "downloadUrl": "https://heytcm.com/download",
+    "supportUrl": "https://heytcm.com/support",
+    "featureList": [
+      "TCM constitution analysis & health advice",
+      "Multi-terminal sync & data visualization",
+      "Personalized health reports & trend analysis",
+      "Open API & data export"
+    ]
+  },
+
+  "ProductsPage.sections": [
+    {
+      "id": "products",
+      "title": "Products",
+      "desc": "Smart hardware, packages & digital services",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "ring", "label": "Smart Ring" },
+        { "id": "bigu", "label": "Bigu Package" },
+        { "id": "consult-report", "label": "Health Consult Report" }
+      ],
+      "items": [
+        {
+          "id": "ring",
+          "title": "HeyTCM Harmony Ring S1",
+          "description": "Change your sleep quality with a smart ring. Our sleep analysis system is based on solid medical theory, combining TCM and modern sleep medicine research.",
+          "link": "https://harmonyring.heytcm.com/",
+          "image": "https://images.pexels.com/photos/4047070/pexels-photo-4047070.jpeg",
+          "tags": ["Physical Product", "Health Management"],
+          "icon": "Activity"
+        },
+        {
+          "id": "bigu",
+          "title": "Bigu Package",
+          "description": "Scientific bigu fasting combined with health management for body and mind renewal.",
+          "link": "https://bigu.heytcm.com/",
+          "image": "https://images.pexels.com/photos/167964/pexels-photo-167964.jpeg",
+          "tags": ["Package", "Body & Mind Health"],
+          "icon": "Heart"
+        },
+        {
+          "id": "consult-report",
+          "title": "Health Consult Report",
+          "description": "Professional TCM health assessment and personalized report for precise conditioning.",
+          "link": "https://consult.heytcm.com/",
+          "image": "https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg",
+          "tags": ["Digital Product", "Report"],
+          "icon": "FileText"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools",
+      "desc": "Various apps and websites for different symptoms/populations/domains",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "shanghan-app", "label": "Daily Shanghan App" },
+        { "id": "qixue-app", "label": "Qi & Blood App" },
+        { "id": "sleeppal", "label": "SleepPal Sleep Assistant" }
+      ],
+      "items": [
+        {
+          "id": "shanghan-app",
+          "title": "Daily Shanghan App",
+          "description": "A question a day, systematically master core knowledge of Treatise on Cold Damage.",
+          "link": "https://shanghan.heytcm.com/",
+          "image": "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg",
+          "tags": ["Learning", "Shanghanlun", "App"],
+          "icon": "FileText"
+        },
+        {
+          "id": "qixue-app",
+          "title": "Qi & Blood App",
+          "description": "Quantify Qi & Blood status, intelligently analyze health trends.",
+          "link": "https://qixue.heytcm.com/",
+          "image": "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg",
+          "tags": ["Health Management", "Qi & Blood", "App"],
+          "icon": "Brain"
+        },
+        {
+          "id": "sleeppal",
+          "title": "SleepPal Sleep Assistant",
+          "description": "Scientific sleep management, improve sleep quality.",
+          "link": "https://sleeppal.heytcm.com/",
+          "image": "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg",
+          "tags": ["Sleep", "Health", "App"],
+          "icon": "Activity"
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "title": "Games",
+      "desc": "Classic remakes and original puzzle, card, tower defense health-themed games",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "classic-puzzle", "label": "Classic Puzzle Games" },
+        { "id": "card-battle", "label": "Original Card Battle" },
+        { "id": "tower-defense", "label": "Original Tower Defense" }
+      ],
+      "items": [
+        {
+          "id": "classic-puzzle",
+          "title": "Classic Puzzle Game",
+          "description": "Remake classics, train thinking, and learn through fun.",
+          "link": "https://games.heytcm.com/classic",
+          "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
+          "tags": ["Puzzle", "Classic Remake"],
+          "icon": "Gamepad2"
+        },
+        {
+          "id": "card-battle",
+          "title": "Original Card Battle",
+          "description": "Strategy and luck combined, experience TCM culture card battles.",
+          "link": "https://games.heytcm.com/card",
+          "image": "https://images.pexels.com/photos/279009/pexels-photo-279009.jpeg",
+          "tags": ["Card", "Original"],
+          "icon": "Gamepad2"
+        },
+        {
+          "id": "tower-defense",
+          "title": "Original Tower Defense",
+          "description": "Defense and strategy, learn through fun.",
+          "link": "https://games.heytcm.com/tower",
+          "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
+          "tags": ["Tower Defense", "Original"],
+          "icon": "Gamepad2"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "Community",
+      "desc": "Bigu Circle, Shanghan Reading, comprehensive discussion and more interactive communities",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "bigu-circle", "label": "Bigu Circle" },
+        { "id": "shanghan-reading", "label": "Shanghan Reading" },
+        { "id": "general-discussion", "label": "General Discussion" }
+      ],
+      "items": [
+        {
+          "id": "bigu-circle",
+          "title": "Bigu Circle",
+          "description": "Share bigu fasting experiences and personal growth.",
+          "link": "https://community.heytcm.com/bigu",
+          "image": "https://images.pexels.com/photos/1394882/pexels-photo-1394882.jpeg",
+          "tags": ["Bigu", "Circle"],
+          "icon": "Heart"
+        },
+        {
+          "id": "shanghan-reading",
+          "title": "Shanghan Reading",
+          "description": "Read classics together and explore TCM wisdom.",
+          "link": "https://community.heytcm.com/shanghan",
+          "image": "https://images.pexels.com/photos/5726706/pexels-photo-5726706.jpeg",
+          "tags": ["Reading", "Shanghanlun"],
+          "icon": "FileText"
+        },
+        {
+          "id": "general-discussion",
+          "title": "General Discussion",
+          "description": "Discuss TCM health, lifestyle, and more topics freely.",
+          "link": "https://community.heytcm.com/general",
+          "image": "https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg",
+          "tags": ["General", "Discussion"],
+          "icon": "Activity"
+        }
+      ]
+    }
+  ]
+}
+

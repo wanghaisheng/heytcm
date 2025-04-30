@@ -1,0 +1,87 @@
+{
+  "HelpPage.seo.title": "帮助中心 | HeyTCM",
+  "HelpPage.seo.description": "HeyTCM 帮助中心，解答常见问题，助力用户更好地使用平台。",
+  "HelpPage.seo.keywords": "帮助, FAQ, 中医, 智能",
+  "HelpPage.seo.og.title": "帮助中心 | HeyTCM",
+  "HelpPage.seo.og.description": "HeyTCM 帮助中心，解答常见问题，助力用户更好地使用平台。",
+  "HelpPage.seo.og.site_name": "HeyTCM",
+  "HelpPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "HelpPage.seo.canonical": "https://heytcm.com/help",
+  "HelpPage.seo.alternate.x-default": "https://heytcm.com/help",
+  "HelpPage.seo.alternate.zh": "https://heytcm.com/zh/help",
+  "HelpPage.seo.alternate.en": "https://heytcm.com/en/help",
+
+  "HelpPage.head.title": "HeyTCM - 帮助中心",
+  "HelpPage.banner.title": "帮助中心",
+  "HelpPage.banner.image": "帮助中心主图",
+
+  "HelpPage.ldjson.context": "https://schema.org",
+  "HelpPage.ldjson.type": "FAQPage",
+  "HelpPage.ldjson.name": "帮助中心 | HeyTCM",
+  "HelpPage.ldjson.description": "HeyTCM 帮助中心，解答常见问题，助力用户更好地使用平台。",
+  "HelpPage.ldjson.url": "https://heytcm.com/help",
+
+  "HelpPage.categories": [
+    { "id": "all", "label": "所有问题" },
+    { "id": "account", "label": "账号与支付" },
+    { "id": "smartring", "label": "智能戒指" },
+    { "id": "data", "label": "数据与隐私" },
+    { "id": "community", "label": "社区规则" },
+    { "id": "security", "label": "安全问题" }
+  ],
+
+  "HelpPage.faqs": [
+    {
+      "category": "smartring",
+      "question": "HeyTCM 智能戒指如何监测气血状态？",
+      "answer": "HeyTCM 智能戒指通过内置的高精度光电传感器监测用户的脉搏波形变化、体表温度和微循环状态等生物指标。结合我们专有的中医理论模型与机器学习算法，将这些数据转化为中医视角下的气血状态评估。戒指会24小时不间断采集数据，分析气血流动的趋势变化，为您提供个性化的健康洞察。"
+    },
+    {
+      "category": "account",
+      "question": "如何注册 HeyTCM 账号？",
+      "answer": "注册 HeyTCM 账号很简单：1. 访问我们的官网或下载 HeyTCM App； 2. 点击\"注册\"按钮； 3. 输入您的邮箱地址并设置密码； 4. 验证您的邮箱； 5. 完成个人资料填写（包括基本健康信息，以便提供更准确的健康建议）。注册完成后，您就可以使用所有免费功能，并可选择购买高级服务。"
+    },
+    {
+      "category": "data",
+      "question": "HeyTCM 如何保护我的健康数据隐私？",
+      "answer": "HeyTCM 高度重视用户隐私保护：1. 所有数据采用端到端加密传输与存储；2. 用户可完全控制数据共享范围，默认情况下数据仅供个人查看；3. 用于研究的数据均经匿名化和脱敏处理；4. 我们遵循严格的数据安全协议，符合国际数据保护标准；5. 永远不会在未经您明确许可的情况下向第三方出售您的个人数据。您可以随时在隐私设置中查看、下载或删除您的数据。"
+    },
+    {
+      "category": "smartring",
+      "question": "智能戒指续航时间有多久？如何充电？",
+      "answer": "HeyTCM C1 智能戒指在正常使用情况下，单次充满电可持续使用约 7 天。充电方法非常简便，只需将戒指放入随附的充电盒中，充电盒会自动磁吸定位并开始充电。充电盒本身可通过 USB-C 接口充电，充满电后可为戒指提供约 3 次完整充电。戒指从完全没电到充满大约需要 2 小时。App 会在戒指电量低于 20% 时提醒您充电。"
+    },
+    {
+      "category": "community",
+      "question": "如何参与 HeyTCM 社区讨论？",
+      "answer": "HeyTCM 社区是一个开放、友善的交流平台：1. 登录您的 HeyTCM 账号；2. 在 App 或网站内点击\"社区\"选项卡；3. 浏览现有讨论或创建新话题；4. 遵循社区规则参与讨论，分享您的经验和见解。我们鼓励用户分享个人健康管理心得，但请记住不要分享具体的个人隐私信息，也不要将社区讨论作为医疗建议的替代品。"
+    },
+    {
+      "category": "account",
+      "question": "忘记密码如何找回？",
+      "answer": "如果您忘记了密码，可以通过以下步骤找回：1. 在登录页面点击\"忘记密码\"链接；2. 输入您注册时使用的邮箱地址；3. 点击\"发送重置链接\"；4. 在收到的邮件中点击密码重置链接；5. 设置新密码并确认。如果您没有收到重置邮件，请检查垃圾邮件文件夹，或联系我们的客服团队获取帮助。"
+    },
+    {
+      "category": "security",
+      "question": "发现设备可能有安全漏洞该怎么办？",
+      "answer": "HeyTCM 重视产品安全性，欢迎安全研究者报告潜在问题。如果您发现任何安全漏洞，请：1. 立即联系我们的安全团队 (security@heytcm.com)；2. 提供详细的漏洞描述和复现步骤；3. 避免公开披露未修复的漏洞信息；4. 给予我们合理的时间来修复问题。我们设有漏洞赏金计划，对于有效的安全报告，我们会提供相应的奖励。"
+    }
+  ],
+
+  "HelpPage.title": "帮助中心",
+  "HelpPage.searchPlaceholder": "您好，需要什么帮助？",
+  "HelpPage.noResultTitle": "没有找到相关问题",
+  "HelpPage.noResultDesc": "尝试使用不同的关键词，或直接联系我们寻求帮助",
+  "HelpPage.contactButton": "联系客服",
+  "HelpPage.contactTitle": "没有找到答案？",
+  "HelpPage.contactDesc": "我们的客服团队随时准备帮助您解决问题，请通过以下方式联系我们。",
+  "HelpPage.contactEmail": "support@heytcm.com",
+  "HelpPage.contactOnline": "在线客服",
+  "HelpPage.search.placeholder": "请输入关键词搜索问题…",
+  "HelpPage.noResult.title": "未找到相关问题",
+  "HelpPage.noResult.description": "请尝试其他关键词，或联系客服获取帮助。",
+  "HelpPage.contactSupport": "联系客服",
+  "HelpPage.contactSupportTitle": "在线客服",
+  "HelpPage.contactSupportDescription": "如有疑问，欢迎随时联系我们的在线客服团队。",
+  "HelpPage.onlineSupport": "在线支持"
+}

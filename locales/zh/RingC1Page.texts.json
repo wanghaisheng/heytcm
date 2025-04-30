@@ -1,0 +1,93 @@
+{
+    "RingC1Page.seo.title": "HeyTCM - C1 中医智能健康管理戒指 | 数据养生",
+    "RingC1Page.seo.description": "HeyTCM C1 戒指，融合中医智慧与现代科技，助力健康管理与数据养生。",
+    "RingC1Page.seo.keywords": "中医, 智能戒指, 健康管理, 数据养生, HeyTCM",
+    "RingC1Page.seo.og.title": "HeyTCM - C1 中医智能健康管理戒指",
+    "RingC1Page.seo.og.description": "HeyTCM C1 戒指，融合中医智慧与现代科技，助力健康管理与数据养生。",
+    "RingC1Page.seo.og.image": "https://heytcm.com/og-image.jpg",
+    "RingC1Page.seo.og.site_name": "HeyTCM",
+    "RingC1Page.seo.canonical": "https://heytcm.com/ring-c1",
+    "RingC1Page.seo.alternate.x-default": "https://heytcm.com/ring-c1",
+    "RingC1Page.seo.alternate.zh": "https://heytcm.com/zh/ring-c1",
+    "RingC1Page.seo.alternate.en": "https://heytcm.com/en/ring-c1",
+    "RingC1Page.banner.title": "HeyTCM C1 智能健康戒指",
+    "RingC1Page.banner.image": "/images/ring-c1-banner.jpg",
+    "RingC1Page.intro.title": "HeyTCM C1 智能健康戒指",
+    "RingC1Page.intro.subtitle": "融合中医智慧与现代科技，开启数据养生新体验。",
+    "RingC1Page.intro.image": "/images/ring-c1-main.jpg",
+    "RingC1Page.features": [
+        {
+            "title": "中医智能健康管理",
+            "desc": "融合中医理论与现代传感技术，实时监测健康数据，智能分析体质与健康趋势。",
+            "image": "/images/ring-c1-feature1.jpg"
+        },
+        {
+            "title": "多维数据采集",
+            "desc": "支持心率、体温、睡眠、活动等多项健康指标采集，助力个性化养生。",
+            "image": "/images/ring-c1-feature2.jpg"
+        },
+        {
+            "title": "AI 辅助决策",
+            "desc": "内置 AI 算法，提供个性化健康建议与中医调理方案。",
+            "image": "/images/ring-c1-feature3.jpg"
+        }
+    ],
+    "RingC1Page.models": [
+        {
+            "name": "C1 标准版",
+            "price": "¥999",
+            "features": [
+                "基础健康监测",
+                "AI 智能分析",
+                "数据同步"
+            ]
+        },
+        {
+            "name": "C1 Pro",
+            "price": "¥1499",
+            "features": [
+                "高级健康监测",
+                "AI 深度分析",
+                "多端数据管理"
+            ]
+        }
+    ],
+    "RingC1Page.specs": [
+        {
+            "group": "传感器",
+            "items": [
+                {
+                    "name": "心率传感器",
+                    "value": "支持"
+                },
+                {
+                    "name": "体温传感器",
+                    "value": "支持"
+                }
+            ]
+        },
+        {
+            "group": "电池与续航",
+            "items": [
+                {
+                    "name": "电池容量",
+                    "value": "50mAh"
+                },
+                {
+                    "name": "续航时间",
+                    "value": "7 天"
+                }
+            ]
+        }
+    ],
+    "RingC1Page.faqs": [
+        {
+            "q": "C1 戒指适合哪些人群？",
+            "a": "适合关注健康、希望通过数据养生的用户，尤其是中医爱好者。"
+        },
+        {
+            "q": "如何购买 C1 戒指？",
+            "a": "可通过 HeyTCM 官网预约或合作渠道购买。"
+        }
+    ]
+}

@@ -1,0 +1,198 @@
+{
+  "SupportPage.seo.title": "Support & Collaboration | HeyTCM",
+  "SupportPage.seo.description": "Join HeyTCM to advance intelligent TCM together. We welcome your support and collaboration.",
+  "SupportPage.seo.keywords": "TCM, collaboration, support, volunteer",
+  "SupportPage.seo.og.title": "Support & Collaboration | HeyTCM",
+  "SupportPage.seo.og.description": "Join HeyTCM to advance intelligent TCM together. We welcome your support and collaboration.",
+  "SupportPage.seo.og.site_name": "HeyTCM",
+  "SupportPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "SupportPage.seo.canonical": "https://heytcm.com/support",
+  "SupportPage.seo.alternate.x-default": "https://heytcm.com/support",
+  "SupportPage.seo.alternate.zh": "https://heytcm.com/zh/support",
+  "SupportPage.seo.alternate.en": "https://heytcm.com/en/support",
+
+  "SupportPage.head.title": "HeyTCM - Support Us",
+  "SupportPage.banner.title": "Support & Collaboration",
+  "SupportPage.banner.imgAlt": "Main image for support & collaboration",
+
+  "SupportPage.ldjson.context": "https://schema.org",
+  "SupportPage.ldjson.type": "WebPage",
+  "SupportPage.ldjson.name": "Support & Collaboration | HeyTCM",
+  "SupportPage.ldjson.description": "Join HeyTCM to advance intelligent TCM together. We welcome your support and collaboration.",
+  "SupportPage.ldjson.url": "https://heytcm.com/support",
+  "SupportPage.ldjson.contactPoint": {
+    "type": "ContactPoint",
+    "contactType": "support",
+    "email": "support@heytcm.com",
+    "url": "https://heytcm.com/support",
+    "availableLanguage": ["zh-CN", "en"]
+  },
+  "SupportPage.ldjson.funder": {
+    "type": "Organization",
+    "name": "HeyTCM Supporters Alliance",
+    "url": "https://heytcm.com/support"
+  },
+  "SupportPage.ldjson.software": {
+    "type": "SoftwareApplication",
+    "name": "HeyTCM Intelligent TCM Platform",
+    "operatingSystem": "Web, iOS, Android",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "type": "Offer",
+      "price": "2999",
+      "priceCurrency": "CNY"
+    },
+    "aggregateRating": {
+      "type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1200"
+    },
+    "description": "An intelligent health management cloud platform combining TCM theory with modern technology, supporting multi-terminal, data analysis, and personalized health services.",
+    "screenshot": "https://heytcm.com/screenshots/app-main.png",
+    "downloadUrl": "https://heytcm.com/download",
+    "supportUrl": "https://heytcm.com/support",
+    "featureList": [
+      "TCM constitution analysis and health advice",
+      "Multi-terminal sync and data visualization",
+      "Personalized health reports and trend analysis",
+      "Open API and data export"
+    ]
+  },
+
+  "SupportPage.plans": [
+    {
+      "id": "free",
+      "name": "Donation Edition",
+      "price": "Custom",
+      "features": [
+        "Basic tool access (ad-supported)",
+        "Community read-only access",
+        "Access to public research data"
+      ]
+    },
+    {
+      "id": "basic",
+      "name": "Basic Edition",
+      "price": "¥299",
+      "features": [
+        "Smart device access (1 year)",
+        "Tool membership (1 year)",
+        "300 Ling Stones bonus",
+        "Report redemption (1 time)",
+        "Data sharing badge"
+      ]
+    },
+    {
+      "id": "couple",
+      "name": "Couple Edition",
+      "price": "¥699",
+      "features": [
+        "Smart device access (2 sets)",
+        "Tool membership (1 year)",
+        "800 Ling Stones bonus",
+        "Report redemption (8 times)",
+        "Data sharing badge",
+        "Private consultant service (2 times)"
+      ]
+    },
+    {
+      "id": "family",
+      "name": "Family Edition",
+      "price": "¥999",
+      "features": [
+        "Smart device access (3 sets)",
+        "Tool membership (1 year)",
+        "1200 Ling Stones bonus",
+        "Report redemption (12 times)",
+        "Data sharing badge",
+        "Private consultant service (3 times)",
+        "Hall of Honor display"
+      ]
+    },
+    {
+      "id": "ultimate",
+      "name": "Ultimate Edition",
+      "price": "¥2999",
+      "features": [
+        "Smart device access (5 sets)",
+        "Lifetime tool membership",
+        "5000 Ling Stones bonus",
+        "Report redemption (30 times)",
+        "Data sharing badge",
+        "Private consultant service (10 times)",
+        "Hall of Honor display",
+        "Exclusive custom service"
+      ]
+    }
+  ],
+
+  "SupportPage.intro": "The road to 'carrying on the lost knowledge of the sages' is full of challenges and requires continuous data accumulation and funding. This is not pure charity, but a value exploration that needs your participation. Every bit of your support is a light for the future of TCM.",
+  "SupportPage.sectionTitle": "Become a Core Co-Creator",
+  "SupportPage.otherWays": [
+    {
+      "id": "share",
+      "title": "Share & Spread",
+      "description": "Recommend HeyTCM to friends, share your experience, and expand the community's influence."
+    },
+    {
+      "id": "ad",
+      "title": "Play Games (Watch Ads)",
+      "description": "Watch ads while playing TCM games, and each view contributes a small amount of funding to the project."
+    },
+    {
+      "id": "community",
+      "title": "Join Community Discussions/Maintenance",
+      "description": "Answer questions, participate in discussions, maintain community atmosphere, and help new users."
+    },
+    {
+      "id": "code",
+      "title": "Join Open Source Development",
+      "description": "Contribute code, fix bugs, develop new features, and improve product quality."
+    },
+    {
+      "id": "data",
+      "title": "Contribute Health Data",
+      "description": "Share your health data safely and anonymously to support research and algorithm optimization."
+    },
+    {
+      "id": "research",
+      "title": "Participate in Research Projects",
+      "description": "Join as a volunteer in various research experiments to validate product effectiveness."
+    }
+  ],
+
+  "SupportPage.cta.title": "Become a HeyTCM Collaborator",
+  "SupportPage.cta.description": "Whether you are a user, developer, or researcher, your support and participation are vital to the advancement of intelligent TCM.",
+  "SupportPage.cta.buttonText": "Learn How to Collaborate",
+  "SupportPage.cta.buttonLink": "/ecosystem",
+
+  "SupportPage.planHotTag": "Popular Choice",
+  "SupportPage.planSelectButton": "Choose Support",
+  "SupportPage.selectedPlanTitle": "You have selected:",
+  "SupportPage.selectedPlanDesc": "Thank you for supporting HeyTCM! Click the button below to complete payment and start your journey into intelligent TCM.",
+  "SupportPage.payButton": "Support Now",
+  "SupportPage.reSelectButton": "Choose Again",
+  "SupportPage.volunteerTitle": "Looking for Companions",
+  "SupportPage.volunteerDesc": "We need talents from technology, content, operations, medicine, and other fields to join us in building a bright future for intelligent TCM.",
+  "SupportPage.volunteerSubtitle": "Volunteer Recruitment",
+  "SupportPage.volunteerWeNeed": "We are looking for",
+  "SupportPage.volunteerNeed1": "TCM Consultant",
+  "SupportPage.volunteerNeed2": "AI/Machine Learning Engineer",
+  "SupportPage.volunteerNeed3": "Content Creator/Science Writer",
+  "SupportPage.volunteerNeed4": "Community Operations",
+  "SupportPage.volunteerNeed5": "UI/UX Designer",
+  "SupportPage.volunteerBenefits": "Volunteer Benefits",
+  "SupportPage.volunteerBenefit1": "Free product access",
+  "SupportPage.volunteerBenefit2": "Priority for new product testing",
+  "SupportPage.volunteerBenefit3": "Skill improvement training opportunities",
+  "SupportPage.volunteerBenefit4": "Exclusive volunteer badge",
+  "SupportPage.volunteerBenefit5": "Potential full-time opportunities",
+  "SupportPage.volunteerApplyButton": "View Open Positions / Apply",
+  "SupportPage.testimonialsTitle": "Supporters' Voices",
+  "SupportPage.testimonialsDesc": "Hear what our HeyTCM supporters have to say",
+  "SupportPage.testimonials1Title": "TCM Doctor, Basic Edition Supporter",
+  "SupportPage.testimonials1Desc": "As a TCM doctor, I'm glad to see someone trying to quantify TCM theory with modern technology. HeyTCM's data visualization helps my patients better understand Qi & Blood changes, improving treatment compliance.",
+  "SupportPage.testimonials2Title": "Software Engineer, Family Edition Supporter",
+  "SupportPage.testimonials2Desc": "My whole family uses HeyTCM products. As an engineer, I appreciate its open-source philosophy. My parents weren't interested in health management before, but now, through gamification, they're very interested in traditional health knowledge."
+}
+

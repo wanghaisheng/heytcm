@@ -1,0 +1,75 @@
+{
+  "VisionPage.seo.title": "愿景与使命 | HeyTCM",
+  "VisionPage.seo.description": "构建合作、开放、共赢的平台，打破迷思，让中医得到更好的传承与发展，让更多人通过中医智慧获得身心健康，实现人与自然、身与心的和谐统一。",
+  "VisionPage.seo.keywords": "中医, 愿景, 使命, 健康, HeyTCM, 智能中医, 数字健康",
+  "VisionPage.seo.og.title": "愿景与使命 | HeyTCM",
+  "VisionPage.seo.og.description": "构建合作、开放、共赢的平台，打破迷思，让中医得到更好的传承与发展，让更多人通过中医智慧获得身心健康，实现人与自然、身与心的和谐统一。",
+  "VisionPage.seo.og.site_name": "HeyTCM",
+  "VisionPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "VisionPage.seo.canonical": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.x-default": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.zh": "https://heytcm.com/zh/vision",
+  "VisionPage.seo.alternate.en": "https://heytcm.com/en/vision",
+
+  "VisionPage.head.title": "HeyTCM - 愿景与使命",
+  "VisionPage.banner.title": "我们的愿景与使命",
+  "VisionPage.banner.image": "vision-mission-banner",
+
+  "VisionPage.ldjson.context": "https://schema.org",
+  "VisionPage.ldjson.type": "WebPage",
+  "VisionPage.ldjson.mainEntity.type": "Organization",
+  "VisionPage.ldjson.mainEntity.name": "HeyTCM",
+  "VisionPage.ldjson.mainEntity.url": "https://heytcm.com/",
+  "VisionPage.ldjson.mainEntity.description": "构建合作、开放、共赢的平台，打破迷思，让中医得到更好的传承与发展，让更多人通过中医智慧获得身心健康，实现人与自然、身与心的和谐统一。",
+
+  "VisionPage.title": "我们的愿景与使命",
+  "VisionPage.vision.title": "愿景",
+  "VisionPage.vision.desc": "构建合作、开放、共赢的平台，打破迷思，让中医得到更好的传承与发展，让更多人通过中医智慧获得身心健康，实现人与自然、身与心的和谐统一。",
+  "VisionPage.mission.title": "使命",
+  "VisionPage.mission.items": [
+    {
+      "icon": "Microchip",
+      "title": "融合科技与中医智慧",
+      "desc": "将现代科技与传统中医理论相结合，创新健康管理方式。"
+    },
+    {
+      "icon": "ChartPie",
+      "title": "收集分析海量健康数据",
+      "desc": "利用大数据技术验证与发展中医理论，提升诊疗效果。"
+    },
+    {
+      "icon": "Smartphone",
+      "title": "提供个性化健康管理",
+      "desc": "基于个体差异，定制化健康方案，提升预防与调理效果。"
+    },
+    {
+      "icon": "Brain",
+      "title": "推动中医智能化发展",
+      "desc": "构建开放平台，汇聚各方力量，共同推动中医现代化。"
+    }
+  ],
+  "VisionPage.beliefs.title": "我们信奉的原则",
+  "VisionPage.values.title": "我们信奉的原则",
+  "VisionPage.principle.tabs": [
+    { "id": "beliefs", "label": "六大信念" },
+    { "id": "values", "label": "社区价值观" }
+  ],
+  "VisionPage.principle.beliefs": [
+    { "title": "科学无止境", "desc": "中医与现代科学并不冲突，我们拥抱科学精神与方法，以开放心态推动中医知识的更新与发展。" },
+    { "title": "中西互补", "desc": "中医与西医各有所长，我们主张整合两种医学体系的优势，实现优势互补，造福患者。" },
+    { "title": "穿戴技术", "desc": "我们相信智能穿戴设备是诊断和监控健康状况的未来，能为中医体系提供客观、连续的数据支持。" },
+    { "title": "AI机遇", "desc": "人工智能将重塑医疗健康领域，为中医知识的传承、应用与创新带来前所未有的可能性。" },
+    { "title": "个体独一", "desc": "每个人的身体情况和健康需求都是独特的，我们致力于提供个性化的健康解决方案。" },
+    { "title": "互帮互助", "desc": "社区的力量是无穷的，我们鼓励知识分享和互助，共同成长，共创健康未来。" }
+  ],
+  "VisionPage.principle.values": [
+    { "title": "探索创新", "desc": "鼓励好奇心与探索精神，不断突破传统认知边界。" },
+    { "title": "整体互补", "desc": "融合东西方智慧，取长补短，和而不同。" },
+    { "title": "个性尊重", "desc": "尊重个体差异，提供多元化健康路径选择。" },
+    { "title": "共创共享", "desc": "开放资源，共享成果，让每个贡献都被看见。" },
+    { "title": "技术驱动", "desc": "运用前沿科技，助力传统智慧的传承与创新。" },
+    { "title": "健康幸福", "desc": "以提升用户身心健康和生活质量为最终目标。" },
+    { "title": "隐私安全", "desc": "严格保护用户隐私，确保数据安全与合规使用。" },
+    { "title": "社会责任", "desc": "担当社会责任，传播健康知识，促进大众福祉。" }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "RoadmapPage.title": "通往未来的路线图",
+  "RoadmapPage.banner.title": "通往未来的路线图",
+  "RoadmapPage.roadmap": [
+    {
+      "stage": "阶段一: 基础建设",
+      "desc": "研发智能硬件产品，打造核心监测技术；开发基础工具 App，解决用户即时需求；建立初步数据采集与管理系统，为下一阶段做准备。",
+      "tags": ["硬件研发", "App开发", "数据系统"]
+    },
+    {
+      "stage": "阶段二: 智能核心",
+      "desc": "开发中医智能诊断算法，提高监测准确性；细化个性化推荐系统，实现精准健康管理；扩大开放数据集，支持更多研究与应用。",
+      "tags": ["AI算法", "开放数据", "精准推荐"]
+    },
+    {
+      "stage": "阶段三: 生态共荣",
+      "desc": "建立完善的开发者生态，支持第三方应用；拓展全球市场，推动中医国际化；深化社区建设，实现用户与平台的共同成长。",
+      "tags": ["生态建设", "全球化", "社区深化"]
+    }
+  ],
+  "RoadmapPage.footnote": "我们正一步一个脚印，朝着中医智能化的未来迈进，期待您的同行。",
+  "RoadmapPage.seo.title": "通往未来的路线图 - HeyTCM",
+  "RoadmapPage.seo.description": "HeyTCM 路线图，了解我们的发展阶段、目标与未来规划，见证中医智能化的每一步。",
+  "RoadmapPage.seo.keywords": "HeyTCM, 路线图, 发展规划, 中医智能, 阶段目标, 未来愿景",
+  "RoadmapPage.seo.og.title": "通往未来的路线图 - HeyTCM",
+  "RoadmapPage.seo.og.description": "HeyTCM 路线图，展示我们在中医智能化领域的阶段性成果与未来蓝图。",
+  "RoadmapPage.seo.og.image": "/images/roadmap-banner.jpg",
+  "RoadmapPage.seo.og.site_name": "HeyTCM 智能中医",
+  "RoadmapPage.seo.canonical": "https://heytcm.com/roadmap",
+  "RoadmapPage.seo.alternate.x-default": "https://heytcm.com/roadmap",
+  "RoadmapPage.seo.alternate.zh": "https://heytcm.com/zh/roadmap",
+  "RoadmapPage.seo.alternate.en": "https://heytcm.com/en/roadmap"
+}

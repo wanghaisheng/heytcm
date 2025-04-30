@@ -1,0 +1,77 @@
+# HeyTCM - 全站介绍
+> HeyTCM 是面向全球用户的智能中医开放平台，致力于推动中医现代化、智能化与全球化。平台集成开放数据、开放源代码、社区共创、智能工具与多语言支持，打造中医知识、科研、健康管理与创新应用的开放生态。
+
+## 网站背景
+HeyTCM 旨在通过技术创新与社区协作，促进中医药知识的数字化、标准化与智能化应用。我们聚合全球中医资源，推动数据开放、算法共享、知识共建，助力科研、教育、健康服务与产业创新。
+
+## 主要页面
+- https://heytcm.com/
+  - 官方首页，介绍 HeyTCM 的核心理念、主要功能与用户价值。
+- https://heytcm.com/about
+  - 关于我们，平台背景、使命与团队介绍。
+- https://heytcm.com/products
+  - 产品与服务，涵盖智能问诊、健康管理、知识图谱、AI 辅助工具等。
+- https://heytcm.com/ecosystem
+  - 生态系统，开放数据、标准、合作伙伴与行业应用。
+- https://heytcm.com/resources
+  - 资源中心，收录中医文献、教程、课程、工具与行业资讯。
+- https://heytcm.com/support
+  - 支持与反馈，用户可提交建议、问题与合作需求。
+- https://heytcm.com/help
+  - 帮助中心，提供平台使用指南、常见问题与技术支持。
+- https://heytcm.com/vision
+  - 愿景与路线图，阐述平台发展目标、阶段规划与社区共识。
+- https://heytcm.com/roadmap
+  - 路线图，展示平台发展计划与重要里程碑。
+- https://heytcm.com/leaderboard
+  - 排行榜，展示社区贡献、数据集活跃度、热门项目等。
+
+## 多语言支持页面（自动支持 /zh 与 /en 前缀）
+- https://heytcm.com/zh/
+- https://heytcm.com/zh/about
+- https://heytcm.com/zh/products
+- https://heytcm.com/zh/ecosystem
+- https://heytcm.com/zh/resources
+- https://heytcm.com/zh/support
+- https://heytcm.com/zh/help
+- https://heytcm.com/zh/vision
+- https://heytcm.com/zh/roadmap
+- https://heytcm.com/zh/leaderboard
+- https://heytcm.com/en/
+- https://heytcm.com/en/about
+- https://heytcm.com/en/products
+- https://heytcm.com/en/ecosystem
+- https://heytcm.com/en/resources
+- https://heytcm.com/en/support
+- https://heytcm.com/en/help
+- https://heytcm.com/en/vision
+- https://heytcm.com/en/roadmap
+- https://heytcm.com/en/leaderboard
+
+## 内容分类
+### [智能中医产品与服务](https://heytcm.com/products)
+聚焦智能问诊、健康管理、知识图谱、AI 辅助决策等创新应用，推动中医现代化。
+
+### [开放生态与合作](https://heytcm.com/ecosystem)
+开放数据、标准、合作伙伴与行业应用，促进中医产业协同发展。
+
+### [资源与学习](https://heytcm.com/resources)
+提供中医文献、教程、课程、行业资讯，助力学习与研究。
+
+### [帮助与支持](https://heytcm.com/help)
+详细解答平台使用问题，提供技术与运营支持。
+
+### [支持与反馈](https://heytcm.com/support)
+用户可提交建议、问题与合作需求，促进平台持续优化。
+
+## 用户价值
+- 推动中医智能化、标准化与全球化，促进知识创新与应用落地。
+- 提供开放数据、开源工具与多语言支持，降低科研与开发门槛。
+- 构建社区共创生态，激发全球用户协作与创新活力。
+- 注重数据隐私与安全，用户信息自主可控。
+
+## 最新动态
+- 新增多语言支持，提升全球用户体验。
+- 生态系统与开放数据持续扩充，支持更多科研与应用场景。
+- 社区共创机制上线，欢迎全球开发者、研究者、爱好者参与。
+- SEO 优化与结构化数据注入，提升搜索引擎友好度。

@@ -1,0 +1,47 @@
+{
+  "Footer.footerLinks": [
+    {
+      "title": "关于",
+      "links": [
+        {"label": "我们的故事", "to": "/about"},
+        {"label": "创始人", "to": "/about#founder"},
+        {"label": "使命与愿景", "to": "/vision"},
+        {"label": "贡献榜", "to": "/leaderboard"},
+        {"label": "路线图", "to": "/roadmap"},
+        {"label": "加入我们", "to": "/about#join"}
+      ]
+    },
+    {
+      "title": "产品",
+      "links": [
+        {"label": "智能戒指", "to": "/ring-c1"},
+        {"label": "辟谷套装", "to": "/products#fasting"},
+        {"label": "健康工具", "to": "/products#tools"},
+        {"label": "中医游戏", "to": "/products#games"},
+        {"label": "资源下载", "to": "/resources"}
+      ]
+    },
+    {
+      "title": "生态",
+      "links": [
+        {"label": "开放数据", "to": "/ecosystem#data"},
+        {"label": "开源项目", "to": "/ecosystem#opensource"},
+        {"label": "研究合作", "to": "/ecosystem#research"},
+        {"label": "如何贡献", "to": "/support"}
+      ]
+    },
+    {
+      "title": "支持",
+      "links": [
+        {"label": "常见问题", "to": "/help#faq"},
+        {"label": "联系我们", "to": "/help#contact"},
+        {"label": "使用指南", "to": "/help#guides"}
+      ]
+    }
+  ],
+  "Footer.policyLinks": [
+    {"label": "使用条款", "to": "/help#terms"},
+    {"label": "隐私政策", "to": "/help#privacy"},
+    {"label": "Cookie 政策", "to": "/help#cookies"}
+  ]
+}

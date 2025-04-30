@@ -1,0 +1,87 @@
+{
+  "AboutPage.seo.title": "关于我们 | HeyTCM",
+  "AboutPage.seo.description": "HeyTCM 致力于推动中医行业的数字化和智能化。",
+  "AboutPage.seo.keywords": "中医, 数字化, 智能化, HeyTCM",
+  "AboutPage.seo.og.title": "关于我们 | HeyTCM",
+  "AboutPage.seo.og.description": "HeyTCM 致力于推动中医行业的数字化和智能化。",
+  "AboutPage.seo.og.site_name": "HeyTCM",
+  "AboutPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "AboutPage.seo.canonical": "https://heytcm.com/about",
+  "AboutPage.seo.alternate.x-default": "https://heytcm.com/about",
+  "AboutPage.seo.alternate.zh": "https://heytcm.com/zh/about",
+  "AboutPage.seo.alternate.en": "https://heytcm.com/en/about",
+  "AboutPage.head.title": "HeyTCM - 关于我们",
+  "AboutPage.banner.title": "我们的故事：为往圣继绝学",
+  "AboutPage.banner.image": "创始人故事主图",
+  "AboutPage.ldjson.type": "AboutPage",
+  "AboutPage.ldjson.mainEntity.type": "Organization",
+  "AboutPage.ldjson.mainEntity.name": "HeyTCM",
+  "AboutPage.ldjson.mainEntity.url": "https://heytcm.com/",
+  "AboutPage.ldjson.mainEntity.description": "HeyTCM 致力于推动中医行业的数字化和智能化。",
+  "AboutPage.sections": [
+    {
+      "type": "story",
+      "title": "从大山之子到中医探索者：生海王与 HeyTCM 的缘起",
+      "body": [
+        {
+          "title": "身体的\"警报\"与无解的困惑",
+          "para": "我出生在一个遥远的山村，从小体弱多病。记忆中，尿床问题一直伴随着我的童年——直到10岁还常常醒来发现一片湿冷。那时的我无法理解身体发出的信号，只能忍受同伴的嘲笑和自己内心的羞愧。"
+        },
+        {
+          "para": "上大学后，肠胃敏感、手抖等问题又接踵而至。我不断询问自己：\"我到底是怎么了？为什么看起来一切正常的身体，却有这么多我无法向人言说的不适？\""
+        },
+        {
+          "title": "医疗码农的求索之路",
+          "para": "职业生涯的选择仿佛是冥冥中的安排。我成为了一名医疗健康领域的软件工程师，15年间参与开发了无数健康相关的系统和产品。然而讽刺的是，我能帮助构建系统来解决他人的健康问题，却无法理解自己身体的语言。"
+        },
+        {
+          "para": "35岁那年，荨麻疹和失眠问题严重影响了我的生活质量。西医检查一切正常，药物治疗收效甚微。一次偶然的机会，我接触到了传统中医理论，并开始深入研究气血理论、五脏相生相克的关系。我发现，中医的整体观和平衡观念，为我长期困惑的身体问题提供了全新的解释框架。"
+        },
+        {
+          "title": "发心：用科技点亮中医智慧",
+          "para": "随着我对中医理解的加深，一个想法逐渐清晰：中医的宝贵智慧，正在现代社会中逐渐被边缘化，不是因为它无效，而是因为它缺乏现代人易于理解的表达方式。"
+        },
+        {
+          "para": "过去，中医师凭借多年经验积累的\"望闻问切\"，如今能否借助科技的力量，通过数据采集和智能分析更加客观化？古老的气血、阴阳理论，能否通过现代传感技术量化表达，让更多人看见中医的科学价值？"
+        },
+        {
+          "para": "带着这些思考，我创立了 HeyTCM，希望连接古老的中医智慧与现代科技创新，为身体困惑的现代人提供全新的健康视角和解决方案。"
+        }
+      ]
+    },
+    {
+      "type": "vision",
+      "title": "我们的愿景",
+      "body": [
+        {
+          "title": "愿景一：数字化中医",
+          "para": "推动中医行业的数字化和智能化，让更多人受益于中医的科学与温度。"
+        },
+        {
+          "title": "愿景二：科技赋能"
+        }
+      ],
+      "items": [
+        {
+          "title": "智能健康管理",
+          "para": "用数据和算法提升健康管理的科学性。"
+        },
+        {
+          "title": "开放生态",
+          "para": "打造开放合作的中医数字生态圈。"
+        },
+        {
+          "title": "用户至上",
+          "para": "以用户需求为核心驱动力。"
+        },
+        {
+          "title": "传承创新",
+          "para": "融合传统智慧与现代科技，创新中医表达方式。"
+        }
+      ]
+    }
+  ],
+  "AboutPage.cta.title": "加入我们，开启健康之旅",
+  "AboutPage.cta.description": "成为 HeyTCM 社区一员，体验最前沿的中医智能产品与服务。",
+  "AboutPage.cta.buttonText": "立即加入"
+}

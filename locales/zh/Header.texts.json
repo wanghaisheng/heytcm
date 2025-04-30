@@ -1,0 +1,16 @@
+{
+  "Header.navLinks": [
+    {"to": "/", "label": "首页"},
+    {"to": "/about", "label": "关于我们"},
+    {"to": "/products", "label": "产品与服务"},
+    {"to": "/ecosystem", "label": "开放生态"},
+    {"to": "/resources", "label": "资源中心"},
+    {"to": "/support", "label": "支持我们"},
+    {"to": "/help", "label": "帮助中心"}
+  ],
+  "Header.cta": {
+    "detail.label": "加入我们",
+    "detail.url": "https://idtest.heytcm.com"}
+
+  
+}

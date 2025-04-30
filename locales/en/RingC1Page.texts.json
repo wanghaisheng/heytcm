@@ -1,0 +1,82 @@
+{
+  "RingC1Page.seo.title": "HeyTCM - C1 Intelligent TCM Health Ring | Data Wellness",
+  "RingC1Page.seo.description": "HeyTCM C1 Ring, fusing TCM wisdom with modern technology to empower health management and data-driven wellness.",
+  "RingC1Page.seo.keywords": "TCM, smart ring, health management, data wellness, HeyTCM",
+  "RingC1Page.seo.og.title": "HeyTCM - C1 Intelligent TCM Health Ring",
+  "RingC1Page.seo.og.description": "HeyTCM C1 Ring, fusing TCM wisdom with modern technology to empower health management and data-driven wellness.",
+  "RingC1Page.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "RingC1Page.seo.og.site_name": "HeyTCM",
+  "RingC1Page.seo.canonical": "https://heytcm.com/ring-c1",
+  "RingC1Page.seo.alternate.x-default": "https://heytcm.com/ring-c1",
+  "RingC1Page.seo.alternate.zh": "https://heytcm.com/zh/ring-c1",
+  "RingC1Page.seo.alternate.en": "https://heytcm.com/en/ring-c1",
+  "RingC1Page.banner.title": "HeyTCM C1 Smart Health Ring",
+  "RingC1Page.banner.image": "/images/ring-c1-banner.jpg",
+  "RingC1Page.intro.title": "HeyTCM C1 Smart Health Ring",
+  "RingC1Page.intro.subtitle": "Fusing TCM wisdom with modern technology, start a new data wellness experience.",
+  "RingC1Page.intro.image": "/images/ring-c1-main.jpg",
+  "RingC1Page.features": [
+    {
+      "title": "Intelligent TCM Health Management",
+      "desc": "Integrates TCM theory and modern sensor technology for real-time health data monitoring and intelligent constitution/trend analysis.",
+      "image": "/images/ring-c1-feature1.jpg"
+    },
+    {
+      "title": "Multi-dimensional Data Collection",
+      "desc": "Supports collection of heart rate, temperature, sleep, activity, and more for personalized wellness.",
+      "image": "/images/ring-c1-feature2.jpg"
+    },
+    {
+      "title": "AI-assisted Decision Making",
+      "desc": "Built-in AI algorithms provide personalized health advice and TCM conditioning plans.",
+      "image": "/images/ring-c1-feature3.jpg"
+    }
+  ],
+  "RingC1Page.models": [
+    {
+      "name": "C1 Standard Edition",
+      "price": "¥999",
+      "features": [
+        "Basic health monitoring",
+        "AI intelligent analysis",
+        "Data synchronization"
+      ]
+    },
+    {
+      "name": "C1 Pro",
+      "price": "¥1499",
+      "features": [
+        "Advanced health monitoring",
+        "AI deep analysis",
+        "Multi-terminal data management"
+      ]
+    }
+  ],
+  "RingC1Page.specs": [
+    {
+      "group": "Sensors",
+      "items": [
+        { "name": "Heart Rate Sensor", "value": "Supported" },
+        { "name": "Temperature Sensor", "value": "Supported" }
+      ]
+    },
+    {
+      "group": "Battery & Endurance",
+      "items": [
+        { "name": "Battery Capacity", "value": "50mAh" },
+        { "name": "Battery Life", "value": "7 days" }
+      ]
+    }
+  ],
+  "RingC1Page.faqs": [
+    {
+      "q": "Who is the C1 ring suitable for?",
+      "a": "It is suitable for those who care about health and want to use data for wellness, especially TCM enthusiasts."
+    },
+    {
+      "q": "How to purchase the C1 ring?",
+      "a": "You can reserve or purchase through the HeyTCM official website or partner channels."
+    }
+  ]
+}
+

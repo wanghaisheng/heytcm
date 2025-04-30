@@ -1,0 +1,240 @@
+{
+  "ProductsPage.seo.title": "产品与服务 | HeyTCM",
+  "ProductsPage.seo.description": "创新中医智能软件产品，赋能医疗与健康管理。",
+  "ProductsPage.seo.keywords": "中医, 软件, 产品, 健康管理",
+  "ProductsPage.seo.og.title": "产品与服务 | HeyTCM",
+  "ProductsPage.seo.og.description": "创新中医智能软件产品，赋能医疗与健康管理。",
+  "ProductsPage.seo.og.site_name": "HeyTCM",
+  "ProductsPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "ProductsPage.seo.canonical": "https://heytcm.com/products",
+  "ProductsPage.seo.alternate.x-default": "https://heytcm.com/products",
+  "ProductsPage.seo.alternate.zh": "https://heytcm.com/zh/products",
+  "ProductsPage.seo.alternate.en": "https://heytcm.com/en/products",
+
+  "ProductsPage.head.title": "HeyTCM - 产品与服务",
+  "ProductsPage.banner.title": "智能健康产品 & 服务",
+  "ProductsPage.banner.imgAlt": "产品与服务主图",
+
+  "ProductsPage.ldjson.context": "https://schema.org",
+  "ProductsPage.ldjson.type": "WebPage",
+  "ProductsPage.ldjson.name": "产品与服务 | HeyTCM",
+  "ProductsPage.ldjson.description": "HeyTCM 产品与服务，涵盖智能戒指、健康管理工具与数据服务。",
+  "ProductsPage.ldjson.url": "https://heytcm.com/products",
+  "ProductsPage.ldjson.brand": {
+    "type": "Brand",
+    "name": "HeyTCM",
+    "logo": "https://heytcm.com/logo.png"
+  },
+  "ProductsPage.ldjson.manufacturer": {
+    "type": "Organization",
+    "name": "HeyTCM",
+    "url": "https://heytcm.com/",
+    "address": "北京市海淀区中关村东路66号"
+  },
+  "ProductsPage.ldjson.offers": [
+    {
+      "type": "Offer",
+      "itemOffered": "HeyTCM 智能戒指 C1",
+      "price": "2999",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "type": "Offer",
+      "itemOffered": "HeyTCM 数据服务",
+      "price": "299",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "ProductsPage.ldjson.software": {
+    "type": "SoftwareApplication",
+    "name": "HeyTCM 智能中医平台",
+    "operatingSystem": "Web, iOS, Android",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "type": "Offer",
+      "price": "2999",
+      "priceCurrency": "CNY"
+    },
+    "aggregateRating": {
+      "type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1200"
+    },
+    "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+    "screenshot": "https://heytcm.com/screenshots/app-main.png",
+    "downloadUrl": "https://heytcm.com/download",
+    "supportUrl": "https://heytcm.com/support",
+    "featureList": [
+      "中医体质分析与健康建议",
+      "多终端同步与数据可视化",
+      "个性化健康报告与趋势分析",
+      "开放 API 与数据导出"
+    ]
+  },
+
+  "ProductsPage.sections": [
+    {
+      "id": "products",
+      "title": "产品",
+      "desc": "智能硬件、套餐与数字服务",
+      "filters": [
+        { "id": "all", "label": "全部" },
+        { "id": "ring", "label": "智能戒指" },
+        { "id": "bigu", "label": "辟谷套餐" },
+        { "id": "consult-report", "label": "健康咨询报告" }
+      ],
+      "items": [
+        {
+          "id": "ring",
+          "title": "HeyTCM Harmony Ring S1",
+          "description": "用智能戒指改变您的睡眠质量。我们的睡眠分析系统建立在扎实的医学理论基础之上，结合传统中医理论和现代睡眠医学研究。",
+          "link": "https://harmonyring.heytcm.com/",
+          "image": "https://images.pexels.com/photos/4047070/pexels-photo-4047070.jpeg",
+          "tags": ["实体产品", "健康管理"],
+          "icon": "Activity"
+        },
+        {
+          "id": "bigu",
+          "title": "辟谷套餐",
+          "description": "科学辟谷与健康管理相结合，助力身心焕新。",
+          "link": "https://bigu.heytcm.com/",
+          "image": "https://images.pexels.com/photos/167964/pexels-photo-167964.jpeg",
+          "tags": ["套餐", "身心健康"],
+          "icon": "Heart"
+        },
+        {
+          "id": "consult-report",
+          "title": "健康咨询报告",
+          "description": "专业中医健康评估与个性化报告，助力精准调理。",
+          "link": "https://consult.heytcm.com/",
+          "image": "https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg",
+          "tags": ["数字产品", "报告"],
+          "icon": "FileText"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "工具",
+      "desc": "面向不同症状/人群/领域的各类App与网站",
+      "filters": [
+        { "id": "all", "label": "全部" },
+        { "id": "shanghan-app", "label": "每日学伤寒App" },
+        { "id": "qixue-app", "label": "气血管理App" },
+        { "id": "sleeppal", "label": "SleepPal 睡眠助手" }
+      ],
+      "items": [
+        {
+          "id": "shanghan-app",
+          "title": "每日学伤寒App",
+          "description": "每日一题，系统掌握伤寒论核心知识。",
+          "link": "https://shanghan.heytcm.com/",
+          "image": "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg",
+          "tags": ["学习", "伤寒论", "App"],
+          "icon": "FileText"
+        },
+        {
+          "id": "qixue-app",
+          "title": "气血管理App",
+          "description": "量化气血状态，智能分析健康趋势。",
+          "link": "https://qixue.heytcm.com/",
+          "image": "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg",
+          "tags": ["健康管理", "气血", "App"],
+          "icon": "Brain"
+        },
+        {
+          "id": "sleeppal",
+          "title": "SleepPal 睡眠助手",
+          "description": "科学睡眠管理，提升睡眠质量。",
+          "link": "https://sleeppal.heytcm.com/",
+          "image": "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg",
+          "tags": ["睡眠", "健康", "App"],
+          "icon": "Activity"
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "title": "游戏",
+      "desc": "经典复刻与自研益智、卡牌、塔防等多类型健康主题游戏",
+      "filters": [
+        { "id": "all", "label": "全部" },
+        { "id": "classic-puzzle", "label": "经典益智游戏" },
+        { "id": "card-battle", "label": "自研卡牌对战" },
+        { "id": "tower-defense", "label": "自研塔防" }
+      ],
+      "items": [
+        {
+          "id": "classic-puzzle",
+          "title": "经典益智游戏",
+          "description": "复刻经典，锻炼思维，寓教于乐。",
+          "link": "https://games.heytcm.com/classic",
+          "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
+          "tags": ["益智", "经典复刻"],
+          "icon": "Gamepad2"
+        },
+        {
+          "id": "card-battle",
+          "title": "自研卡牌对战",
+          "description": "策略与运气结合，体验中医文化卡牌对战。",
+          "link": "https://games.heytcm.com/card",
+          "image": "https://images.pexels.com/photos/279009/pexels-photo-279009.jpeg",
+          "tags": ["卡牌", "自研"],
+          "icon": "Gamepad2"
+        },
+        {
+          "id": "tower-defense",
+          "title": "自研塔防",
+          "description": "防守与策略并重，寓教于乐。",
+          "link": "https://games.heytcm.com/tower",
+          "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
+          "tags": ["塔防", "自研"],
+          "icon": "Gamepad2"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "社区",
+      "desc": "辟谷圈、伤寒共读、综合讨论等多元互动社区",
+      "filters": [
+        { "id": "all", "label": "全部" },
+        { "id": "bigu-circle", "label": "辟谷圈" },
+        { "id": "shanghan-reading", "label": "伤寒共读" },
+        { "id": "general-discussion", "label": "综合讨论区" }
+      ],
+      "items": [
+        {
+          "id": "bigu-circle",
+          "title": "辟谷圈",
+          "description": "交流辟谷经验，分享身心成长。",
+          "link": "https://community.heytcm.com/bigu",
+          "image": "https://images.pexels.com/photos/1394882/pexels-photo-1394882.jpeg",
+          "tags": ["辟谷", "圈子"],
+          "icon": "Heart"
+        },
+        {
+          "id": "shanghan-reading",
+          "title": "伤寒共读",
+          "description": "共读经典，探讨中医智慧。",
+          "link": "https://community.heytcm.com/shanghan",
+          "image": "https://images.pexels.com/photos/5726706/pexels-photo-5726706.jpeg",
+          "tags": ["共读", "伤寒论"],
+          "icon": "FileText"
+        },
+        {
+          "id": "general-discussion",
+          "title": "综合讨论区",
+          "description": "中医健康、生活方式等多元话题自由讨论。",
+          "link": "https://community.heytcm.com/general",
+          "image": "https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg",
+          "tags": ["综合", "讨论"],
+          "icon": "Activity"
+        }
+      ]
+    }
+  ]
+}
+

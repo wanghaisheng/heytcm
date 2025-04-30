@@ -1,0 +1,212 @@
+{
+  "EcosystemPage.seo.title": "生态合作 | HeyTCM",
+  "EcosystemPage.seo.description": "HeyTCM 生态合作，携手共建中医智能化未来。",
+  "EcosystemPage.seo.keywords": "中医, 生态, 合作, 智能化",
+  "EcosystemPage.seo.og.title": "生态合作 | HeyTCM",
+  "EcosystemPage.seo.og.description": "HeyTCM 生态合作，携手共建中医智能化未来。",
+  "EcosystemPage.seo.og.site_name": "HeyTCM",
+  "EcosystemPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "EcosystemPage.seo.canonical": "https://heytcm.com/ecosystem",
+  "EcosystemPage.seo.alternate.x-default": "https://heytcm.com/ecosystem",
+  "EcosystemPage.seo.alternate.zh": "https://heytcm.com/zh/ecosystem",
+  "EcosystemPage.seo.alternate.en": "https://heytcm.com/en/ecosystem",
+  "EcosystemPage.head.title": "HeyTCM - 开放生态",
+  "EcosystemPage.banner.title": "开放共创：汇聚智慧，共建智能中医未来",
+  "EcosystemPage.banner.imgAlt": "生态合作主图",
+  "EcosystemPage.ldjson.context": "https://schema.org",
+  "EcosystemPage.ldjson.type": "WebPage",
+  "EcosystemPage.ldjson.name": "生态合作 | HeyTCM",
+  "EcosystemPage.ldjson.description": "HeyTCM 生态合作，携手共建中医智能化未来。",
+  "EcosystemPage.ldjson.url": "https://heytcm.com/ecosystem",
+  "EcosystemPage.ldjson.sponsor": [
+    {
+      "type": "Organization",
+      "name": "HeyTCM 开放生态合作伙伴",
+      "url": "https://heytcm.com/ecosystem"
+    },
+    {
+      "type": "Person",
+      "name": "生海王",
+      "sameAs": [
+        "https://github.com/wanghaisheng",
+        "https://www.zhihu.com/people/shenghaiwang"
+      ]
+    }
+  ],
+  "EcosystemPage.ldjson.event": {
+    "type": "Event",
+    "name": "HeyTCM 生态共创会",
+    "startDate": "2025-05-20",
+    "location": "线上/线下混合"
+  },
+  "EcosystemPage.ldjson.software": {
+    "type": "SoftwareApplication",
+    "name": "HeyTCM 智能中医平台",
+    "operatingSystem": "Web, iOS, Android",
+    "applicationCategory": "HealthApplication",
+    "offers": {
+      "type": "Offer",
+      "price": "2999",
+      "priceCurrency": "CNY"
+    },
+    "aggregateRating": {
+      "type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1200"
+    },
+    "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+    "screenshot": "https://heytcm.com/screenshots/app-main.png",
+    "downloadUrl": "https://heytcm.com/download",
+    "supportUrl": "https://heytcm.com/support",
+    "featureList": [
+      "中医体质分析与健康建议",
+      "多终端同步与数据可视化",
+      "个性化健康报告与趋势分析",
+      "开放 API 与数据导出"
+    ]
+  },
+  "EcosystemPage.sections": {
+    "openData": {
+      "id": "openData",
+      "title": "开放数据：驱动研究与创新",
+      "desc": "HeyTCM 开放数据平台致力于收集、整理和分享高质量的中医健康数据，为研究者和开发者提供宝贵资源，推动中医智能化发展。我们严格遵守隐私保护原则，所有数据均经脱敏处理。",
+      "items": [
+        {
+          "title": "脉搏波 (PPG) 数据集",
+          "desc": "海量、连续的多场景 PPG 数据，覆盖不同年龄、性别、体质人群在各种生活场景下的生理反应数据。",
+          "cta": {
+            "detail": "查看详情",
+            "detail.url": "https://heytcm.com/data/ppg",
+            "standard": "数据采集标准",
+            "standard.url": "https://heytcm.com/data/ppg-standard"
+          }
+        },
+        {
+          "title": "病症方单病数据库",
+          "desc": "结构化的中医诊疗数据，包含症状描述、舌脉象、辨证分型、处方用药及疗效追踪。",
+          "cta": {
+            "detail": "查看详情",
+            "detail.url": "https://heytcm.com/data/disease"
+          }
+        },
+        {
+          "title": "减肥数据库",
+          "desc": "多维度减肥过程数据，包含体重变化、体脂率、各项生理指标、饮食记录及情绪状态追踪。",
+          "cta": {
+            "detail": "查看详情",
+            "detail.url": "https://heytcm.com/data/weightloss"
+          }
+        }
+      ],
+      "cta": {
+        "title": "探索更多开放数据资源",
+        "desc": "访问 HeyTCM 开放数据平台，获取更多高质量中医健康数据，助力科研与创新。",
+        "buttonText": "前往数据平台",
+        "url": "https://heytcm.com/data"
+      }
+    },
+    "openSource": {
+      "id": "openSource",
+      "title": "开源项目：共建智能中医工具",
+      "desc": "HeyTCM 积极推动中医相关开源项目，欢迎开发者贡献代码、提出建议，共同完善中医智能化工具链。",
+      "items": [
+        {
+          "title": "HeyTCM 开源算法库",
+          "desc": "涵盖信号处理、健康评估、数据可视化等多种中医智能算法，支持多平台部署。",
+          "cta": {
+            "detail": "查看详情",
+            "detail.url": "https://github.com/heytcm/algorithms"
+          }
+        },
+        {
+          "title": "AI 智能辨证算法库",
+          "desc": "基于机器学习的中医辨证分型算法库，支持多种传感数据输入，输出中医证型预测与可解释性分析。",
+          "cta": {
+            "detail": "查看 GitHub 仓库"
+          }
+        },
+        {
+          "title": "PPG 信号分析工具包",
+          "desc": "轻量级脉搏波信号处理库，支持浏览器和 Node.js 环境，包含信号滤波、特征提取、时频分析等功能。",
+          "cta": {
+            "detail": "查看 GitHub 仓库"
+          }
+        },
+        {
+          "title": "中医知识图谱框架",
+          "desc": "结构化的中医知识图谱构建与查询框架，包含经络、脏腑、方剂、中药等节点与关系的建模与推理能力。",
+          "cta": {
+            "detail": "查看 GitHub 仓库"
+          }
+        },
+        {
+          "title": "成为开源贡献者",
+          "desc": "我们欢迎各种形式的贡献，包括代码、文档、算法改进、bug 修复或功能建议。无论您是经验丰富的开发者还是中医从业者，都可以参与到开源项目中来。",
+          "cta": {
+            "detail": "查看所有开源项目"
+          }
+        }
+      ],
+      "cta": {
+        "title": "参与开源共建",
+        "desc": "加入 HeyTCM 开源社区，与全球开发者一起推动中医智能化工具创新。",
+        "buttonText": "访问 GitHub",
+        "url": "https://github.com/heytcm"
+      }
+    },
+    "community": {
+      "id": "community",
+      "title": "共创社区：汇聚多元力量",
+      "desc": "HeyTCM 共创社区聚集了中医从业者、开发者、研究者和健康爱好者，定期举办线上线下交流活动，推动知识共享与创新实践。",
+      "items": [
+        {
+          "title": "线上共创会",
+          "desc": "定期举办线上共创会议，分享最新研究成果与实践经验。",
+          "cta": {
+            "detail": "加入社区",
+            "detail.url": "https://community.heytcm.com/",
+            "standard": "查看活动",
+            "standard.url": "https://community.heytcm.com/events"
+          }
+        },
+        {
+          "title": "辟谷圈",
+          "desc": "安全、科学地探讨辟谷实践，分享经验，相互监督，降低风险。社群成员既有经验丰富的老手，也有对辟谷充满好奇的新人。",
+          "cta": {
+            "detail": "加入辟谷圈"
+          },
+          "members": "3,782"
+        },
+        {
+          "title": "伤寒共读团",
+          "desc": "集体阅读《伤寒论》等中医经典著作，在现代科学视角下重新解读古代智慧，每周线上研讨，共同攻克疑难章节。",
+          "cta": {
+            "detail": "加入共读团"
+          },
+          "members": "1,254"
+        },
+        {
+          "title": "综合讨论区",
+          "desc": "自由讨论中医相关话题，分享个人健康管理经验，提问解惑，探讨产品使用技巧，连接各领域专业人士。",
+          "cta": {
+            "detail": "进入论坛"
+          },
+          "members": "7,931"
+        },
+        {
+          "title": "贡献英雄榜",
+          "desc": "社区的活力来源于每一位成员的参与和贡献。无论是分享经验、回答问题、贡献数据，还是开发功能，每一份力量都在推动中医智能化的进程。",
+          "cta": {
+            "detail": "查看贡献英雄榜"
+          }
+        }
+      ],
+      "cta": {
+        "title": "加入 HeyTCM 共创社区",
+        "desc": "与中医爱好者、专家和开发者一起交流、学习、共创未来。",
+        "buttonText": "立即加入",
+        "url": "https://community.heytcm.com/"
+      }
+    }
+  }
+}
