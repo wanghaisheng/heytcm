@@ -36,19 +36,15 @@ const Footer = () => {
     navigate(path + location.search + location.hash);
   };
 
-  // 动态获取多语言 footerLinks
-  const footerLinks = Array.from({ length: 4 }).map((_, sectionIdx) => ({
-    title: t(`Footer.footerLinks.${sectionIdx}.title`),
-    links: Array.from({ length: 4 }).map((_, linkIdx) => ({
-      label: t(`Footer.footerLinks.${sectionIdx}.links.${linkIdx}.label`),
-      to: t(`Footer.footerLinks.${sectionIdx}.links.${linkIdx}.to`)
-    }))
-  }));
-  // 新增底部政策链接配置
-  const policyLinks = Array.from({ length: 3 }).map((_, idx) => ({
-    label: t(`Footer.policyLinks.${idx}.label`),
-    to: t(`Footer.policyLinks.${idx}.to`)
-  }));
+  // 动态获取多语言 footerLinks 和 policyLinks
+  const footerLinks = t('Footer.footerLinks', { returnObjects: true }) as Array<{
+    title: string;
+    links: Array<{ label: string; to: string }>;
+  }>;
+  const policyLinks = t('Footer.policyLinks', { returnObjects: true }) as Array<{
+    label: string;
+    to: string;
+  }>;
 
   return (
     <footer className="bg-neutral-100 border-t border-neutral-200">
@@ -58,7 +54,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Logo size={40} />
             <p className="mt-4 text-neutral-600 max-w-md">
-              科技焕新中医，共创健康未来。我们致力于用数据和人工智能让中医智慧更加系统化、科学化、普惠化。
+              {t('Footer.introText')}
             </p>
             <div className="mt-6 flex space-x-4">
               <a 
@@ -87,11 +83,11 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          {footerLinks.map((section, sectionIdx) => (
+          {footerLinks && footerLinks.map((section, sectionIdx) => (
             <div key={section.title || sectionIdx}>
               <h3 className="font-display font-semibold text-neutral-800 mb-4">{section.title}</h3>
               <ul className="space-y-2">
-                {section.links.map((link, linkIdx) => (
+                {section.links && section.links.map((link, linkIdx) => (
                   <li key={link.label || linkIdx}>
                     <NavLink 
                       to={link.to} 

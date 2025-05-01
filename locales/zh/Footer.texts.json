@@ -43,5 +43,6 @@
     {"label": "使用条款", "to": "/help#terms"},
     {"label": "隐私政策", "to": "/help#privacy"},
     {"label": "Cookie 政策", "to": "/help#cookies"}
-  ]
+  ],
+  "Footer.introText": "科技焕新中医，共创健康未来。我们致力于用数据和人工智能让中医智慧更加系统化、科学化、普惠化。"
 }

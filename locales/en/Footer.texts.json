@@ -43,6 +43,7 @@
     {"label": "Terms of Service", "to": "/help#terms"},
     {"label": "Privacy Policy", "to": "/help#privacy"},
     {"label": "Cookie Policy", "to": "/help#cookies"}
-  ]
+  ],
+  "Footer.introText": "Revitalizing TCM with technology, co-creating a healthy future. We are committed to making the wisdom of Traditional Chinese Medicine more systematic, scientific, and accessible through data and artificial intelligence."
 }
 
