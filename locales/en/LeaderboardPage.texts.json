@@ -1,0 +1,85 @@
+{
+  "LeaderboardPage.seo.title": "Leaderboard | HeyTCM",
+  "LeaderboardPage.seo.description": "Thank you to everyone contributing to the advancement of intelligent Traditional Chinese Medicine.",
+  "LeaderboardPage.seo.keywords": "TCM, leaderboard, intelligence, community",
+  "LeaderboardPage.seo.og.title": "Leaderboard | HeyTCM",
+  "LeaderboardPage.seo.og.description": "Thank you to everyone contributing to the advancement of intelligent Traditional Chinese Medicine.",
+  "LeaderboardPage.seo.og.site_name": "HeyTCM",
+  "LeaderboardPage.seo.canonical": "https://heytcm.com/leaderboard",
+  "LeaderboardPage.seo.alternate.x-default": "https://heytcm.com/leaderboard",
+  "LeaderboardPage.seo.alternate.zh": "https://heytcm.com/zh/leaderboard",
+  "LeaderboardPage.seo.alternate.en": "https://heytcm.com/en/leaderboard",
+  "LeaderboardPage.head.title": "HeyTCM - Leaderboard",
+  "LeaderboardPage.title": "Leaderboard",
+  "LeaderboardPage.subtitle": "Thank you to everyone contributing to the advancement of intelligent Traditional Chinese Medicine.",
+  "LeaderboardPage.banner.title": "Leaderboard",
+  "LeaderboardPage.banner.subtitle": "Thank you to everyone contributing to the advancement of intelligent Traditional Chinese Medicine.",
+  "LeaderboardPage.stats": [
+    {"number": "1,248", "label": "Active Contributors"},
+    {"number": "125,683", "label": "Data Contributions"},
+    {"number": "34", "label": "Tech Innovation Projects"},
+    {"number": "¥268,935", "label": "Community Funding"}
+  ],
+  "LeaderboardPage.timeFilters": [
+    {"key": "all", "label": "All Time"},
+    {"key": "month", "label": "This Month"},
+    {"key": "week", "label": "This Week"},
+    {"key": "today", "label": "Today"}
+  ],
+  "LeaderboardPage": {
+    "tabs": {
+      "data": "Data Contributors",
+      "tech": "Tech Contributors",
+      "community": "Community Contributors",
+      "financial": "Financial Contributors"
+    }
+  },
+  "LeaderboardPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Leaderboard | HeyTCM",
+      "description": "Thank you to everyone contributing to the advancement of intelligent Traditional Chinese Medicine.",
+      "url": "https://heytcm.com/leaderboard",
+      "inLanguage": "en"
+    }
+  ],
+  "LeaderboardPage.intro.data": "These users help us improve TCM intelligence algorithms and drive research forward by sharing health data.",
+  "LeaderboardPage.intro.tech": "These developers provide strong technical support for TCM intelligence projects through code contributions, algorithm optimization, and innovation.",
+  "LeaderboardPage.intro.community": "These active community members build a vibrant and warm TCM enthusiast community through content creation, knowledge sharing, and management.",
+  "LeaderboardPage.intro.financial": "These supporters help us advance TCM intelligence research and community building through financial donations.",
+  "LeaderboardPage.badge.gold": "Gold",
+  "LeaderboardPage.badge.silver": "Silver",
+  "LeaderboardPage.badge.bronze": "Bronze",
+  "LeaderboardPage.leaderboard.data": [
+    {"name": "Zhang San", "avatar": "https://uifaces.co/our-content/donated/6f6p85he.jpg", "score": 3200, "percent": "100%", "badge": "gold", "tags": ["Health Data", "AI Training"]},
+    {"name": "Li Si", "avatar": "https://uifaces.co/our-content/donated/nyg1ppwg.jpg", "score": 2800, "percent": "88%", "badge": "silver", "tags": ["Health Data"]},
+    {"name": "Wang Wu", "avatar": "https://uifaces.co/our-content/donated/ukegj1hn.jpg", "score": 2500, "percent": "78%", "badge": "bronze", "tags": ["Data Annotation"]}
+  ],
+  "LeaderboardPage.leaderboard.tech": [
+    {"name": "CoderA", "avatar": "https://uifaces.co/our-content/donated/1H_7AxP0.jpg", "score": 120, "percent": "100%", "badge": "gold", "tags": ["Algorithm Optimization"]},
+    {"name": "CoderB", "avatar": "https://uifaces.co/our-content/donated/0y0y0y0y.jpg", "score": 110, "percent": "92%", "badge": "silver", "tags": ["Frontend Development"]},
+    {"name": "CoderC", "avatar": "https://uifaces.co/our-content/donated/8kY2bU2F.jpg", "score": 90, "percent": "75%", "badge": "bronze", "tags": ["Backend Development"]}
+  ],
+  "LeaderboardPage.leaderboard.community": [
+    {"name": "Xiao Hong", "avatar": "https://uifaces.co/our-content/donated/6MWH9Xi_.jpg", "score": 80, "percent": "100%", "badge": "gold", "tags": ["Content Creation"]},
+    {"name": "Xiao Ming", "avatar": "https://uifaces.co/our-content/donated/2Z7eU7wq.jpg", "score": 70, "percent": "88%", "badge": "silver", "tags": ["Community Management"]},
+    {"name": "Xiao Gang", "avatar": "https://uifaces.co/our-content/donated/6f6p85he.jpg", "score": 60, "percent": "75%", "badge": "bronze", "tags": ["Knowledge Sharing"]}
+  ],
+  "LeaderboardPage.leaderboard.financial": [
+    {"name": "Donor A", "avatar": "https://uifaces.co/our-content/donated/nyg1ppwg.jpg", "score": "¥10,000", "percent": "100%", "badge": "gold", "tags": ["Major Donation"]},
+    {"name": "Donor B", "avatar": "https://uifaces.co/our-content/donated/ukegj1hn.jpg", "score": "¥5,000", "percent": "50%", "badge": "silver", "tags": ["Ongoing Support"]}
+  ],
+  "LeaderboardPage.wall.title": "Wall of Honor",
+  "LeaderboardPage.wall.subtitle": "Tribute to those who have made outstanding contributions to TCM intelligence.",
+  "LeaderboardPage.wall": [
+    {"name": "Zhang San", "avatar": "https://uifaces.co/our-content/donated/6f6p85he.jpg", "desc": "Pioneer in Health Data Contribution"},
+    {"name": "CoderA", "avatar": "https://uifaces.co/our-content/donated/1H_7AxP0.jpg", "desc": "Tech Innovation Expert"}
+  ],
+  "LeaderboardPage.map.title": "Contribution Map",
+  "LeaderboardPage.map.subtitle": "A heatmap of TCM intelligence participation across regions in China.",
+  "LeaderboardPage.map.legend": [
+    {"color": "linear-gradient(to right, #e0f3f8, #4682B4)", "label": "Participation"},
+    {"color": "linear-gradient(to right, #f8e0e0, #ff4500)", "label": "Growth Rate"}
+  ]
+}

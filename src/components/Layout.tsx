@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import LangPicker from './LangPicker';
@@ -8,6 +9,12 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen flex flex-col bg-neutral-50 font-body">
       <Header />

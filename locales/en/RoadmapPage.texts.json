@@ -1,0 +1,43 @@
+{
+  "RoadmapPage.title": "Roadmap to the Future",
+  "RoadmapPage.banner.title": "Roadmap to the Future",
+  "RoadmapPage.roadmap": [
+    {
+      "stage": "Stage 1: Foundation Building",
+      "desc": "Develop intelligent hardware products and core monitoring technology; create essential tool apps to meet immediate user needs; establish initial data collection and management systems to prepare for the next phase.",
+      "tags": ["Hardware R&D", "App Development", "Data Systems"]
+    },
+    {
+      "stage": "Stage 2: Intelligent Core",
+      "desc": "Develop intelligent TCM diagnostic algorithms to improve monitoring accuracy; refine personalized recommendation systems for precise health management; expand open datasets to support more research and applications.",
+      "tags": ["AI Algorithms", "Open Data", "Personalized Recommendations"]
+    },
+    {
+      "stage": "Stage 3: Thriving Ecosystem",
+      "desc": "Build a robust developer ecosystem to support third-party apps; expand globally to promote TCM internationally; deepen community building for mutual growth between users and the platform.",
+      "tags": ["Ecosystem Building", "Globalization", "Community Development"]
+    }
+  ],
+  "RoadmapPage.footnote": "We are moving step by step toward the intelligent future of TCM and look forward to your company on this journey.",
+  "RoadmapPage.seo.title": "Roadmap to the Future - HeyTCM",
+  "RoadmapPage.seo.description": "HeyTCM Roadmap: Discover our development stages, goals, and future plans. Witness every step in the evolution of intelligent TCM.",
+  "RoadmapPage.seo.keywords": "HeyTCM, roadmap, development plan, intelligent TCM, stage goals, future vision",
+  "RoadmapPage.seo.og.title": "Roadmap to the Future - HeyTCM",
+  "RoadmapPage.seo.og.description": "HeyTCM Roadmap: Showcasing our milestones and future blueprint in the field of intelligent TCM.",
+  "RoadmapPage.seo.og.image": "/images/roadmap-banner.jpg",
+  "RoadmapPage.seo.og.site_name": "HeyTCM Intelligent TCM",
+  "RoadmapPage.seo.canonical": "https://heytcm.com/roadmap",
+  "RoadmapPage.seo.alternate.x-default": "https://heytcm.com/roadmap",
+  "RoadmapPage.seo.alternate.zh": "https://heytcm.com/zh/roadmap",
+  "RoadmapPage.seo.alternate.en": "https://heytcm.com/en/roadmap",
+  "RoadmapPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Roadmap to the Future - HeyTCM",
+      "description": "HeyTCM Roadmap: Discover our development stages, goals, and future plans. Witness every step in the evolution of intelligent TCM.",
+      "url": "https://heytcm.com/roadmap",
+      "inLanguage": "en"
+    }
+  ]
+}

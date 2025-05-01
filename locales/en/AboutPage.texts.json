@@ -1,0 +1,108 @@
+{
+  "AboutPage.seo.title": "About Us | HeyTCM",
+  "AboutPage.seo.description": "HeyTCM is dedicated to advancing the digital and intelligent transformation of Traditional Chinese Medicine.",
+  "AboutPage.seo.keywords": "TCM, digitalization, intelligence, HeyTCM",
+  "AboutPage.seo.og.title": "About Us | HeyTCM",
+  "AboutPage.seo.og.description": "HeyTCM is dedicated to advancing the digital and intelligent transformation of Traditional Chinese Medicine.",
+  "AboutPage.seo.og.site_name": "HeyTCM",
+  "AboutPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "AboutPage.seo.canonical": "https://heytcm.com/about",
+  "AboutPage.seo.alternate.x-default": "https://heytcm.com/about",
+  "AboutPage.seo.alternate.zh": "https://heytcm.com/zh/about",
+  "AboutPage.seo.alternate.en": "https://heytcm.com/en/about",
+  "AboutPage.head.title": "HeyTCM - About Us",
+  "AboutPage.banner.title": "Our Story: Inheriting the Wisdom of the Ancients",
+  "AboutPage.banner.image": "Founder Story Main Image",
+  "AboutPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "About Us | HeyTCM",
+      "description": "HeyTCM is dedicated to advancing the digital and intelligent transformation of Traditional Chinese Medicine.",
+      "url": "https://heytcm.com/about",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@type": "Organization",
+        "name": "HeyTCM Smart TCM Platform",
+        "url": "https://heytcm.com/",
+        "logo": "https://heytcm.com/og-image.jpg"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HeyTCM Smart TCM Platform",
+      "url": "https://heytcm.com/",
+      "logo": "https://heytcm.com/og-image.jpg",
+      "sameAs": [
+        "https://heytcm.com/"
+      ]
+    }
+  ],
+  "AboutPage.sections": [
+    {
+      "type": "story",
+      "title": "From Mountain Child to TCM Explorer: The Origin of Sheng Haiwang and HeyTCM",
+      "body": [
+        {
+          "title": "Body's Alarms and Unsolved Mysteries",
+          "para": "I was born in a remote mountain village and was frail and sickly as a child. Bedwetting haunted my childhood until I was 10—waking up to cold, damp sheets. I didn’t understand what my body was telling me, only enduring the teasing of peers and my own shame."
+        },
+        {
+          "para": "In college, digestive issues and hand tremors followed. I kept asking myself: ‘What’s wrong with me? Why does my body seem fine but feel so uncomfortable in ways I can’t explain?’"
+        },
+        {
+          "title": "A Medical Engineer’s Quest",
+          "para": "My career path seemed destined. I became a software engineer in the health sector, developing countless health systems and products over 15 years. Ironically, while I could help build solutions for others, I couldn’t decipher my own body’s signals."
+        },
+        {
+          "para": "At 35, urticaria and insomnia seriously affected my life. Western medicine found nothing wrong, and treatments had little effect. By chance, I encountered TCM theories and delved into concepts like Qi and Blood, and the interplay of organs. TCM’s holistic and balanced approach offered a new framework to understand my long-standing issues."
+        },
+        {
+          "title": "A Mission: Illuminating TCM with Technology",
+          "para": "As I deepened my understanding of TCM, a vision emerged: this ancient wisdom is being marginalized in modern society not due to ineffectiveness, but because it lacks an accessible, modern expression."
+        },
+        {
+          "para": "Could the experience-based diagnostics of TCM be made more objective with technology and data? Could ancient theories like Qi, Blood, Yin, and Yang be quantified and visualized with modern sensors, revealing TCM’s scientific value to more people?"
+        },
+        {
+          "para": "With these questions, I founded HeyTCM—to bridge ancient TCM wisdom and modern innovation, offering new perspectives and solutions for today’s health challenges."
+        }
+      ]
+    },
+    {
+      "type": "vision",
+      "title": "Our Vision",
+      "body": [
+        {
+          "title": "Vision 1: Digital TCM",
+          "para": "Driving the digital and intelligent transformation of TCM to benefit more people with its science and warmth."
+        },
+        {
+          "title": "Vision 2: Empowered by Technology"
+        }
+      ],
+      "items": [
+        {
+          "title": "Smart Health Management",
+          "para": "Enhancing health management with data and algorithms."
+        },
+        {
+          "title": "Open Ecosystem",
+          "para": "Building an open and collaborative digital TCM ecosystem."
+        },
+        {
+          "title": "User First",
+          "para": "Driven by user needs."
+        },
+        {
+          "title": "Heritage and Innovation",
+          "para": "Blending traditional wisdom with modern technology to innovate TCM expression."
+        }
+      ]
+    }
+  ],
+  "AboutPage.cta.title": "Join Us and Start Your Health Journey",
+  "AboutPage.cta.description": "Become a part of the HeyTCM community and experience cutting-edge smart TCM products and services.",
+  "AboutPage.cta.buttonText": "Join Now"
+}

@@ -1,0 +1,204 @@
+{
+  "EcosystemPage.seo.title": "Ecosystem Collaboration | HeyTCM",
+  "EcosystemPage.seo.description": "HeyTCM Ecosystem: Building the Future of Intelligent TCM Together.",
+  "EcosystemPage.seo.keywords": "TCM, ecosystem, collaboration, intelligence",
+  "EcosystemPage.seo.og.title": "Ecosystem Collaboration | HeyTCM",
+  "EcosystemPage.seo.og.description": "HeyTCM Ecosystem: Building the Future of Intelligent TCM Together.",
+  "EcosystemPage.seo.og.site_name": "HeyTCM",
+  "EcosystemPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "EcosystemPage.seo.canonical": "https://heytcm.com/ecosystem",
+  "EcosystemPage.seo.alternate.x-default": "https://heytcm.com/ecosystem",
+  "EcosystemPage.seo.alternate.zh": "https://heytcm.com/zh/ecosystem",
+  "EcosystemPage.seo.alternate.en": "https://heytcm.com/en/ecosystem",
+  "EcosystemPage.head.title": "HeyTCM - Open Ecosystem",
+  "EcosystemPage.banner.title": "Open Innovation: Shaping the Future of Smart TCM Together",
+  "EcosystemPage.banner.imgAlt": "Main Ecosystem Image",
+  "EcosystemPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Ecosystem Collaboration | HeyTCM",
+      "description": "HeyTCM Ecosystem: Building the Future of Intelligent TCM Together.",
+      "url": "https://heytcm.com/ecosystem",
+      "inLanguage": "en-US",
+      "sponsor": [
+        {
+          "@type": "Organization",
+          "name": "HeyTCM Ecosystem Partners",
+          "url": "https://heytcm.com/ecosystem"
+        },
+        {
+          "@type": "Person",
+          "name": "Sheng Haiwang",
+          "sameAs": [
+            "https://github.com/wanghaisheng",
+            "https://www.zhihu.com/people/shenghaiwang"
+          ]
+        }
+      ],
+      "event": {
+        "@type": "Event",
+        "name": "HeyTCM Co-Creation Summit",
+        "startDate": "2025-05-20",
+        "location": "Online/Offline Hybrid"
+      },
+      "software": {
+        "@type": "SoftwareApplication",
+        "name": "HeyTCM Smart TCM Platform",
+        "operatingSystem": "Web, iOS, Android",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "2999",
+          "priceCurrency": "CNY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1200"
+        },
+        "description": "A smart health management cloud platform integrating TCM theory and modern technology, supporting multi-platform, data analytics, and personalized health services.",
+        "screenshot": "https://heytcm.com/screenshots/app-main.png",
+        "downloadUrl": "https://heytcm.com/download",
+        "supportUrl": "https://heytcm.com/support",
+        "featureList": [
+          "TCM constitution analysis and health advice",
+          "Multi-device sync and data visualization",
+          "Personalized health reports and trends",
+          "Open API and data export"
+        ]
+      }
+    }
+  ],
+  "EcosystemPage.sections": {
+    "openData": {
+      "id": "openData",
+      "title": "Open Data: Fueling Research and Innovation",
+      "desc": "HeyTCM Open Data Platform collects, organizes, and shares high-quality TCM health data for researchers and developers, driving intelligent TCM development. We strictly adhere to privacy protection— all data is anonymized.",
+      "items": [
+        {
+          "title": "PPG Dataset",
+          "desc": "A vast, continuous collection of PPG data across diverse ages, genders, and body types in various scenarios.",
+          "cta": {
+            "detail": "View Details",
+            "detail.url": "https://heytcm.com/data/ppg",
+            "standard": "Data Collection Standard",
+            "standard.url": "https://heytcm.com/data/ppg-standard"
+          }
+        },
+        {
+          "title": "Disease & Prescription Database",
+          "desc": "Structured TCM diagnosis data, including symptom descriptions, tongue/pulse images, syndrome differentiation, prescriptions, and efficacy tracking.",
+          "cta": {
+            "detail": "View Details",
+            "detail.url": "https://heytcm.com/data/disease"
+          }
+        },
+        {
+          "title": "Weight Loss Database",
+          "desc": "Comprehensive weight loss data, including weight changes, body fat, physiological indicators, diet records, and mood tracking.",
+          "cta": {
+            "detail": "View Details",
+            "detail.url": "https://heytcm.com/data/weightloss"
+          }
+        }
+      ],
+      "cta": {
+        "title": "Explore More Open Data",
+        "desc": "Visit HeyTCM Open Data Platform to access more high-quality TCM health data for research and innovation.",
+        "buttonText": "Go to Data Platform",
+        "url": "https://heytcm.com/data"
+      }
+    },
+    "openSource": {
+      "id": "openSource",
+      "title": "Open Source: Building Smart TCM Tools Together",
+      "desc": "HeyTCM actively promotes open-source TCM projects. Developers are welcome to contribute code, suggestions, and help improve the intelligent TCM toolchain.",
+      "items": [
+        {
+          "title": "HeyTCM Open Algorithm Library",
+          "desc": "A collection of TCM algorithms for signal processing, health assessment, and data visualization, deployable across platforms.",
+          "cta": {
+            "detail": "View Details",
+            "detail.url": "https://github.com/heytcm/algorithms"
+          }
+        },
+        {
+          "title": "AI Syndrome Differentiation Library",
+          "desc": "A machine-learning-based TCM syndrome differentiation library, supporting multiple sensor inputs and interpretable predictions.",
+          "cta": {
+            "detail": "View on GitHub"
+          }
+        },
+        {
+          "title": "PPG Signal Analysis Toolkit",
+          "desc": "A lightweight PPG signal processing library for browser and Node.js, offering filtering, feature extraction, and time-frequency analysis.",
+          "cta": {
+            "detail": "View on GitHub"
+          }
+        },
+        {
+          "title": "TCM Knowledge Graph Framework",
+          "desc": "A structured TCM knowledge graph framework for modeling and reasoning about meridians, organs, formulas, and herbs.",
+          "cta": {
+            "detail": "View on GitHub"
+          }
+        },
+        {
+          "title": "Become an Open Source Contributor",
+          "desc": "We welcome all forms of contributions—code, documentation, algorithm improvements, bug fixes, or feature suggestions. Whether you’re a seasoned developer or a TCM practitioner, you can join our open-source projects.",
+          "cta": {
+            "detail": "View All Projects"
+          }
+        }
+      ],
+      "cta": {
+        "title": "Join Open Source Co-Creation",
+        "desc": "Join the HeyTCM open-source community and drive innovation in smart TCM tools with developers worldwide.",
+        "buttonText": "Visit GitHub",
+        "url": "https://github.com/heytcm"
+      }
+    },
+    "community": {
+      "id": "community",
+      "title": "Co-Creation Community: Gathering Diverse Forces",
+      "desc": "The HeyTCM community brings together TCM practitioners, developers, researchers, and health enthusiasts. We regularly host online and offline events to promote knowledge sharing and innovation.",
+      "items": [
+        {
+          "title": "Online Co-Creation Meetings",
+          "desc": "Regular online meetings to share the latest research and practical experience.",
+          "cta": {
+            "detail": "Join the Community",
+            "detail.url": "https://community.heytcm.com/",
+            "standard": "View Events",
+            "standard.url": "https://community.heytcm.com/events"
+          }
+        },
+        {
+          "title": "Fasting Circle",
+          "desc": "A safe and scientific space for fasting practice, sharing experiences, mutual support, and risk reduction. Our members range from seasoned fasters to curious newcomers.",
+          "cta": {
+            "detail": "Join Fasting Circle"
+          },
+          "members": "3,782"
+        },
+        {
+          "title": "Shanghan Reading Group",
+          "desc": "Collectively reading TCM classics like Shang Han Lun, reinterpreting ancient wisdom through a modern lens, and tackling challenging sections together every week.",
+          "cta": {
+            "detail": "Join Reading Group"
+          },
+          "members": "1,254"
+        },
+        {
+          "title": "General Discussion Forum",
+          "desc": "A free space to discuss TCM topics, share personal health management experiences, ask questions, explore product tips, and connect with experts from various fields.",
+          "cta": {
+            "detail": "Enter Forum"
+          },
+          "members": "7,931"
+        }
+      ]
+    }
+  }
+}

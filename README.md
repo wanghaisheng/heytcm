@@ -1,22 +1,31 @@
-# HeyTCM Website
+# heytcm官网构建
 
-## 多语言 key 校验脚本使用说明
+40+老男人 没有编程开发的经验学着做网站
 
-本项目已集成多语言 key 一致性校验脚本，便于开发者快速检查中英文等多语言 JSON 文件结构是否一致。
+vibecoding 实践五一黄金周第一弹
 
-### 快速使用
 
-在项目根目录下执行：
+## 使用bolt.new构建框架
 
-```bash
-npm run compare-locale-keys
-```
+导出本地
 
-脚本会自动对比 `locales/zh/` 与 `locales/en/` 下的 JSON 文件，输出缺失或多余的 key，便于及时修复。
+## 使用trae和winsurf+gpt4.1
 
-### 脚本原理
-- 脚本位置：`scripts/compare_locale_keys.cjs`
-- 支持自定义扩展
-- 推荐在每次多语言内容调整后运行，保持 key 一致性
+1.增加多语言
+2.增加了4个页面ring-c1、vision leaderboard roadmap
+3.增加了自动生成sitemap.xml robots.txt llms.txt的脚本
+4.增加了seo组件
+5.增加了ldjson的组件注入
+6.增加了检测中文英文翻译的key是否一样 查缺补漏的脚本
 
----
+
+关键教训  拿到一个填充了假数据的页面 应该告诉ai 数据和样式分离 完了以后再去做国际化json 和key的管理会事半功倍。页面中按照section来组织会省事一些。
+
+## 部署到cf
+
+
+历时2天
+2025-0430早上开始到2025-0501晚上结束
+
+
+

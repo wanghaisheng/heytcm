@@ -1,0 +1,48 @@
+{
+  "Footer.footerLinks": [
+    {
+      "title": "About",
+      "links": [
+        {"label": "Our Story", "to": "/about"},
+        {"label": "Founder", "to": "/about#founder"},
+        {"label": "Mission & Vision", "to": "/vision"},
+        {"label": "Leaderboard", "to": "/leaderboard"},
+        {"label": "Roadmap", "to": "/roadmap"},
+        {"label": "Join Us", "to": "/about#join"}
+      ]
+    },
+    {
+      "title": "Products",
+      "links": [
+        {"label": "Smart Ring", "to": "/ring-c1"},
+        {"label": "Fasting Kit", "to": "/products#fasting"},
+        {"label": "Health Tools", "to": "/products#tools"},
+        {"label": "TCM Games", "to": "/products#games"},
+        {"label": "Downloads", "to": "/resources"}
+      ]
+    },
+    {
+      "title": "Ecosystem",
+      "links": [
+        {"label": "Open Data", "to": "/ecosystem#data"},
+        {"label": "Open Source", "to": "/ecosystem#opensource"},
+        {"label": "Research Collaboration", "to": "/ecosystem#research"},
+        {"label": "How to Contribute", "to": "/support"}
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        {"label": "FAQ", "to": "/help#faq"},
+        {"label": "Contact Us", "to": "/help#contact"},
+        {"label": "User Guide", "to": "/help#guides"}
+      ]
+    }
+  ],
+  "Footer.policyLinks": [
+    {"label": "Terms of Use", "to": "/help#terms"},
+    {"label": "Privacy Policy", "to": "/help#privacy"},
+    {"label": "Cookie Policy", "to": "/help#cookies"}
+  ],
+  "Footer.introText": "Empowering TCM with technology for a healthier future. We are committed to making TCM wisdom more systematic, scientific, and accessible through data and AI."
+}

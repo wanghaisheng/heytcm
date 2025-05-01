@@ -1,0 +1,101 @@
+{
+  "ResourcesPage.seo.title": "Resource Center | HeyTCM",
+  "ResourcesPage.seo.description": "The HeyTCM Resource Center offers a wealth of TCM intelligence-related materials and tools.",
+  "ResourcesPage.seo.keywords": "TCM, resources, tools, intelligence",
+  "ResourcesPage.seo.og.title": "Resource Center | HeyTCM",
+  "ResourcesPage.seo.og.description": "The HeyTCM Resource Center offers a wealth of TCM intelligence-related materials and tools.",
+  "ResourcesPage.seo.og.site_name": "HeyTCM",
+  "ResourcesPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "ResourcesPage.seo.canonical": "https://heytcm.com/resources",
+  "ResourcesPage.seo.alternate.x-default": "https://heytcm.com/resources",
+  "ResourcesPage.seo.alternate.zh": "https://heytcm.com/zh/resources",
+  "ResourcesPage.seo.alternate.en": "https://heytcm.com/en/resources",
+  "ResourcesPage.head.title": "HeyTCM - Resource Center",
+  "ResourcesPage.banner.title": "Health Knowledge Hub",
+  "ResourcesPage.banner.image": "https://images.pexels.com/photos/6044198/pexels-photo-6044198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  "ResourcesPage.intro": "Carefully selected whitepapers, guides, and literature to help you explore TCM and health in depth. All resources are free for community members.",
+  "ResourcesPage.downloadButton": "Download PDF",
+  "ResourcesPage.categories": [
+    { "id": "all", "label": "All Resources" },
+    { "id": "whitepapers", "label": "Whitepapers" },
+    { "id": "guides", "label": "Health Guides" },
+    { "id": "literature", "label": "TCM Literature" },
+    { "id": "templates", "label": "Templates" }
+  ],
+  "ResourcesPage.resources": [
+    {
+      "id": 1,
+      "title": "TCM Sleep Regulation Whitepaper",
+      "description": "A deep dive into TCM sleep theory and regulation, exploring the relationship between organs and sleep, and the application of smart technology in sleep monitoring.",
+      "category": "whitepapers",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/2876612/pexels-photo-2876612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-03-15"
+    },
+    {
+      "id": 2,
+      "title": "Smart Ring Technology & Patents Overview",
+      "description": "A detailed introduction to the core technology, sensor principles, and data processing of HeyTCM's smart ring, plus a summary of related patents.",
+      "category": "whitepapers",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/5863390/pexels-photo-5863390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-02-28"
+    },
+    {
+      "id": 3,
+      "title": "Self-Help Guide for Common Digestive Issues",
+      "description": "TCM-based differentiation and self-care methods for common digestive problems, including acupressure, dietary advice, and more.",
+      "category": "guides",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/5941192/pexels-photo-5941192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-04-03"
+    },
+    {
+      "id": 4,
+      "title": "Seasonal Wellness Calendar Template",
+      "description": "A yearly wellness planner based on the 24 solar terms in TCM, helping users manage their diet and lifestyle in harmony with nature.",
+      "category": "templates",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/6476045/pexels-photo-6476045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-01-05"
+    },
+    {
+      "id": 5,
+      "title": "Detailed Analysis of Classic TCM Formula: Siwu Decoction Series",
+      "description": "A comprehensive analysis of the composition, effects, applications, and modern research on Siwu Decoction and its variants, including modern pharmacology explanations.",
+      "category": "literature",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/8941158/pexels-photo-8941158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-03-22"
+    },
+    {
+      "id": 6,
+      "title": "TCM Constitution Self-Assessment Questionnaire",
+      "description": "A standardized questionnaire for identifying the nine TCM constitution types, providing a basis for personalized wellness.",
+      "category": "templates",
+      "downloadLink": "#",
+      "thumbnailUrl": "https://images.pexels.com/photos/6476254/pexels-photo-6476254.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "date": "2025-02-10"
+    }
+  ],
+  "ResourcesPage.emptyState.title": "No resources found",
+  "ResourcesPage.emptyState.description": "Try selecting a different category or check back later.",
+  "ResourcesPage.requestResources.title": "Can't find what you need?",
+  "ResourcesPage.requestResources.description": "If you want us to provide resources on a specific topic or have suggestions, let us know. We'll do our best to meet community needs.",
+  "ResourcesPage.requestResources.button": "Submit Resource Request",
+  "ResourcesPage.description": "Carefully selected whitepapers, guides, and literature to help you explore TCM and health in depth. All resources are free for community members.",
+  "ResourcesPage.download": "Download PDF",
+  "ResourcesPage.request.title": "Can't find what you need?",
+  "ResourcesPage.request.description": "If you want us to provide resources on a specific topic or have suggestions, let us know. We'll do our best to meet community needs.",
+  "ResourcesPage.request.button": "Submit Resource Request",
+  "ResourcesPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Resource Center | HeyTCM",
+      "description": "The HeyTCM Resource Center offers a wealth of TCM intelligence-related materials and tools.",
+      "url": "https://heytcm.com/resources",
+      "inLanguage": "en-US"
+    }
+  ]
+}

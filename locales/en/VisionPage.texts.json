@@ -1,0 +1,82 @@
+{
+  "VisionPage.seo.title": "Vision & Mission | HeyTCM",
+  "VisionPage.seo.description": "Building a collaborative, open, and win-win platform to dispel misconceptions, promote the inheritance and development of TCM, and help more people achieve physical and mental well-being through TCM wisdom, realizing harmony between humans and nature, body and mind.",
+  "VisionPage.seo.keywords": "TCM, vision, mission, health, HeyTCM, intelligent TCM, digital health",
+  "VisionPage.seo.og.title": "Vision & Mission | HeyTCM",
+  "VisionPage.seo.og.description": "Building a collaborative, open, and win-win platform to dispel misconceptions, promote the inheritance and development of TCM, and help more people achieve physical and mental well-being through TCM wisdom, realizing harmony between humans and nature, body and mind.",
+  "VisionPage.seo.og.site_name": "HeyTCM",
+  "VisionPage.seo.og.image": "https://heytcm.com/og-image.jpg",
+  "VisionPage.seo.canonical": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.x-default": "https://heytcm.com/vision",
+  "VisionPage.seo.alternate.zh": "https://heytcm.com/zh/vision",
+  "VisionPage.seo.alternate.en": "https://heytcm.com/en/vision",
+  "VisionPage.head.title": "HeyTCM - Vision & Mission",
+  "VisionPage.banner.title": "Our Vision & Mission",
+  "VisionPage.banner.image": "vision-mission-banner",
+  "VisionPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Vision & Mission | HeyTCM",
+      "description": "Building a collaborative, open, and win-win platform to dispel misconceptions, promote the inheritance and development of TCM, and help more people achieve physical and mental well-being through TCM wisdom, realizing harmony between humans and nature, body and mind.",
+      "url": "https://heytcm.com/vision",
+      "inLanguage": "en",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "HeyTCM",
+        "url": "https://heytcm.com/",
+        "description": "Building a collaborative, open, and win-win platform to dispel misconceptions, promote the inheritance and development of TCM, and help more people achieve physical and mental well-being through TCM wisdom, realizing harmony between humans and nature, body and mind."
+      }
+    }
+  ],
+  "VisionPage.title": "Our Vision & Mission",
+  "VisionPage.vision.title": "Vision",
+  "VisionPage.vision.desc": "Building a collaborative, open, and win-win platform to dispel misconceptions, promote the inheritance and development of TCM, and help more people achieve physical and mental well-being through TCM wisdom, realizing harmony between humans and nature, body and mind.",
+  "VisionPage.mission.title": "Mission",
+  "VisionPage.mission.items": [
+    {
+      "icon": "Microchip",
+      "title": "Integrate Technology with TCM Wisdom",
+      "desc": "Combine modern technology with traditional TCM theory to innovate health management."
+    },
+    {
+      "icon": "ChartPie",
+      "title": "Collect & Analyze Massive Health Data",
+      "desc": "Leverage big data to validate and develop TCM theory, enhancing treatment outcomes."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Provide Personalized Health Management",
+      "desc": "Offer customized health solutions based on individual differences to improve prevention and wellness."
+    },
+    {
+      "icon": "Brain",
+      "title": "Advance Intelligent TCM",
+      "desc": "Build an open platform to unite efforts and drive TCM modernization together."
+    }
+  ],
+  "VisionPage.beliefs.title": "Our Core Beliefs",
+  "VisionPage.values.title": "Our Core Beliefs",
+  "VisionPage.principle.tabs": [
+    { "id": "beliefs", "label": "Six Beliefs" },
+    { "id": "values", "label": "Community Values" }
+  ],
+  "VisionPage.principle.beliefs": [
+    { "title": "Endless Science", "desc": "TCM and modern science are not in conflict. We embrace scientific spirit and methods, and promote the renewal and development of TCM knowledge with an open mind." },
+    { "title": "East-West Integration", "desc": "TCM and Western medicine each have their strengths. We advocate integrating both systems for the benefit of patients." },
+    { "title": "Wearable Technology", "desc": "We believe smart wearables are the future of health monitoring, providing objective and continuous data for TCM." },
+    { "title": "AI Opportunities", "desc": "Artificial intelligence will reshape healthcare, bringing unprecedented possibilities for the inheritance, application, and innovation of TCM knowledge." },
+    { "title": "Individual Uniqueness", "desc": "Everyone's body and health needs are unique. We are committed to providing personalized health solutions." },
+    { "title": "Mutual Support", "desc": "The power of community is limitless. We encourage knowledge sharing and mutual help to grow together and create a healthier future." }
+  ],
+  "VisionPage.principle.values": [
+    { "title": "Exploration & Innovation", "desc": "Encourage curiosity and a spirit of exploration, constantly pushing the boundaries of traditional understanding." },
+    { "title": "Holistic Complementarity", "desc": "Integrate Eastern and Western wisdom, learning from each other while respecting differences." },
+    { "title": "Respect for Individuality", "desc": "Respect individual differences and offer diverse health pathways." },
+    { "title": "Co-creation & Sharing", "desc": "Open resources and share achievements, ensuring every contribution is recognized." },
+    { "title": "Technology Driven", "desc": "Utilize cutting-edge technology to support the inheritance and innovation of traditional wisdom." },
+    { "title": "Health & Happiness", "desc": "Enhance users' physical and mental health and quality of life as the ultimate goal." },
+    { "title": "Privacy & Security", "desc": "Strictly protect user privacy and ensure data security and compliance." },
+    { "title": "Social Responsibility", "desc": "Take on social responsibility, spread health knowledge, and promote public well-being." }
+  ]
+}

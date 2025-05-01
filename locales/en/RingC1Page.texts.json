@@ -1,0 +1,103 @@
+{
+    "RingC1Page.seo.title": "HeyTCM - C1 Smart Health Ring | Data Wellness",
+    "RingC1Page.seo.description": "HeyTCM C1 Ring combines TCM wisdom with modern technology to empower health management and data-driven wellness.",
+    "RingC1Page.seo.keywords": "TCM, smart ring, health management, data wellness, HeyTCM",
+    "RingC1Page.seo.og.title": "HeyTCM - C1 Smart Health Ring",
+    "RingC1Page.seo.og.description": "HeyTCM C1 Ring combines TCM wisdom with modern technology to empower health management and data-driven wellness.",
+    "RingC1Page.seo.og.image": "https://heytcm.com/og-image.jpg",
+    "RingC1Page.seo.og.site_name": "HeyTCM",
+    "RingC1Page.seo.canonical": "https://heytcm.com/ring-c1",
+    "RingC1Page.seo.alternate.x-default": "https://heytcm.com/ring-c1",
+    "RingC1Page.seo.alternate.zh": "https://heytcm.com/zh/ring-c1",
+    "RingC1Page.seo.alternate.en": "https://heytcm.com/en/ring-c1",
+    "RingC1Page.banner.title": "HeyTCM C1 Smart Health Ring",
+    "RingC1Page.banner.image": "/images/ring-c1-banner.jpg",
+    "RingC1Page.intro.title": "HeyTCM C1 Smart Health Ring",
+    "RingC1Page.intro.subtitle": "Blending TCM wisdom with modern technology for a new data-driven wellness experience.",
+    "RingC1Page.intro.image": "/images/ring-c1-main.jpg",
+    "RingC1Page.features": [
+        {
+            "title": "Intelligent TCM Health Management",
+            "desc": "Integrates TCM theory and modern sensor technology for real-time health monitoring and intelligent analysis of constitution and health trends.",
+            "image": "/images/ring-c1-feature1.jpg"
+        },
+        {
+            "title": "Multi-dimensional Data Collection",
+            "desc": "Supports collection of heart rate, temperature, sleep, activity and more for personalized wellness.",
+            "image": "/images/ring-c1-feature2.jpg"
+        },
+        {
+            "title": "AI-powered Decision Making",
+            "desc": "Built-in AI algorithms provide personalized health advice and TCM-based wellness plans.",
+            "image": "/images/ring-c1-feature3.jpg"
+        }
+    ],
+    "RingC1Page.models": [
+        {
+            "name": "C1 Standard Edition",
+            "price": "¥999",
+            "features": [
+                "Basic Health Monitoring",
+                "AI Smart Analysis",
+                "Data Sync"
+            ]
+        },
+        {
+            "name": "C1 Pro",
+            "price": "¥1499",
+            "features": [
+                "Advanced Health Monitoring",
+                "AI Deep Analysis",
+                "Multi-device Data Management"
+            ]
+        }
+    ],
+    "RingC1Page.specs": [
+        {
+            "group": "Sensors",
+            "items": [
+                {
+                    "name": "Heart Rate Sensor",
+                    "value": "Supported"
+                },
+                {
+                    "name": "Temperature Sensor",
+                    "value": "Supported"
+                }
+            ]
+        },
+        {
+            "group": "Battery & Endurance",
+            "items": [
+                {
+                    "name": "Battery Capacity",
+                    "value": "50mAh"
+                },
+                {
+                    "name": "Battery Life",
+                    "value": "7 days"
+                }
+            ]
+        }
+    ],
+    "RingC1Page.faqs": [
+        {
+            "q": "Who is the C1 Ring suitable for?",
+            "a": "Ideal for those who care about health and want to embrace data-driven wellness, especially TCM enthusiasts."
+        },
+        {
+            "q": "How can I purchase the C1 Ring?",
+            "a": "You can reserve or buy through the HeyTCM official website or partner channels."
+        }
+    ],
+    "RingC1Page.ldjson": [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "HeyTCM - C1 Smart Health Ring | Data Wellness",
+            "description": "HeyTCM C1 Ring combines TCM wisdom with modern technology to empower health management and data-driven wellness.",
+            "url": "https://heytcm.com/ring-c1",
+            "inLanguage": "en"
+        }
+    ]
+}
