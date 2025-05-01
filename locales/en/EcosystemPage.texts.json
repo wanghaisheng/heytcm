@@ -197,8 +197,21 @@
             "detail": "Enter Forum"
           },
           "members": "7,931"
+        },
+        {
+          "title": "Contribution Heroes List",
+          "desc": "The vitality of the community comes from the participation and contributions of every member. Whether sharing experience, answering questions, contributing data, or developing features, every effort drives the progress of intelligent TCM.",
+          "cta": {
+            "detail": "View Contribution Heroes List"
+          }
         }
-      ]
-    }
+      ],
+      "cta": {
+        "title": "Join HeyTCM Co-Creation Community",
+        "desc": "Communicate, learn, and co-create the future with TCM enthusiasts, experts, and developers.",
+        "buttonText": "Join Now",
+        "url": "https://community.heytcm.com/"
+      }
   }
+}
 }

@@ -123,15 +123,15 @@
       "desc": "Apps and websites for different symptoms, groups, and fields",
       "filters": [
         { "id": "all", "label": "All" },
-        { "id": "shanghan-app", "label": "Shanghan Daily App" },
-        { "id": "qixue-app", "label": "Qi & Blood Management App" },
-        { "id": "sleeppal", "label": "SleepPal Sleep Assistant" }
+        { "id": "shanghan-app", "label": "Daily Shanghan App" },
+        { "id": "qixue-app", "label": "Qi & Blood App" },
+        { "id": "sleeppal", "label": "SleepPal" }
       ],
       "items": [
         {
           "id": "shanghan-app",
-          "title": "Shanghan Daily App",
-          "description": "Master Shang Han Lun knowledge one question a day, systematically.",
+          "title": "Daily Shanghan App",
+          "description": "One question per day to systematically master the core knowledge of Shang Han Lun.",
           "link": "https://shanghan.heytcm.com/",
           "image": "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg",
           "tags": ["Learning", "Shang Han Lun", "App"],
@@ -139,8 +139,8 @@
         },
         {
           "id": "qixue-app",
-          "title": "Qi & Blood Management App",
-          "description": "Quantify Qi & Blood, analyze health trends intelligently.",
+          "title": "Qi & Blood App",
+          "description": "Quantify qi and blood status, intelligently analyze health trends.",
           "link": "https://qixue.heytcm.com/",
           "image": "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg",
           "tags": ["Health Management", "Qi & Blood", "App"],
@@ -148,8 +148,8 @@
         },
         {
           "id": "sleeppal",
-          "title": "SleepPal Sleep Assistant",
-          "description": "Scientific sleep management for better quality rest.",
+          "title": "SleepPal",
+          "description": "Scientific sleep management to improve sleep quality.",
           "link": "https://sleeppal.heytcm.com/",
           "image": "https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg",
           "tags": ["Sleep", "Health", "App"],
@@ -170,8 +170,8 @@
       "items": [
         {
           "id": "classic-puzzle",
-          "title": "Classic Puzzle Game",
-          "description": "Remastered classics to train your mind and learn through play.",
+          "title": "Classic Puzzle Games",
+          "description": "Remake the classics, exercise the mind, and combine education with entertainment.",
           "link": "https://games.heytcm.com/classic",
           "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
           "tags": ["Puzzle", "Classic Remake"],
@@ -180,7 +180,7 @@
         {
           "id": "card-battle",
           "title": "Original Card Battle",
-          "description": "A blend of strategy and luck—experience TCM culture through card battles.",
+          "description": "Strategy meets luck in TCM culture card battles.",
           "link": "https://games.heytcm.com/card",
           "image": "https://images.pexels.com/photos/279009/pexels-photo-279009.jpeg",
           "tags": ["Card", "Original"],
@@ -189,13 +189,66 @@
         {
           "id": "tower-defense",
           "title": "Original Tower Defense",
-          "description": "Defend and strategize—learn through play.",
+          "description": "Balance defense and strategy for educational fun.",
           "link": "https://games.heytcm.com/tower",
           "image": "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg",
           "tags": ["Tower Defense", "Original"],
           "icon": "Gamepad2"
         }
       ]
-    }
+    },
+    
+    {
+      "id": "community",
+      "title": "Community",
+      "desc": "Fasting Circle, Shanghan Reading, General Discussion and more interactive communities",
+      "filters": [
+        { "id": "all", "label": "All" },
+        { "id": "bigu-circle", "label": "Fasting Circle" },
+        { "id": "shanghan-reading", "label": "Shanghan Reading" },
+        { "id": "general-discussion", "label": "General Discussion" }
+      ],
+      "items": [
+        {
+          "id": "bigu-circle",
+          "title": "Fasting Circle",
+          "description": "Share fasting experiences and personal growth.",
+          "link": "https://community.heytcm.com/bigu",
+          "image": "https://images.pexels.com/photos/1394882/pexels-photo-1394882.jpeg",
+          "tags": ["Fasting", "Circle"],
+          "icon": "Heart"
+        },
+        {
+          "id": "shanghan-reading",
+          "title": "Shanghan Reading",
+          "description": "Read classics together and explore TCM wisdom.",
+          "link": "https://community.heytcm.com/shanghan",
+          "image": "https://images.pexels.com/photos/5726706/pexels-photo-5726706.jpeg",
+          "tags": ["Reading", "Shang Han Lun"],
+          "icon": "FileText"
+        },
+        {
+          "id": "general-discussion",
+          "title": "General Discussion Area",
+          "description": "Freely discuss diverse topics including TCM health and lifestyle.",
+          "link": "https://community.heytcm.com/general",
+          "image": "https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg",
+          "tags": ["General", "Discussion"],
+          "icon": "Activity"
+        },
+        {
+          "id": "missing-item-2",
+          "title": "[MISSING TITLE]",
+          "description": "[MISSING DESCRIPTION]",
+          "link": "[MISSING LINK]",
+          "image": "[MISSING IMAGE]",
+          "tags": ["[MISSING TAGS]"],
+          "icon": "[MISSING ICON]"
+        }
+    
   ]
-}
+    }
+  
+  ]
+  }
+

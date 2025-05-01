@@ -26,25 +26,62 @@ function parseRoutes() {
   return Array.from(routes);
 }
 
-function generateAllPages(routes, langs) {
-  const pages = new Set();
-  const defaultLang = 'zh';
+function generateAllPages(routes, langs, defaultLang = 'zh') {
+  // 生成所有页面链接，并根据默认语言去重
+  const pageSet = new Set();
   routes.forEach(route => {
-    // 只为主路由添加默认语言路径（/），不重复添加 /zh
+    // 首页特殊处理
     if (route === '/') {
-      pages.add('/');
-      langs.slice(1).forEach(lang => {
-        pages.add(`/${lang}`);
+      pageSet.add('/');
+      langs.forEach(lang => {
+        if (lang !== defaultLang) {
+          pageSet.add(`/${lang}`);
+        }
       });
     } else {
-      pages.add(route);
+      // 默认语言用 /xxx 形式，非默认语言用 /lang/xxx
+      pageSet.add(route);
       langs.forEach(lang => {
-        pages.add(`/${lang}${route}`);
+        if (lang !== defaultLang) {
+          pageSet.add(`/${lang}${route}`);
+        }
       });
     }
   });
-  return Array.from(pages);
+  // 去重：如果 / 和 /zh 都有且 defaultLang=zh，则去掉 /zh
+  if (langs.includes(defaultLang)) {
+    if (pageSet.has(`/${defaultLang}`) && pageSet.has('/')) {
+      pageSet.delete(`/${defaultLang}`);
+    }
+  }
+  return Array.from(pageSet);
 }
+
+// 自动检测 Vite build 输出目录（支持 ts/js 配置），无则默认 dist
+function getViteOutDir() {
+  let outDir = 'dist';
+  try {
+    const tsConfigPath = path.join(__dirname, '../vite.config.ts');
+    const jsConfigPath = path.join(__dirname, '../vite.config.js');
+    let config = null;
+    if (require('fs').existsSync(jsConfigPath)) {
+      config = require(jsConfigPath);
+    } else if (require('fs').existsSync(tsConfigPath)) {
+      // 用 ts-node/register 支持 ts 配置
+      require('ts-node').register({ transpileOnly: true });
+      config = require(tsConfigPath);
+    }
+    if (config && config.build && config.build.outDir) {
+      outDir = config.build.outDir;
+    } else if (config && config.default && config.default.build && config.default.build.outDir) {
+      outDir = config.default.build.outDir;
+    }
+  } catch (e) {
+    // ignore, fallback to dist
+  }
+  return outDir;
+}
+const OUT_DIR = getViteOutDir();
 
 async function generateSitemap() {
   const routes = parseRoutes();
@@ -53,15 +90,15 @@ async function generateSitemap() {
   pages.forEach(page => sitemap.write({ url: page, changefreq: 'weekly', priority: 0.7 }));
   sitemap.end();
   const data = await streamToPromise(sitemap);
-  writeFileSync(path.join(__dirname, '../public/sitemap.xml'), data.toString());
-  console.log('sitemap.xml generated');
+  writeFileSync(path.join(__dirname, `../${OUT_DIR}/sitemap.xml`), data.toString());
+  console.log(`sitemap.xml generated in ${OUT_DIR}`);
 }
 
 async function generateRobots() {
   // 参考 robots.example 生成 robots.txt
   const robotsExample = readFileSync(ROBOTS_EXAMPLE_PATH, 'utf-8');
-  writeFileSync(path.join(__dirname, '../public/robots.txt'), robotsExample);
-  console.log('robots.txt generated (from robots.example)');
+  writeFileSync(path.join(__dirname, `../${OUT_DIR}/robots.txt`), robotsExample);
+  console.log(`robots.txt generated in ${OUT_DIR} (from robots.example)`);
 }
 
 (async () => {

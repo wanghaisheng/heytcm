@@ -17,30 +17,71 @@
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": [],
       "name": "HeyTCM Help Center",
       "description": "Find answers to common questions, user guides, and support resources for HeyTCM.",
-      "url": "https://heytcm.com/help"
+      "url": "https://heytcm.com/help",
+      "inLanguage": "zh-CN"
     }
   ],
-  "HelpPage.sections": [
+  "HelpPage.categories": [
+    { "id": "all", "label": "All Questions" },
+    { "id": "account", "label": "Account & Payment" },
+    { "id": "smartring", "label": "Smart Ring" },
+    { "id": "data", "label": "Data & Privacy" },
+    { "id": "community", "label": "Community Rules" },
+    { "id": "security", "label": "Security" }
+  ],
+  "HelpPage.faqs": [
     {
-      "type": "faq",
-      "title": "Frequently Asked Questions",
-      "faqs": []
+      "category": "smartring",
+      "question": "How does the HeyTCM Smart Ring monitor Qi and blood status?",
+      "answer": "The HeyTCM Smart Ring uses high-precision optical sensors to monitor pulse waveform, skin temperature, and microcirculation. Combined with proprietary TCM models and machine learning, these signals are translated into Qi and blood assessments from a TCM perspective. The ring collects data 24/7 and analyzes trends to provide you with personalized health insights."
     },
     {
-      "type": "guides",
-      "title": "User Guides",
-      "guides": []
+      "category": "account",
+      "question": "How do I register a HeyTCM account?",
+      "answer": "Registering is simple: 1. Visit our website or download the HeyTCM App; 2. Click 'Register'; 3. Enter your email and set a password; 4. Verify your email; 5. Complete your profile (including basic health info for more accurate advice). Once registered, you can use all free features and optionally purchase premium services."
     },
     {
-      "type": "contact",
-      "title": "Contact Us",
-      "description": "If you need further assistance, please contact our support team."
+      "category": "data",
+      "question": "How does HeyTCM protect my health data privacy?",
+      "answer": "HeyTCM takes privacy seriously: 1. All data is end-to-end encrypted in transit and storage; 2. You control data sharing—by default, only you can view your data; 3. Research data is anonymized; 4. We follow strict security protocols and comply with international standards; 5. We never sell your data without your explicit consent. You can view, download, or delete your data anytime in privacy settings."
+    },
+    {
+      "category": "smartring",
+      "question": "How long is the Smart Ring battery life? How do I charge it?",
+      "answer": "The HeyTCM C1 Smart Ring lasts about 7 days per charge under normal use. To charge, simply place it in the included charging case, which uses magnetic alignment. The case itself charges via USB-C and can fully recharge the ring about 3 times. Charging from empty to full takes about 2 hours. The app will remind you to charge when the battery drops below 20%."
+    },
+    {
+      "category": "community",
+      "question": "How can I participate in the HeyTCM community?",
+      "answer": "The HeyTCM community is an open, friendly platform: 1. Log in to your HeyTCM account; 2. Click the 'Community' tab in the app or website; 3. Browse discussions or start a new topic; 4. Follow the rules and share your experience. Please do not share private information or treat community discussions as medical advice."
+    },
+    {
+      "category": "account",
+      "question": "How do I reset my password if I forget it?",
+      "answer": "If you forget your password: 1. Click 'Forgot Password' on the login page; 2. Enter your registered email; 3. Click 'Send Reset Link'; 4. Click the link in your email; 5. Set a new password. If you don't receive the email, check your spam folder or contact support."
+    },
+    {
+      "category": "security",
+      "question": "What should I do if I find a security vulnerability?",
+      "answer": "HeyTCM values security and welcomes responsible disclosure. If you find a vulnerability: 1. Contact our security team at security@heytcm.com; 2. Provide details and steps to reproduce; 3. Do not disclose the issue publicly until fixed; 4. Allow us time to resolve it. We offer rewards for valid reports."
     }
   ],
-  "HelpPage.cta.title": "Still Need Help?",
-  "HelpPage.cta.description": "Contact us directly and our team will get back to you as soon as possible.",
-  "HelpPage.cta.buttonText": "Contact Support"
+  "HelpPage.title": "Help Center",
+  "HelpPage.searchPlaceholder": "Hello, how can we help you?",
+  "HelpPage.noResultTitle": "No related questions found",
+  "HelpPage.noResultDesc": "Try different keywords or contact us directly for assistance.",
+  "HelpPage.contactButton": "Contact Support",
+  "HelpPage.contactTitle": "Can't find the answer?",
+  "HelpPage.contactDesc": "Our support team is always ready to help you. Please contact us via the following methods.",
+  "HelpPage.contactEmail": "support@heytcm.com",
+  "HelpPage.contactOnline": "Online Support",
+  "HelpPage.search.placeholder": "Enter keywords to search...",
+  "HelpPage.noResult.title": "No results found",
+  "HelpPage.noResult.description": "Please try other keywords or contact support for help.",
+  "HelpPage.contactSupport": "Contact Support",
+  "HelpPage.contactSupportTitle": "Online Support",
+  "HelpPage.contactSupportDescription": "If you have any questions, feel free to contact our online support team.",
+  "HelpPage.onlineSupport": "Online Support"
 }
