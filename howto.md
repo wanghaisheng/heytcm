@@ -34,14 +34,16 @@ const header = {
 
 ## 2. ldjson 结构化数据最佳实践
 - 结构化数据建议全部写入 i18n JSON，支持多语言（如 `SupportPage.ldjson`）。
-- 读取时用 `t('SupportPage.ldjson', { returnObjects: true })`，类型断言为数组。
+- 读取时用 `t('SupportPage.ldjson', { returnObjects: true }) as SupportedLdJson[]`，**务必加类型断言，保证类型安全**。
 - 传递给 `<LdJson data={ldJsonData} />` 组件。
 
 **示例代码：**
 ```tsx
+import type { SupportedLdJson } from '../components/LdJson';
 const ldJsonData = t('SupportPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
 <LdJson data={ldJsonData} />
 ```
+> ⚠️ 建议：始终为 ldjson 的国际化读取加上类型断言，防止类型不符导致运行或类型检查报错。
 
 ---
 

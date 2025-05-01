@@ -2,10 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
-const FounderMessage = () => {
+export interface FounderMessageProps {
+  title?: string;
+  link?: string;
+  imageUrl?: string;
+  founderAlt?: string;
+}
+
+const DEFAULT_TITLE = '我是生海王。历经 30 年身心磨砺与 15 年医疗科技探索，我深信中医智慧值得被看见、被量化。HeyTCM，是我为自己、也为每一个渴望身心自在的你，点燃的一束光。';
+const DEFAULT_LINK = '阅读我的完整故事';
+const DEFAULT_IMAGE = 'https://images.pexels.com/photos/5698833/pexels-photo-5698833.jpeg?auto=compress&cs=tinysrgb&w=800';
+
+const DEFAULT_ALT = '创始人生海王';
+
+const FounderMessage: React.FC<FounderMessageProps> = ({ title, link, imageUrl, founderAlt }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -27,17 +38,11 @@ const FounderMessage = () => {
           <div className="w-full md:w-1/3 relative">
             <div className="aspect-square rounded-full overflow-hidden border-4 border-primary-100">
               <img 
-                src="https://images.pexels.com/photos/5698833/pexels-photo-5698833.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="创始人生海王" 
+                src={imageUrl || DEFAULT_IMAGE} 
+                alt={founderAlt || DEFAULT_ALT}
                 className="w-full h-full object-cover"
               />
             </div>
-            <motion.div 
-              className="absolute -top-4 -right-4 w-24 h-24 md:w-32 md:h-32 bg-secondary-100 rounded-full z-[-1]"
-              initial={{ scale: 0 }}
-              animate={inView ? { scale: 1 } : {}}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            />
             <motion.div 
               className="absolute -bottom-4 -left-4 w-16 h-16 md:w-24 md:h-24 bg-primary-100 rounded-full z-[-1]"
               initial={{ scale: 0 }}
@@ -54,15 +59,18 @@ const FounderMessage = () => {
               </svg>
               
               <p className="text-lg md:text-xl text-neutral-700 mb-6 mt-8 ml-6">
-                {t('HomePage.founderMessage')}
+                {title || DEFAULT_TITLE}
               </p>
               
-              <Link 
-                to="/about" 
-                className="inline-flex items-center font-medium text-primary-600 hover:text-primary-700 transition-colors"
+              <a
+                href={link || '#'}
+                className="inline-flex items-center gap-2 text-primary-600 hover:underline font-medium"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {t('HomePage.founderBtn')} <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
+                {DEFAULT_LINK}
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </motion.div>

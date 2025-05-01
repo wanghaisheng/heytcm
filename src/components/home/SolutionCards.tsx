@@ -5,55 +5,58 @@ import {
   Fingerprint, 
   Smartphone, 
   Gamepad2, 
-  Share2
+  Share2,
+  ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { SOLUTION_CARDS_DATA } from './solutionCardsData';
 
-const SolutionCards = () => {
+export type SolutionCardType = 'hardware' | 'app' | 'game' | 'ecosystem';
+
+export interface SolutionCardDataItem {
+  key: string;
+  type: SolutionCardType;
+  title: string;
+  description: string;
+  link: string;
+  linkText: string;
+}
+
+export interface SolutionCardsStatic {
+  sectionTitle: string;
+  sectionDesc: string;
+  list: SolutionCardDataItem[];
+}
+
+
+const ICONS: Record<SolutionCardType, React.ReactNode> = {
+  hardware: <Fingerprint className="w-12 h-12 text-primary-500" />,
+  app: <Smartphone className="w-12 h-12 text-secondary-500" />,
+  game: <Gamepad2 className="w-12 h-12 text-accent-500" />,
+  ecosystem: <Share2 className="w-12 h-12 text-green-600" />,
+};
+const BG_COLORS: Record<SolutionCardType, string> = {
+  hardware: 'bg-primary-50',
+  app: 'bg-secondary-50',
+  game: 'bg-accent-50',
+  ecosystem: 'bg-green-50',
+};
+
+export interface SolutionCardsProps {
+  sectionTitle?: string;
+  sectionDesc?: string;
+  list?: SolutionCardDataItem[];
+}
+
+const SolutionCards: React.FC<SolutionCardsProps> = ({
+  sectionTitle = SOLUTION_CARDS_DATA.sectionTitle,
+  sectionDesc = SOLUTION_CARDS_DATA.sectionDesc,
+  list = SOLUTION_CARDS_DATA.list,
+}) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const solutions = [
-    {
-      icon: <Fingerprint className="w-12 h-12 text-primary-500" />,
-      title: '智能感知',
-      description: '戒指 24h 监测，量化气血、睡眠、五脏状态。',
-      link: '/products#ring',
-      linkText: '了解智能硬件',
-      color: 'bg-primary-50',
-      delay: 0,
-    },
-    {
-      icon: <Smartphone className="w-12 h-12 text-secondary-500" />,
-      title: '个性管理',
-      description: 'App 工具追踪症状、管理五行、评估疗效。',
-      link: '/products#app',
-      linkText: '探索工具应用',
-      color: 'bg-secondary-50',
-      delay: 0.2,
-    },
-    {
-      icon: <Gamepad2 className="w-12 h-12 text-accent-500" />,
-      title: '趣味成长',
-      description: '在游戏中学习中医，养成健康习惯。',
-      link: '/products#games',
-      linkText: '体验中医游戏',
-      color: 'bg-accent-50',
-      delay: 0.4,
-    },
-    {
-      icon: <Share2 className="w-12 h-12 text-green-600" />,
-      title: '开放共创',
-      description: '共享数据，参与研究，共建中医未来。',
-      link: '/ecosystem',
-      linkText: '访问开放生态',
-      color: 'bg-green-50',
-      delay: 0.6,
-    },
-  ];
 
   return (
     <section 
@@ -67,7 +70,7 @@ const SolutionCards = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          用数据看见"气血"，用智能管理健康
+          {sectionTitle}
         </motion.h2>
 
         <motion.p 
@@ -76,29 +79,27 @@ const SolutionCards = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          中医智慧与现代科技的完美结合，为您提供专业、个性化的健康管理方案
+          {sectionDesc}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {solutions.map((solution, index) => (
+          {list.map((solution, index) => (
             <motion.div 
-              key={index}
-              className={`rounded-xl p-6 ${solution.color} hover:shadow-md transition-all h-full flex flex-col`}
+              key={solution.key}
+              className={`rounded-xl p-6 ${BG_COLORS[solution.type as SolutionCardType]} hover:shadow-md transition-all h-full flex flex-col`}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: solution.delay }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <div className="mb-4">{solution.icon}</div>
+              <div className="mb-4">{ICONS[solution.type as SolutionCardType]}</div>
               <h3 className="text-xl font-display font-semibold mb-3 text-neutral-800">{solution.title}</h3>
               <p className="text-neutral-600 mb-4 flex-grow">{solution.description}</p>
               <Link 
                 to={solution.link} 
-                className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center"
+                className="mt-auto text-primary-600 hover:underline font-medium flex items-center gap-1"
               >
                 {solution.linkText}
-                <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           ))}

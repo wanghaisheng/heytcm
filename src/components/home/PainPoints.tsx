@@ -2,36 +2,32 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Battery, Moon, Settings as Lungs, Merge as Allergen, BrainCircuit } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { PAIN_POINTS_LIST } from './painPointsData';
 
-const PainPoints = () => {
+// 组件本地类型定义，便于类型安全和 IDE 智能提示
+export type PainPointType = 'battery' | 'sleep' | 'digest' | 'skin' | 'emotion';
+export interface PainPointDataItem {
+  key: string;
+  type: PainPointType;
+  text: string;
+}
+export interface PainPointsProps {
+  list?: PainPointDataItem[];
+  sectionTitle?: string;
+  sectionBottom?: string;
+}
+
+const DEFAULT_TITLE = '感觉身体"不对劲"，却说不清、查不出？';
+const DEFAULT_BOTTOM = 'HeyTCM 正在用数据"翻译"身体的语言...';
+
+const PainPoints: React.FC<PainPointsProps> = ({ list, sectionTitle, sectionBottom }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const painPoints = [
-    {
-      icon: <Battery className="w-10 h-10 text-primary-500" />,
-      text: '莫名疲惫，精力不济？',
-    },
-    {
-      icon: <Moon className="w-10 h-10 text-primary-500" />,
-      text: '辗转难眠，越睡越累？（我曾失眠20余年）',
-    },
-    {
-      icon: <Lungs className="w-10 h-10 text-primary-500" />,
-      text: '肠胃敏感，饮食处处小心？',
-    },
-    {
-      icon: <Allergen className="w-10 h-10 text-primary-500" />,
-      text: '皮肤问题反复，痘痘、疹子不断？（我曾战痘十年、荨麻疹四年）',
-    },
-    {
-      icon: <BrainCircuit className="w-10 h-10 text-primary-500" />,
-      text: '情绪波动，焦虑不安？',
-    },
-  ];
+  const painPoints = list && list.length > 0 ? list : PAIN_POINTS_LIST;
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -64,40 +60,41 @@ const PainPoints = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          {t('HomePage.painPointsDesc')}
+          {sectionTitle || DEFAULT_TITLE}
         </motion.h2>
 
-        <motion.ul 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {painPoints.map((point, idx) => {
-            const Icon = icons[idx] || Battery;
-            return (
-              <motion.li 
-                key={idx}
-                className="flex flex-col items-center text-center"
-                variants={itemVariants}
-              >
-                <Icon className="w-10 h-10 text-primary-500" />
-                <span className="mt-4 text-lg text-neutral-700">{point.text}</span>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
+          {painPoints.map((point, index) => (
+            <motion.div 
+              key={index}
+              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4"
+              variants={itemVariants}
+            >
+              <div className="flex-shrink-0">
+                {point.type === 'battery' && <Battery className="w-10 h-10 text-primary-500" />}
+                {point.type === 'sleep' && <Moon className="w-10 h-10 text-primary-500" />}
+                {point.type === 'digest' && <Lungs className="w-10 h-10 text-primary-500" />}
+                {point.type === 'skin' && <Allergen className="w-10 h-10 text-primary-500" />}
+                {point.type === 'emotion' && <BrainCircuit className="w-10 h-10 text-primary-500" />}
+              </div>
+              <p className="text-lg text-neutral-700">{point.text}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        <motion.div 
-          className="mt-12 text-center"
+        <motion.p 
+          className="mt-10 text-center text-neutral-500"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <p className="text-center text-neutral-500 text-base mt-4">
-            {t('HomePage.painPointsBottom')}
-          </p>
-        </motion.div>
+          {sectionBottom || DEFAULT_BOTTOM}
+        </motion.p>
       </div>
     </section>
   );

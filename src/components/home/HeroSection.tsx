@@ -1,9 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+// 类型定义
+export interface HeroSectionButton {
+  text: string;
+  link: string;
+}
+export interface HeroSectionProps {
+  title?: string;
+  description?: string;
+  buttons?: HeroSectionButton[];
+}
 
-const HeroSection = () => {
+const DEFAULT_TITLE = '为往圣继绝学，用科技焕新中医';
+const DEFAULT_DESCRIPTION = 'HeyTCM 智能中医共创圈：用 AI 与开放数据，解读身体信号，量化气血阴阳，开启您的个性化健康复兴之旅。';
+
+const HeroSection: React.FC<HeroSectionProps> = ({ title, description, buttons }) => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
@@ -49,55 +61,40 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <motion.h1 
-          className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-neutral-900 mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {t('HomePage.hero.title')}
-        </motion.h1>
-        
-        <motion.p 
-          className="text-lg md:text-xl text-neutral-700 max-w-3xl mx-auto mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {t('HomePage.hero.desc')}
-        </motion.p>
-        
-        <div className="flex flex-wrap justify-center gap-4">
-          {buttons.map((btn, idx) => (
-            <Link
-              key={btn.text + idx}
-              to={btn.link}
-              className={
-                idx === 0 ? "bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg" :
-                idx === 1 ? "bg-secondary-600 hover:bg-secondary-700 text-white px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg" :
-                "bg-neutral-200 hover:bg-neutral-300 text-neutral-800 px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg"
-              }
-            >
-              {btn.text}
-            </Link>
-          ))}
-        </div>
-        
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ 
-            opacity: { delay: 1.5, duration: 1 },
-            y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
-          }}
-        >
-          <div className="w-8 h-12 rounded-full border-2 border-neutral-400 flex justify-center">
-            <div className="w-1 h-3 bg-neutral-400 rounded-full mt-2"></div>
+        <h1 className="text-4xl md:text-6xl font-display font-bold mb-8 text-neutral-900 text-center drop-shadow">
+          {title || DEFAULT_TITLE}
+        </h1>
+        <p className="text-lg md:text-2xl text-neutral-700 mb-8 text-center max-w-2xl mx-auto">
+          {description || DEFAULT_DESCRIPTION}
+        </p>
+
+        {Array.isArray(buttons) && buttons.length > 0 && (
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            {buttons.map((btn, idx) => (
+              btn && btn.text && btn.link ? (
+                <Link key={idx} to={btn.link} className="btn btn-primary">
+                  {btn.text}
+                </Link>
+              ) : null
+            ))}
           </div>
-        </motion.div>
+        )}
       </div>
+      
+      {/* Scroll indicator */}
+      <motion.div 
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{ 
+          opacity: { delay: 1.5, duration: 1 },
+          y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+        }}
+      >
+        <div className="w-8 h-12 rounded-full border-2 border-neutral-400 flex justify-center">
+          <div className="w-1 h-3 bg-neutral-400 rounded-full mt-2"></div>
+        </div>
+      </motion.div>
     </section>
   );
 };

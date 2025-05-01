@@ -8,6 +8,7 @@ import NewsSection from '../components/home/NewsSection';
 import CallToAction from '../components/shared/CallToAction';
 import LdJson from '../components/LdJson';
 import SeoHeaders, { SeoHeaderProps } from '../components/SeoHeaders';
+import type { SupportedLdJson } from '../components/LdJson';
 
 const HomePage = () => {
   const { t, i18n } = useTranslation();
@@ -16,21 +17,10 @@ const HomePage = () => {
     document.title = t('HomePage.head.title');
   }, [t]);
 
-  // 动态组装 ldjson 数据
-  const ldJsonData = {
-    "@context": "https://schema.org",
-    "@type": t('HomePage.ldjson.type'),
-    "name": t('HomePage.ldjson.name'),
-    "url": t('HomePage.ldjson.url'),
-    "applicationCategory": t('HomePage.ldjson.software.applicationCategory'),
-    "operatingSystem": t('HomePage.ldjson.software.operatingSystem'),
-    "description": t('HomePage.ldjson.software.description'),
-    "publisher": {
-      "@type": t('HomePage.ldjson.publisher.type'),
-      "name": t('HomePage.ldjson.publisher.name')
-    }
-  };
+  // 结构化数据 ldjson 直接从 JSON 获取数组，类型断言保证类型安全
+  const ldJsonData = t('HomePage.ldjson', { returnObjects: true }) as SupportedLdJson[];
 
+  // SEO 信息全部从 JSON 获取，结构与 SeoHeaderProps 对齐
   const header: SeoHeaderProps = {
     title: t('HomePage.seo.title'),
     description: t('HomePage.seo.description'),
@@ -38,7 +28,7 @@ const HomePage = () => {
     og: {
       title: t('HomePage.seo.og.title'),
       description: t('HomePage.seo.og.description'),
-      image: 'https://heytcm.com/og-image.jpg',
+      image: t('HomePage.seo.og.image'),
       site_name: t('HomePage.seo.og.site_name')
     },
     canonical: t('HomePage.seo.canonical'),
@@ -49,23 +39,47 @@ const HomePage = () => {
     ]
   };
 
+
   return (
     <div className="pt-20">
       <SeoHeaders header={header} />
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection 
+        title={t('HomePage.hero.title')}
+        description={t('HomePage.hero.desc')}
+        buttons={t('HomePage.hero.buttons', { returnObjects: true }) as any[]}
+
+      />
 
       {/* Founder's Message */}
-      <FounderMessage />
+      <FounderMessage 
+        title={t('HomePage.founder.title')}
+        link={t('HomePage.founder.link')}
+        imageUrl={t('HomePage.founder.imageUrl')}
+        founderAlt={t('HomePage.founder.founderAlt')}
+      />
 
       {/* Pain Points Section */}
-      <PainPoints />
+      <PainPoints 
+        list={t('HomePage.painPoints', { returnObjects: true }) as any[]}
+
+      />
 
       {/* Solutions Section */}
-      <SolutionCards />
+      <SolutionCards
+        sectionTitle={t('HomePage.solutions.title')}
+        sectionDesc={t('HomePage.solutions.desc')}
+        list={t('HomePage.solutions', { returnObjects: true }) as any[]}
+
+      />
 
       {/* Latest News */}
-      <NewsSection />
+      <NewsSection 
+        sectionTitle={t('HomePage.news.title')}
+        sectionDesc={t('HomePage.news.desc')}
+        list={t('HomePage.news', { returnObjects: true }) as any[]}
+        detailText={t('HomePage.news.detail')}
+      />
 
       {/* Final CTA */}
       <CallToAction 

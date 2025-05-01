@@ -5,12 +5,66 @@
   "HomePage.seo.og.title": "HeyTCM 智能中医平台",
   "HomePage.seo.og.description": "HeyTCM 是一个专注于中医智能化的创新软件平台，提供专业的中医知识、工具和服务。",
   "HomePage.seo.og.site_name": "HeyTCM",
+  "HomePage.seo.og.image": "https://heytcm.com/og-image.jpg",
   "HomePage.seo.canonical": "https://heytcm.com/",
   "HomePage.seo.alternate.x-default": "https://heytcm.com/",
   "HomePage.seo.alternate.zh": "https://heytcm.com/zh",
   "HomePage.seo.alternate.en": "https://heytcm.com/en",
 
   "HomePage.head.title": "HeyTCM - 用科技焕新中医",
+  "HomePage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "HeyTCM 智能中医平台",
+      "description": "HeyTCM 是一个专注于中医智能化的创新软件平台，提供专业的中医知识、工具和服务。",
+      "url": "https://heytcm.com/",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@type": "Organization",
+        "name": "HeyTCM 智能中医平台",
+        "url": "https://heytcm.com/",
+        "logo": "https://heytcm.com/og-image.jpg"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HeyTCM 智能中医平台",
+      "url": "https://heytcm.com/",
+      "logo": "https://heytcm.com/og-image.jpg",
+      "sameAs": [
+        "https://heytcm.com/"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HeyTCM 智能中医平台",
+      "operatingSystem": ["Web", "iOS", "Android"],
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": 0,
+        "priceCurrency": "CNY"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.9,
+        "reviewCount": 1200
+      },
+      "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+      "screenshot": "https://heytcm.com/screenshots/app-main.png",
+      "downloadUrl": "https://heytcm.com/download",
+      "supportUrl": "https://heytcm.com/support",
+      "featureList": [
+        "中医体质分析与健康建议",
+        "多终端同步与数据可视化",
+        "个性化健康报告与趋势分析",
+        "开放 API 与数据导出"
+      ]
+    }
+  ],
 
   "HomePage.hero.title": "为往圣继绝学，用科技焕新中医",
   "HomePage.hero.desc": "HeyTCM 智能中医共创圈：用 AI 与开放数据，解读身体信号，量化气血阴阳，开启您的个性化健康复兴之旅。",
@@ -21,12 +75,14 @@
   ],
 
   "HomePage.painPointsTitle": "感觉身体\"不对劲\"，却说不清、查不出？",
+  "HomePage.painPoints.sectionTitle": "感觉身体\"不对劲\"，却说不清、查不出？",
+  "HomePage.painPoints.sectionBottom": "HeyTCM 正在用数据\"翻译\"身体的语言...", 
   "HomePage.painPoints": [
-    { "icon": "Battery", "text": "莫名疲惫，精力不济？" },
-    { "icon": "Moon", "text": "辗转难眠，越睡越累？（我曾失眠20余年）" },
-    { "icon": "Lungs", "text": "肠胃敏感，饮食处处小心？" },
-    { "icon": "Allergen", "text": "皮肤问题反复，痘痘、疹子不断？（我曾战痘十年、荨麻疹四年）" },
-    { "icon": "BrainCircuit", "text": "情绪波动，焦虑不安？" }
+    { "key": "battery", "type": "battery", "text": "莫名疲惫，精力不济？" },
+    { "key": "sleep", "type": "sleep", "text": "辗转难眠，越睡越累？（我曾失眠20余年）" },
+    { "key": "digest", "type": "digest", "text": "肠胃敏感，饮食处处小心？" },
+    { "key": "skin", "type": "skin", "text": "皮肤问题反复，痘痘、疹子不断？（我曾战痘十年、荨麻疹四年）" },
+    { "key": "emotion", "type": "emotion", "text": "情绪波动，焦虑不安？" }
   ],
   "HomePage.painPointsBottom": "HeyTCM 正在用数据\"翻译\"身体的语言...",
 
@@ -34,23 +90,35 @@
   "HomePage.solutions.desc": "中医智慧与现代科技的完美结合，为您提供专业、个性化的健康管理方案",
   "HomePage.solutions": [
     {
+      "key": "hardware",
+      "type": "hardware",
       "title": "智能感知",
-      "desc": "戒指 24h 监测，量化气血、睡眠、五脏状态。",
+      "description": "戒指 24h 监测，量化气血、睡眠、五脏状态。",
+      "link": "/products#ring",
       "linkText": "了解智能硬件"
     },
     {
+      "key": "app",
+      "type": "app",
       "title": "个性管理",
-      "desc": "App 工具追踪症状、管理五行、评估疗效。",
+      "description": "App 工具追踪症状、管理五行、评估疗效。",
+      "link": "/products#app",
       "linkText": "探索工具应用"
     },
     {
+      "key": "game",
+      "type": "game",
       "title": "趣味成长",
-      "desc": "在游戏中学习中医，养成健康习惯。",
+      "description": "在游戏中学习中医，养成健康习惯。",
+      "link": "/products#games",
       "linkText": "体验中医游戏"
     },
     {
+      "key": "ecosystem",
+      "type": "ecosystem",
       "title": "开放共创",
-      "desc": "共享数据，参与研究，共建中医未来。",
+      "description": "共享数据，参与研究，共建中医未来。",
+      "link": "/ecosystem",
       "linkText": "访问开放生态"
     }
   ],
@@ -58,19 +126,25 @@
   "HomePage.news.desc": "探索 HeyTCM 生态系统的最新动态、研究成果和社区活动",
   "HomePage.news": [
     {
-      "type": "活动",
+      "type": "event",
       "title": "2025 HeyTCM 年度用户大会",
-      "desc": "7月20日，共同探讨未来发展方向，分享使用体验与健康故事。"
+      "description": "7月20日，共同探讨未来发展方向，分享使用体验与健康故事。",
+      "date": "2025-07-20",
+      "link": "#"
     },
     {
-      "type": "社区",
+      "type": "community",
       "title": "辟谷社区突破10,000名成员",
-      "desc": "感谢每一位用户的贡献，让我们一同推动中医科学化发展。"
+      "description": "感谢每一位用户的贡献，让我们一同推动中医科学化发展。",
+      "date": "2025-05-15",
+      "link": "#"
     },
     {
-      "type": "研究",
-      "title": "新研究：气血变化与睡眠质量的关联",
-      "desc": "基于10万+用户数据分析，揭示气血状态与睡眠周期的密切关系。"
+      "type": "research",
+      "title": "HeyTCM 研究成果发表于权威期刊",
+      "description": "AI+中医科研成果获认可，相关论文已公开发表。",
+      "date": "2025-04-10",
+      "link": "#"
     }
   ],
   "HomePage.news.detail": "查看详情",
@@ -81,40 +155,6 @@
 
   "HomePage.founder.title": "我是生海王。历经 30 年身心磨砺与 15 年医疗科技探索，我深信中医智慧值得被看见、被量化。HeyTCM，是我为自己、也为每一个渴望身心自在的你，点燃的一束光。",
   "HomePage.founder.link": "阅读我的完整故事",
+  "HomePage.founder.imageUrl": "https://images.pexels.com/photos/5698833/pexels-photo-5698833.jpeg?auto=compress&cs=tinysrgb&w=800"
 
-  "HomePage.ldjson.context": "https://schema.org",
-  "HomePage.ldjson.type": "WebPage",
-  "HomePage.ldjson.name": "HeyTCM 首页",
-  "HomePage.ldjson.description": "HeyTCM，融合中医智慧与现代科技，提供智能健康管理与数据服务。",
-  "HomePage.ldjson.url": "https://heytcm.com/",
-  "HomePage.ldjson.publisher.type": "Organization",
-  "HomePage.ldjson.publisher.name": "HeyTCM",
-  "HomePage.ldjson.publisher.url": "https://heytcm.com/",
-  "HomePage.ldjson.publisher.logo": "https://heytcm.com/logo.png",
-  "HomePage.ldjson.potentialAction.0.type": "SearchAction",
-  "HomePage.ldjson.potentialAction.0.target": "https://heytcm.com/search?q={search_term_string}",
-  "HomePage.ldjson.potentialAction.0.query-input": "required name=search_term_string",
-  "HomePage.ldjson.potentialAction.1.type": "SubscribeAction",
-  "HomePage.ldjson.potentialAction.1.target": "https://heytcm.com/newsletter",
-  "HomePage.ldjson.image": "https://heytcm.com/og-image.jpg",
-  "HomePage.ldjson.inLanguage.0": "zh-CN",
-  "HomePage.ldjson.inLanguage.1": "en",
-  "HomePage.ldjson.software.type": "SoftwareApplication",
-  "HomePage.ldjson.software.name": "HeyTCM 智能中医平台",
-  "HomePage.ldjson.software.operatingSystem": "Web, iOS, Android",
-  "HomePage.ldjson.software.applicationCategory": "HealthApplication",
-  "HomePage.ldjson.software.offers.type": "Offer",
-  "HomePage.ldjson.software.offers.price": "2999",
-  "HomePage.ldjson.software.offers.priceCurrency": "CNY",
-  "HomePage.ldjson.software.aggregateRating.type": "AggregateRating",
-  "HomePage.ldjson.software.aggregateRating.ratingValue": "4.9",
-  "HomePage.ldjson.software.aggregateRating.reviewCount": "1200",
-  "HomePage.ldjson.software.description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
-  "HomePage.ldjson.software.screenshot": "https://heytcm.com/screenshots/app-main.png",
-  "HomePage.ldjson.software.downloadUrl": "https://heytcm.com/download",
-  "HomePage.ldjson.software.supportUrl": "https://heytcm.com/support",
-  "HomePage.ldjson.software.featureList.0": "中医体质分析与健康建议",
-  "HomePage.ldjson.software.featureList.1": "多终端同步与数据可视化",
-  "HomePage.ldjson.software.featureList.2": "个性化健康报告与趋势分析",
-  "HomePage.ldjson.software.featureList.3": "开放 API 与数据导出"
 }

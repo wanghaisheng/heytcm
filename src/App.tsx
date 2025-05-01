@@ -18,7 +18,7 @@ function App() {
       <Layout>
         <Routes>
           {/* 默认不带语言前缀的路由 */}
-          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="/" element={<HomePage />} />
           {/* <Route path="/about" element={<AboutPage />} /> */}
           {/* <Route path="/products" element={<ProductsPage />} /> */}
           {/* <Route path="/ecosystem" element={<EcosystemPage />} /> */}
