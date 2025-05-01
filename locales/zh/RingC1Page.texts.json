@@ -89,5 +89,15 @@
             "q": "如何购买 C1 戒指？",
             "a": "可通过 HeyTCM 官网预约或合作渠道购买。"
         }
+    ],
+    "RingC1Page.ldjson": [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "HeyTCM - C1 中医智能健康管理戒指 | 数据养生",
+            "description": "HeyTCM C1 戒指，融合中医智慧与现代科技，助力健康管理与数据养生。",
+            "url": "https://heytcm.com/ring-c1",
+            "inLanguage": "zh-CN"
+        }
     ]
 }

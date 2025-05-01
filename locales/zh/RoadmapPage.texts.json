@@ -29,5 +29,15 @@
   "RoadmapPage.seo.canonical": "https://heytcm.com/roadmap",
   "RoadmapPage.seo.alternate.x-default": "https://heytcm.com/roadmap",
   "RoadmapPage.seo.alternate.zh": "https://heytcm.com/zh/roadmap",
-  "RoadmapPage.seo.alternate.en": "https://heytcm.com/en/roadmap"
+  "RoadmapPage.seo.alternate.en": "https://heytcm.com/en/roadmap",
+  "RoadmapPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "通往未来的路线图 - HeyTCM",
+      "description": "HeyTCM 路线图，了解我们的发展阶段、目标与未来规划，见证中医智能化的每一步。",
+      "url": "https://heytcm.com/roadmap",
+      "inLanguage": "zh-CN"
+    }
+  ]
 }

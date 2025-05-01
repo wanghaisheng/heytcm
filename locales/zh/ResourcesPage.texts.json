@@ -94,11 +94,16 @@
   "ResourcesPage.request.description": "如果您希望我们提供特定主题的资源，或有任何建议，请告诉我们。我们将尽力满足社区需求。",
   "ResourcesPage.request.button": "提交资源请求",
 
-  "ResourcesPage.ldjson.context": "https://schema.org",
-  "ResourcesPage.ldjson.type": "WebPage",
-  "ResourcesPage.ldjson.name": "资源中心 | HeyTCM",
-  "ResourcesPage.ldjson.description": "HeyTCM 资源中心，提供丰富的中医智能化相关资料和工具。",
-  "ResourcesPage.ldjson.url": "https://heytcm.com/resources",
+  "ResourcesPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "资源中心 | HeyTCM",
+      "description": "HeyTCM 资源中心，提供丰富的中医智能化相关资料和工具。",
+      "url": "https://heytcm.com/resources",
+      "inLanguage": "zh-CN"
+    }
+  ],
   "ResourcesPage.ldjson.publisher.type": "Organization",
   "ResourcesPage.ldjson.publisher.name": "HeyTCM",
   "ResourcesPage.ldjson.publisher.url": "https://heytcm.com/",

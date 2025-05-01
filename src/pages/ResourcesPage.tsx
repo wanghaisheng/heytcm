@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import type { SupportedLdJson } from '../components/LdJson';
 import { motion } from 'framer-motion';
 import PageBanner from '../components/shared/PageBanner';
 import LdJson from '../components/LdJson';
@@ -113,13 +114,8 @@ const ResourcesPage = () => {
     ? resources 
     : resources.filter(resource => resource.category === activeCategory);
 
-  const ldJsonData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": t('ResourcesPage.ldjson.name'),
-    "description": t('ResourcesPage.ldjson.description'),
-    "url": t('ResourcesPage.ldjson.url')
-  };
+  const ldJsonData = t('ResourcesPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
+
 
   const header: SeoHeaderProps = {
     title: t('ResourcesPage.seo.title'),

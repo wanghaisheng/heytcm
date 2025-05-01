@@ -15,64 +15,69 @@
   "ProductsPage.banner.title": "智能健康产品 & 服务",
   "ProductsPage.banner.imgAlt": "产品与服务主图",
 
-  "ProductsPage.ldjson.context": "https://schema.org",
-  "ProductsPage.ldjson.type": "WebPage",
-  "ProductsPage.ldjson.name": "产品与服务 | HeyTCM",
-  "ProductsPage.ldjson.description": "HeyTCM 产品与服务，涵盖智能戒指、健康管理工具与数据服务。",
-  "ProductsPage.ldjson.url": "https://heytcm.com/products",
-  "ProductsPage.ldjson.brand": {
-    "type": "Brand",
-    "name": "HeyTCM",
-    "logo": "https://heytcm.com/logo.png"
-  },
-  "ProductsPage.ldjson.manufacturer": {
-    "type": "Organization",
-    "name": "HeyTCM",
-    "url": "https://heytcm.com/",
-    "address": "北京市海淀区中关村东路66号"
-  },
-  "ProductsPage.ldjson.offers": [
+  "ProductsPage.ldjson": [
     {
-      "type": "Offer",
-      "itemOffered": "HeyTCM 智能戒指 C1",
-      "price": "2999",
-      "priceCurrency": "CNY",
-      "availability": "https://schema.org/InStock"
-    },
-    {
-      "type": "Offer",
-      "itemOffered": "HeyTCM 数据服务",
-      "price": "299",
-      "priceCurrency": "CNY",
-      "availability": "https://schema.org/InStock"
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "产品与服务 | HeyTCM",
+      "description": "HeyTCM 产品与服务，涵盖智能戒指、健康管理工具与数据服务。",
+      "url": "https://heytcm.com/products",
+      "inLanguage": "zh-CN",
+      "brand": {
+        "@type": "Brand",
+        "name": "HeyTCM",
+        "logo": "https://heytcm.com/logo.png"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "HeyTCM",
+        "url": "https://heytcm.com/",
+        "address": "北京市海淀区中关村东路66号"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "itemOffered": "HeyTCM 智能戒指 C1",
+          "price": "2999",
+          "priceCurrency": "CNY",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": "HeyTCM 数据服务",
+          "price": "299",
+          "priceCurrency": "CNY",
+          "availability": "https://schema.org/InStock"
+        }
+      ],
+      "software": {
+        "@type": "SoftwareApplication",
+        "name": "HeyTCM 智能中医平台",
+        "operatingSystem": "Web, iOS, Android",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "2999",
+          "priceCurrency": "CNY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1200"
+        },
+        "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+        "screenshot": "https://heytcm.com/screenshots/app-main.png",
+        "downloadUrl": "https://heytcm.com/download",
+        "supportUrl": "https://heytcm.com/support",
+        "featureList": [
+          "中医体质分析与健康建议",
+          "多终端同步与数据可视化",
+          "个性化健康报告与趋势分析",
+          "开放 API 与数据导出"
+        ]
+      }
     }
   ],
-  "ProductsPage.ldjson.software": {
-    "type": "SoftwareApplication",
-    "name": "HeyTCM 智能中医平台",
-    "operatingSystem": "Web, iOS, Android",
-    "applicationCategory": "HealthApplication",
-    "offers": {
-      "type": "Offer",
-      "price": "2999",
-      "priceCurrency": "CNY"
-    },
-    "aggregateRating": {
-      "type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1200"
-    },
-    "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
-    "screenshot": "https://heytcm.com/screenshots/app-main.png",
-    "downloadUrl": "https://heytcm.com/download",
-    "supportUrl": "https://heytcm.com/support",
-    "featureList": [
-      "中医体质分析与健康建议",
-      "多终端同步与数据可视化",
-      "个性化健康报告与趋势分析",
-      "开放 API 与数据导出"
-    ]
-  },
 
   "ProductsPage.sections": [
     {

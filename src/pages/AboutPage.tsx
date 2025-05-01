@@ -45,16 +45,7 @@ const AboutPage = () => {
     threshold: 0.1,
   });
 
-  const ldJsonData = {
-    "@context": "https://schema.org",
-    "@type": t('AboutPage.ldjson.type'),
-    "mainEntity": {
-      "@type": t('AboutPage.ldjson.mainEntity.type'),
-      "name": t('AboutPage.ldjson.mainEntity.name'),
-      "url": t('AboutPage.ldjson.mainEntity.url'),
-      "description": t('AboutPage.ldjson.mainEntity.description')
-    }
-  };
+  const ldJsonData = t('AboutPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
 
   const header: SeoHeaderProps = {
     title: t('AboutPage.seo.title'),

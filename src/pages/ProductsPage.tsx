@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import type { SupportedLdJson } from '../components/LdJson';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import PageBanner from '../components/shared/PageBanner';
@@ -69,17 +70,8 @@ const ProductsPage = () => {
     setActiveFilters(initial);
   }, [sections.length]);
 
-  const ldJsonData = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": t('ProductsPage.ldjson.name'),
-    "brand": {
-      "@type": "Brand",
-      "name": t('ProductsPage.ldjson.brand')
-    },
-    "description": t('ProductsPage.ldjson.description'),
-    "url": t('ProductsPage.ldjson.url')
-  };
+  const ldJsonData = t('ProductsPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
+  
 
   const header: SeoHeaderProps = {
     title: t('ProductsPage.seo.title'),

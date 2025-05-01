@@ -15,11 +15,16 @@
   "HelpPage.banner.title": "帮助中心",
   "HelpPage.banner.image": "帮助中心主图",
 
-  "HelpPage.ldjson.context": "https://schema.org",
-  "HelpPage.ldjson.type": "FAQPage",
-  "HelpPage.ldjson.name": "帮助中心 | HeyTCM",
-  "HelpPage.ldjson.description": "HeyTCM 帮助中心，解答常见问题，助力用户更好地使用平台。",
-  "HelpPage.ldjson.url": "https://heytcm.com/help",
+  "HelpPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "name": "帮助中心 | HeyTCM",
+      "description": "HeyTCM 帮助中心，解答常见问题，助力用户更好地使用平台。",
+      "url": "https://heytcm.com/help",
+      "inLanguage": "zh-CN"
+    }
+  ],
 
   "HelpPage.categories": [
     { "id": "all", "label": "所有问题" },

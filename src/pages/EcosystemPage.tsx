@@ -6,6 +6,8 @@ import PageBanner from '../components/shared/PageBanner';
 import CallToAction from '../components/shared/CallToAction';
 import SeoHeaders, { SeoHeaderProps } from '../components/SeoHeaders';
 import { Database, Github, Users, BookOpen } from 'lucide-react';
+import LdJson from '../components/LdJson';
+import type { SupportedLdJson } from '../components/LdJson';
 
 const EcosystemPage = () => {
   const { t } = useTranslation();
@@ -31,14 +33,7 @@ const EcosystemPage = () => {
     openSource: safeSection(t('EcosystemPage.sections.openSource', { returnObjects: true }) || {}),
     community: safeSection(t('EcosystemPage.sections.community', { returnObjects: true }) || {})
   };
-
-  const ldJsonData = {
-    "@context": t('EcosystemPage.ldjson.context', 'https://schema.org'),
-    "@type": t('EcosystemPage.ldjson.type', 'WebPage'),
-    "name": t('EcosystemPage.ldjson.name', 'HeyTCM 生态系统'),
-    "description": t('EcosystemPage.ldjson.description', 'HeyTCM 生态系统介绍'),
-    "url": t('EcosystemPage.ldjson.url', 'https://heytcm.com/ecosystem')
-  };
+  const ldJsonData = t('EcosystemPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
 
   const header: SeoHeaderProps = {
     title: t('EcosystemPage.seo.title', 'HeyTCM 生态系统'),
@@ -212,6 +207,8 @@ const EcosystemPage = () => {
         buttonText={t('EcosystemPage.cta.buttonText', '立即加入')}
         buttonLink={t('EcosystemPage.cta.buttonLink', '/community')}
       />
+            <LdJson data={ldJsonData} />
+
     </div>
   );
 };

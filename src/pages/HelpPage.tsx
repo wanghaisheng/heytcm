@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import type { SupportedLdJson } from '../components/LdJson';
 import { motion } from 'framer-motion';
 import PageBanner from '../components/shared/PageBanner';
 import LdJson from '../components/LdJson';
@@ -97,16 +98,7 @@ const HelpPage = () => {
     category: string;
   }>;
 
-  const ldJsonData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      // 填写常见问题数据
-    ],
-    "name": t('HelpPage.ldjson.name'),
-    "description": t('HelpPage.ldjson.description'),
-    "url": t('HelpPage.ldjson.url')
-  };
+  const ldJsonData = t('HelpPage.ldjson', { returnObjects: true }) as SupportedLdJson[];
 
   const toggleFaq = (id: number) => {
     setExpandedFaqs(prev => 

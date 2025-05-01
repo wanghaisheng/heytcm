@@ -35,6 +35,16 @@
       "financial": "资金贡献榜"
     }
   },
+  "LeaderboardPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "贡献榜 | HeyTCM",
+      "description": "感谢所有为中医智能化发展做出贡献的朋友们",
+      "url": "https://heytcm.com/leaderboard",
+      "inLanguage": "zh-CN"
+    }
+  ],
   "LeaderboardPage.intro.data": "这些用户通过分享健康数据，帮助我们不断完善中医智能化算法，推动研究进展",
   "LeaderboardPage.intro.tech": "这些开发者通过代码贡献、算法优化和技术创新，为中医智能化项目提供了强大的技术支持",
   "LeaderboardPage.intro.community": "这些社区活跃成员通过内容创作、知识分享和社区管理，帮助构建了活跃、温暖的中医爱好者社区",

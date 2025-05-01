@@ -13,11 +13,32 @@
   "AboutPage.head.title": "HeyTCM - 关于我们",
   "AboutPage.banner.title": "我们的故事：为往圣继绝学",
   "AboutPage.banner.image": "创始人故事主图",
-  "AboutPage.ldjson.type": "AboutPage",
-  "AboutPage.ldjson.mainEntity.type": "Organization",
-  "AboutPage.ldjson.mainEntity.name": "HeyTCM",
-  "AboutPage.ldjson.mainEntity.url": "https://heytcm.com/",
-  "AboutPage.ldjson.mainEntity.description": "HeyTCM 致力于推动中医行业的数字化和智能化。",
+  "AboutPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "关于我们 | HeyTCM",
+      "description": "HeyTCM 致力于推动中医行业的数字化和智能化。",
+      "url": "https://heytcm.com/about",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@type": "Organization",
+        "name": "HeyTCM 智能中医平台",
+        "url": "https://heytcm.com/",
+        "logo": "https://heytcm.com/og-image.jpg"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HeyTCM 智能中医平台",
+      "url": "https://heytcm.com/",
+      "logo": "https://heytcm.com/og-image.jpg",
+      "sameAs": [
+        "https://heytcm.com/"
+      ]
+    }
+  ],
   "AboutPage.sections": [
     {
       "type": "story",

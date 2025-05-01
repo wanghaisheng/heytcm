@@ -13,58 +13,63 @@
   "EcosystemPage.head.title": "HeyTCM - 开放生态",
   "EcosystemPage.banner.title": "开放共创：汇聚智慧，共建智能中医未来",
   "EcosystemPage.banner.imgAlt": "生态合作主图",
-  "EcosystemPage.ldjson.context": "https://schema.org",
-  "EcosystemPage.ldjson.type": "WebPage",
-  "EcosystemPage.ldjson.name": "生态合作 | HeyTCM",
-  "EcosystemPage.ldjson.description": "HeyTCM 生态合作，携手共建中医智能化未来。",
-  "EcosystemPage.ldjson.url": "https://heytcm.com/ecosystem",
-  "EcosystemPage.ldjson.sponsor": [
+  "EcosystemPage.ldjson": [
     {
-      "type": "Organization",
-      "name": "HeyTCM 开放生态合作伙伴",
-      "url": "https://heytcm.com/ecosystem"
-    },
-    {
-      "type": "Person",
-      "name": "生海王",
-      "sameAs": [
-        "https://github.com/wanghaisheng",
-        "https://www.zhihu.com/people/shenghaiwang"
-      ]
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "生态合作 | HeyTCM",
+      "description": "HeyTCM 生态合作，携手共建中医智能化未来。",
+      "url": "https://heytcm.com/ecosystem",
+      "inLanguage": "zh-CN",
+      "sponsor": [
+        {
+          "@type": "Organization",
+          "name": "HeyTCM 开放生态合作伙伴",
+          "url": "https://heytcm.com/ecosystem"
+        },
+        {
+          "@type": "Person",
+          "name": "生海王",
+          "sameAs": [
+            "https://github.com/wanghaisheng",
+            "https://www.zhihu.com/people/shenghaiwang"
+          ]
+        }
+      ],
+      "event": {
+        "@type": "Event",
+        "name": "HeyTCM 生态共创会",
+        "startDate": "2025-05-20",
+        "location": "线上/线下混合"
+      },
+      "software": {
+        "@type": "SoftwareApplication",
+        "name": "HeyTCM 智能中医平台",
+        "operatingSystem": "Web, iOS, Android",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "2999",
+          "priceCurrency": "CNY"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1200"
+        },
+        "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+        "screenshot": "https://heytcm.com/screenshots/app-main.png",
+        "downloadUrl": "https://heytcm.com/download",
+        "supportUrl": "https://heytcm.com/support",
+        "featureList": [
+          "中医体质分析与健康建议",
+          "多终端同步与数据可视化",
+          "个性化健康报告与趋势分析",
+          "开放 API 与数据导出"
+        ]
+      }
     }
   ],
-  "EcosystemPage.ldjson.event": {
-    "type": "Event",
-    "name": "HeyTCM 生态共创会",
-    "startDate": "2025-05-20",
-    "location": "线上/线下混合"
-  },
-  "EcosystemPage.ldjson.software": {
-    "type": "SoftwareApplication",
-    "name": "HeyTCM 智能中医平台",
-    "operatingSystem": "Web, iOS, Android",
-    "applicationCategory": "HealthApplication",
-    "offers": {
-      "type": "Offer",
-      "price": "2999",
-      "priceCurrency": "CNY"
-    },
-    "aggregateRating": {
-      "type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1200"
-    },
-    "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
-    "screenshot": "https://heytcm.com/screenshots/app-main.png",
-    "downloadUrl": "https://heytcm.com/download",
-    "supportUrl": "https://heytcm.com/support",
-    "featureList": [
-      "中医体质分析与健康建议",
-      "多终端同步与数据可视化",
-      "个性化健康报告与趋势分析",
-      "开放 API 与数据导出"
-    ]
-  },
   "EcosystemPage.sections": {
     "openData": {
       "id": "openData",
