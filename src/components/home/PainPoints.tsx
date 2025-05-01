@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Battery, Moon, Settings as Lungs, Merge as Allergen, BrainCircuit } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const PainPoints = () => {
   const [ref, inView] = useInView({
@@ -63,28 +64,29 @@ const PainPoints = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          感觉身体"不对劲"，却说不清、查不出？
+          {t('HomePage.painPointsDesc')}
         </motion.h2>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        <motion.ul 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {painPoints.map((point, index) => (
-            <motion.div 
-              key={index}
-              className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4"
-              variants={itemVariants}
-            >
-              <div className="flex-shrink-0">
-                {point.icon}
-              </div>
-              <p className="text-lg text-neutral-700">{point.text}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+          {painPoints.map((point, idx) => {
+            const Icon = icons[idx] || Battery;
+            return (
+              <motion.li 
+                key={idx}
+                className="flex flex-col items-center text-center"
+                variants={itemVariants}
+              >
+                <Icon className="w-10 h-10 text-primary-500" />
+                <span className="mt-4 text-lg text-neutral-700">{point.text}</span>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
 
         <motion.div 
           className="mt-12 text-center"
@@ -92,8 +94,8 @@ const PainPoints = () => {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="text-xl text-primary-600 font-medium">
-            HeyTCM 正在用数据"翻译"身体的语言...
+          <p className="text-center text-neutral-500 text-base mt-4">
+            {t('HomePage.painPointsBottom')}
           </p>
         </motion.div>
       </div>

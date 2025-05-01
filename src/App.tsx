@@ -18,30 +18,30 @@ function App() {
       <Layout>
         <Routes>
           {/* 默认不带语言前缀的路由 */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/ecosystem" element={<EcosystemPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+          {/* <Route path="/about" element={<AboutPage />} /> */}
+          {/* <Route path="/products" element={<ProductsPage />} /> */}
+          {/* <Route path="/ecosystem" element={<EcosystemPage />} /> */}
+          {/* <Route path="/resources" element={<ResourcesPage />} /> */}
           <Route path="/support" element={<SupportPage />} />
-          <Route path="/help" element={<HelpPage />} />
-          <Route path="/vision" element={<VisionPage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/ring-c1" element={<RingC1Page />} />
+          {/* <Route path="/help" element={<HelpPage />} /> */}
+          {/* <Route path="/vision" element={<VisionPage />} /> */}
+          {/* <Route path="/roadmap" element={<RoadmapPage />} /> */}
+          {/* <Route path="/leaderboard" element={<LeaderboardPage />} /> */}
+          {/* <Route path="/ring-c1" element={<RingC1Page />} /> */}
 
           {/* 带语言前缀的路由，支持 /zh 和 /en */}
-          <Route path=":lang" element={<HomePage />} />
-          <Route path=":lang/about" element={<AboutPage />} />
-          <Route path=":lang/products" element={<ProductsPage />} />
-          <Route path=":lang/ecosystem" element={<EcosystemPage />} />
-          <Route path=":lang/resources" element={<ResourcesPage />} />
+          {/* <Route path=":lang" element={<HomePage />} /> */}
+          {/* <Route path=":lang/about" element={<AboutPage />} /> */}
+          {/* <Route path=":lang/products" element={<ProductsPage />} /> */}
+          {/* <Route path=":lang/ecosystem" element={<EcosystemPage />} /> */}
+          {/* <Route path=":lang/resources" element={<ResourcesPage />} /> */}
           <Route path=":lang/support" element={<SupportPage />} />
-          <Route path=":lang/help" element={<HelpPage />} />
-          <Route path=":lang/vision" element={<VisionPage />} />
-          <Route path=":lang/roadmap" element={<RoadmapPage />} />
-          <Route path=":lang/leaderboard" element={<LeaderboardPage />} />
-          <Route path=":lang/ring-c1" element={<RingC1Page />} />
+          {/* <Route path=":lang/help" element={<HelpPage />} /> */}
+          {/* <Route path=":lang/vision" element={<VisionPage />} /> */}
+          {/* <Route path=":lang/roadmap" element={<RoadmapPage />} /> */}
+          {/* <Route path=":lang/leaderboard" element={<LeaderboardPage />} /> */}
+          {/* <Route path=":lang/ring-c1" element={<RingC1Page />} /> */}
 
         </Routes>
       </Layout>

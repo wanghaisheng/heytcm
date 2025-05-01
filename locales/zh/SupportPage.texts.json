@@ -10,188 +10,130 @@
   "SupportPage.seo.alternate.x-default": "https://heytcm.com/support",
   "SupportPage.seo.alternate.zh": "https://heytcm.com/zh/support",
   "SupportPage.seo.alternate.en": "https://heytcm.com/en/support",
-
   "SupportPage.head.title": "HeyTCM - 支持我们",
-  "SupportPage.banner.title": "支持与合作",
-  "SupportPage.banner.imgAlt": "支持与合作主图",
+  "SupportPage.ldjson": [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "支持与合作 | HeyTCM",
+      "description": "加入 HeyTCM，共同推动中医智能化发展，欢迎合作与支持。",
+      "url": "https://heytcm.com/support",
+      "inLanguage": "zh-CN",
+      "publisher": {
+        "@type": "Organization",
+        "name": "HeyTCM 支持者联盟",
+        "url": "https://heytcm.com/support",
+        "logo": "https://heytcm.com/og-image.jpg"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "support",
+        "email": "support@heytcm.com",
+        "url": "https://heytcm.com/support",
+        "availableLanguage": ["zh-CN", "en"]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HeyTCM 支持者联盟",
+      "url": "https://heytcm.com/support",
+      "logo": "https://heytcm.com/og-image.jpg",
+      "sameAs": [
+        "https://heytcm.com/",
+        "https://heytcm.com/support"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "support",
+        "email": "support@heytcm.com",
+        "url": "https://heytcm.com/support",
+        "availableLanguage": ["zh-CN", "en"]
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HeyTCM 智能中医平台",
+      "operatingSystem": ["Web", "iOS", "Android"],
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": 2999,
+        "priceCurrency": "CNY"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.9,
+        "reviewCount": 1200
+      },
+      "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
+      "screenshot": "https://heytcm.com/screenshots/app-main.png",
+      "downloadUrl": "https://heytcm.com/download",
+      "supportUrl": "https://heytcm.com/support",
+      "featureList": [
+        "中医体质分析与健康建议",
+        "多终端同步与数据可视化",
+        "个性化健康报告与趋势分析",
+        "开放 API 与数据导出"
+      ]
+    }
+  ],
 
-  "SupportPage.ldjson.context": "https://schema.org",
-  "SupportPage.ldjson.type": "WebPage",
-  "SupportPage.ldjson.name": "支持与合作 | HeyTCM",
-  "SupportPage.ldjson.description": "加入 HeyTCM，共同推动中医智能化发展，欢迎合作与支持。",
-  "SupportPage.ldjson.url": "https://heytcm.com/support",
-  "SupportPage.ldjson.contactPoint": {
-    "type": "ContactPoint",
-    "contactType": "support",
-    "email": "support@heytcm.com",
-    "url": "https://heytcm.com/support",
-    "availableLanguage": ["zh-CN", "en"]
+  "SupportPage.bannerSection": {
+    "title": "支持 HeyTCM，共筑中医智能化未来",
+    "subtitle": "让中医走向智能化、数据化的未来",
+    "image": "https://images.pexels.com/photos/8942582/pexels-photo-8942582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "desc": "加入 HeyTCM，共同推动中医智能化发展，欢迎合作与支持。",
+    "quote": "\"为往圣继绝学\"的道路充满挑战，需要持续的数据积累与资金投入。这不是纯粹的慈善，而是需要您共同参与的价值探索。您的每一份支持，都是点亮中医未来的光芒。"
   },
-  "SupportPage.ldjson.funder": {
-    "type": "Organization",
-    "name": "HeyTCM 支持者联盟",
-    "url": "https://heytcm.com/support"
-  },
-  "SupportPage.ldjson.software": {
-    "type": "SoftwareApplication",
-    "name": "HeyTCM 智能中医平台",
-    "operatingSystem": "Web, iOS, Android",
-    "applicationCategory": "HealthApplication",
-    "offers": {
-      "type": "Offer",
-      "price": "2999",
-      "priceCurrency": "CNY"
-    },
-    "aggregateRating": {
-      "type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1200"
-    },
-    "description": "融合中医理论与现代科技的智能健康管理云平台，支持多终端、数据分析与个性化健康服务。",
-    "screenshot": "https://heytcm.com/screenshots/app-main.png",
-    "downloadUrl": "https://heytcm.com/download",
-    "supportUrl": "https://heytcm.com/support",
-    "featureList": [
-      "中医体质分析与健康建议",
-      "多终端同步与数据可视化",
-      "个性化健康报告与趋势分析",
-      "开放 API 与数据导出"
+  "SupportPage.supportSection": {
+    "title": "支持我们",
+    "desc": "选择合适的支持方案，助力中医智能化发展。",
+    "planHotTag": "热门选择",
+    "otherWaysTitle": "贡献您的力量 (非资金形式)",
+    "otherWays": [
+      { "title": "传播分享", "description": "将 HeyTCM 推荐给朋友，分享您的使用心得，扩大社区影响力。" },
+      { "title": "使用游戏 (点广告)", "description": "玩中医游戏时观看广告，每次都能为项目贡献小额资金。" },
+      { "title": "参与社区讨论/维护", "description": "回答问题，参与讨论，维护社区氛围，帮助新用户。" },
+      { "title": "参与开源开发", "description": "贡献代码，修复bug，开发新功能，提高产品质量。" },
+      { "title": "贡献健康数据", "description": "安全匿名地分享您的健康数据，帮助研究与算法优化。" },
+      { "title": "参与研究项目", "description": "作为志愿者参与各类研究实验，验证产品疗效。" }
+    ],
+    "plans": [
+      {"id": "free", "name": "随喜版", "price": "自定义", "desc": "基础工具体验版", "features": ["基础工具使用权（广告版）", "社区只读权限", "公共研究数据访问"], "highlight": false},
+      {"id": "basic", "name": "基础版", "price": "¥299", "desc": "一年期会员", "features": ["智能终端使用权（1年）", "工具会员（1年）", "灵石 300 赠送", "报告兑换权（1次）", "数据共享徽章"], "highlight": false},
+      {"id": "couple", "name": "情侣版", "price": "¥699", "desc": "双人专属套餐", "features": ["智能终端使用权（2套）", "工具会员（1年）", "灵石 800 赠送", "报告兑换权（8次）", "数据共享徽章", "私人顾问服务（2次）"], "highlight": true},
+      {"id": "family", "name": "家庭版", "price": "¥999", "desc": "全家健康守护", "features": ["智能终端使用权（3套）", "工具会员（1年）", "灵石 1200 赠送", "报告兑换权（12次）", "数据共享徽章", "私人顾问服务（3次）", "荣誉墙展示"], "highlight": false},
+      {"id": "ultimate", "name": "至尊版", "price": "¥2999", "desc": "终身尊享权益", "features": ["智能终端使用权（5套）", "工具会员（终身）", "灵石 5000 赠送", "报告兑换权（10）", "数据共享徽章（特殊版）", "私人顾问服务（无限）", "荣誉墙展示（突出位置）", "产品方向投票权", "早期测试资格"], "highlight": false}
     ]
   },
-
-  "SupportPage.plans": [
-    {
-      "id": "free",
-      "name": "随喜版",
-      "price": "自定义",
-      "features": [
-        "基础工具使用权（广告版）",
-        "社区只读权限",
-        "公共研究数据访问"
-      ]
-    },
-    {
-      "id": "basic",
-      "name": "基础版",
-      "price": "¥299",
-      "features": [
-        "智能终端使用权（1年）",
-        "工具会员（1年）",
-        "灵石 300 赠送",
-        "报告兑换权（1次）",
-        "数据共享徽章"
-      ]
-    },
-    {
-      "id": "couple",
-      "name": "情侣版",
-      "price": "¥699",
-      "features": [
-        "智能终端使用权（2套）",
-        "工具会员（1年）",
-        "灵石 800 赠送",
-        "报告兑换权（8次）",
-        "数据共享徽章",
-        "私人顾问服务（2次）"
-      ]
-    },
-    {
-      "id": "family",
-      "name": "家庭版",
-      "price": "¥999",
-      "features": [
-        "智能终端使用权（3套）",
-        "工具会员（1年）",
-        "灵石 1200 赠送",
-        "报告兑换权（12次）",
-        "数据共享徽章",
-        "私人顾问服务（3次）",
-        "荣誉墙展示"
-      ]
-    },
-    {
-      "id": "ultimate",
-      "name": "至尊版",
-      "price": "¥2999",
-      "features": [
-        "智能终端使用权（5套）",
-        "工具会员（终身）",
-        "灵石 5000 赠送",
-        "报告兑换权（30次）",
-        "数据共享徽章",
-        "私人顾问服务（10次）",
-        "荣誉墙展示",
-        "专属定制服务"
-      ]
-    }
-  ],
-
-  "SupportPage.intro": "“为往圣继绝学”的道路充满挑战，需要持续的数据积累与资金投入。这不是纯粹的慈善，而是需要您共同参与的价值探索。您的每一份支持，都是点亮中医未来的光芒。",
-  "SupportPage.sectionTitle": "成为核心共创者",
-  "SupportPage.otherWays": [
-    {
-      "id": "share",
-      "title": "传播分享",
-      "description": "将 HeyTCM 推荐给朋友，分享您的使用心得，扩大社区影响力。"
-    },
-    {
-      "id": "ad",
-      "title": "使用游戏 (点广告)",
-      "description": "玩中医游戏时观看广告，每次都能为项目贡献小额资金。"
-    },
-    {
-      "id": "community",
-      "title": "参与社区讨论/维护",
-      "description": "回答问题，参与讨论，维护社区氛围，帮助新用户。"
-    },
-    {
-      "id": "code",
-      "title": "参与开源开发",
-      "description": "贡献代码，修复bug，开发新功能，提高产品质量。"
-    },
-    {
-      "id": "data",
-      "title": "贡献健康数据",
-      "description": "安全匿名地分享您的健康数据，帮助研究与算法优化。"
-    },
-    {
-      "id": "research",
-      "title": "参与研究项目",
-      "description": "作为志愿者参与各类研究实验，验证产品疗效。"
-    }
-  ],
-
-  "SupportPage.cta.title": "成为 HeyTCM 合作者",
-  "SupportPage.cta.description": "无论是用户、开发者还是研究者，您的支持和参与都是推动中医智能化发展的重要力量。",
-  "SupportPage.cta.buttonText": "了解合作方式",
-  "SupportPage.cta.buttonLink": "/ecosystem",
-
-  "SupportPage.planHotTag": "热门选择",
-  "SupportPage.planSelectButton": "选择支持",
-  "SupportPage.selectedPlanTitle": "您已选择:",
-  "SupportPage.selectedPlanDesc": "感谢您对 HeyTCM 的支持！点击下方按钮完成支付，开始您的中医智能化探索之旅。",
-  "SupportPage.payButton": "立即支持",
-  "SupportPage.reSelectButton": "重新选择",
-  "SupportPage.volunteerTitle": "寻找同路人",
-  "SupportPage.volunteerDesc": "我们需要技术、内容、运营、医学等各领域的人才加入，共同构建智能中医的美好未来。",
-  "SupportPage.volunteerSubtitle": "志愿者招募",
-  "SupportPage.volunteerWeNeed": "我们在寻找",
-  "SupportPage.volunteerNeed1": "中医专业顾问",
-  "SupportPage.volunteerNeed2": "AI/机器学习工程师",
-  "SupportPage.volunteerNeed3": "内容创作者/科普写手",
-  "SupportPage.volunteerNeed4": "社区运营",
-  "SupportPage.volunteerNeed5": "UI/UX 设计师",
-  "SupportPage.volunteerBenefits": "志愿者福利",
-  "SupportPage.volunteerBenefit1": "免费产品使用权",
-  "SupportPage.volunteerBenefit2": "优先参与新产品测试",
-  "SupportPage.volunteerBenefit3": "技能提升培训机会",
-  "SupportPage.volunteerBenefit4": "志愿者专属徽章",
-  "SupportPage.volunteerBenefit5": "潜在的全职机会",
-  "SupportPage.volunteerApplyButton": "查看开放职位/申请加入",
-  "SupportPage.testimonialsTitle": "支持者心声",
-  "SupportPage.testimonialsDesc": "听听已经成为 HeyTCM 支持者的朋友们怎么说",
-  "SupportPage.testimonials1Title": "中医师，基础版支持者",
-  "SupportPage.testimonials1Desc": "作为一名中医师，我很高兴看到有人尝试用现代科技来量化中医理论。HeyTCM 的数据可视化帮助我的患者更好地理解气血变化，增强了治疗依从性。",
-  "SupportPage.testimonials2Title": "软件工程师，家庭版支持者",
-  "SupportPage.testimonials2Desc": "我全家人都在使用 HeyTCM 的产品。作为工程师，我很欣赏其开源理念。我的父母以前对健康管理不太上心，现在通过游戏化的方式，他们对传统养生知识产生了浓厚兴趣。"
+  "SupportPage.volunteerSection": {
+    "title": "寻找同路人",
+    "desc": "我们需要技术、内容、运营、医学等各领域的人才加入，共同构建智能中医的美好未来。",
+    "recruitTitle": "志愿者招募",
+    "weNeed": "我们在寻找",
+    "roles": ["中医专业顾问", "AI/机器学习工程师", "内容创作者/科普写手", "社区运营", "UI/UX 设计师"],
+    "benefitsTitle": "志愿者福利",
+    "benefits": ["免费产品使用权", "优先参与新产品测试", "技能提升培训机会", "志愿者专属徽章", "潜在的全职机会"],
+    "applyButton": "查看开放职位/申请加入"
+  },
+  "SupportPage.selectedPlanSection": {
+    "title": "您已选择:",
+    "thanks": "感谢您对 HeyTCM 的支持！点击下方按钮完成支付，开始您的中医智能化探索之旅。",
+    "supportBtn": "立即支持",
+    "resetBtn": "重新选择"
+  },
+  "SupportPage.supportButtonSection": {
+    "supportBtn": "立即支持",
+    "resetBtn": "重新选择"
+  },
+  "SupportPage.testimonialsSection": {
+    "title": "支持者心声",
+    "desc": "听听已经成为 HeyTCM 支持者的朋友们怎么说",
+    "testimonials": [
+      {"avatar": "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "name": "李医生", "role": "中医师，基础版支持者", "content": "\"作为一名中医师，我很高兴看到有人尝试用现代科技来量化中医理论。HeyTCM 的数据可视化帮助我的患者更好地理解气血变化，增强了治疗依从性。\""},
+      {"avatar": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", "name": "王女士", "role": "软件工程师，家庭版支持者", "content": "\"我全家人都在使用 HeyTCM 的产品。作为工程师，我很欣赏其开源理念。我的父母以前对健康管理不太上心，现在通过游戏化的方式，他们对传统养生知识产生了浓厚兴趣。\""}
+    ]
+  }
 }

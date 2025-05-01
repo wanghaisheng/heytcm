@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const FounderMessage = () => {
   const [ref, inView] = useInView({
@@ -53,15 +54,14 @@ const FounderMessage = () => {
               </svg>
               
               <p className="text-lg md:text-xl text-neutral-700 mb-6 mt-8 ml-6">
-                我是生海王。历经 30 年身心磨砺与 15 年医疗科技探索，我深信中医智慧值得被看见、被量化。HeyTCM，是我为自己、也为每一个渴望身心自在的你，点燃的一束光。
+                {t('HomePage.founderMessage')}
               </p>
               
               <Link 
                 to="/about" 
                 className="inline-flex items-center font-medium text-primary-600 hover:text-primary-700 transition-colors"
               >
-                阅读我的完整故事
-                <ArrowRight size={16} className="ml-1" />
+                {t('HomePage.founderBtn')} <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
           </div>

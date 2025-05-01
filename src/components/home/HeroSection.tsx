@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   return (
@@ -54,7 +55,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          为往圣继绝学，用科技焕新中医
+          {t('HomePage.hero.title')}
         </motion.h1>
         
         <motion.p 
@@ -63,34 +64,24 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          HeyTCM 智能中医共创圈：用 AI 与开放数据，解读身体信号，量化气血阴阳，开启您的个性化健康复兴之旅。
+          {t('HomePage.hero.desc')}
         </motion.p>
         
-        <motion.div 
-          className="flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Link 
-            to="/products" 
-            className="bg-primary-500 hover:bg-primary-600 text-white py-3 px-6 rounded-full text-lg font-medium transition-colors"
-          >
-            探索智能戒指
-          </Link>
-          <Link 
-            to="/ecosystem" 
-            className="bg-secondary-400 hover:bg-secondary-500 text-white py-3 px-6 rounded-full text-lg font-medium transition-colors"
-          >
-            加入共创社区
-          </Link>
-          <Link 
-            to="/about" 
-            className="bg-white hover:bg-neutral-100 text-neutral-800 border border-neutral-300 py-3 px-6 rounded-full text-lg font-medium transition-colors"
-          >
-            了解我们的故事
-          </Link>
-        </motion.div>
+        <div className="flex flex-wrap justify-center gap-4">
+          {buttons.map((btn, idx) => (
+            <Link
+              key={btn.text + idx}
+              to={btn.link}
+              className={
+                idx === 0 ? "bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg" :
+                idx === 1 ? "bg-secondary-600 hover:bg-secondary-700 text-white px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg" :
+                "bg-neutral-200 hover:bg-neutral-300 text-neutral-800 px-6 py-3 rounded-full font-medium text-lg transition-colors shadow-lg"
+              }
+            >
+              {btn.text}
+            </Link>
+          ))}
+        </div>
         
         {/* Scroll indicator */}
         <motion.div 
