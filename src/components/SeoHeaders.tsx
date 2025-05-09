@@ -119,6 +119,13 @@ const SeoHeaders: React.FC<{ header: SeoHeaderProps }> = ({ header }) => {
       {header.linkTags && header.linkTags.map((link, i) =>
         <link {...link} key={`link-${i}`} />
       )}
+
+
+<script
+    src="https://app.rybbit.io/api/script.js"
+    data-site-id="357"
+    defer
+></script>
     </Helmet>
   );
 };
